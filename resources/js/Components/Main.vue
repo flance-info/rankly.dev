@@ -1,5 +1,20 @@
 <script setup>
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import AddPlugin from './components/AddPlugin.vue';
+
+const routes = [
+    // Other routes...
+    {
+        path: '/add-plugin',
+        name: 'AddPlugin',
+        component: AddPlugin,
+    },
+];
+
+export default new VueRouter({
+    mode: 'history',
+    routes,
+});
 </script>
 
 <template>
@@ -19,7 +34,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
             </div>
         </div>
 
-        <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
+        <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8">
             <!-- Plugin Card -->
             <div class="bg-white rounded-lg shadow-md p-4 flex items-start">
                 <img src="path_to_plugin_image.png" alt="Plugin Image" class="w-16 h-16 rounded-lg">
@@ -39,11 +54,12 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 <script>
 export default {
     methods: {
-        handlePluginButtonClick() {
-            // Add logic for what happens when the button is clicked
-            alert('Plugin button clicked!');
-        }
+    handlePluginButtonClick() {
+        // Navigate to the Add Plugin page
+        this.$router.push({ name: 'AddPlugin' });
     }
+}
+
 }
 </script>
 
