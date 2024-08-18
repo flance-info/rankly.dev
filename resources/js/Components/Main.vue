@@ -7,9 +7,10 @@ import {router} from "@inertiajs/vue3";
 <template>
     <div>
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
-            <h1 class="mt-8 text-2xl font-medium text-gray-900">
+         <!--   <h2 class="mt-8 text-2xl font-medium text-gray-900">
                 Plugins
-            </h1>
+            </h2>
+            !-->
 
             <!-- Plugins Button -->
             <div class="mt-4">

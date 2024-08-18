@@ -6,9 +6,9 @@ import AddPluginForm from '@/Pages/AddPluginForm.vue';
 <template>
     <AppLayout title="Plugins">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Plugins
-            </h2>
+            <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+                Plugins > Add plugin
+            </h1>
         </template>
 
         <div class="py-12">

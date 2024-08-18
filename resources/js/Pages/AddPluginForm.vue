@@ -2,34 +2,33 @@
     <div>
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
             <div class="mb-4 text-gray-600">
-                <h1 class="text-xl font-bold">Plugins > Add plugin</h1>
+                <!-- <h2 class="text-xl font-bold">Plugins > Add plugin</h2> -->
             </div>
 
-            <!-- Plugins Button -->
-                <!-- Search Input -->
-        <div class="flex items-center mb-8">
-            <input
-                type="text"
-                placeholder="Search plugin by name, slug or WordPress URL"
-                class="w-full p-3 border rounded-l-md border-gray-300 focus:outline-none"
-                v-model="searchQuery"
-            />
-            <button
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md"
-                @click="searchPlugin"
-            >
-                Search
-            </button>
-        </div>
+            <!-- Search Input -->
+            <div class="flex items-center mb-8">
+                <input
+                    type="text"
+                    placeholder="Search plugin by name, slug or WordPress URL"
+                    class="w-full p-3 border-t border-b border-l rounded-l-md border-gray-300 focus:outline-none  "
+                    v-model="searchQuery"
+                />
+                <button
+                    class="bg-blue-500 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-r-md border-t border-b border-r border-gray-500"
+                    @click="searchPlugin"
+                >
+                    Search
+                </button>
+            </div>
 
-        <!-- Placeholder Content -->
-        <div class="flex flex-col items-center justify-center">
-
-            <p class="text-gray-600">Use search to find and add a plugin.</p>
-        </div>
+            <!-- Placeholder Content -->
+            <div class="flex flex-col items-center justify-center">
+                <p class="text-gray-600">Use search to find and add a plugin.</p>
+            </div>
         </div>
     </div>
 </template>
+
 
 <script>
 export default {
