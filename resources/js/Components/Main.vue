@@ -1,20 +1,20 @@
-<script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import AddPlugin from './components/AddPlugin.vue';
+<script>
+import { useRouter } from 'vue-router';
 
-const routes = [
-    // Other routes...
-    {
-        path: '/add-plugin',
-        name: 'AddPlugin',
-        component: AddPlugin,
-    },
-];
+export default {
+    setup() {
+        const router = useRouter();
 
-export default new VueRouter({
-    mode: 'history',
-    routes,
-});
+        function handlePluginButtonClick() {
+
+            router.push({ name: 'AddPlugin' });
+        }
+
+        return {
+            handlePluginButtonClick,
+        };
+    }
+}
 </script>
 
 <template>
@@ -50,16 +50,3 @@ export default new VueRouter({
         </div>
     </div>
 </template>
-
-<script>
-export default {
-    methods: {
-    handlePluginButtonClick() {
-        // Navigate to the Add Plugin page
-        this.$router.push({ name: 'AddPlugin' });
-    }
-}
-
-}
-</script>
-

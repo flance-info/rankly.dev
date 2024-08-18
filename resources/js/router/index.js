@@ -1,5 +1,6 @@
+// router/index.js
 import { createRouter, createWebHistory } from 'vue-router';
-import AddPlugin from '../components/AddPlugin.vue';
+import AddPlugin from '@/Components/AddPlugin.vue';
 
 const routes = [
     {
@@ -7,7 +8,7 @@ const routes = [
         name: 'AddPlugin',
         component: AddPlugin,
     },
-    // Other routes...
+    // Add other routes here if necessary
 ];
 
 const router = createRouter({
