@@ -41,7 +41,7 @@ export default {
     methods: {
         searchPlugin() {
             if (this.searchQuery) {
-                axios.post('/search-plugin', { slug: this.searchQuery })
+                axios.post('/api/search-plugin', { slug: this.searchQuery })
                     .then(response => {
                         console.log('Plugin added:', response.data);
                         alert('Plugin added successfully!');

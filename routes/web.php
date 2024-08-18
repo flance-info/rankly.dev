@@ -52,7 +52,7 @@ Route::middleware(['auth', 'ensure.current_team'])->group(function () {
     // Other routes that require current_team
 });
 
-Route::post('/search-plugin', [PluginController::class, 'searchPlugin'])->name('search-plugin');
+
 
 
 
