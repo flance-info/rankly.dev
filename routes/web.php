@@ -44,7 +44,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'ensure.current_team'])->group(function () {
     Route::get('/teams/{team}', [TeamController::class, 'show'])->name('teams.show');
+    // Other routes that require current_team
 });
 
