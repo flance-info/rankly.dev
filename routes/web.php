@@ -33,7 +33,9 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
-    // Other user routes
+     Route::get('/dashboard/add-plugin', function () {
+        return Inertia::render('AddPlugin');
+    })->name('add-plugin');
 });
 
 // Admin Routes

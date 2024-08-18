@@ -10,7 +10,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 defineProps({
     title: String,
-      team: {
+    team: {
         type: Object,
         required: false, // Set to false if the team prop is optional
     },
@@ -291,4 +291,3 @@ const logout = () => {
         </div>
     </div>
 </template>
-

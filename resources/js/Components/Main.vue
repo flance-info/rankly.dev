@@ -1,20 +1,8 @@
-<script>
-import { useRouter } from 'vue-router';
+<script setup>
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import {Inertia as InertiaCore} from '@inertiajs/inertia';
 
-export default {
-    setup() {
-        const router = useRouter();
 
-        function handlePluginButtonClick() {
-
-            router.push({ name: 'AddPlugin' });
-        }
-
-        return {
-            handlePluginButtonClick,
-        };
-    }
-}
 </script>
 
 <template>
@@ -31,6 +19,8 @@ export default {
                     @click="handlePluginButtonClick">
                     + Add Plugin
                 </button>
+
+
             </div>
         </div>
 
@@ -50,3 +40,18 @@ export default {
         </div>
     </div>
 </template>
+
+<script>
+
+
+export default {
+    methods: {
+        handlePluginButtonClick() {
+            // Navigate to the Add Plugin page using Inertia
+            InertiaCore.visit('/dashboard/add-plugin');
+        }
+    }
+
+}
+</script>
+
