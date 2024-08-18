@@ -1,11 +1,12 @@
 <template>
-    <div class="p-6 lg:p-8 bg-gray-100 min-h-screen">
-        <!-- Breadcrumb or Title -->
-        <div class="mb-4 text-gray-600">
-            <h1 class="text-xl font-bold">Plugins > Add plugin</h1>
-        </div>
+    <div>
+        <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
+            <div class="mb-4 text-gray-600">
+                <h1 class="text-xl font-bold">Plugins > Add plugin</h1>
+            </div>
 
-        <!-- Search Input -->
+            <!-- Plugins Button -->
+                <!-- Search Input -->
         <div class="flex items-center mb-8">
             <input
                 type="text"
@@ -25,6 +26,7 @@
         <div class="flex flex-col items-center justify-center">
 
             <p class="text-gray-600">Use search to find and add a plugin.</p>
+        </div>
         </div>
     </div>
 </template>

@@ -1,7 +1,6 @@
 <script setup>
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import {Inertia as InertiaCore} from '@inertiajs/inertia';
-
+import {router} from "@inertiajs/vue3";
 
 </script>
 
@@ -42,10 +41,6 @@ import {Inertia as InertiaCore} from '@inertiajs/inertia';
 </template>
 
 <script>
-
-
-import {router} from "@inertiajs/vue3";
-
 export default {
     methods: {
         handlePluginButtonClick() {
