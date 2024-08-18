@@ -59,4 +59,8 @@ class User extends Authenticatable {
         = [
             'profile_photo_url',
         ];
+
+    public function all_teams() {
+        return $this->hasMany( Team::class );
+    }
 }
