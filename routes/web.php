@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PluginController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -50,10 +51,8 @@ Route::middleware(['auth', 'ensure.current_team'])->group(function () {
     Route::get('/teams/{team}', [TeamController::class, 'show'])->name('teams.show');
     // Other routes that require current_team
 });
-/*
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])
-    ->get('/dashboard/add-plugin', function () {
-        return Inertia::render('AddPlugin');
-    })->name('add-plugin');
-*/
+
+Route::post('/search-plugin', [PluginController::class, 'searchPlugin'])->name('search-plugin');
+
+
 

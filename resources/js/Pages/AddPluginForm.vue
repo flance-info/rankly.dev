@@ -10,11 +10,11 @@
                 <input
                     type="text"
                     placeholder="Search plugin by name, slug or WordPress URL"
-                    class="w-full p-3 border-t border-b border-l rounded-l-md border-gray-300 focus:outline-none  "
+                    class="w-full p-3 border-t border-b border-l rounded-l-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     v-model="searchQuery"
                 />
                 <button
-                    class="bg-blue-500 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-r-md border-t border-b border-r border-gray-500"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-md border-t border-b border-r border-blue-500"
                     @click="searchPlugin"
                 >
                     Search
@@ -29,20 +29,27 @@
     </div>
 </template>
 
-
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
-            searchQuery: ''
+            searchQuery: '',
         };
     },
     methods: {
         searchPlugin() {
-            // Logic to handle the search functionality
             if (this.searchQuery) {
-                console.log(`Searching for: ${this.searchQuery}`);
-                // You can add your search logic here, or navigate to another page, etc.
+                axios.post('/search-plugin', { slug: this.searchQuery })
+                    .then(response => {
+                        console.log('Plugin added:', response.data);
+                        alert('Plugin added successfully!');
+                    })
+                    .catch(error => {
+                        console.error('Error adding plugin:', error);
+                        alert('Error: ' + (error.response.data.error || 'Could not add plugin.'));
+                    });
             } else {
                 alert("Please enter a search query.");
             }
