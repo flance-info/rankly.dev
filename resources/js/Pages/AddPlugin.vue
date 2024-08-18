@@ -1,57 +1,24 @@
-<template>
-    <div>
-        <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
-            <div class="mb-4 text-gray-600">
-                <h1 class="text-xl font-bold">Plugins > Add plugin</h1>
-            </div>
-
-            <!-- Plugins Button -->
-                <!-- Search Input -->
-        <div class="flex items-center mb-8">
-            <input
-                type="text"
-                placeholder="Search plugin by name, slug or WordPress URL"
-                class="w-full p-3 border rounded-l-md border-gray-300 focus:outline-none"
-                v-model="searchQuery"
-            />
-            <button
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md"
-                @click="searchPlugin"
-            >
-                Search
-            </button>
-        </div>
-
-        <!-- Placeholder Content -->
-        <div class="flex flex-col items-center justify-center">
-
-            <p class="text-gray-600">Use search to find and add a plugin.</p>
-        </div>
-        </div>
-    </div>
-</template>
-
-<script>
-export default {
-    data() {
-        return {
-            searchQuery: ''
-        };
-    },
-    methods: {
-        searchPlugin() {
-            // Logic to handle the search functionality
-            if (this.searchQuery) {
-                console.log(`Searching for: ${this.searchQuery}`);
-                // You can add your search logic here, or navigate to another page, etc.
-            } else {
-                alert("Please enter a search query.");
-            }
-        }
-    }
-}
+<script setup>
+import AppLayout from '@/Layouts/AppLayout.vue';
+import AddPluginForm from '@/Pages/AddPluginForm.vue';
 </script>
 
-<style scoped>
-/* Add any custom styles here */
-</style>
+<template>
+    <AppLayout title="Plugins">
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Plugins
+            </h2>
+        </template>
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <AddPluginForm />
+                </div>
+            </div>
+        </div>
+    </AppLayout>
+</template>
+
+
