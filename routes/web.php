@@ -3,9 +3,9 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\TeamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,5 +40,11 @@ Route::middleware([
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     // Other admin routes
+});
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/teams/{team}', [TeamController::class, 'show'])->name('teams.show');
 });
 
