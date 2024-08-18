@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller {
     public function show( Team $team ) {
-        $team->load( 'owner' ); // Ensure the owner relationship is loaded
-        $availableRoles = [ 'Admin', 'Editor', 'Viewer' ]; // Example roles
+        $team->load( 'owner' );
+        $availableRoles = [ 'Admin', 'Editor', 'Viewer' ];
 
         return Inertia::render( 'Teams/Show', [
             'team'           => $team,

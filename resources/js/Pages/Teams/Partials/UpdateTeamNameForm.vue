@@ -43,9 +43,9 @@ const updateTeamName = () => {
 
 
                     <div class="ms-4 leading-tight">
-                        <div class="text-gray-900">{{ team.owner.name }}</div>
+                        <div class="text-gray-900"></div>
                         <div class="text-gray-700 text-sm">
-                            {{ team.owner.email }}
+
                         </div>
                     </div>
                 </div>

@@ -63,4 +63,12 @@ class User extends Authenticatable {
     public function all_teams() {
         return $this->hasMany( Team::class );
     }
+
+     /**
+     * Define the relationship with the current team.
+     */
+    public function currentTeam()
+    {
+        return $this->belongsTo(Team::class, 'current_team_id');
+    }
 }
