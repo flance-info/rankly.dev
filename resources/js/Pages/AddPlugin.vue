@@ -23,7 +23,7 @@
 
         <!-- Placeholder Content -->
         <div class="flex flex-col items-center justify-center">
-            <img src="path_to_image.png" alt="Search Icon" class="w-24 h-24 mb-4"/>
+
             <p class="text-gray-600">Use search to find and add a plugin.</p>
         </div>
     </div>

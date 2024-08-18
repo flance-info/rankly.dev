@@ -33,9 +33,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
-     Route::get('/dashboard/add-plugin', function () {
-        return Inertia::render('AddPlugin');
-    })->name('add-plugin');
+
 });
 
 // Admin Routes
@@ -50,4 +48,10 @@ Route::middleware(['auth', 'ensure.current_team'])->group(function () {
     Route::get('/teams/{team}', [TeamController::class, 'show'])->name('teams.show');
     // Other routes that require current_team
 });
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])
+    ->get('/dashboard/add-plugin', function () {
+        return Inertia::render('AddPlugin');
+    })->name('add-plugin');
+
 

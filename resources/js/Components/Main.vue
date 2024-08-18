@@ -27,7 +27,7 @@ import {Inertia as InertiaCore} from '@inertiajs/inertia';
         <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8">
             <!-- Plugin Card -->
             <div class="bg-white rounded-lg shadow-md p-4 flex items-start">
-                <img src="path_to_plugin_image.png" alt="Plugin Image" class="w-16 h-16 rounded-lg">
+          <!--      <img src="path_to_plugin_image.png" alt="Plugin Image" class="w-16 h-16 rounded-lg"> !-->
                 <div class="ml-4">
                     <h3 class="text-lg font-semibold text-gray-800">BS Maps - Google Maps Plugin</h3>
                     <div class="flex items-center">
@@ -48,7 +48,14 @@ export default {
     methods: {
         handlePluginButtonClick() {
             // Navigate to the Add Plugin page using Inertia
-            InertiaCore.visit('/dashboard/add-plugin');
+
+            console.log('Navigating to Add Plugin');
+            InertiaCore.visit('/dashboard/add-plugin', {
+                method: 'get',
+                onSuccess: () => console.log('Navigation successful'),
+                onError: (errors) => console.log('Navigation failed', errors),
+            });
+
         }
     }
 
