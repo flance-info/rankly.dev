@@ -43,4 +43,11 @@ class Team extends JetstreamTeam {
             'updated' => TeamUpdated::class,
             'deleted' => TeamDeleted::class,
         ];
+
+    /**
+     * Get the user that owns the team.
+     */
+    public function owner() {
+        return $this->belongsTo( User::class, 'user_id' );
+    }
 }
