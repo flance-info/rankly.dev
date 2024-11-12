@@ -32,7 +32,7 @@ class PluginController extends Controller {
             $savedata = [
                 'name'    => $pluginData['name'],
                 'slug'    => $slug,
-                //    'description' => $pluginData['description'],
+                'description' => $pluginData['description'],
                 'user_id' => Auth::id(),
             ];
             $plugin = Plugin::create( $savedata );
