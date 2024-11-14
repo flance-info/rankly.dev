@@ -12,14 +12,23 @@ use Illuminate\Support\Facades\Auth;
 class PluginController extends Controller {
     public function searchPlugin( Request $request ) {
         $slug = $request->input( 'slug' );
+        $slug = $this->getSlugFromUrl($slug);
+
         if ( ! $slug ) {
-            return response()->json( [ 'error' => 'No plugin slug provided' ], 400 );
+            return response()->json( [ 'error' => 'No plugin slug or url provided' ], 400 );
         }
-        if ( Auth::check() ) {
-            $savedata['user_id'] = Auth::id();
-        } else {
+        if ( ! Auth::check() ) {
             return response()->json( [ 'error' => 'User not authenticated' ], 401 );
         }
+
+        $userId = Auth::id();
+
+        // Check if the plugin already exists for this user
+        $existingPlugin = Plugin::where( 'slug', $slug )->where( 'user_id', $userId )->first();
+        if ( $existingPlugin ) {
+            return response()->json( [ 'message' => 'Plugin already added', 'plugin' => $existingPlugin ], 200 );
+        }
+
         // Query the WordPress.org API
         $response   = Http::get( 'https://api.wordpress.org/plugins/info/1.2/', [
             'action'                       => 'plugin_information',
@@ -33,14 +42,23 @@ class PluginController extends Controller {
                 'name'    => $pluginData['name'],
                 'slug'    => $slug,
                 'description' => $pluginData['description'],
-                'user_id' => Auth::id(),
+                'user_id' => $userId,
             ];
             $plugin = Plugin::create( $savedata );
 
-            return response()->json( $plugin, 201 );
+            return response()->json([ 'message' => 'Plugin Added to your account', 'plugin' =>  $plugin ], 201 );
         }
 
         return response()->json( [ 'error' => 'Plugin not found' ], 404 );
     }
-}
 
+    private function getSlugFromUrl($input) {
+        if (filter_var($input, FILTER_VALIDATE_URL)) {
+            $path = parse_url($input, PHP_URL_PATH);
+            $path = trim($path, '/');
+            $segments = explode('/', $path);
+            return end($segments);
+        }
+        return $input;
+    }
+}
