@@ -50,8 +50,12 @@ const addPluginToList = (newPlugin) => {
         </div>
 
         <!-- Plugin List Component -->
-        <div class="mt-8">
+        <div class="py-4">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <PluginList :plugins="plugins" />
+          </div>
+            </div>
         </div>
     </AppLayout>
 </template>
