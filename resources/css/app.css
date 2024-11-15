@@ -1,7 +1,45 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 [x-cloak] {
+    display: none;
+}
+
+
+.rating-score > .rating-score-item, .rating-input > label {
+    display: inline-block;
+}
+.rating-score > .rating-score-item:after, .rating-input > label:after {
+    font-family: "FontAwesome";
+    font-size: 1.5em;
+    color: #ffc600;
+}
+.rating-score[data-rating="1"] > .rating-score-item:nth-child(-n + 1):after, .rating-score[data-rating="2"] > .rating-score-item:nth-child(-n + 2):after, .rating-score[data-rating="3"] > .rating-score-item:nth-child(-n + 3):after, .rating-score[data-rating="4"] > .rating-score-item:nth-child(-n + 4):after, .rating-score[data-rating="5"] > .rating-score-item:nth-child(-n + 5):after, .rating-score[data-rating="0.5"] > .rating-score-item:nth-child(-n + 0):after, .rating-score[data-rating="1.5"] > .rating-score-item:nth-child(-n + 1):after, .rating-score[data-rating="2.5"] > .rating-score-item:nth-child(-n + 2):after, .rating-score[data-rating="3.5"] > .rating-score-item:nth-child(-n + 3):after, .rating-score[data-rating="4.5"] > .rating-score-item:nth-child(-n + 4):after, .rating-input > input:checked ~ label:after, .rating-input:hover > input + label:hover:after, .rating-input:hover > input + label:hover ~ input + label:after {
+    content: "\f005";
+}
+.rating-score[data-rating="0.5"] > .rating-score-item:nth-child(1):after, .rating-score[data-rating="1.5"] > .rating-score-item:nth-child(2):after, .rating-score[data-rating="2.5"] > .rating-score-item:nth-child(3):after, .rating-score[data-rating="3.5"] > .rating-score-item:nth-child(4):after, .rating-score[data-rating="4.5"] > .rating-score-item:nth-child(5):after {
+    content: "\f123";
+}
+.rating-score > .rating-score-item:after, .rating-input > label:after, .rating-input:hover > input + label:after {
+    content: "\f006";
+}
+.rating-score {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+}
+.rating-input {
+    border: none;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+.rating-input > input {
     display: none;
 }
