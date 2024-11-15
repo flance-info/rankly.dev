@@ -23,6 +23,10 @@ Route::middleware(
     'auth:sanctum')->post('/search-plugin',
     [PluginController::class, 'searchPlugin'])->name('search-plugin');
 
+Route::post('/update-session-plugins', [PluginController::class, 'updateSessionPlugins']);
+
+Route::get('/session-plugins', [PluginController::class, 'getSessionPlugins']);
+
 
 
 

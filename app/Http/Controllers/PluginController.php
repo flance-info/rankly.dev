@@ -8,6 +8,8 @@ use App\Models\Plugin;
 
 // Assuming you have a Plugin model
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class PluginController extends Controller {
     public function searchPlugin( Request $request ) {
@@ -35,18 +37,16 @@ class PluginController extends Controller {
             'request[slug]'                => $slug,
             'request[fields][description]' => true
         ] );
+
+        // Log the JSON response
+        Log::info('WordPress API Response:', $response->json());
+
         $pluginData = $response->json();
         if ( $pluginData && ! isset( $pluginData['error'] ) ) {
-            // Save the plugin data to the database
-            $savedata = [
-                'name'    => $pluginData['name'],
-                'slug'    => $slug,
-                'description' => $pluginData['description'],
-                'user_id' => $userId,
-            ];
-            $plugin = Plugin::create( $savedata );
+            // Save the plugin data to the session
+            Session::put('plugin_data', $pluginData);
 
-            return response()->json([ 'message' => 'Plugin Added to your account', 'plugin' =>  $plugin ], 201 );
+            return response()->json([ 'message' => 'Plugin Added to your account', 'plugin' =>  $pluginData ], 201 );
         }
 
         return response()->json( [ 'error' => 'Plugin not found' ], 404 );
@@ -60,5 +60,21 @@ class PluginController extends Controller {
             return end($segments);
         }
         return $input;
+    }
+
+    public function getSessionPlugins(Request $request) {
+        // Retrieve the current session data
+        $currentPlugins = Session::get('plugin_data', []);
+
+        // Get the new plugins from the request
+        $newPlugins = $request->input('plugins', []);
+
+        // Merge the current session data with the new plugins
+        $updatedPlugins = array_merge($currentPlugins, $newPlugins);
+
+        // Update the session with the merged plugins list
+        Session::put('plugin_data', $updatedPlugins);
+
+        return response()->json(['message' => 'Session plugins updated successfully', 'plugin_data' => $updatedPlugins]);
     }
 }

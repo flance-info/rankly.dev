@@ -44,8 +44,9 @@ export default {
                 axios.post('/api/search-plugin', { slug: this.searchQuery })
                     .then(response => {
                         console.log('Plugin added:', response.data);
-                        let message = response.data.message ? response.data.message : 'Error adding plugin';
+                        let message = response.data.message ? response.data.message : 'Plugin added successfully';
                         alert(message);
+                        this.$emit('plugin-added', response.data.plugin); // Emit event with new plugin data
                     })
                     .catch(error => {
                         console.error('Error adding plugin:', error);
