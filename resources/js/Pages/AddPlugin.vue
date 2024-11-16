@@ -2,34 +2,27 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import AddPluginForm from '@/Pages/AddPluginForm.vue';
 import PluginList from '@/Components/PluginList.vue';
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import {ref, onMounted} from 'vue';
 
 const plugins = ref([]);
 
-// Fetch plugins from the session
-const fetchSessionPlugins = async () => {
-  try {
-    const response = await axios.get('/api/session-plugins');
-    plugins.value = response.data;
-  } catch (error) {
-    console.error('Error fetching session plugins:', error);
-  }
+// Function to fetch plugins from local storage
+const fetchLocalPlugins = () => {
+    const storedPlugins = localStorage.getItem('plugins');
+    plugins.value = storedPlugins ? JSON.parse(storedPlugins) : [];
 };
 
-// Fetch session plugins when the component is mounted
-onMounted(fetchSessionPlugins);
+// Save plugins to local storage
+const savePluginsToLocal = () => {
+    localStorage.setItem('plugins', JSON.stringify(plugins.value));
+};
+
+// Fetch plugins when the component is mounted
+onMounted(fetchLocalPlugins);
 
 const addPluginToList = (newPlugin) => {
-  plugins.value.push(newPlugin);
-  // Update the session with the new plugin list
-  axios.post('/api/update-session-plugins', { plugins: plugins.value })
-    .then(response => {
-      console.log('Session updated successfully:', response.data.plugin_data);
-    })
-    .catch(error => {
-      console.error('Error updating session plugins:', error);
-    });
+    plugins.value.push(newPlugin);
+    savePluginsToLocal(); // Update local storage with the new plugin list
 };
 </script>
 
@@ -44,7 +37,7 @@ const addPluginToList = (newPlugin) => {
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <AddPluginForm @plugin-added="addPluginToList" />
+                    <AddPluginForm @plugin-added="addPluginToList"/>
                 </div>
             </div>
         </div>
@@ -53,8 +46,8 @@ const addPluginToList = (newPlugin) => {
         <div class="py-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <PluginList :plugins="plugins" />
-          </div>
+                    <PluginList :plugins="plugins"/>
+                </div>
             </div>
         </div>
     </AppLayout>

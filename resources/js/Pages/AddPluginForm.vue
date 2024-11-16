@@ -31,7 +31,8 @@
 
 <script>
 import axios from 'axios';
-import { useToast } from "vue-toastification";
+import {useToast} from "vue-toastification";
+
 export default {
     data() {
         return {
@@ -40,27 +41,29 @@ export default {
     },
     methods: {
         searchPlugin() {
-               const toast = useToast();
+            const toast = useToast();
             if (this.searchQuery) {
-                axios.post('/api/search-plugin', { slug: this.searchQuery })
+                axios.post('/api/search-plugin', {slug: this.searchQuery})
                     .then(response => {
                         console.log('Plugin added:', response.data);
-                        let message = response.data.message ? response.data.message : 'Plugin added successfully';
+                        const newPlugin = response.data.plugin;
+                        this.$emit('plugin-added', newPlugin); // Emit event with new plugin data
 
-                       toast.success(message);
-                        this.$emit('plugin-added', response.data.plugin); // Emit event with new plugin data
+                        // Show success message
+                        const message = response.data.message ? response.data.message : 'Plugin added successfully';
+                        toast.success(message);
                     })
                     .catch(error => {
-
-                             const errorMessage = error.response?.data?.error || 'Could not add plugin.';
-                      //  toast.error(`Error: ${errorMessage}`); // Show error toast
-
+                          console.log(error);
+                        const errorMessage = error.response.data?.error || 'Could not add plugin.';
+                        toast.error(`Error: ${errorMessage}`);
                     });
             } else {
-                 toast.warning("Please enter a search query.");
+                toast.warning("Please enter a search query.");
             }
         }
     }
+
 }
 </script>
 
