@@ -5,8 +5,8 @@
         </h3>
         <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8">
             <div v-for="plugin in plugins" :key="plugin.id" class="bg-white rounded-lg shadow-md p-4 flex items-start">
-                <!-- Uncomment and replace with actual image path if available -->
-                <!-- <img :src="plugin.image" alt="Plugin Image" class="w-16 h-16 rounded-lg"> -->
+
+              <img :src="getPluginIconUrl(plugin.slug)" alt="Plugin Image" class="w-16 h-16 rounded-lg">
                 <div class="ml-4"> {{ console.log(plugin) }}
                     <h3 class="text-lg font-semibold text-gray-800" v-html="plugin.name"></h3>
                     <div class="flex items-center">
@@ -30,7 +30,7 @@
 
 <script setup>
 import {defineProps} from 'vue';
-import {computed} from 'vue';
+
 
 const props = defineProps({
     plugins: {
@@ -62,7 +62,7 @@ function roundToNearestHalf(value) {
   const decimalPart = value - floorValue;
   console.log(floorValue, decimalPart);
   if (decimalPart < 0.25) {
-    return floorValue; 
+    return floorValue;
   } else if (decimalPart < 0.75) {
     return floorValue + 0.5;
   } else {
@@ -70,6 +70,9 @@ function roundToNearestHalf(value) {
   }
 }
 
+function getPluginIconUrl(slug) {
+    return `https://ps.w.org/${slug}/assets/icon-128x128.png`;
+}
 </script>
 
 <style scoped>
