@@ -7,7 +7,7 @@
             <div v-for="plugin in plugins" :key="plugin.id" class="bg-white rounded-lg shadow-md p-4 flex items-start relative">
 
                 <!-- Remove Button -->
-                 <button
+                <button
                     class="absolute top-1 right-1  w-6 h-6 flex items-center justify-center text-sm"
                     @click="removePlugin(plugin.slug)"
                     title="Remove Plugin"
@@ -42,14 +42,13 @@
 
 
 <script setup>
-import {defineProps} from 'vue';
-
+import {defineProps, ref} from 'vue';
 
 const props = defineProps({
     plugins: {
         type: Object,
-        required: true
-    }
+        required: true,
+    },
 });
 
 const totalRatings = (ratings) => {
@@ -62,18 +61,10 @@ const totalRatings = (ratings) => {
     return total;
 };
 
-const calculateStars = (rating) => {
-    const fullStars = Math.floor((rating / 100) * 5); // Full stars based on rating
-    const hasHalfStar = (rating % 20) >= 10; // Check if there's a half star
-    return {fullStars, hasHalfStar};
-};
-
-function roundToNearestHalf(value) {
+const roundToNearestHalf = (value) => {
     value = (value * 5) / 100;
-    console.log(value);
     const floorValue = Math.floor(value);
     const decimalPart = value - floorValue;
-    console.log(floorValue, decimalPart);
     if (decimalPart < 0.25) {
         return floorValue;
     } else if (decimalPart < 0.75) {
@@ -81,12 +72,24 @@ function roundToNearestHalf(value) {
     } else {
         return floorValue + 1;
     }
-}
+};
 
-function getPluginIconUrl(slug) {
+const getPluginIconUrl = (slug) => {
     return `https://ps.w.org/${slug}/assets/icon-128x128.png`;
-}
+};
+
+// Function to remove a plugin by its slug
+const removePlugin = (slug) => {
+    delete props.plugins[slug]; // Remove the plugin from the object
+    savePluginsToLocal(); // Save updated plugins to local storage
+};
+
+// Function to save plugins to local storage
+const savePluginsToLocal = () => {
+    localStorage.setItem('plugins', JSON.stringify(props.plugins));
+};
 </script>
+
 
 <style scoped>
 
