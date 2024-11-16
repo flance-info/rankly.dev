@@ -47,11 +47,10 @@ export default {
                     .then(response => {
                         console.log('Plugin added:', response.data);
                         const newPlugin = response.data.plugin;
-                        this.$emit('plugin-added', newPlugin); // Emit event with new plugin data
-
-                        // Show success message
-                        const message = response.data.message ? response.data.message : 'Plugin added successfully';
+                         // Show success message
+                        const message = response.data.message ? response.data.message : 'Plugin Info received successfully';
                         toast.success(message);
+                        this.$emit('plugin-added', newPlugin);
                     })
                     .catch(error => {
                           console.log(error);

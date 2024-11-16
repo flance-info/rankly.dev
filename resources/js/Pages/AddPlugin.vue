@@ -3,13 +3,14 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import AddPluginForm from '@/Pages/AddPluginForm.vue';
 import PluginList from '@/Components/PluginList.vue';
 import {ref, onMounted} from 'vue';
+import {useToast} from "vue-toastification";
 
-const plugins = ref([]);
-
-// Function to fetch plugins from local storage
+const plugins = ref({}); // Store plugins as an object with slugs as keys
+const toast = useToast();
+// Fetch plugins from local storage
 const fetchLocalPlugins = () => {
     const storedPlugins = localStorage.getItem('plugins');
-    plugins.value = storedPlugins ? JSON.parse(storedPlugins) : [];
+    plugins.value = storedPlugins ? JSON.parse(storedPlugins) : {};
 };
 
 // Save plugins to local storage
@@ -19,12 +20,36 @@ const savePluginsToLocal = () => {
 
 // Fetch plugins when the component is mounted
 onMounted(fetchLocalPlugins);
-
+const decodeHTML = (html) => {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+};
+// Add or update a plugin by its slug
 const addPluginToList = (newPlugin) => {
-    plugins.value.push(newPlugin);
-    savePluginsToLocal(); // Update local storage with the new plugin list
+    if (newPlugin.slug) {
+        const decodedName = decodeHTML(newPlugin.name);
+        if (plugins.value[newPlugin.slug]) {
+
+            plugins.value[newPlugin.slug] = newPlugin;
+            toast.success(
+                `Plugin "${decodedName}" information updated.`,
+                {
+                    dangerouslyHTML: true,
+                }
+            );
+        } else {
+
+            plugins.value[newPlugin.slug] = newPlugin;
+            toast.info(`Plugin "${decodedName}" added successfully.`);
+        }
+        savePluginsToLocal();
+    } else {
+        console.error('Plugin does not have a slug:', newPlugin);
+    }
 };
 </script>
+
 
 <template>
     <AppLayout title="Plugins">

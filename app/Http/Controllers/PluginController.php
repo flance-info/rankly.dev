@@ -43,10 +43,7 @@ class PluginController extends Controller {
 
         $pluginData = $response->json();
         if ( $pluginData && ! isset( $pluginData['error'] ) ) {
-            // Save the plugin data to the session
-            Session::put('plugin_data', $pluginData);
-
-            return response()->json([ 'message' => 'Plugin Added to your account', 'plugin' =>  $pluginData ], 201 );
+            return response()->json([ 'message' => 'Plugin Info received successfully', 'plugin' =>  $pluginData ], 201 );
         }
 
         return response()->json( [ 'error' => 'Plugin not found' ], 404 );
