@@ -14,64 +14,95 @@ use Illuminate\Support\Facades\Session;
 class PluginController extends Controller {
     public function searchPlugin( Request $request ) {
         $slug = $request->input( 'slug' );
-        $slug = $this->getSlugFromUrl($slug);
-
+        $slug = $this->getSlugFromUrl( $slug );
         if ( ! $slug ) {
             return response()->json( [ 'error' => 'No plugin slug or url provided' ], 400 );
         }
         if ( ! Auth::check() ) {
             return response()->json( [ 'error' => 'User not authenticated' ], 401 );
         }
-
         $userId = Auth::id();
-
         // Check if the plugin already exists for this user
         $existingPlugin = Plugin::where( 'slug', $slug )->where( 'user_id', $userId )->first();
         if ( $existingPlugin ) {
             return response()->json( [ 'message' => 'Plugin already added', 'plugin' => $existingPlugin ], 200 );
         }
-
         // Query the WordPress.org API
-        $response   = Http::get( 'https://api.wordpress.org/plugins/info/1.2/', [
+        $response = Http::get( 'https://api.wordpress.org/plugins/info/1.2/', [
             'action'                       => 'plugin_information',
             'request[slug]'                => $slug,
             'request[fields][description]' => true
         ] );
-
         // Log the JSON response
-        Log::info('WordPress API Response:', $response->json());
-
+        Log::info( 'WordPress API Response:', $response->json() );
         $pluginData = $response->json();
         if ( $pluginData && ! isset( $pluginData['error'] ) ) {
-            return response()->json([ 'message' => 'Plugin Info received successfully', 'plugin' =>  $pluginData ], 201 );
+            return response()->json( [ 'message' => 'Plugin Info received successfully', 'plugin' => $pluginData ], 201 );
         }
 
         return response()->json( [ 'error' => 'Plugin not found' ], 404 );
     }
 
-    private function getSlugFromUrl($input) {
-        if (filter_var($input, FILTER_VALIDATE_URL)) {
-            $path = parse_url($input, PHP_URL_PATH);
-            $path = trim($path, '/');
-            $segments = explode('/', $path);
-            return end($segments);
+    private function getSlugFromUrl( $input ) {
+        if ( filter_var( $input, FILTER_VALIDATE_URL ) ) {
+            $path     = parse_url( $input, PHP_URL_PATH );
+            $path     = trim( $path, '/' );
+            $segments = explode( '/', $path );
+
+            return end( $segments );
         }
+
         return $input;
     }
 
-    public function getSessionPlugins(Request $request) {
+    public function getSessionPlugins( Request $request ) {
         // Retrieve the current session data
-        $currentPlugins = Session::get('plugin_data', []);
-
+        $currentPlugins = Session::get( 'plugin_data', [] );
         // Get the new plugins from the request
-        $newPlugins = $request->input('plugins', []);
-
+        $newPlugins = $request->input( 'plugins', [] );
         // Merge the current session data with the new plugins
-        $updatedPlugins = array_merge($currentPlugins, $newPlugins);
-
+        $updatedPlugins = array_merge( $currentPlugins, $newPlugins );
         // Update the session with the merged plugins list
-        Session::put('plugin_data', $updatedPlugins);
+        Session::put( 'plugin_data', $updatedPlugins );
 
-        return response()->json(['message' => 'Session plugins updated successfully', 'plugin_data' => $updatedPlugins]);
+        return response()->json( [ 'message' => 'Session plugins updated successfully', 'plugin_data' => $updatedPlugins ] );
+    }
+
+    public function store( Request $request ) {
+        $pluginData = $plugin = $request->input( 'plugin' );
+        if ( ! Auth::check() ) {
+            return response()->json( [ 'error' => 'User not authenticated' ], 401 );
+        }
+        $userId = Auth::id();
+        $slug   = $plugin['slug'];
+        // Check if the plugin already exists for this user
+        $existingPlugin = Plugin::where( 'slug', $slug )->where( 'user_id', $userId )->first();
+        if ( $pluginData && ! isset( $pluginData['error'] ) ) {
+
+            if ( $existingPlugin ) {
+
+                $existingPlugin->update( [
+                    'name'        => $pluginData['name'],
+                    'description' => 'Updated descriptions', // Example of updated description
+                ] );
+
+                return response()->json( [
+                    'message' => 'Plugin updated successfully',
+                    'plugin'  => $pluginData,
+                ], 200 );
+            }
+
+            $savedata = [
+                'name'        => $pluginData['name'],
+                'slug'        => $slug,
+                'description' => 'descriptions',
+                'user_id'     => $userId
+            ];
+
+            $pluginData   = Plugin::create( $savedata );
+            return response()->json( [ 'message' => 'Plugin Added to your account', 'plugin' => $pluginData ], 201 );
+        }
+
+        return response()->json( [ 'message' => 'Plugins added successfully to Your Account!' ] );
     }
 }

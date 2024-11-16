@@ -28,5 +28,10 @@ Route::post('/update-session-plugins', [PluginController::class, 'updateSessionP
 Route::get('/session-plugins', [PluginController::class, 'getSessionPlugins']);
 
 
+Route::post('/api/user/plugins', [PluginController::class, 'store']);
+Route::middleware(
+    'auth:sanctum')->post('/user/plugin',  [PluginController::class, 'store']);
+
+
 
 

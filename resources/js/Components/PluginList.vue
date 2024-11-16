@@ -4,24 +4,23 @@
             Plugins You Can Add to Your Account
         </h3>
         <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8">
-            <div v-for="plugin in plugins" :key="plugin.id" class="bg-white rounded-lg shadow-md p-4 flex items-start relative">
-
+            <div v-for="plugin in plugins" :key="plugin.id" class="bg-white rounded-lg p-4 shadow-md flex flex-col relative">
                 <!-- Remove Button -->
                 <button
-                    class="absolute top-1 right-1  w-6 h-6 flex items-center justify-center text-sm"
+                    class="absolute top-1 right-1 w-6 h-6 flex items-center justify-center text-sm"
                     @click="removePlugin(plugin.slug)"
                     title="Remove Plugin"
                 >
                     x
                 </button>
+                <div class="pb-2 flex items-start relative">
+                    <!-- Plugin Icon -->
+                    <img :src="getPluginIconUrl(plugin.slug)" alt="Plugin Image" class="w-16 h-16 rounded-lg">
 
-                <!-- Plugin Icon -->
-                <img :src="getPluginIconUrl(plugin.slug)" alt="Plugin Image" class="w-16 h-16 rounded-lg">
-
-                <!-- Plugin Info -->
-                <div class="ml-4">
-                    <h3 class="text-lg font-semibold text-gray-800" v-html="plugin.name"></h3>
-                    <div class="flex items-center">
+                    <!-- Plugin Info -->
+                    <div class="ml-4">
+                        <h3 class="text-lg font-semibold text-gray-800" v-html="plugin.name"></h3>
+                        <div class="flex items-center">
                         <span class="text-yellow-500 text-sm">
                             <ul class="rating-score" :data-rating="roundToNearestHalf(plugin.rating)">
                                 <li class="rating-score-item"></li>
@@ -31,9 +30,20 @@
                                 <li class="rating-score-item"></li>
                             </ul>
                         </span>
-                        <span class="text-gray-500 text-sm ml-2">({{ totalRatings(plugin.ratings) }})</span>
+                            <span class="text-gray-500 text-sm ml-2">({{ totalRatings(plugin.ratings) }})</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-1"> {{ plugin.active_installs }}+ active installations</p>
                     </div>
-                    <p class="text-sm text-gray-500 mt-1"> {{ plugin.active_installs }}+ active installations</p>
+
+                </div>
+                <!-- Add to Account Button -->
+                <div class="mt-auto flex justify-center">
+                    <button
+                        class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600"
+                        @click="addPluginsToAccount(plugin.slug)"
+                    >
+                        Add to Account
+                    </button>
                 </div>
             </div>
         </div>
@@ -42,7 +52,11 @@
 
 
 <script setup>
-import {defineProps, ref} from 'vue';
+import {defineProps} from 'vue';
+import axios from 'axios';
+import {useToast} from 'vue-toastification';
+
+const toast = useToast();
 
 const props = defineProps({
     plugins: {
@@ -87,6 +101,29 @@ const removePlugin = (slug) => {
 // Function to save plugins to local storage
 const savePluginsToLocal = () => {
     localStorage.setItem('plugins', JSON.stringify(props.plugins));
+};
+
+// Function to add a plugin to the user account
+const addPluginsToAccount = async (slug) => {
+    try {
+        const plugin = props.plugins[slug];
+
+        if (!plugin) {
+            toast.error('Plugin not found!');
+            return;
+        }
+
+        const response = await axios.post('/api/user/plugin', {
+            plugin,
+        });
+        const message = response.data.message ? response.data.message : 'Plugin successfully added to your account!';
+        toast.success(message);
+
+        console.log('Response:', response.data);
+    } catch (error) {
+        console.error('Error adding plugin:', error);
+        toast.error('Failed to add plugin to your account.');
+    }
 };
 </script>
 
