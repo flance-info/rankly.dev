@@ -104,5 +104,16 @@ class PluginController extends Controller {
 
         return response()->json( [ 'message' => 'Plugins added successfully to Your Account!' ] );
     }
+
+    public function getUserPlugins(Request $request) {
+        if (!Auth::check()) {
+            return response()->json(['error' => 'User not authenticated'], 401);
+        }
+
+        $userId = Auth::id();
+        $plugins = Plugin::where('user_id', $userId)->get();
+
+        return response()->json($plugins);
+    }
 }
 

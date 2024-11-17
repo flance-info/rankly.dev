@@ -32,6 +32,8 @@ Route::post('/api/user/plugins', [PluginController::class, 'store']);
 Route::middleware(
     'auth:sanctum')->post('/user/plugin',  [PluginController::class, 'store']);
 
+Route::middleware('auth:sanctum')->get('/user/plugins', [PluginController::class, 'getUserPlugins']);
+
 
 
 
