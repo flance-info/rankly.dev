@@ -2,6 +2,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import AddPluginForm from '@/Pages/AddPluginForm.vue';
 import PluginList from '@/Components/PluginList.vue';
+import AccountPluginList from '@/Components/AccountPluginList.vue';
 import {ref, onMounted} from 'vue';
 import {useToast} from "vue-toastification";
 
@@ -76,6 +77,13 @@ const addPluginToList = (newPlugin) => {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <PluginList :plugins="plugins"/>
+                </div>
+            </div>
+        </div>
+        <div class="py-4">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <AccountPluginList :plugins="plugins"/>
                 </div>
             </div>
         </div>
