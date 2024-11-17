@@ -91,8 +91,15 @@ const getPluginIconUrl = (slug) => {
     return `https://ps.w.org/${slug}/assets/icon-128x128.png`;
 };
 
-const removePlugin = (slug) => {
-    plugins.value = plugins.value.filter(plugin => plugin.slug !== slug);
+const removePlugin = async (slug) => {
+    try {
+        await axios.delete(`/api/user/plugins/${slug}`);
+        plugins.value = plugins.value.filter(plugin => plugin.slug !== slug);
+        toast.success('Plugin removed successfully');
+    } catch (err) {
+        console.error(err);
+        toast.error('Failed to remove plugin');
+    }
 };
 </script>
 
