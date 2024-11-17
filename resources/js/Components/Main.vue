@@ -23,25 +23,12 @@ import {router} from "@inertiajs/vue3";
 
             </div>
         </div>
-
-        <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8">
-            <!-- Plugin Card -->
-            <div class="bg-white rounded-lg shadow-md p-4 flex items-start">
-                <!--      <img src="path_to_plugin_image.png" alt="Plugin Image" class="w-16 h-16 rounded-lg"> !-->
-                <div class="ml-4">
-                    <h3 class="text-lg font-semibold text-gray-800">BS Maps - Google Maps Plugin</h3>
-                    <div class="flex items-center">
-                        <span class="text-yellow-500 text-sm">★★★★★</span>
-                        <span class="text-gray-500 text-sm ml-2">(1)</span>
-                    </div>
-                    <p class="text-sm text-gray-500 mt-1">60+ active installations</p>
-                </div>
-            </div>
-        </div>
     </div>
+
 </template>
 
 <script>
+
 export default {
     methods: {
         handlePluginButtonClick() {

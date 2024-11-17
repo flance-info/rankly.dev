@@ -9,14 +9,18 @@
         <div v-else class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8">
             <div v-for="plugin in plugins" :key="plugin.id" class="bg-white rounded-lg p-4 shadow-md flex flex-col relative">
                 <button
-                    class="absolute top-1 right-1 w-6 h-6 p-6 flex items-center justify-center text-sm z-10"
+                    class="absolute top-1 right-1 w-6 h-6 pb-6 pl-6 pt-2.5 pr-4 flex items-center justify-center text-sm z-10"
                     @click="removePlugin(plugin.slug)"
                     title="Remove Plugin"
                 >
                     x
                 </button>
                 <div class="pb-2 flex items-start relative">
-                    <img :src="getPluginIconUrl(plugin.slug)" alt="Plugin Image" class="w-16 h-16 rounded-lg">
+
+
+                    <img :src="getPluginIconUrl(plugin.slug)"   @error="handleIconError"
+                          :data-slug="plugin.slug"
+                         alt="Plugin Image" class="w-16 h-16 rounded-lg">
                     <div class="ml-4">
                         <h3 class="text-lg font-semibold text-gray-800" v-html="plugin.name"></h3>
                         <div class="flex items-center">
@@ -55,7 +59,19 @@ const props = defineProps({
     default: () => [],
   },
 });
+const handleIconError = (event) => {
+    const fallbackJpgUrl = `https://ps.w.org/${event.target.dataset.slug}/assets/icon-128x128.jpg`;
 
+
+    if (event.target.src === fallbackJpgUrl) {
+
+        event.target.src = 'https://ps.w.org/amp/assets/icon-128x128.png';
+        event.target.onerror = null; // Prevent further loop
+    } else {
+
+        event.target.src = fallbackJpgUrl;
+    }
+};
 const fetchUserPlugins = async () => {
     try {
         const response = await axios.get('/api/user/plugins');
@@ -109,7 +125,7 @@ const removePlugin = async (slug) => {
         toast.error('Failed to remove plugin');
     }
 };
-console.log(props);
+
 watch(
   () => props.pluginsd,
   (newVal) => {
