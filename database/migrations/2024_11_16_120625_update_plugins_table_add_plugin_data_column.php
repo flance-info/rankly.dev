@@ -1,23 +1,24 @@
 <?php
 
-namespace App\Models;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Plugin extends Model
+class UpdatePluginsTableAddPluginDataColumn extends Migration
 {
-    use HasFactory;
+    public function up()
+    {
+        Schema::table('plugins', function (Blueprint $table) {
+            $table->json('plugin_data')->nullable(); // Add a JSON column to store all plugin data
+        });
+    }
 
-    protected $fillable = [
-        'name',
-        'slug',
-        'user_id',
-        'plugin_data',
-    ];
-
-    protected $casts = [
-        'plugin_data' => 'array',
-    ];
+    public function down()
+    {
+        Schema::table('plugins', function (Blueprint $table) {
+            $table->dropColumn('plugin_data'); // Rollback the column
+        });
+    }
 }
+
 

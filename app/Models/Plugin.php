@@ -5,14 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Plugin extends Model
-{
+class Plugin extends Model {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'slug',
-        'description',
-        'user_id',
-    ];
+    protected $fillable
+        = [
+            'name',
+            'slug',
+            'user_id',
+            'plugin_data',
+        ];
+
+    protected $casts
+        = [
+            'plugin_data' => 'array',
+        ];
 }
+

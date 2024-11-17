@@ -81,23 +81,22 @@ class PluginController extends Controller {
 
             if ( $existingPlugin ) {
 
-                $existingPlugin->update( [
-                    'name'        => $pluginData['name'],
-                    'description' => 'Updated descriptions', // Example of updated description
-                ] );
+               $existingPlugin->update([
+            'name' => $pluginData['name'], 
+            'plugin_data' => $pluginData,
+        ]);
 
                 return response()->json( [
                     'message' => 'Plugin updated successfully',
                     'plugin'  => $pluginData,
                 ], 200 );
             }
-
-            $savedata = [
+            $savedata = Plugin::create( [
                 'name'        => $pluginData['name'],
-                'slug'        => $slug,
-                'description' => 'descriptions',
-                'user_id'     => $userId
-            ];
+                'slug'        => $pluginData['slug'],
+                'user_id'     => $userId,
+                'plugin_data' => (array)$pluginData ,
+            ] );
 
             $pluginData   = Plugin::create( $savedata );
             return response()->json( [ 'message' => 'Plugin Added to your account', 'plugin' => $pluginData ], 201 );
@@ -106,3 +105,4 @@ class PluginController extends Controller {
         return response()->json( [ 'message' => 'Plugins added successfully to Your Account!' ] );
     }
 }
+
