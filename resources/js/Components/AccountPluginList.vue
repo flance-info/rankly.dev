@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3 class="pt-4 text-2xl font-semibold text-gray-800 mb-4 p-6 lg:p-8 bg-white ">
+        <h3 class="pt-4 text-2xl font-semibold text-gray-800 mb-4 p-6 lg:p-8 bg-white">
             Plugins in Your Account
         </h3>
         <div v-if="!plugins || plugins.length === 0">
@@ -10,7 +10,7 @@
             <div v-for="plugin in plugins" :key="plugin.id" class="bg-white rounded-lg p-4 shadow-md flex flex-col relative">
                 <button
                     class="absolute top-1 right-1 w-6 h-6 pb-6 pl-6 pt-2.5 pr-4 flex items-center justify-center text-sm z-10"
-                    @click="removePlugin(plugin.slug)"
+                    @click="confirmRemove(plugin)"
                     title="Remove Plugin"
                 >
                     x
@@ -37,6 +37,18 @@
                         </div>
                         <p class="text-sm text-gray-500 mt-1"> {{ plugin.plugin_data.active_installs }}+ active installations</p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div v-if="showModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white p-6 rounded shadow-lg">
+                <h2 class="text-lg font-semibold mb-4">Confirm Removal</h2>
+                <p>Are you sure you want to remove this plugin?</p>
+                <div class="mt-4 flex justify-end">
+                    <button class="bg-red-500 text-white px-4 py-2 rounded mr-2" @click="removePluginNew">Yes</button>
+                    <button class="bg-gray-300 text-gray-800 px-4 py-2 rounded" @click="cancelRemove">No</button>
                 </div>
             </div>
         </div>
@@ -115,6 +127,16 @@ const getPluginIconUrl = (slug) => {
     return `https://ps.w.org/${slug}/assets/icon-128x128.png`;
 };
 
+const showModal = ref(false);
+const pluginToRemove = ref(null);
+const confirmRemove = (plugin) => {
+    pluginToRemove.value = plugin;
+    showModal.value = true;
+};
+const cancelRemove = () => {
+    showModal.value = false;
+    pluginToRemove.value = null;
+};
 const removePlugin = async (slug) => {
     try {
         await axios.delete(`/api/user/plugins/${slug}`);
@@ -125,17 +147,25 @@ const removePlugin = async (slug) => {
         toast.error('Failed to remove plugin');
     }
 };
+const removePluginNew = async () => {
+    if (pluginToRemove.value) {
+        try {
+            // Call the backend API to remove the plugin
+            await axios.delete(`/api/user/plugins/${pluginToRemove.value.slug}`);
+            // Remove the plugin from the local list
+            plugins.value = plugins.value.filter(p => p.id !== pluginToRemove.value.id);
+          toast.success('Plugin removed successfully');
+        } catch (error) {
+            console.error('Failed to remove plugin:', error);
+             toast.error('Failed to remove plugin');
+        }
+    }
+    showModal.value = false;
+    pluginToRemove.value = null;
+};
 
-watch(
-  () => props.pluginsd,
-  (newVal) => {
-    console.log('pluginsd in AccountPluginList changed:', newVal);
-  },
-  { deep: true }
-);
+
 const refreshData = () => {
-
-    console.log('Refreshing data in AccountPluginList');
      fetchUserPlugins();
 };
 
