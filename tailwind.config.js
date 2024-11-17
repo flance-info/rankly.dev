@@ -17,6 +17,12 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            spacing: {
+                '-50': '-50px', // Custom negative margin
+            },
+             fontSize: {
+        xxs: '0.525rem', // 10px
+      },
         },
     },
 

@@ -3,8 +3,8 @@
         <h3 class="pt-4 text-2xl font-semibold text-gray-800 mb-4 p-6 lg:p-8 bg-white">
             Plugins in Your Account
         </h3>
-        <div v-if="!plugins || plugins.length === 0">
-            <p>No plugins found in your account.</p>
+        <div v-if="!plugins || plugins.length === 0" class="flex items-center justify-center h-32 -mt-50">
+            <p class="text-lg text-gray-600">No plugins found in your account.</p>
         </div>
         <div v-else class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8">
             <div v-for="plugin in plugins" :key="plugin.id" class="bg-white rounded-lg p-4 shadow-md flex flex-col relative">
@@ -22,9 +22,9 @@
                           :data-slug="plugin.slug"
                          alt="Plugin Image" class="w-16 h-16 rounded-lg">
                     <div class="ml-4">
-                        <h3 class="text-lg font-semibold text-gray-800" v-html="plugin.name"></h3>
+                        <h3 class="text-base font-semibold text-gray-800" v-html="truncateText(plugin.name, 20)"></h3>
                         <div class="flex items-center">
-                            <span class="text-yellow-500 text-sm">
+                            <span class="text-yellow-500 text-xxs">
                                 <ul class="rating-score" :data-rating="roundToNearestHalf(plugin.plugin_data.rating)">
                                     <li class="rating-score-item"></li>
                                     <li class="rating-score-item"></li>
@@ -33,7 +33,7 @@
                                     <li class="rating-score-item"></li>
                                 </ul>
                             </span>
-                            <span class="text-gray-500 text-sm ml-2">({{ totalRatings(plugin.plugin_data.ratings) }})</span>
+                            <span class="text-gray-500 text-xs ml-2">({{ totalRatings(plugin.plugin_data.ratings) }})</span>
                         </div>
                         <p class="text-sm text-gray-500 mt-1"> {{ plugin.plugin_data.active_installs }}+ active installations</p>
                     </div>
@@ -173,6 +173,13 @@ const refreshData = () => {
 defineExpose({
     refreshData,
 });
+
+const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    }
+    return text;
+};
 </script>
 
 <style scoped>

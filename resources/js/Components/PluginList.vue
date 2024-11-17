@@ -20,9 +20,9 @@
                          alt="Plugin Image" class="w-16 h-16 rounded-lg">
                     <!-- Plugin Info -->
                     <div class="ml-4">
-                        <h3 class="text-lg font-semibold text-gray-800" v-html="plugin.name"></h3>
+                        <h3 class="text-base font-semibold text-gray-800" v-html="truncateText(plugin.name, 20)"></h3>
                         <div class="flex items-center">
-                        <span class="text-yellow-500 text-sm">
+                        <span class="text-yellow-500 text-xxs">
                             <ul class="rating-score" :data-rating="roundToNearestHalf(plugin.rating)">
                                 <li class="rating-score-item"></li>
                                 <li class="rating-score-item"></li>
@@ -31,7 +31,7 @@
                                 <li class="rating-score-item"></li>
                             </ul>
                         </span>
-                            <span class="text-gray-500 text-sm ml-2">({{ totalRatings(plugin.ratings) }})</span>
+                            <span class="text-gray-500 text-xs ml-2">({{ totalRatings(plugin.ratings) }})</span>
                         </div>
                         <p class="text-sm text-gray-500 mt-1"> {{ plugin.active_installs }}+ active installations</p>
                     </div>
@@ -143,7 +143,12 @@ const addPluginsToAccount = async (slug) => {
     }
 };
 
-
+const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    }
+    return text;
+};
 </script>
 
 
