@@ -3,12 +3,13 @@
         <h3 class="pt-4 text-2xl font-semibold text-gray-800 mb-4 p-6 lg:p-8 bg-white ">
             Plugins in Your Account
         </h3>
-        <div v-if="loading">Loading...</div>
-        <div v-else-if="error">{{ error }}</div>
+        <div v-if="!plugins || plugins.length === 0">
+            <p>No plugins found in your account.</p>
+        </div>
         <div v-else class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8">
             <div v-for="plugin in plugins" :key="plugin.id" class="bg-white rounded-lg p-4 shadow-md flex flex-col relative">
                 <button
-                    class="absolute top-1 right-1 w-6 h-6 flex items-center justify-center text-sm"
+                    class="absolute top-1 right-1 w-6 h-6 p-6 flex items-center justify-center text-sm z-10"
                     @click="removePlugin(plugin.slug)"
                     title="Remove Plugin"
                 >
@@ -39,7 +40,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import {ref, onMounted, watch} from 'vue';
+import {defineProps, defineEmits, defineExpose} from 'vue';
 import axios from 'axios';
 import { useToast } from 'vue-toastification';
 
@@ -47,6 +49,12 @@ const toast = useToast();
 const plugins = ref([]);
 const loading = ref(true);
 const error = ref(null);
+const props = defineProps({
+  pluginsd: {
+    type: Array,
+    default: () => [],
+  },
+});
 
 const fetchUserPlugins = async () => {
     try {
@@ -101,6 +109,24 @@ const removePlugin = async (slug) => {
         toast.error('Failed to remove plugin');
     }
 };
+console.log(props);
+watch(
+  () => props.pluginsd,
+  (newVal) => {
+    console.log('pluginsd in AccountPluginList changed:', newVal);
+  },
+  { deep: true }
+);
+const refreshData = () => {
+
+    console.log('Refreshing data in AccountPluginList');
+     fetchUserPlugins();
+};
+
+// Expose the refreshData method
+defineExpose({
+    refreshData,
+});
 </script>
 
 <style scoped>

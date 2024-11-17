@@ -7,7 +7,7 @@
             <div v-for="plugin in plugins" :key="plugin.id" class="bg-white rounded-lg p-4 shadow-md flex flex-col relative">
                 <!-- Remove Button -->
                 <button
-                    class="absolute top-1 right-1 w-6 h-6 flex items-center justify-center text-sm"
+                    class="absolute top-1 right-1 w-6 h-6 flex items-center justify-center text-sm z-10"
                     @click="removePlugin(plugin.slug)"
                     title="Remove Plugin"
                 >
@@ -52,11 +52,12 @@
 
 
 <script setup>
-import {defineProps} from 'vue';
+import {defineProps, defineEmits} from 'vue';
 import axios from 'axios';
 import {useToast} from 'vue-toastification';
 
 const toast = useToast();
+const emit = defineEmits(['plugin-added']);
 
 const props = defineProps({
     plugins: {
@@ -119,12 +120,17 @@ const addPluginsToAccount = async (slug) => {
         const message = response.data.message ? response.data.message : 'Plugin successfully added to your account!';
         toast.success(message);
 
+        // Emit event to notify parent component
+        emit('plugin-added', plugin);
+
         console.log('Response:', response.data);
     } catch (error) {
         console.error('Error adding plugin:', error);
         toast.error('Failed to add plugin to your account.');
     }
 };
+
+
 </script>
 
 

@@ -1,12 +1,51 @@
+<template>
+    <AppLayout title="Plugins">
+        <template #header>
+            <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+                Plugins > Add plugin
+            </h1>
+        </template>
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <AddPluginForm @plugin-added="addPluginToList"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plugin List Component -->
+        <div class="py-4">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <PluginList :plugins="plugins" @plugin-added="handlePluginAdded"/>
+                </div>
+            </div>
+        </div>
+        <div class="py-4">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+                    <AccountPluginList ref="accountPluginList"/>
+                </div>
+            </div>
+        </div>
+    </AppLayout>
+</template>
+
+
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import AddPluginForm from '@/Pages/AddPluginForm.vue';
 import PluginList from '@/Components/PluginList.vue';
 import AccountPluginList from '@/Components/AccountPluginList.vue';
-import {ref, onMounted} from 'vue';
-import {useToast} from "vue-toastification";
-
-const plugins = ref({}); // Store plugins as an object with slugs as keys
+import { ref,  onMounted } from 'vue';
+import axios from 'axios';
+import { useToast } from "vue-toastification";
+import { watch } from 'vue';
+const accountPluginListRef = ref(null);
+const plugins = ref([]);
+const AddedPlugins = ref([]);
 const toast = useToast();
 // Fetch plugins from local storage
 const fetchLocalPlugins = () => {
@@ -19,8 +58,9 @@ const savePluginsToLocal = () => {
     localStorage.setItem('plugins', JSON.stringify(plugins.value));
 };
 
-// Fetch plugins when the component is mounted
-onMounted(fetchLocalPlugins);
+
+
+
 const decodeHTML = (html) => {
     const txt = document.createElement('textarea');
     txt.innerHTML = html;
@@ -43,6 +83,11 @@ const addPluginToList = (newPlugin) => {
                     dangerouslyHTML: true,
                 }
             );
+
+
+        if (accountPluginListRef.value && typeof accountPluginListRef.value.refreshData === 'function') {
+            accountPluginListRef.value.refreshData();
+        }
         } else {
             clearPlugins();
             plugins.value[newPlugin.slug] = newPlugin;
@@ -53,41 +98,21 @@ const addPluginToList = (newPlugin) => {
         console.error('Plugin does not have a slug:', newPlugin);
     }
 };
+
+// Handle plugin added event
+const handlePluginAdded = (plugin) => {
+
+    fetchLocalPlugins();
+
+    addPluginToList(plugin);
+};
+watch(AddedPlugins, (newVal) => {
+    console.log('AddedPlugins updated:', newVal);
+});
+onMounted(() => {
+    fetchLocalPlugins();
+
+});
 </script>
-
-
-<template>
-    <AppLayout title="Plugins">
-        <template #header>
-            <h1 class="font-semibold text-xl text-gray-800 leading-tight">
-                Plugins > Add plugin
-            </h1>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <AddPluginForm @plugin-added="addPluginToList"/>
-                </div>
-            </div>
-        </div>
-
-        <!-- Plugin List Component -->
-        <div class="py-4">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <PluginList :plugins="plugins"/>
-                </div>
-            </div>
-        </div>
-        <div class="py-4">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <AccountPluginList :plugins="plugins"/>
-                </div>
-            </div>
-        </div>
-    </AppLayout>
-</template>
 
 
