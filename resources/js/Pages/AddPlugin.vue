@@ -25,12 +25,16 @@ const decodeHTML = (html) => {
     txt.innerHTML = html;
     return txt.value;
 };
+const clearPlugins = () => {
+    plugins.value = {};
+    savePluginsToLocal();
+};
 // Add or update a plugin by its slug
 const addPluginToList = (newPlugin) => {
     if (newPlugin.slug) {
         const decodedName = decodeHTML(newPlugin.name);
         if (plugins.value[newPlugin.slug]) {
-
+            clearPlugins();
             plugins.value[newPlugin.slug] = newPlugin;
             toast.success(
                 `Plugin "${decodedName}" information updated.`,
@@ -39,7 +43,7 @@ const addPluginToList = (newPlugin) => {
                 }
             );
         } else {
-
+            clearPlugins();
             plugins.value[newPlugin.slug] = newPlugin;
             toast.info(`Plugin "${decodedName}" added successfully.`);
         }

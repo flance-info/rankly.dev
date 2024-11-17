@@ -82,7 +82,7 @@ class PluginController extends Controller {
             if ( $existingPlugin ) {
 
                $existingPlugin->update([
-            'name' => $pluginData['name'], 
+            'name' => $pluginData['name'],
             'plugin_data' => $pluginData,
         ]);
 
