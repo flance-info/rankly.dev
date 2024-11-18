@@ -37,6 +37,10 @@ Route::middleware([
    Route::get('/dashboard/add-plugin', function () {
             return Inertia::render('AddPlugin');
         })->name('add-plugin');
+    Route::get('/dashboard/plugins/{slug}', 
+    function () {
+        return Inertia::render('PluginPage');
+    })->name('plugins.show');
 });
 
 // Admin Routes

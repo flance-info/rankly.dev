@@ -133,5 +133,21 @@ class PluginController extends Controller {
 
         return response()->json(['message' => 'Plugin deleted successfully'], 200);
     }
+
+    public function show($slug) {
+        // Check if the user is authenticated
+        if (!Auth::check()) {
+            return response()->json(['error' => 'User not authenticated'], 401);
+        }
+
+        // Fetch the plugin by slug
+        $plugin = Plugin::where('slug', $slug)->first();
+
+        if ($plugin) {
+            return response()->json($plugin);
+        } else {
+            return response()->json(['error' => 'Plugin not found'], 404);
+        }
+    }
 }
 

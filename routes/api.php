@@ -36,6 +36,8 @@ Route::middleware('auth:sanctum')->get('/user/plugins', [PluginController::class
 
 Route::middleware('auth:sanctum')->delete('/user/plugins/{slug}', [PluginController::class, 'destroy']);
 
+Route::get('/plugins/{slug}', [PluginController::class, 'show']);
+
 
 
 
