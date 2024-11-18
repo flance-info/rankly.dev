@@ -15,11 +15,11 @@
                 >
                     x
                 </button>
-                <div class="pb-2 flex items-start relative">
-
-
-                    <img :src="getPluginIconUrl(plugin.slug)"   @error="handleIconError"
-                          :data-slug="plugin.slug"
+                <div
+                 @click="ClickRoute(plugin.slug)"            
+                 class="flex items-start relative cursor-pointer">
+                    <img :src="getPluginIconUrl(plugin.slug)" @error="handleIconError"
+                         :data-slug="plugin.slug"
                          alt="Plugin Image" class="w-16 h-16 rounded-lg">
                     <div class="ml-4">
                         <h3 class="text-base font-semibold text-gray-800" v-html="truncateText(plugin.name, 20)"></h3>
@@ -56,34 +56,41 @@
 </template>
 
 <script setup>
-import {ref, onMounted, watch} from 'vue';
-import {defineProps, defineEmits, defineExpose} from 'vue';
+import { ref, onMounted } from 'vue';
+import { defineProps, defineExpose } from 'vue';
 import axios from 'axios';
 import { useToast } from 'vue-toastification';
-
+import {router} from "@inertiajs/vue3";
 const toast = useToast();
 const plugins = ref([]);
 const loading = ref(true);
 const error = ref(null);
+
 const props = defineProps({
   pluginsd: {
     type: Array,
     default: () => [],
   },
 });
+
+const getPluginRoute = (slug) => {
+   // return `/dashboard/plugins/${slug}`;
+};
+const ClickRoute = (slug) => {
+   console.log('Navigating to plugin with slug:', slug);
+   router.get(route('plugins.show', { slug: slug }));
+};
 const handleIconError = (event) => {
     const fallbackJpgUrl = `https://ps.w.org/${event.target.dataset.slug}/assets/icon-128x128.jpg`;
 
-
     if (event.target.src === fallbackJpgUrl) {
-
         event.target.src = 'https://ps.w.org/amp/assets/icon-128x128.png';
         event.target.onerror = null; // Prevent further loop
     } else {
-
         event.target.src = fallbackJpgUrl;
     }
 };
+
 const fetchUserPlugins = async () => {
     try {
         const response = await axios.get('/api/user/plugins');
@@ -137,16 +144,6 @@ const cancelRemove = () => {
     showModal.value = false;
     pluginToRemove.value = null;
 };
-const removePlugin = async (slug) => {
-    try {
-        await axios.delete(`/api/user/plugins/${slug}`);
-        plugins.value = plugins.value.filter(plugin => plugin.slug !== slug);
-        toast.success('Plugin removed successfully');
-    } catch (err) {
-        console.error(err);
-        toast.error('Failed to remove plugin');
-    }
-};
 const removePluginNew = async () => {
     if (pluginToRemove.value) {
         try {
@@ -154,19 +151,18 @@ const removePluginNew = async () => {
             await axios.delete(`/api/user/plugins/${pluginToRemove.value.slug}`);
             // Remove the plugin from the local list
             plugins.value = plugins.value.filter(p => p.id !== pluginToRemove.value.id);
-          toast.success('Plugin removed successfully');
+            toast.success('Plugin removed successfully');
         } catch (error) {
             console.error('Failed to remove plugin:', error);
-             toast.error('Failed to remove plugin');
+            toast.error('Failed to remove plugin');
         }
     }
     showModal.value = false;
     pluginToRemove.value = null;
 };
 
-
 const refreshData = () => {
-     fetchUserPlugins();
+    fetchUserPlugins();
 };
 
 // Expose the refreshData method

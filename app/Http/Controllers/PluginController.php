@@ -10,6 +10,7 @@ use App\Models\Plugin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Inertia\Inertia;
 
 class PluginController extends Controller {
     public function searchPlugin( Request $request ) {
@@ -137,16 +138,20 @@ class PluginController extends Controller {
     public function show($slug) {
         // Check if the user is authenticated
         if (!Auth::check()) {
-            return response()->json(['error' => 'User not authenticated'], 401);
+            return redirect()->route('login');
         }
 
         // Fetch the plugin by slug
         $plugin = Plugin::where('slug', $slug)->first();
 
         if ($plugin) {
-            return response()->json($plugin);
+            // Return an Inertia response with the plugin data
+            return Inertia::render('PluginPage', [
+                'plugin' => $plugin
+            ]);
         } else {
-            return response()->json(['error' => 'Plugin not found'], 404);
+            // Optionally, redirect or show an error page
+            return redirect()->route('plugins.index')->with('error', 'Plugin not found');
         }
     }
 }

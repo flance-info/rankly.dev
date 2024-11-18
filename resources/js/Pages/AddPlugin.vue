@@ -1,9 +1,10 @@
 <template>
     <AppLayout title="Plugins">
         <template #header>
-            <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+            <div class="font-semibold text-sm text-gray-800 leading-tight">
                 Plugins > Add plugin
-            </h1>
+            </div>
+
         </template>
 
         <div class="py-12">

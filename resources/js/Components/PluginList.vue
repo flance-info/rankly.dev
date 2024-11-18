@@ -69,7 +69,7 @@ const props = defineProps({
 const handleIconError = (event) => {
     const fallbackJpgUrl = `https://ps.w.org/${event.target.dataset.slug}/assets/icon-128x128.jpg`;
 
-console.log('te',event.target.dataset.slug);
+
     if (event.target.src === fallbackJpgUrl) {
 
         event.target.src = 'https://ps.w.org/amp/assets/icon-128x128.png';
