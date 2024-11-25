@@ -29,6 +29,11 @@
   <span class="text-yellow-500">Rating: {{ pluginData.rating }}</span>
   <span class="ml-4 text-gray-500">Active Installs: {{ pluginData.activeInstalls }}</span>
 </div>
+
+<!-- Download Stats Graph -->
+<div class="mt-6">
+    <canvas id="line-chart" width="857" height="375" style="display: block; width: 686px; height: 300px;" class="chartjs-render-monitor"></canvas>
+</div>
 </div>
 <div v-else>
 <p>Loading plugin information...</p>
@@ -50,33 +55,89 @@
 
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import { defineProps } from 'vue';
+import { defineProps, onMounted } from 'vue';
+import { Chart, registerables } from 'chart.js';
+
+// Register all necessary components
+Chart.register(...registerables);
 
 const props = defineProps({
   plugin: Object
 });
+
 const getPluginIconUrl = (slug) => {
     return `https://ps.w.org/${slug}/assets/icon-128x128.png`;
 };
+
 const pluginData = props.plugin.plugin_data;
+
 const handleIconError = (event) => {
     const fallbackJpgUrl = `https://ps.w.org/${event.target.dataset.slug}/assets/icon-128x128.jpg`;
-
-console.log('te',event.target.dataset.slug);
     if (event.target.src === fallbackJpgUrl) {
-
         event.target.src = 'https://ps.w.org/amp/assets/icon-128x128.png';
         event.target.onerror = null; // Prevent further loop
     } else {
-
         event.target.src = fallbackJpgUrl;
     }
 };
+
 const decodeHTML = (html) => {
     const txt = document.createElement('textarea');
     txt.innerHTML = html;
     return txt.value;
 };
+
+// Function to initialize the chart
+const initializeChart = () => {
+    const ctx = document.getElementById('line-chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Aug 6', 'Sep 1', 'Sep 10', 'Sep 19', 'Oct 1', 'Oct 10', 'Oct 19', 'Nov 1', 'Nov 10', 'Nov 19'], // Example labels
+            datasets: [{
+                label: 'Downloads Per Day',
+                data: [2326, 194980, 184340, 174700, 154560, 144920, 134280, 113860, 103220, 93380], // Example data
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2,
+                pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                pointRadius: 3,
+                fill: false,
+                tension: 0.1
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `Downloads: ${context.raw}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(200, 200, 200, 0.2)'
+                    }
+                }
+            }
+        }
+    });
+};
+
+onMounted(() => {
+    initializeChart();
+});
 </script>
 
 <style scoped>
