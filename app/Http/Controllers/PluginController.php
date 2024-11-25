@@ -144,6 +144,8 @@ class PluginController extends Controller {
         // Fetch the plugin by slug
         $plugin = Plugin::where('slug', $slug)->first();
 
+
+
         if ($plugin) {
             // Return an Inertia response with the plugin data
             return Inertia::render('PluginPage', [
