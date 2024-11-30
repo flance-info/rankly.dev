@@ -114,7 +114,127 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <div class="flex gap-4 bg-gray-900 p-6">
+                            <!-- Support Resolved -->
+                            <div class="flex-1 bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-between text-center text-white">
+                                <p class="text-sm text-gray-400">SUPPORT RESOLVED</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl font-bold">0%</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="..."/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Rating -->
+                            <div class="flex-1 bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-between text-center text-white">
+                                <p class="text-sm text-gray-400">RATING</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl font-bold">100%</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="..."/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Tested Up To -->
+                            <div class="flex-1 bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-between text-center text-white">
+                                <p class="text-sm text-gray-400">TESTED UP TO</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl font-bold">6.4.5</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="..."/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Last Updated -->
+                            <div class="flex-1 bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-between text-center text-white">
+                                <p class="text-sm text-gray-400">LAST UPDATED</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl font-bold">13 Dec 2023</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="..."/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto bg-gray-900 p-6 rounded-lg">
+                            <table class="table-auto w-full text-left text-sm text-gray-400">
+                                <thead class="bg-gray-800 text-gray-300 uppercase">
+                                <tr>
+                                    <th class="px-4 py-3">
+                                        <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
+                                    </th>
+                                    <th class="px-4 py-3">Keyword</th>
+                                    <th class="px-4 py-3 flex items-center"><span>Position</span>
+                                        <div class="ml-2 flex flex-col">
+                                            <div class="">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mb-1 text-gray-400 hover:text-white" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M10 3l3.5 5h-7L10 3z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-gray-400 hover:text-white" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M10 17l-3.5-5h7L10 17z"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th class="px-4 py-3">Priority</th>
+                                    <th class="px-4 py-3">Occurrences</th>
+                                    <th class="px-4 py-3">Language</th>
+                                    <th class="px-4 py-3">Tracked</th>
+                                    <th class="px-4 py-3">Updated</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-700">
+                                    <td class="px-4 py-3">
+                                        <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
+                                    </td>
+                                    <td class="px-4 py-3">woocommerce</td>
+                                    <td class="px-4 py-3 flex items-center gap-2">
+                                        <span>9915</span>
+
+
+                                        <span class="text-green-500 text-sm">▲ 38</span>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M10 15a1 1 0 011-1h4a1 1 0 110 2h-4a1 1 0 01-1-1zM10 5a1 1 0 011-1h4a1 1 0 110 2h-4a1 1 0 01-1-1zM7 12a1 1 0 100-2 1 1 0 000 2z"/>
+                                        </svg>
+                                    </td>
+                                    <td class="px-4 py-3">3</td>
+                                    <td class="px-4 py-3">English</td>
+                                    <td class="px-4 py-3">November 25, 2024</td>
+                                    <td class="px-4 py-3">November 30, 2024</td>
+                                </tr>
+                                <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-700">
+                                    <td class="px-4 py-3">
+                                        <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
+                                    </td>
+                                    <td class="px-4 py-3">add to cart</td>
+                                    <td class="px-4 py-3 flex items-center gap-2">
+                                        <span>419</span>
+                                        <span class="text-red-500 text-sm">▼ 8</span>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M10 15a1 1 0 011-1h4a1 1 0 110 2h-4a1 1 0 01-1-1zM10 5a1 1 0 011-1h4a1 1 0 110 2h-4a1 1 0 01-1-1zM7 12a1 1 0 100-2 1 1 0 000 2z"/>
+                                        </svg>
+                                    </td>
+                                    <td class="px-4 py-3">3</td>
+                                    <td class="px-4 py-3">English</td>
+                                    <td class="px-4 py-3">November 25, 2024</td>
+                                    <td class="px-4 py-3">November 30, 2024</td>
+                                </tr>
+                                <!-- Repeat more rows as necessary -->
+                                </tbody>
+                            </table>
+                        </div>
+
 
                     </div>
                     <div v-else>
