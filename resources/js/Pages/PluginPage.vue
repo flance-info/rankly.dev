@@ -31,7 +31,41 @@
 
                         <!-- Download Stats Graph -->
                         <div class="mt-6">
-                            <canvas id="line-chart" width="857" height="375" style="display: block; width: 686px; height: 300px;" class="chartjs-render-monitor"></canvas>
+                            <div class="flex flex-row bg-gray-900 text-white p-6 rounded-lg shadow-lg">
+                                <!-- Chart Section -->
+                                <div class="w-2/3">
+                                    <h2 class="text-lg font-semibold mb-4">{{ currentChartTitle }}</h2>
+                                    <canvas id="line-chart" class="bg-gray-800 p-4 rounded-lg"></canvas>
+                                </div>
+
+                                <!-- Buttons Section -->
+                                <div class="w-1/3 pl-6">
+                                    <div class="mb-4">
+                                        <h3 class="text-sm font-semibold">Average Position</h3>
+                                        <button @click="updateChart('averagePosition')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
+                                            View
+                                        </button>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h3 class="text-sm font-semibold">Position Movement</h3>
+                                        <button @click="updateChart('positionMovement')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
+                                            View
+                                        </button>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h3 class="text-sm font-semibold">Active Installs</h3>
+                                        <button @click="updateChart('activeInstalls')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
+                                            View
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-sm font-semibold">Downloads</h3>
+                                        <button @click="updateChart('downloads')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
+                                            View
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div v-else>
@@ -55,7 +89,7 @@
 
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import {defineProps, onMounted} from 'vue';
+import {defineProps, onMounted, ref} from 'vue';
 import {Chart, registerables} from 'chart.js';
 
 // Register all necessary components
@@ -87,22 +121,42 @@ const decodeHTML = (html) => {
     return txt.value;
 };
 
-// Function to initialize the chart
-const initializeChart = () => {
+const currentChartTitle = ref('Downloads Per Day');
+let chartInstance;
+
+const chartData = {
+    averagePosition: {
+        title: 'Average Position',
+        data: [10, 12, 8, 9, 7, 6, 5, 4]
+    },
+    positionMovement: {
+        title: 'Position Movement',
+        data: [0, 1, -1, 2, -2, 3, -3, 4]
+    },
+    activeInstalls: {
+        title: 'Active Installs',
+        data: [100, 150, 130, 170, 160, 180, 190, 200]
+    },
+    downloads: {
+        title: 'Downloads Per Day',
+        data: [0, 1, 0, 0, 0, 2, 0, 0]
+    }
+};
+
+const initializeChart = (data) => {
     const ctx = document.getElementById('line-chart').getContext('2d');
-    new Chart(ctx, {
+    chartInstance = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Aug 6', 'Sep 1', 'Sep 10', 'Sep 19', 'Oct 1', 'Oct 10', 'Oct 19', 'Nov 1', 'Nov 10', 'Nov 19'], // Example labels
+            labels: ['Nov 22', 'Nov 23', 'Nov 24', 'Nov 25', 'Nov 26', 'Nov 27', 'Nov 28', 'Nov 29'],
             datasets: [{
-                label: 'Downloads Per Day',
-                data: [2326, 194980, 184340, 174700, 154560, 144920, 134280, 113860, 103220, 93380], // Example data
+                label: currentChartTitle.value,
+                data: data,
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 2,
-
-                backgroundColor: "#000",
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 pointRadius: 3,
-                fill: false,
+                fill: true,
                 tension: 0.1
             }]
         },
@@ -110,33 +164,30 @@ const initializeChart = () => {
             plugins: {
                 legend: {
                     display: false
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            return `Downloads: ${context.raw}`;
-                        }
-                    }
                 }
             },
             scales: {
                 x: {
                     grid: {
-                        display: true,
-
+                        display: true
                     }
                 },
                 y: {
-                    beginAtZero: true,
-
+                    beginAtZero: true
                 }
             }
         }
     });
 };
 
+const updateChart = (type) => {
+    currentChartTitle.value = chartData[type].title;
+    chartInstance.data.datasets[0].data = chartData[type].data;
+    chartInstance.update();
+};
+
 onMounted(() => {
-    initializeChart();
+    initializeChart(chartData.downloads.data);
 });
 </script>
 
