@@ -41,27 +41,47 @@
                                 <!-- Buttons Section -->
                                 <div class="w-1/3 pl-6">
                                     <div class="mb-4">
-                                        <h3 class="text-sm font-semibold">Average Position</h3>
-                                        <button @click="updateChart('averagePosition')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
-                                            View
+                                        <button @click="updateChart('averagePosition')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-6 rounded-lg w-full">
+                                            <div>
+                                                <h3 class="text-sm font-semibold">Average Position</h3>
+                                                <p class="text-2xl">2320.80 <span class="text-red-500 text-sm">▼ 13.20</span></p>
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                            </svg>
                                         </button>
                                     </div>
                                     <div class="mb-4">
-                                        <h3 class="text-sm font-semibold">Position Movement</h3>
-                                        <button @click="updateChart('positionMovement')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
-                                            View
+                                        <button @click="updateChart('positionMovement')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-6 rounded-lg w-full">
+                                            <div>
+                                                <h3 class="text-sm font-semibold">Position Movement</h3>
+                                                <p class="text-2xl">0 <span class="text-green-500 text-sm">▲ 5</span></p>
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                            </svg>
                                         </button>
                                     </div>
                                     <div class="mb-4">
-                                        <h3 class="text-sm font-semibold">Active Installs</h3>
-                                        <button @click="updateChart('activeInstalls')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
-                                            View
+                                        <button @click="updateChart('activeInstalls')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-6 rounded-lg w-full">
+                                            <div>
+                                                <h3 class="text-sm font-semibold">Active Installs</h3>
+                                                <p class="text-2xl">12</p>
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                            </svg>
                                         </button>
                                     </div>
                                     <div>
-                                        <h3 class="text-sm font-semibold">Downloads</h3>
-                                        <button @click="updateChart('downloads')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
-                                            View
+                                        <button @click="updateChart('downloads')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-6 rounded-lg w-full">
+                                            <div>
+                                                <h3 class="text-sm font-semibold">Downloads</h3>
+                                                <p class="text-2xl">4 <span class="text-red-500 text-sm">▼ 56%</span></p>
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>
