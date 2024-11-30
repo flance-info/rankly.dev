@@ -42,7 +42,7 @@
                                 <div class="w-1/3 pl-6 flex flex-col justify-between">
                                     <div class="mb-4">
                                         <button @click="updateChart('averagePosition')"
-                                                 :class="{
+                                                :class="{
                                           'bg-gray-700': activeChart === 'averagePosition',
                                           'bg-gray-800': activeChart !== 'averagePosition',
                                         }"
@@ -54,17 +54,16 @@
                                                 <p class="text-2xl">2320.80 <span class="text-red-500 text-sm">▼ 13.20</span></p>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
                                             </svg>
                                         </button>
                                     </div>
                                     <div class="mb-4">
                                         <button @click="updateChart('positionMovement')"
-                                                 :class="{
+                                                :class="{
                                           'bg-gray-700': activeChart === 'positionMovement',
                                           'bg-gray-800': activeChart !== 'positionMovement',
                                         }"
-
 
 
                                                 class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
@@ -73,13 +72,13 @@
                                                 <p class="text-2xl">0 <span class="text-green-500 text-sm">▲ 5</span></p>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
                                             </svg>
                                         </button>
                                     </div>
                                     <div class="mb-4">
                                         <button @click="updateChart('activeInstalls')"
-                                                 :class="{
+                                                :class="{
                                           'bg-gray-700': activeChart === 'activeInstalls',
                                           'bg-gray-800': activeChart !== 'activeInstalls',
                                         }"
@@ -90,13 +89,13 @@
                                                 <p class="text-2xl">12</p>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
                                             </svg>
                                         </button>
                                     </div>
                                     <div>
                                         <button
-                                        :class="{
+                                            :class="{
                                           'bg-gray-700': activeChart === 'downloads',
                                           'bg-gray-800': activeChart !== 'downloads',
                                         }"
@@ -108,13 +107,15 @@
                                                 <p class="text-2xl">4 <span class="text-red-500 text-sm">▼ 56%</span></p>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
+
                     </div>
                     <div v-else>
                         <p>Loading plugin information...</p>
@@ -139,6 +140,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import {defineProps, onMounted, ref} from 'vue';
 import {Chart, registerables} from 'chart.js';
+
 const activeChart = ref(null);
 // Register all necessary components
 Chart.register(...registerables);
@@ -243,7 +245,7 @@ onMounted(() => {
 
 
 <style scoped>
-    .text-yellow-500 {
+.text-yellow-500 {
     color: #f59e0b; /* Tailwind's yellow-500 color */
 }
 </style>
