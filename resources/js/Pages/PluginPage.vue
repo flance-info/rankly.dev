@@ -41,7 +41,14 @@
                                 <!-- Buttons Section -->
                                 <div class="w-1/3 pl-6 flex flex-col justify-between">
                                     <div class="mb-4">
-                                        <button @click="updateChart('averagePosition')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
+                                        <button @click="updateChart('averagePosition')"
+                                                 :class="{
+                                          'bg-gray-700': activeChart === 'averagePosition',
+                                          'bg-gray-800': activeChart !== 'averagePosition',
+                                        }"
+
+
+                                                class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
                                                 <h3 class="text-sm font-semibold">Average Position</h3>
                                                 <p class="text-2xl">2320.80 <span class="text-red-500 text-sm">▼ 13.20</span></p>
@@ -52,7 +59,15 @@
                                         </button>
                                     </div>
                                     <div class="mb-4">
-                                        <button @click="updateChart('positionMovement')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
+                                        <button @click="updateChart('positionMovement')"
+                                                 :class="{
+                                          'bg-gray-700': activeChart === 'positionMovement',
+                                          'bg-gray-800': activeChart !== 'positionMovement',
+                                        }"
+
+
+
+                                                class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
                                                 <h3 class="text-sm font-semibold">Position Movement</h3>
                                                 <p class="text-2xl">0 <span class="text-green-500 text-sm">▲ 5</span></p>
@@ -63,7 +78,13 @@
                                         </button>
                                     </div>
                                     <div class="mb-4">
-                                        <button @click="updateChart('activeInstalls')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
+                                        <button @click="updateChart('activeInstalls')"
+                                                 :class="{
+                                          'bg-gray-700': activeChart === 'activeInstalls',
+                                          'bg-gray-800': activeChart !== 'activeInstalls',
+                                        }"
+
+                                                class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
                                                 <h3 class="text-sm font-semibold">Active Installs</h3>
                                                 <p class="text-2xl">12</p>
@@ -74,7 +95,14 @@
                                         </button>
                                     </div>
                                     <div>
-                                        <button @click="updateChart('downloads')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
+                                        <button
+                                        :class="{
+                                          'bg-gray-700': activeChart === 'downloads',
+                                          'bg-gray-800': activeChart !== 'downloads',
+                                        }"
+
+
+                                            @click="updateChart('downloads')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
                                                 <h3 class="text-sm font-semibold">Downloads</h3>
                                                 <p class="text-2xl">4 <span class="text-red-500 text-sm">▼ 56%</span></p>
@@ -111,7 +139,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import {defineProps, onMounted, ref} from 'vue';
 import {Chart, registerables} from 'chart.js';
-
+const activeChart = ref(null);
 // Register all necessary components
 Chart.register(...registerables);
 
@@ -201,6 +229,7 @@ const initializeChart = (data) => {
 };
 
 const updateChart = (type) => {
+    activeChart.value = type;
     currentChartTitle.value = chartData[type].title;
     chartInstance.data.datasets[0].data = chartData[type].data;
     chartInstance.update();
@@ -208,6 +237,7 @@ const updateChart = (type) => {
 
 onMounted(() => {
     initializeChart(chartData.downloads.data);
+    updateChart('averagePosition');
 });
 </script>
 
