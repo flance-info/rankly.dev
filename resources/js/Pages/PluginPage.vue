@@ -1,7 +1,7 @@
 <template>
     <AppLayout title="PluginPage">
         <template #header>
-            <div class="font-semibold  text-sm text-gray-800 leading-tight pb-2">
+            <div class="font-semibold  text-sm text-white leading-tight pb-2">
                 Plugins > {{ plugin.slug }}
             </div>
 
@@ -11,7 +11,7 @@
             <img :src="getPluginIconUrl(plugin.slug)" @error="handleIconError"
                  :data-slug="plugin.slug"
                  alt="Plugin Image" class="w-16 h-16">
-            <h1 v-if="plugin" class="font-semibold text-lg text-gray-800 leading-tight">
+            <h1 v-if="plugin" class="font-semibold text-lg text-white leading-tight">
                 {{ decodeHTML(plugin.name) }}
             </h1>
         </div>
@@ -19,7 +19,7 @@
         <!-- Plugin List Component -->
         <div class="py-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-blue-50 overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="bg-gray-900 overflow-hidden shadow-xl sm:rounded-lg">
                     <div v-if="plugin">
 
 
@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex gap-4 bg-gray-900 p-6">
+                        <div class="flex gap-4 bg-gray-900 p-6 pt-1 pb-1">
                             <!-- Support Resolved -->
                             <div class="flex-1 bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-between text-center text-white">
                                 <p class="text-sm text-gray-400">SUPPORT RESOLVED</p>
@@ -161,36 +161,111 @@
                         </div>
 
                         <div class="overflow-x-auto bg-gray-900 p-6 rounded-lg">
-                            <table class="table-auto w-full text-left text-sm text-gray-400">
-                                <thead class="bg-gray-800 text-gray-300 uppercase">
+                            <table class="table-auto w-full text-left text-sm text-gray-400  bg-gray-800 rounded-lg">
+                                <thead class=" text-gray-300 uppercase">
                                 <tr>
                                     <th class="px-4 py-3">
                                         <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
                                     </th>
-                                    <th class="px-4 py-3">Keyword</th>
-                                    <th class="px-4 py-3 flex items-center"><span>Position</span>
-                                        <div class="ml-2 flex flex-col">
-                                            <div class="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mb-1 text-gray-400 hover:text-white" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path d="M10 3l3.5 5h-7L10 3z"/>
-                                                </svg>
-                                            </div>
-                                            <div class="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-gray-400 hover:text-white" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path d="M10 17l-3.5-5h7L10 17z"/>
-                                                </svg>
-                                            </div>
-                                        </div>
+                                    <th class="px-2 py-3  items-center">
+                                       Keyword
+                                       <div class="ml-2 flex flex-col float-right w-[40%] pt-[5px]">
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▲
+
+                                           </div>
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▼
+                                           </div>
+                                       </div>
+
                                     </th>
-                                    <th class="px-4 py-3">Priority</th>
-                                    <th class="px-4 py-3">Occurrences</th>
-                                    <th class="px-4 py-3">Language</th>
-                                    <th class="px-4 py-3">Tracked</th>
-                                    <th class="px-4 py-3">Updated</th>
+                                    <th class="px-2 py-3 items-center">
+                                        Position
+                                       <div class="ml-2 flex flex-col float-right w-[25%] pt-[5px]">
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▲
+
+                                           </div>
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▼
+                                           </div>
+                                       </div>
+
+                                    </th>
+                                    <th class="px-4 py-3">
+                                    Priority
+                                       <div class="ml-2 flex flex-col float-right w-[25%] pt-[5px]">
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▲
+
+                                           </div>
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▼
+                                           </div>
+                                       </div>
+
+
+
+                                    </th>
+                                    <th class="px-4 py-3">
+                                     Occurrences
+                                       <div class="ml-2 flex flex-col float-right w-[20%] pt-[5px]">
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▲
+
+                                           </div>
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▼
+                                           </div>
+                                       </div>
+
+                                    </th>
+                                    <th class="px-4 py-3">
+                                    Language
+                                       <div class="ml-2 flex flex-col float-right w-[25%] pt-[5px]">
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▲
+
+                                           </div>
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▼
+                                           </div>
+                                       </div>
+
+
+                                    </th>
+                                    <th class="px-4 py-3">
+                                   Tracked
+                                       <div class="ml-2 flex flex-col float-right w-[50%] pt-[5px]">
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▲
+
+                                           </div>
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▼
+                                           </div>
+                                       </div>
+
+                                    </th>
+                                    <th class="px-4 py-3">
+                                    Updated
+                                       <div class="ml-2 flex flex-col float-right w-[50%] pt-[5px]">
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▲
+
+                                           </div>
+                                           <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
+                                               ▼
+                                           </div>
+                                       </div>
+
+
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-700">
+                                <tr class=" border-t border-gray-700 hover:bg-gray-700">
                                     <td class="px-4 py-3">
                                         <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
                                     </td>
@@ -211,7 +286,7 @@
                                     <td class="px-4 py-3">November 25, 2024</td>
                                     <td class="px-4 py-3">November 30, 2024</td>
                                 </tr>
-                                <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-700">
+                                <tr class=" border-t border-gray-700 hover:bg-gray-700">
                                     <td class="px-4 py-3">
                                         <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
                                     </td>
