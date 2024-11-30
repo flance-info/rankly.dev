@@ -33,15 +33,15 @@
                         <div class="mt-6">
                             <div class="flex flex-row bg-gray-900 text-white p-6 rounded-lg shadow-lg">
                                 <!-- Chart Section -->
-                                <div class="w-2/3">
+                                <div class="w-2/3 w-2/3 bg-gray-800  p-4 rounded-lg">
                                     <h2 class="text-lg font-semibold mb-4">{{ currentChartTitle }}</h2>
-                                    <canvas id="line-chart" class="bg-gray-800 p-4 rounded-lg"></canvas>
+                                    <canvas id="line-chart" class=""></canvas>
                                 </div>
 
                                 <!-- Buttons Section -->
-                                <div class="w-1/3 pl-6">
+                                <div class="w-1/3 pl-6 flex flex-col justify-between">
                                     <div class="mb-4">
-                                        <button @click="updateChart('averagePosition')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-6 rounded-lg w-full">
+                                        <button @click="updateChart('averagePosition')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
                                                 <h3 class="text-sm font-semibold">Average Position</h3>
                                                 <p class="text-2xl">2320.80 <span class="text-red-500 text-sm">▼ 13.20</span></p>
@@ -52,7 +52,7 @@
                                         </button>
                                     </div>
                                     <div class="mb-4">
-                                        <button @click="updateChart('positionMovement')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-6 rounded-lg w-full">
+                                        <button @click="updateChart('positionMovement')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
                                                 <h3 class="text-sm font-semibold">Position Movement</h3>
                                                 <p class="text-2xl">0 <span class="text-green-500 text-sm">▲ 5</span></p>
@@ -63,7 +63,7 @@
                                         </button>
                                     </div>
                                     <div class="mb-4">
-                                        <button @click="updateChart('activeInstalls')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-6 rounded-lg w-full">
+                                        <button @click="updateChart('activeInstalls')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
                                                 <h3 class="text-sm font-semibold">Active Installs</h3>
                                                 <p class="text-2xl">12</p>
@@ -74,7 +74,7 @@
                                         </button>
                                     </div>
                                     <div>
-                                        <button @click="updateChart('downloads')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-6 rounded-lg w-full">
+                                        <button @click="updateChart('downloads')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
                                                 <h3 class="text-sm font-semibold">Downloads</h3>
                                                 <p class="text-2xl">4 <span class="text-red-500 text-sm">▼ 56%</span></p>
@@ -91,7 +91,7 @@
                     <div v-else>
                         <p>Loading plugin information...</p>
                     </div>
-                 
+
                 </div>
             </div>
         </div>
