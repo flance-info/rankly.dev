@@ -30,12 +30,31 @@ class PluginStatsController extends Controller {
                 }
                 throw new \Exception( 'Failed to fetch plugin stats.' );
             } );
-            // Filter data based on the trend
+            // Filter current trend data
             $filteredData = array_slice( $data, - $trend, $trend, true );
+            // Get previous trend data
+            $previousTrendData = array_slice( $data, - 2 * $trend, $trend, true );
+            // Calculate total downloads and percentage change over the trend period
+            $totalDownloads         = array_sum( $filteredData );
+            $previousTotalDownloads = array_sum( $previousTrendData );
+            $firstDay               = reset( $filteredData );
+            $lastDay                = end( $filteredData );
+            $percentageChange       = $previousTotalDownloads >= 0
+                ? ( ( $totalDownloads - $previousTotalDownloads ) / $previousTotalDownloads ) * 100
+                : 0;
 
             return response()->json( [
-                'success' => true,
-                'data'    => $filteredData,
+                'success'          => true,
+                'data'             => $filteredData,
+                'summary'          => [
+                    'total_downloads'   => $totalDownloads,
+                    'percentage_change' => round( $percentageChange, 2 ),
+                    'start_day'         => $firstDay,
+                    'end_day'           => $lastDay,
+                ],
+                'previous_summary' => [
+                    'total_downloads' => $previousTotalDownloads,
+                ],
             ] );
         } catch ( RequestException $e ) {
             return response()->json( [
