@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PluginController;
+use App\Http\Controllers\PluginStatsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,4 @@ Route::middleware('auth:sanctum')->delete('/user/plugins/{slug}', [PluginControl
 
 Route::get('/plugins/{slug}', [PluginController::class, 'show']);
 
-
-
-
+Route::middleware( 'auth:sanctum' )->get( '/plugin-stats/{slug}', [ PluginStatsController::class, 'download' ] );

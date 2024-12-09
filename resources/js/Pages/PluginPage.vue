@@ -333,15 +333,16 @@
 
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import {defineProps, onMounted, ref} from 'vue';
-import {Chart, registerables} from 'chart.js';
+import { defineProps, onMounted, ref } from 'vue';
+import { Chart, registerables } from 'chart.js';
+import axios from 'axios';
 
 const activeChart = ref(null);
 // Register all necessary components
 Chart.register(...registerables);
 
 const props = defineProps({
-    plugin: Object
+    plugin: Object,
 });
 
 const getPluginIconUrl = (slug) => {
@@ -372,71 +373,103 @@ let chartInstance;
 const chartData = {
     averagePosition: {
         title: 'Average Position',
-        data: [10, 12, 8, 9, 7, 6, 5, 4]
+        labels: ['Nov 22', 'Nov 23', 'Nov 24', 'Nov 25', 'Nov 26', 'Nov 27', 'Nov 28', 'Nov 29'],
+        data: [10, 12, 8, 9, 7, 6, 5, 4],
     },
     positionMovement: {
         title: 'Position Movement',
-        data: [0, 1, -1, 2, -2, 3, -3, 4]
+        labels: ['Nov 22', 'Nov 23', 'Nov 24', 'Nov 25', 'Nov 26', 'Nov 27', 'Nov 28', 'Nov 29'],
+        data: [0, 1, -1, 2, -2, 3, -3, 4],
     },
     activeInstalls: {
         title: 'Active Installs',
-        data: [100, 150, 130, 170, 160, 180, 190, 200]
+        labels: ['Nov 22', 'Nov 23', 'Nov 24', 'Nov 25', 'Nov 26', 'Nov 27', 'Nov 28', 'Nov 29'],
+        data: [100, 150, 130, 170, 160, 180, 190, 200],
     },
     downloads: {
         title: 'Downloads Per Day',
-        data: [0, 1, 0, 0, 0, 2, 0, 0]
-    }
+        labels: [],
+        data: [],
+    },
 };
 
-const initializeChart = (data) => {
+const initializeChart = (labels, data) => {
     const ctx = document.getElementById('line-chart').getContext('2d');
     chartInstance = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Nov 22', 'Nov 23', 'Nov 24', 'Nov 25', 'Nov 26', 'Nov 27', 'Nov 28', 'Nov 29'],
-            datasets: [{
-                label: currentChartTitle.value,
-                data: data,
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 2,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                pointRadius: 3,
-                fill: true,
-                tension: 0.1
-            }]
+            labels,
+            datasets: [
+                {
+                    label: currentChartTitle.value,
+                    data,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    pointRadius: 3,
+                    fill: true,
+                    tension: 0.1,
+                },
+            ],
         },
         options: {
             plugins: {
                 legend: {
-                    display: false
-                }
+                    display: false,
+                },
             },
             scales: {
                 x: {
                     grid: {
-                        display: true
-                    }
+                        display: true,
+                    },
                 },
                 y: {
-                    beginAtZero: true
-                }
-            }
-        }
+                    beginAtZero: true,
+                },
+            },
+        },
     });
 };
 
 const updateChart = (type) => {
     activeChart.value = type;
     currentChartTitle.value = chartData[type].title;
+    chartInstance.data.labels = chartData[type].labels;
     chartInstance.data.datasets[0].data = chartData[type].data;
     chartInstance.update();
 };
 
+const fetchDownloadData = async (slug) => {
+    try {
+        const response = await axios.get(`/api/plugin-stats/${slug}`);
+        if (response.data.success) {
+            const downloads = response.data.data;
+            const labels = Object.keys(downloads);
+            const data = Object.values(downloads);
+
+            chartData.downloads.labels = labels;
+            chartData.downloads.data = data;
+
+            if (!chartInstance) {
+                initializeChart(labels, data);
+            } else if (activeChart.value === 'downloads') {
+                updateChart('downloads');
+            }
+        } else {
+            console.error('Failed to fetch plugin stats:', response.data.message);
+        }
+    } catch (error) {
+        console.error('An error occurred while fetching plugin stats:', error);
+    }
+};
+
 onMounted(() => {
-    initializeChart(chartData.downloads.data);
-    updateChart('averagePosition');
+    initializeChart(chartData.averagePosition.labels, chartData.averagePosition.data);
+    fetchDownloadData(pluginData.slug);
 });
 </script>
+
 
 
 <style scoped>
