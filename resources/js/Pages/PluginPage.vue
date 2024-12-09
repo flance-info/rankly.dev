@@ -65,8 +65,8 @@
 
                                                 class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
-                                                <h3 class="text-sm font-semibold">Average Position</h3>
-                                                <p class="text-2xl">2320.80 <span class="text-red-500 text-sm">▼ 13.20</span></p>
+                                                <h3 class="text-sm font-semibold text-left">Average Position</h3>
+                                                <p class="text-2xl text-left">2320.80 <span class="text-red-500 text-sm">▼ 13.20</span></p>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -83,8 +83,8 @@
 
                                                 class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
-                                                <h3 class="text-sm font-semibold">Position Movement</h3>
-                                                <p class="text-2xl">0 <span class="text-green-500 text-sm">▲ 5</span></p>
+                                                <h3 class="text-sm font-semibold text-left">Position Movement</h3>
+                                                <p class="text-2xl text-left">0 <span class="text-green-500 text-sm">▲ 5</span></p>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -100,8 +100,8 @@
 
                                                 class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
-                                                <h3 class="text-sm font-semibold">Active Installs</h3>
-                                                <p class="text-2xl">12</p>
+                                                <h3 class="text-sm font-semibold text-left">Active Installs</h3>
+                                                <p class="text-2xl text-left">12</p>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -118,8 +118,14 @@
 
                                             @click="updateChart('downloads')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
-                                                <h3 class="text-sm font-semibold">Downloads</h3>
-                                                <p class="text-2xl">4 <span class="text-red-500 text-sm">▼ 56%</span></p>
+                                                <h3 class="text-sm font-semibold text-left">Downloads</h3>
+                                                <p class="text-2xl text-left">
+                                                    {{ summary.total_downloads }}
+                                                    <span :class="{'text-red-500': summary.percentage_change < 0, 'text-green-500': summary.percentage_change >= 0}" class="text-sm">
+                                                        {{ summary.percentage_change < 0 ? '▼' : '▲' }} {{ Math.abs(summary.percentage_change) }}%
+                                                    </span>
+                                                </p>
+
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -354,6 +360,10 @@ import axios from 'axios';
 const activeChart = ref(null);
 // Register all necessary components
 Chart.register(...registerables);
+const summary = ref({
+    total_downloads: 0,
+    percentage_change: 0,
+});
 
 const props = defineProps({
     plugin: Object,
@@ -469,6 +479,8 @@ const fetchDownloadData = async (slug) => {
 
             chartData.downloads.labels = labels;
             chartData.downloads.data = data;
+
+           summary.value = response.data.summary;
 
             if (!chartInstance) {
                 initializeChart(labels, data);

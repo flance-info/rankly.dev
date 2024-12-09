@@ -48,7 +48,7 @@ class PluginStatsController extends Controller {
                 'data'             => $filteredData,
                 'summary'          => [
                     'total_downloads'   => $totalDownloads,
-                    'percentage_change' => round( $percentageChange, 2 ),
+                   'percentage_change' => round($percentageChange, 0),
                     'start_day'         => $firstDay,
                     'end_day'           => $lastDay,
                 ],
