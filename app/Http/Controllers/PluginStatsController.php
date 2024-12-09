@@ -20,12 +20,12 @@ class PluginStatsController extends Controller {
         $cacheKey = "plugin_stats_{$slug}";
         $apiUrl   = "https://api.wordpress.org/stats/plugin/1.0/downloads.php";
         try {
-            $data = Cache::remember( $cacheKey, now()->addHours( 8 ), function () use ( $apiUrl, $slug ) {
+            $data = Cache::remember( $cacheKey, now()->addHours( 5 ), function () use ( $apiUrl, $slug ) {
                 $response = Http::get( $apiUrl, [
                     'slug' => $slug,
                 ] );
 
-              
+
                 if ( $response->successful() ) {
                     return $response->json();
                 }
