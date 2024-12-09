@@ -17,24 +17,25 @@ class PluginStatsController extends Controller {
      * @return \Illuminate\Http\JsonResponse
      */
     public function download( Request $request, $slug ) {
-        $cacheKey = "plugin_stats_{$slug}";
+        $trend    = (int) $request->input( 'trend', 90 ); // Default to 90 days
+        $cacheKey = "plugin_stats_{$slug}_{$trend}";
         $apiUrl   = "https://api.wordpress.org/stats/plugin/1.0/downloads.php";
         try {
-            $data = Cache::remember( $cacheKey, now()->addHours( 5 ), function () use ( $apiUrl, $slug ) {
+            $data = Cache::remember( $cacheKey, now()->addHours( 8 ), function () use ( $apiUrl, $slug ) {
                 $response = Http::get( $apiUrl, [
                     'slug' => $slug,
                 ] );
-
-
                 if ( $response->successful() ) {
                     return $response->json();
                 }
                 throw new \Exception( 'Failed to fetch plugin stats.' );
             } );
+            // Filter data based on the trend
+            $filteredData = array_slice( $data, - $trend, $trend, true );
 
             return response()->json( [
                 'success' => true,
-                'data'    => $data,
+                'data'    => $filteredData,
             ] );
         } catch ( RequestException $e ) {
             return response()->json( [

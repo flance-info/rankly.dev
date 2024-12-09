@@ -33,10 +33,26 @@
                         <div class="mt-6">
                             <div class="flex flex-row bg-gray-900 text-white p-6 rounded-lg shadow-lg">
                                 <!-- Chart Section -->
-                                <div class="w-2/3 w-2/3 bg-gray-800  p-4 rounded-lg">
-                                    <h2 class="text-lg font-semibold mb-4">{{ currentChartTitle }}</h2>
-                                    <canvas id="line-chart" class=""></canvas>
-                                </div>
+                               <div class="w-2/3 bg-gray-800 p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-semibold">{{ currentChartTitle }}</h2>
+       <select
+    v-model="selectedTrend"
+    @change="fetchDownloadData(pluginData.slug)"
+    class="bg-gray-700 text-white rounded-lg px-4 py-1 focus:outline-none appearance-none pr-8"
+    style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%275%27 viewBox=%270 0 10 5%27><path d=%27M0 0l5 5 5-5H0z%27 fill=%27%23ffffff%27/></svg>'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 10px 5px;"
+>
+    <option value="7">Last 7 Days</option>
+    <option value="30">Last 30 Days</option>
+    <option value="90" selected>Last 90 Days</option>
+    <option value="365">Last Year</option>
+</select>
+
+    </div>
+    <canvas id="line-chart" class=""></canvas>
+</div>
+
+
 
                                 <!-- Buttons Section -->
                                 <div class="w-1/3 pl-6 flex flex-col justify-between">
@@ -367,6 +383,7 @@ const decodeHTML = (html) => {
     return txt.value;
 };
 
+const selectedTrend = ref('7'); // Default trend value
 const currentChartTitle = ref('Downloads Per Day');
 let chartInstance;
 
@@ -442,7 +459,11 @@ const updateChart = (type) => {
 
 const fetchDownloadData = async (slug) => {
     try {
-        const response = await axios.get(`/api/plugin-stats/${slug}`);
+        const response = await axios.get(`/api/plugin-stats/${slug}`, {
+            params: {
+                trend: selectedTrend.value,
+            },
+        });
         if (response.data.success) {
             const downloads = response.data.data;
             const labels = Object.keys(downloads);
@@ -469,6 +490,7 @@ onMounted(() => {
     fetchDownloadData(pluginData.slug);
 });
 </script>
+
 
 
 
