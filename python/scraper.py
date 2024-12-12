@@ -1,25 +1,31 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+from concurrent.futures import ThreadPoolExecutor
+import os
 
-# URL to scrape
-URL = "https://wp-rankings.com/plugins/"
+# Base URL for plugins
+BASE_URL = "https://wp-rankings.com/plugins/page/{}/"
 
-def scrape_plugins():
-    """Scrape the plugin data from the website."""
-    # Fetch the webpage content
-    response = requests.get(URL)
+def fetch_page(page):
+    """Fetch and process a single page."""
+    print(f"Scraping page {page}...")
+    response = requests.get(BASE_URL.format(page))
     if response.status_code != 200:
-        print(f"Failed to fetch webpage: {response.status_code}")
-        return
-    
+        print(f"Failed to fetch page {page}: {response.status_code}")
+        return None  # Indicate failure
+
     # Parse the HTML content
     soup = BeautifulSoup(response.content, 'html.parser')
-    
+
     # Find all rows in the table
     rows = soup.find_all('tr', class_='geodir-post')
+    if not rows:
+        print(f"No rows found on page {page}. Exiting.")
+        return "END"  # Indicate end of pages
+
+    # Extract data from rows
     plugins = []
-    
     for row in rows:
         try:
             # Extract rank
@@ -46,7 +52,7 @@ def scrape_plugins():
                 positions = positions_div.text.strip() if positions_div else "N/A"
             else:
                 positions = "N/A"
-            
+
             plugins.append({
                 "Rank": rank,
                 "Name": plugin_name,
@@ -55,13 +61,53 @@ def scrape_plugins():
                 "Positions": positions
             })
         except Exception as e:
-            print(f"Error parsing row: {e}")
+            print(f"Error parsing row on page {page}: {e}")
             continue
-    
-    # Save results to JSON
-    with open("plugins.json", "w", encoding="utf-8") as json_file:
-        json.dump(plugins, json_file, ensure_ascii=False, indent=4)
-    print(f"Results saved to plugins.json")
+
+    return plugins
+
+def save_plugins_to_file(plugins, filename="plugins_all_pages.json"):
+    """Save plugins to a JSON file immediately."""
+    if os.path.exists(filename):
+        # Append to existing file
+        with open(filename, "r+", encoding="utf-8") as file:
+            existing_data = json.load(file)
+            existing_data.extend(plugins)
+            file.seek(0)
+            json.dump(existing_data, file, ensure_ascii=False, indent=4)
+    else:
+        # Create new file
+        with open(filename, "w", encoding="utf-8") as file:
+            json.dump(plugins, file, ensure_ascii=False, indent=4)
+
+def scrape_plugins():
+    """Scrape plugin data with parallel requests."""
+    filename = "plugins_all_pages.json"
+    last_page = 1
+
+    # Resume from last page if file exists
+    if os.path.exists(filename):
+        with open(filename, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            last_page = (len(data) // 20) + 1  # Assuming 20 plugins per page
+
+    # Use ThreadPoolExecutor for parallel requests
+    with ThreadPoolExecutor(max_workers=3) as executor:
+        page = last_page
+        while True:
+            futures = {executor.submit(fetch_page, page + i): page + i for i in range(3)}
+            for future in futures:
+                page_number = futures[future]
+                try:
+                    result = future.result()
+                    if result == "END":  # Stop if we reach the last page
+                        print("All pages processed.")
+                        return
+                    elif result:  # Save data if the page is valid
+                        save_plugins_to_file(result)
+                except Exception as e:
+                    print(f"Error processing page {page_number}: {e}")
+            page += 3  # Move to the next batch of pages
 
 if __name__ == "__main__":
     scrape_plugins()
