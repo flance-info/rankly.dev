@@ -150,7 +150,7 @@ async def check_proxy(proxy: str) -> bool:
             async with session.get(test_url, proxy=proxy, timeout=5) as response:
                 if response.status == 200:
                     data = await response.json()
-                    print(f"Proxy {proxy} is working. IP: {data.get('query')}")
+                    print(f"Proxy {proxy} is working. IP: {data.get('query'), data.get('city')}")
                     return True
                 else:
                     print(f"Proxy {proxy} failed with status: {response.status}")
@@ -167,6 +167,13 @@ async def get_working_proxy() -> str:
             return proxy
         else:
             print(f"Proxy {proxy} is not working, trying another...")
+
+def is_tag_processed(tag_slug: str) -> bool:
+    """Check if the tag has already been processed for the current date."""
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    file_name = f"{tag_slug}_plugins_{current_date}.json"
+    file_path = os.path.join(base_dir, "output", "keywords", tag_slug, file_name)
+    return os.path.exists(file_path)
 
 async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: str, page: int, sem: Semaphore) -> tuple[int, List[Dict]]:
     """Fetch a single page of plugins asynchronously."""
@@ -193,7 +200,7 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
                     return page, data.get('plugins', [])
                 elif response.status == 429:
                     print(f"Rate limit hit for page {page} tag '{tag_label}', retrying after delay...")
-                    await asyncio.sleep(60)  # Wait a full minute before retry
+                    await asyncio.sleep(20)  # Wait a full minute before retry
                     # Retry the request
                     async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=proxy) as retry_response:
                         if retry_response.status == 200:
@@ -210,8 +217,12 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
             print(f"Error fetching page {page} for tag '{tag_label}': {e}")
             return page, []
 
-async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, sem: Semaphore) -> List[Dict]:
+async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, tag_slug: str, sem: Semaphore) -> List[Dict]:
     """Search for plugins using the WordPress API by tag label asynchronously."""
+    if is_tag_processed(tag_slug):
+        print(f"Tag '{tag_label}' already processed for today, skipping.")
+        return []
+    
     params = {
         "action": "query_plugins",
         "search": tag_label,
@@ -266,7 +277,7 @@ async def process_single_tag(session: aiohttp.ClientSession, tag: Dict, request_
         start_time = time.time()
         print(f"\nStarting tag: {tag_label_to_search}")
         
-        plugins = await search_plugins_by_tag(session, tag_label_to_search, request_sem)
+        plugins = await search_plugins_by_tag(session, tag_label_to_search, tag_slug, request_sem)
         
         elapsed_time = time.time() - start_time
         elapsed_formatted = str(timedelta(seconds=int(elapsed_time)))
@@ -326,7 +337,7 @@ if __name__ == "__main__":
     tags = load_tags(tags_file)
 
     
-    test_tags = tags[:30]
+    test_tags = tags[:40]
     
     # Run the async process
     asyncio.run(process_tags(test_tags)) 
