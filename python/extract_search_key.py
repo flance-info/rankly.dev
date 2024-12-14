@@ -200,7 +200,7 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
                     return page, data.get('plugins', [])
                 elif response.status == 429:
                     print(f"Rate limit hit for page {page} tag '{tag_label}', retrying after delay...")
-                    await asyncio.sleep(20)  # Wait a full minute before retry
+                    await asyncio.sleep(2)  # Wait a full minute before retry
                     # Retry the request
                     async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=proxy) as retry_response:
                         if retry_response.status == 200:
@@ -245,6 +245,9 @@ async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, 
                 total_pages = data.get('info', {}).get('pages', 1)
                 all_plugins = data.get('plugins', [])  # First page plugins
                 
+                # Add a small delay after fetching the initial data
+                await asyncio.sleep(0.5)  # Adjust the delay as needed
+                
                 if total_pages <= 1:
                     return all_plugins
                 
@@ -268,14 +271,14 @@ async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, 
         print(f"Error in search_plugins_by_tag for '{tag_label}': {e}")
         return []
 
-async def process_single_tag(session: aiohttp.ClientSession, tag: Dict, request_sem: Semaphore, tag_sem: Semaphore):
+async def process_single_tag(session: aiohttp.ClientSession, tag: Dict, request_sem: Semaphore, tag_sem: Semaphore, tag_index: int, total_tags: int):
     """Process a single tag."""
     async with tag_sem:  # Limit concurrent tag processing
         tag_label_to_search = tag['label']
         tag_slug = tag['slug']
         
         start_time = time.time()
-        print(f"\nStarting tag: {tag_label_to_search}")
+        print(f"\nStarting tag {tag_index + 1}/{total_tags}: {tag_label_to_search}")
         
         plugins = await search_plugins_by_tag(session, tag_label_to_search, tag_slug, request_sem)
         
@@ -292,15 +295,16 @@ async def process_single_tag(session: aiohttp.ClientSession, tag: Dict, request_
 async def process_tags(tags: List[Dict]):
     """Process multiple tags concurrently."""
     start_time = time.time()
-    print(f"Starting processing of {len(tags)} tags at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    total_tags = len(tags)
+    print(f"Starting processing of {total_tags} tags at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
-    request_sem = Semaphore(15)
-    tag_sem = Semaphore(1)
+    request_sem = Semaphore(7)
+    tag_sem = Semaphore(7)
     
     async with aiohttp.ClientSession() as session:
         tasks = [
-            process_single_tag(session, tag, request_sem, tag_sem)
-            for tag in tags
+            process_single_tag(session, tag, request_sem, tag_sem, index, total_tags)
+            for index, tag in enumerate(tags)
         ]
         await asyncio.gather(*tasks)
     
@@ -337,7 +341,7 @@ if __name__ == "__main__":
     tags = load_tags(tags_file)
 
     
-    test_tags = tags[:40]
+    test_tags = tags[:1000]
     
     # Run the async process
     asyncio.run(process_tags(test_tags)) 
