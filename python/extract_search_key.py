@@ -142,6 +142,32 @@ def load_tags(file_path):
 
     return []
 
+async def check_proxy(proxy: str) -> bool:
+    """Check if a proxy is working by making a request to IP-API."""
+    test_url = "http://ip-api.com/json/?fields=61439"
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(test_url, proxy=proxy, timeout=5) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    print(f"Proxy {proxy} is working. IP: {data.get('query')}")
+                    return True
+                else:
+                    print(f"Proxy {proxy} failed with status: {response.status}")
+                    return False
+    except Exception as e:
+        print(f"Error checking proxy {proxy}: {e}")
+        return False
+
+async def get_working_proxy() -> str:
+    """Get a random working proxy from the list."""
+    while True:
+        proxy = random.choice(proxies)
+        if await check_proxy(proxy):
+            return proxy
+        else:
+            print(f"Proxy {proxy} is not working, trying another...")
+
 async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: str, page: int, sem: Semaphore) -> tuple[int, List[Dict]]:
     """Fetch a single page of plugins asynchronously."""
     params = {
@@ -156,8 +182,8 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
             # Reduce delay between requests
             await asyncio.sleep(0.5)  # Try with 0.5 seconds delay
             
-            # Select a random proxy
-            proxy = random.choice(proxies)
+            # Get a working proxy
+            proxy = await get_working_proxy()
             print(f"Using proxy {proxy} for page {page} of tag '{tag_label}'")
             
             async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=proxy) as response:
@@ -195,8 +221,8 @@ async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, 
     
     try:
         async with sem:
-            # Select a random proxy
-            proxy = random.choice(proxies)
+            # Get a working proxy
+            proxy = await get_working_proxy()
             print(f"Using proxy {proxy} for initial request of tag '{tag_label}'")
             
             async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=proxy) as response:
@@ -300,7 +326,7 @@ if __name__ == "__main__":
     tags = load_tags(tags_file)
 
     
-    test_tags = tags[:2]
+    test_tags = tags[:30]
     
     # Run the async process
     asyncio.run(process_tags(test_tags)) 
