@@ -4,9 +4,13 @@ import os
 from datetime import datetime
 from threading import Lock
 
-# Directory for output files
-output_dir = r"D:\domains\rankly\python\output"
-os.makedirs(output_dir, exist_ok=True)  # Ensure the directory exists
+
+base_dir = os.path.dirname(__file__)
+
+output_dir = os.path.join(base_dir,"output", "stats")
+
+# Create the directory if it does not exist
+os.makedirs(output_dir, exist_ok=True)
 
 # WordPress Plugin API Base URL
 PLUGIN_API_BASE_URL = "https://api.wordpress.org/plugins/info/1.2/"

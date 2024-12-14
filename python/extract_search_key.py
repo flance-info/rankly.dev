@@ -236,7 +236,10 @@ async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, 
             proxy = await get_working_proxy()
             print(f"Using proxy {proxy} for initial request of tag '{tag_label}'")
             
-            async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=proxy) as response:
+            # Set a timeout of 10 seconds for the request
+            timeout = aiohttp.ClientTimeout(total=10)
+            
+            async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=proxy, timeout=timeout) as response:
                 if response.status != 200:
                     print(f"Failed to fetch initial data for tag '{tag_label}' using proxy {proxy}")
                     return []
@@ -299,7 +302,7 @@ async def process_tags(tags: List[Dict]):
     print(f"Starting processing of {total_tags} tags at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
     request_sem = Semaphore(7)
-    tag_sem = Semaphore(7)
+    tag_sem = Semaphore(5)
     
     async with aiohttp.ClientSession() as session:
         tasks = [
@@ -341,7 +344,7 @@ if __name__ == "__main__":
     tags = load_tags(tags_file)
 
     
-    test_tags = tags[:1000]
+    test_tags = tags[:2000]
     
     # Run the async process
     asyncio.run(process_tags(test_tags)) 
