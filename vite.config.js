@@ -16,7 +16,10 @@ export default defineConfig({
             host: 'localhost'
         },
         watch: {
-            usePolling: true,
+            usePolling: false,
         },
+    },
+    optimizeDeps: {
+        include: ['vue', '@inertiajs/vue3'],
     },
 });
