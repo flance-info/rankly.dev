@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laravel-app
+    container_name: laravel-app
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - APP_KEY=base64:YOUR_APP_KEY
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=laravel
+      - DB_USERNAME=laravel
+      - DB_PASSWORD=secret
+    depends_on:
+      - db
+      - python
+
+  db:
+    image: postgres:13
+    container_name: laravel-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: laravel
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  python:
+    image: python:3.11.3
+    container_name: python-app
+    working_dir: /usr/src/app
+    volumes:
+      - ./python:/usr/src/app
+    command: sh -c "pip install -r requirements.txt && python your_script.py"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
