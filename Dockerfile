@@ -9,14 +9,19 @@ RUN apt-get update && apt-get install -y \
     zip \
     git \
     unzip \
+    libpq-dev \
+    postgresql-client \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd
+    && docker-php-ext-install gd \
+    && docker-php-ext-install pdo pdo_pgsql
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql
-
-# Enable Apache mod_rewrite
+# Enable Apache modules
 RUN a2enmod rewrite
+RUN a2enmod headers
+
+# Configure Apache
+COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+RUN sed -i 's/www-data/root/g' /etc/apache2/envvars
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -27,8 +32,10 @@ WORKDIR /app
 # Copy existing application directory contents
 COPY . /app
 
-# Copy existing application directory permissions
-COPY --chown=www-data:www-data . /app
+# Set permissions
+RUN chown -R www-data:www-data /app \
+    && chmod -R 775 /app/storage \
+    && chmod -R 775 /app/bootstrap/cache
 
 # Expose port 80
 EXPOSE 80
