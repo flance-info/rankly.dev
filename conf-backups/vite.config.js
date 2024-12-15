@@ -8,15 +8,13 @@ export default defineConfig({
             input: 'resources/js/app.js',
             refresh: true,
         }),
-        vue(),
+        vue({
+            template: {
+                transformAssetUrls: {
+                    base: null,
+                    includeAbsolute: false,
+                },
+            },
+        }),
     ],
-    server: {
-        host: '0.0.0.0',
-        hmr: {
-            host: 'localhost'
-        },
-        watch: {
-            usePolling: true,
-        },
-    },
 });
