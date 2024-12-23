@@ -71,4 +71,24 @@ class User extends Authenticatable {
     {
         return $this->belongsTo(Team::class, 'current_team_id');
     }
+
+      /**
+     * The plugins that belong to the user.
+     */
+    public function plugins()
+    {
+        return $this->belongsToMany(Plugin::class, 'user_plugins', 'user_id', 'plugin_slug')
+                    ->using(UserPlugin::class)
+                    ->withPivot('is_paid', 'paid_at')
+                    ->withTimestamps();
+    }
+
+      /**
+     * Access paid plugins only.
+     */
+    public function paidPlugins()
+    {
+        return $this->plugins()->wherePivot('is_paid', true);
+    }
+
 }

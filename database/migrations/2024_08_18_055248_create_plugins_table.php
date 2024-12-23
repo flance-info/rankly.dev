@@ -6,25 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-
-    public function up() {
-        Schema::create( 'plugins', function ( Blueprint $table ) {
-            $table->id();
-            $table->string( 'name' );
-            $table->string( 'slug' )->unique();
-            $table->text( 'description' )->nullable();
-            $table->foreignId( 'user_id' )->constrained()->onDelete( 'cascade' );
-            $table->timestamps();
-        } );
+    public function up()
+    {
+        Schema::create('plugins', function (Blueprint $table) {
+            $table->bigIncrements('id');                         // Primary Key
+            $table->string('name', 255);                         // Plugin Name
+            $table->string('slug', 255)->unique();               // Unique Slug
+            $table->text('description')->nullable();             // Plugin Description
+            $table->json('plugin_data')->nullable();             // Additional Data
+            $table->timestamps();                                // created_at & updated_at
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('plugins');
     }
