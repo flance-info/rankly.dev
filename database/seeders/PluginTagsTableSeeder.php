@@ -34,6 +34,36 @@ class PluginTagsTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'plugin_slug' => 'string-locator',
+                'tag_slug' => 'find',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'plugin_slug' => 'string-locator',
+                'tag_slug' => 'highlight',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'plugin_slug' => 'string-locator',
+                'tag_slug' => 'search',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'plugin_slug' => 'string-locator',
+                'tag_slug' => 'syntax',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'plugin_slug' => 'string-locator',
+                'tag_slug' => 'text',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         DB::table('plugin_tags')->insert($pluginTags);

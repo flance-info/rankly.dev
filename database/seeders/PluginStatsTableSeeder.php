@@ -46,6 +46,15 @@ class PluginStatsTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'plugin_slug' => 'string-locator',
+                'stat_date' => '2024-03-20',
+                'active_installs' => 100000,
+                'support_threads' => 0,
+                'support_threads_resolved' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         DB::table('plugin_stats')->insert($stats);

@@ -17,6 +17,10 @@ class Plugin extends Model
         'plugin_data'
     ];
 
+    protected $casts = [
+        'plugin_data' => 'json'  // Cast plugin_data as JSON
+    ];
+
     // Relationship with users through user_plugins table
     public function users()
     {
@@ -43,5 +47,7 @@ class Plugin extends Model
     {
         return $this->hasMany(PluginStat::class, 'plugin_slug', 'slug');
     }
+
+ 
 }
 

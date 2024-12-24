@@ -34,6 +34,14 @@ class UserPluginsTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'user_id' => 2,
+                'plugin_slug' => 'string-locator',
+                'is_paid' => false,
+                'paid_at' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         DB::table('user_plugins')->insert($userPlugins);
