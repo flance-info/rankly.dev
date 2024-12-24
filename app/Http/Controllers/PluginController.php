@@ -113,7 +113,13 @@ class PluginController extends Controller {
         }
 
         $userId = Auth::id();
-        $plugins = Plugin::where('user_id', $userId)->get();
+        
+        // Get plugins through the user_plugins pivot table
+        $plugins = Plugin::select('plugins.*', 'user_plugins.is_paid')
+            ->join('user_plugins', 'plugins.slug', '=', 'user_plugins.plugin_slug')
+            ->where('user_plugins.user_id', $userId)
+            ->with(['tags', 'latestStats']) // Optional: Include related data
+            ->get();
 
         return response()->json($plugins);
     }

@@ -2,16 +2,40 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TagsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
+        $tags = [
+            [
+                'slug' => 'performance',
+                'name' => 'Performance',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'slug' => 'security',
+                'name' => 'Security',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'slug' => 'seo',
+                'name' => 'SEO',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'slug' => 'ecommerce',
+                'name' => 'eCommerce',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ];
+
+        DB::table('tags')->insert($tags);
     }
 }

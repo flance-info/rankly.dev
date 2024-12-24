@@ -3,33 +3,39 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Plugin;
-use Illuminate\Support\Facades\File;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class UserPluginsTableSeeder extends Seeder
 {
     public function run()
     {
-        $path = base_path('python/output/user_plugins.json'); // Adjust the path as necessary
-        $data = json_decode(File::get($path), true);
+        $userPlugins = [
+            [
+                'user_id' => 1,
+                'plugin_slug' => 'yoast-seo',
+                'is_paid' => true,
+                'paid_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'user_id' => 1,
+                'plugin_slug' => 'woocommerce',
+                'is_paid' => true,
+                'paid_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'user_id' => 2,
+                'plugin_slug' => 'wordfence',
+                'is_paid' => true,
+                'paid_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ];
 
-        foreach ($data as $item) {
-            if (isset($item['user_email']) && isset($item['plugin_slug'])) {
-                $user = User::where('email', $item['user_email'])->first();
-                $plugin = Plugin::where('slug', $item['plugin_slug'])->first();
-
-                if ($user && $plugin) {
-                    $user->plugins()->updateOrCreate(
-                        ['plugin_slug' => $plugin->slug],
-                        [
-                            'is_paid' => $item['is_paid'] ?? false,
-                            'paid_at' => isset($item['paid_at']) ? Carbon::parse($item['paid_at']) : null
-                        ]
-                    );
-                }
-            }
-        }
+        DB::table('user_plugins')->insert($userPlugins);
     }
 }

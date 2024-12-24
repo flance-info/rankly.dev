@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             PluginKeywordStatsTableSeeder::class,
             PluginTagsTableSeeder::class,
             UserPluginsTableSeeder::class, // New seeder for user-plugin associations
+            PluginStatsTableSeeder::class,
         ]);
     }
 }
