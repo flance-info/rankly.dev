@@ -11,34 +11,54 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\DB;
 
 class PluginController extends Controller {
     public function searchPlugin( Request $request ) {
         $slug = $request->input( 'slug' );
         $slug = $this->getSlugFromUrl( $slug );
+        
         if ( ! $slug ) {
             return response()->json( [ 'error' => 'No plugin slug or url provided' ], 400 );
         }
+        
         if ( ! Auth::check() ) {
             return response()->json( [ 'error' => 'User not authenticated' ], 401 );
         }
+        
         $userId = Auth::id();
-        // Check if the plugin already exists for this user
-        $existingPlugin = Plugin::where( 'slug', $slug )->where( 'user_id', $userId )->first();
-        if ( $existingPlugin ) {
-            return response()->json( [ 'message' => 'Plugin already added', 'plugin' => $existingPlugin ], 200 );
+        
+        // Check if the plugin already exists for this user in user_plugins table
+        $existingUserPlugin = DB::table('user_plugins')
+            ->where('plugin_slug', $slug)
+            ->where('user_id', $userId)
+            ->first();
+        
+        if ( $existingUserPlugin ) {
+            $plugin = Plugin::where('slug', $slug)->first();
+            return response()->json([
+                'message' => 'Plugin already added',
+                'plugin' => $plugin
+            ], 200);
         }
+
         // Query the WordPress.org API
         $response = Http::get( 'https://api.wordpress.org/plugins/info/1.2/', [
             'action'                       => 'plugin_information',
             'request[slug]'                => $slug,
             'request[fields][description]' => true
         ] );
+
         // Log the JSON response
         Log::info( 'WordPress API Response:', $response->json() );
+        
         $pluginData = $response->json();
+        
         if ( $pluginData && ! isset( $pluginData['error'] ) ) {
-            return response()->json( [ 'message' => 'Plugin Info received successfully', 'plugin' => $pluginData ], 201 );
+            return response()->json([
+                'message' => 'Plugin Info received successfully',
+                'plugin' => $pluginData
+            ], 201);
         }
 
         return response()->json( [ 'error' => 'Plugin not found' ], 404 );
