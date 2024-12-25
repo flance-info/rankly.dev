@@ -166,19 +166,23 @@ class PluginController extends Controller {
         return response()->json($plugins);
     }
 
-    public function destroy($slug) {
+    public function destroy($slug)
+    {
         if (!Auth::check()) {
             return response()->json(['error' => 'User not authenticated'], 401);
         }
 
         $userId = Auth::id();
-        $plugin = Plugin::where('slug', $slug)->where('user_id', $userId)->first();
+        
+        // Delete from user_plugins table instead of plugins table
+        $deleted = DB::table('user_plugins')
+            ->where('plugin_slug', $slug)
+            ->where('user_id', $userId)
+            ->delete();
 
-        if (!$plugin) {
+        if (!$deleted) {
             return response()->json(['error' => 'Plugin not found'], 404);
         }
-
-        $plugin->delete();
 
         return response()->json(['message' => 'Plugin deleted successfully'], 200);
     }
