@@ -89,42 +89,64 @@ class PluginController extends Controller {
         return response()->json( [ 'message' => 'Session plugins updated successfully', 'plugin_data' => $updatedPlugins ] );
     }
 
-    public function store( Request $request ) {
-        $pluginData = $plugin = $request->input( 'plugin' );
-        if ( ! Auth::check() ) {
-            return response()->json( [ 'error' => 'User not authenticated' ], 401 );
+    public function store(Request $request)
+    {
+        if (!Auth::check()) {
+            return response()->json(['error' => 'User not authenticated'], 401);
         }
+
+        $pluginData = $plugin = $request->input('plugin');
         $userId = Auth::id();
-        $slug   = $plugin['slug'];
-        // Check if the plugin already exists for this user
-        $existingPlugin = Plugin::where( 'slug', $slug )->where( 'user_id', $userId )->first();
-        if ( $pluginData && ! isset( $pluginData['error'] ) ) {
+        $slug = $plugin['slug'];
 
-            if ( $existingPlugin ) {
+        // Check if the plugin exists in plugins table
+        $existingPlugin = Plugin::where('slug', $slug)->first();
 
-                $existingPlugin->update( [
-                    'name'        => $pluginData['name'],
+        // Check if user already has this plugin
+        $existingUserPlugin = DB::table('user_plugins')
+            ->where('plugin_slug', $slug)
+            ->where('user_id', $userId)
+            ->first();
+
+        if ($pluginData && !isset($pluginData['error'])) {
+            // Update or create the plugin record
+            if ($existingPlugin) {
+                $existingPlugin->update([
+                    'name' => $pluginData['name'],
                     'plugin_data' => $pluginData,
-                ] );
-
-
-                return response()->json( [
-                    'message' => 'Plugin updated successfully',
-                    'plugin'  => $pluginData,
-                ], 200 );
+                ]);
+                $plugin = $existingPlugin;
+            } else {
+                $plugin = Plugin::create([
+                    'name' => $pluginData['name'],
+                    'slug' => $pluginData['slug'],
+                    'plugin_data' => (array)$pluginData,
+                ]);
             }
-            $savedata = Plugin::create( [
-                'name'        => $pluginData['name'],
-                'slug'        => $pluginData['slug'],
-                'user_id'     => $userId,
-                'plugin_data' => (array) $pluginData ,
-            ] );
 
+            // Create user-plugin relationship if it doesn't exist
+            if (!$existingUserPlugin) {
+                DB::table('user_plugins')->insert([
+                    'user_id' => $userId,
+                    'plugin_slug' => $slug,
+                    'is_paid' => false,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+                
+                return response()->json([
+                    'message' => 'Plugin Added to your account',
+                    'plugin' => $pluginData
+                ], 201);
+            }
 
-            return response()->json( [ 'message' => 'Plugin Added to your account', 'plugin' => $pluginData ], 201 );
+            return response()->json([
+                'message' => 'Plugin updated successfully',
+                'plugin' => $pluginData,
+            ], 200);
         }
 
-        return response()->json( [ 'message' => 'Plugins added successfully to Your Account!' ] );
+        return response()->json(['message' => 'Plugins added successfully to Your Account!']);
     }
 
     public function getUserPlugins(Request $request) {
