@@ -40,3 +40,7 @@ Route::middleware('auth:sanctum')->delete('/user/plugins/{slug}', [PluginControl
 Route::get('/plugins/{slug}', [PluginController::class, 'show']);
 
 Route::middleware( 'auth:sanctum' )->get( '/plugin-stats/{slug}', [ PluginStatsController::class, 'download' ] );
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/plugin-active-installs/{slug}', [PluginController::class, 'getActiveInstalls']);
+});

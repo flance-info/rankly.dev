@@ -18,8 +18,10 @@ class PluginStatsController extends Controller {
      */
     public function download( Request $request, $slug ) {
         $trend    = (int) $request->input( 'trend', 90 ); // Default to 90 days
+       
         $cacheKey = "plugin_stats_{$slug}_{$trend}";
         $apiUrl   = "https://api.wordpress.org/stats/plugin/1.0/downloads.php";
+        $this->clearCache($slug);
         try {
             $data = Cache::remember( $cacheKey, now()->addHours( 8 ), function () use ( $apiUrl, $slug ) {
                 $response = Http::get( $apiUrl, [
@@ -67,5 +69,22 @@ class PluginStatsController extends Controller {
                 'message' => $e->getMessage(),
             ], 500 );
         }
+    }
+
+    public function clearCache($slug)
+    {
+        $cacheKey = "plugin_stats_{$slug}_90";  // Match the key format from your download method
+        Cache::forget($cacheKey);
+        
+        // Clear other trend periods too
+        Cache::forget("plugin_stats_{$slug}_7");
+        Cache::forget("plugin_stats_{$slug}_8");
+        Cache::forget("plugin_stats_{$slug}_30");
+        Cache::forget("plugin_stats_{$slug}_365");
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Cache cleared successfully'
+        ]);
     }
 }

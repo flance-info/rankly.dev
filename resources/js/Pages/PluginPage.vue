@@ -24,11 +24,7 @@
 
 
                         <p class="text-gray-700">{{ decodeHTML(plugin.description) }}</p>
-                        <div class="mt-4">
-                            <span class="text-yellow-500">Rating: {{ pluginData.rating }}</span>
-                            <span class="ml-4 text-gray-500">Active Installs: {{ pluginData.activeInstalls }}</span>
-                        </div>
-
+                       
                         <!-- Download Stats Graph -->
                         <div class="mt-6">
                             <div class="flex flex-row bg-gray-900 text-white p-6 rounded-lg shadow-lg">
@@ -101,7 +97,14 @@
                                                 class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
                                                 <h3 class="text-sm font-semibold text-left">Active Installs</h3>
-                                                <p class="text-2xl text-left">12</p>
+                                                <p class="text-2xl text-left">{{ summary2.total_active_installs }}
+                                             <span :class="{'text-red-500': summary2.percentage_change < 0, 'text-green-500': summary2.percentage_change >= 0}" class="text-sm">
+                                                        {{ summary2.percentage_change < 0 ? '▼' : '▲' }} {{ Math.abs(summary2.percentage_change) }}%
+                                                    </span>                                         
+                                          
+                                                    </p>
+                                              
+                                           
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -140,8 +143,14 @@
                             <div class="flex-1 bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-between text-center text-white">
                                 <p class="text-sm text-gray-400">SUPPORT RESOLVED</p>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-2xl font-bold">0%</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <span class="text-2xl font-bold">
+                                        {{ plugin.plugin_data.support_threads > 0 
+                                            ? Math.round((plugin.plugin_data.support_threads_resolved / plugin.plugin_data.support_threads) * 100) 
+                                            : 0 }}%
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                         :class="[plugin.plugin_data.support_threads_resolved > 0 ? 'text-green-500' : 'text-red-500']"
+                                         class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="..."/>
                                     </svg>
                                 </div>
@@ -151,8 +160,12 @@
                             <div class="flex-1 bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-between text-center text-white">
                                 <p class="text-sm text-gray-400">RATING</p>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-2xl font-bold">100%</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <span class="text-2xl font-bold">
+                                        {{ Math.round((plugin.plugin_data.rating || 0)) }}%
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                         :class="[plugin.plugin_data.rating >= 80 ? 'text-green-500' : 'text-red-500']"
+                                         class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="..."/>
                                     </svg>
                                 </div>
@@ -162,8 +175,10 @@
                             <div class="flex-1 bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-between text-center text-white">
                                 <p class="text-sm text-gray-400">TESTED UP TO</p>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-2xl font-bold">6.4.5</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <span class="text-2xl font-bold">{{ plugin.plugin_data.tested }}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                         :class="[isTestedVersionRecent ? 'text-green-500' : 'text-red-500']"
+                                         class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="..."/>
                                     </svg>
                                 </div>
@@ -173,8 +188,13 @@
                             <div class="flex-1 bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-between text-center text-white">
                                 <p class="text-sm text-gray-400">LAST UPDATED</p>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-2xl font-bold">13 Dec 2023</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <span class="text-2xl font-bold">
+                                      
+                                        {{ formatLastUpdated(plugin.plugin_data.last_updated) }}
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                         :class="[isRecentlyUpdated ? 'text-green-500' : 'text-red-500']"
+                                         class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="..."/>
                                     </svg>
                                 </div>
@@ -353,7 +373,7 @@
 
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import {defineProps, onMounted, ref} from 'vue';
+import {defineProps, onMounted, ref, watch, computed} from 'vue';
 import {Chart, registerables} from 'chart.js';
 import axios from 'axios';
 
@@ -363,7 +383,17 @@ Chart.register(...registerables);
 const summary = ref({
     total_downloads: 0,
     percentage_change: 0,
+    chartData: {
+        total_active_installs: 0,
+        percentage_change: 0
+    }
 });
+
+const summary2 = ref({
+        total_active_installs: 0,
+        percentage_change: 0
+});
+
 
 const props = defineProps({
     plugin: Object,
@@ -408,8 +438,8 @@ const chartData = {
     },
     activeInstalls: {
         title: 'Active Installs',
-        labels: ['Nov 22', 'Nov 23', 'Nov 24', 'Nov 25', 'Nov 26', 'Nov 27', 'Nov 28', 'Nov 29'],
-        data: [100, 150, 130, 170, 160, 180, 190, 200],
+        labels: [],
+        data: [],
     },
     downloads: {
         title: 'Downloads Per Day',
@@ -495,9 +525,82 @@ const fetchDownloadData = async (slug) => {
     }
 };
 
+const fetchActiveInstallsData = async (slug) => {
+    try {
+        const response = await axios.get(`/api/plugin-active-installs/${slug}`, {
+            params: {
+                trend: selectedTrend.value
+            },
+            withCredentials: true
+        });
+        
+        if (response.data.success) {
+            const activeInstalls = response.data.data;
+            const labels = Object.keys(activeInstalls);
+            const data = Object.values(activeInstalls);
+
+            chartData.activeInstalls.labels = labels;
+            chartData.activeInstalls.data = data;
+            summary2.value = response.data.summary;
+    
+           
+            if (!chartInstance) {
+                initializeChart(labels, data);
+            } else if (activeChart.value === 'activeInstalls') {
+                updateChart('activeInstalls');
+            }
+        } else {
+            console.error('Failed to fetch active installs:', response.data.message);
+        }
+    } catch (error) {
+        console.error('An error occurred while fetching active installs:', error);
+    }
+};
+
+// Make sure fetchActiveInstallsData is called when trend changes
+watch(selectedTrend, () => {
+    if (activeChart.value === 'activeInstalls') {
+        fetchActiveInstallsData(pluginData.slug);
+    }
+});
+
+const isTestedVersionRecent = computed(() => {
+    const testedVersion = pluginData.tested;
+    // Compare with current WordPress version (you might want to store this in your backend)
+    const currentWPVersion = '6.4'; // Update this as needed
+    return testedVersion >= currentWPVersion;
+});
+
+const isRecentlyUpdated = computed(() => {
+    const [datePart] = pluginData.last_updated.split(' ');
+    const [year, month, day] = datePart.split('-');
+    const lastUpdated = new Date(year, month - 1, day);
+    
+    const threeMonthsAgo = new Date();
+    threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+    
+    return lastUpdated >= threeMonthsAgo;
+});
+
+const formatLastUpdated = (dateString) => {
+    // Handle WordPress date format (YYYY-MM-DD H:MMpm GMT)
+    const [datePart] = dateString.split(' ');
+    const [year, month, day] = datePart.split('-');
+    
+    // Create date object using parts
+    const date = new Date(year, month - 1, day); // month is 0-based in JS
+    
+    return date.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    }); // British English format puts day before month
+};
+
 onMounted(() => {
     initializeChart(chartData.averagePosition.labels, chartData.averagePosition.data);
     fetchDownloadData(pluginData.slug);
+    fetchActiveInstallsData(pluginData.slug);
 });
 </script>
 

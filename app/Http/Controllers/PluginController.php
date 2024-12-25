@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class PluginController extends Controller {
     public function searchPlugin( Request $request ) {
@@ -207,6 +208,85 @@ class PluginController extends Controller {
             // Optionally, redirect or show an error page
             return redirect()->route('plugins.index')->with('error', 'Plugin not found');
         }
+    }
+
+    public function getActiveInstalls($slug, Request $request)
+    {
+        try {
+            $plugin = Plugin::where('slug', $slug)->first();
+            
+            if (!$plugin) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Plugin not found'
+                ], 404);
+            }
+
+            // Get trend value from request, default to 7 days
+            $trend = $request->input('trend', '7');
+            
+            // Convert trend to integer for date calculation
+            $days = match($trend) {
+                '7' => 7,
+                '15' => 15,
+                '30' => 30,
+                '90' => 90,
+                default => 7,
+            };
+
+            // Get stats based on trend
+            $stats = DB::table('plugin_stats')
+                ->where('plugin_slug', $slug)
+                ->where('stat_date', '>=', Carbon::now()->subDays($days))
+                ->orderBy('stat_date', 'asc')
+                ->get(['stat_date', 'active_installs']);
+
+            $data = [];
+            foreach ($stats as $stat) {
+                $data[Carbon::parse($stat->stat_date)->format('M d')] = $stat->active_installs;
+            }
+
+            // Calculate percentage change
+            $firstValue = array_values($data)[0] ?? 0;
+            $lastValue = end($data) ?? 0;
+            $percentageChange = $firstValue > 0 ? 
+                round((($lastValue - $firstValue) / $firstValue) * 100, 2) : 0;
+
+            // Get total active installs from plugin data
+            $totalActiveInstalls = $plugin->plugin_data['active_installs'] ?? 0;
+
+            return response()->json([
+                'success' => true,
+                'data' => $data,
+                'summary' => [
+                    'total_active_installs' => $totalActiveInstalls,
+                    'percentage_change' => $percentageChange
+                ]
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error fetching active installs data'
+            ], 500);
+        }
+    }
+
+    private function calculatePercentageChange($data)
+    {
+        if (count($data) < 2) {
+            return 0;
+        }
+
+        $values = array_values($data);
+        $first = $values[0];
+        $last = end($values);
+
+        if ($first == 0) {
+            return 0;
+        }
+
+        return round((($last - $first) / $first) * 100, 2);
     }
 }
 
