@@ -5,6 +5,7 @@ from datetime import datetime
 from threading import Lock
 import psycopg2
 from dotenv import load_dotenv
+from populate_plugin_stats import insert_plugin_stats  # Import the function
 
 # Load environment variables
 load_dotenv()
@@ -97,6 +98,7 @@ def get_plugins_list():
     total_plugins_processed = 0
     db_success_count = 0
     file_success_count = 0
+    stats_success_count = 0
    
     try:
         # Connect to database
@@ -146,6 +148,15 @@ def get_plugins_list():
                             insert_plugin(conn, plugin)
                             db_success_count += 1
                             print(f"💾 Saved to database: {plugin_name} ({plugin_slug})")
+                            
+                            # Add stats to plugin_stats table
+                            try:
+                                insert_plugin_stats(conn, plugin)
+                                stats_success_count += 1
+                                print(f"📊 Stats saved: {plugin_name} ({plugin_slug})")
+                            except Exception as e:
+                                print(f"❌ Stats error for {plugin_name}: {str(e)}")
+                            
                         except Exception as e:
                             print(f"❌ Database error for {plugin_name}: {str(e)}")
                         
@@ -155,10 +166,12 @@ def get_plugins_list():
                         print(f"\rProgress: {index}/{page_plugin_count} on page | "
                               f"Total: {total_plugins_processed} | "
                               f"DB: {db_success_count} | "
+                              f"Stats: {stats_success_count} | "
                               f"File Queue: {file_success_count}", end="\n")
                     
                     print(f"\nCompleted page {page}/{total_pages}")
                     print(f"Database saves: {db_success_count}")
+                    print(f"Stats saves: {stats_success_count}")
                     print(f"File queue additions: {file_success_count}")
                     print(f"Total processed: {total_plugins_processed}")
                     
@@ -177,6 +190,7 @@ def get_plugins_list():
             print("\n=== Final Summary ===")
             print(f"Total plugins processed: {total_plugins_processed}")
             print(f"Successfully saved to database: {db_success_count}")
+            print(f"Successfully saved stats: {stats_success_count}")
             print(f"Added to file queue: {file_success_count}")
             print("Database connection closed")
 
