@@ -1,0 +1,111 @@
+{
+    "tag_slug": "indieweb",
+    "tag_label": "indieweb",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "indieweb",
+            "name": "IndieWeb"
+        },
+        {
+            "order": 2,
+            "slug": "pubsubhubbub",
+            "name": "WebSub (FKA. PubSubHubbub)"
+        },
+        {
+            "order": 3,
+            "slug": "webmention",
+            "name": "Webmention"
+        },
+        {
+            "order": 4,
+            "slug": "indieauth",
+            "name": "IndieAuth"
+        },
+        {
+            "order": 5,
+            "slug": "micropub",
+            "name": "Micropub"
+        },
+        {
+            "order": 6,
+            "slug": "syndication-links",
+            "name": "Syndication Links"
+        },
+        {
+            "order": 7,
+            "slug": "indieweb-post-kinds",
+            "name": "Post Kinds"
+        },
+        {
+            "order": 8,
+            "slug": "indieblocks",
+            "name": "IndieBlocks"
+        },
+        {
+            "order": 9,
+            "slug": "mf2-feed",
+            "name": "MF2 Feeds"
+        },
+        {
+            "order": 10,
+            "slug": "keyring-social-importers",
+            "name": "Keyring Social Importers"
+        },
+        {
+            "order": 11,
+            "slug": "indieweb-press-this",
+            "name": "IndieWeb Press This"
+        },
+        {
+            "order": 12,
+            "slug": "shareopenly",
+            "name": "ShareOpenly"
+        },
+        {
+            "order": 13,
+            "slug": "shortnotes",
+            "name": "Shortnotes"
+        },
+        {
+            "order": 14,
+            "slug": "yarns-microsub-server",
+            "name": "Yarns Microsub Server"
+        },
+        {
+            "order": 15,
+            "slug": "simple-location",
+            "name": "Simple Location"
+        },
+        {
+            "order": 16,
+            "slug": "wp-uf2",
+            "name": "Microformats 2"
+        },
+        {
+            "order": 17,
+            "slug": "aperture",
+            "name": "Aperture"
+        },
+        {
+            "order": 18,
+            "slug": "keyring-reactions-importer",
+            "name": "Keyring Reactions Importer"
+        },
+        {
+            "order": 19,
+            "slug": "diasposter",
+            "name": "Diasposter"
+        },
+        {
+            "order": 20,
+            "slug": "wp-crosspost",
+            "name": "WordPress Crosspost"
+        },
+        {
+            "order": 21,
+            "slug": "whisperfollow",
+            "name": "WhisperFollow"
+        }
+    ]
+}

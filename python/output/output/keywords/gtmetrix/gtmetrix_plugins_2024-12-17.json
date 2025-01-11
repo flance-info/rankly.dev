@@ -1,0 +1,376 @@
+{
+    "tag_slug": "gtmetrix",
+    "tag_label": "gtmetrix",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "wp-fastest-cache",
+            "name": "WP Fastest Cache"
+        },
+        {
+            "order": 2,
+            "slug": "gtmetrix-for-wordpress",
+            "name": "GTmetrix for WordPress"
+        },
+        {
+            "order": 3,
+            "slug": "enable-svg-webp-ico-upload",
+            "name": "Enable SVG, WebP, and ICO Upload"
+        },
+        {
+            "order": 4,
+            "slug": "wp-remove-query-strings-from-static-resources",
+            "name": "WP Remove Query Strings From Static Resources"
+        },
+        {
+            "order": 5,
+            "slug": "wpo-tweaks",
+            "name": "WordPress WPO Tweaks &amp; Optimizations"
+        },
+        {
+            "order": 6,
+            "slug": "wp-performance-score-booster",
+            "name": "WP Performance Score Booster – Optimize Speed, Enable Cache &amp; Page Preload"
+        },
+        {
+            "order": 7,
+            "slug": "phastpress",
+            "name": "PhastPress"
+        },
+        {
+            "order": 8,
+            "slug": "leverage-browser-caching",
+            "name": "Leverage Browser Caching"
+        },
+        {
+            "order": 9,
+            "slug": "host-analyticsjs-local",
+            "name": "CAOS | Host Google Analytics Locally"
+        },
+        {
+            "order": 10,
+            "slug": "hummingbird-performance",
+            "name": "Hummingbird Performance &#8211; Cache &amp; Page Speed Optimization for Core Web Vitals | Critical CSS | Minify CSS | Defer CSS Javascript | CDN"
+        },
+        {
+            "order": 11,
+            "slug": "wp-asset-clean-up",
+            "name": "Asset CleanUp: Page Speed Booster"
+        },
+        {
+            "order": 12,
+            "slug": "gonzales",
+            "name": "WordPress Assets manager, dequeue scripts, dequeue styles"
+        },
+        {
+            "order": 13,
+            "slug": "fastpixel-website-accelerator",
+            "name": "FastPixel Caching &#8211; WP Optimization made easy"
+        },
+        {
+            "order": 14,
+            "slug": "shortpixel-image-optimiser",
+            "name": "ShortPixel Image Optimizer &#8211; Optimize Images, Convert WebP &amp; AVIF"
+        },
+        {
+            "order": 15,
+            "slug": "fast-velocity-minify",
+            "name": "Fast Velocity Minify"
+        },
+        {
+            "order": 16,
+            "slug": "freesoul-deactivate-plugins",
+            "name": "Freesoul Deactivate Plugins &#8211; Disable plugins on individual WordPress pages"
+        },
+        {
+            "order": 17,
+            "slug": "wp-simple-firewall",
+            "name": "Shield: Blocks Bots, Protects Users, and Prevents Security Breaches"
+        },
+        {
+            "order": 18,
+            "slug": "wp-speed-of-light",
+            "name": "WP Speed of Light"
+        },
+        {
+            "order": 19,
+            "slug": "core-web-vitals-pagespeed-booster",
+            "name": "Core Web Vitals &amp; PageSpeed Booster"
+        },
+        {
+            "order": 20,
+            "slug": "jch-optimize",
+            "name": "JCH Optimize"
+        },
+        {
+            "order": 21,
+            "slug": "wp-plugin-manager",
+            "name": "WP Plugin Manager &#8211; Deactivate plugins per page"
+        },
+        {
+            "order": 22,
+            "slug": "clearfy",
+            "name": "Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer"
+        },
+        {
+            "order": 23,
+            "slug": "wpspeed",
+            "name": "WPSpeed"
+        },
+        {
+            "order": 24,
+            "slug": "shortpixel-adaptive-images",
+            "name": "ShortPixel Adaptive Images &#8211; WebP, AVIF, CDN, Image Optimization"
+        },
+        {
+            "order": 25,
+            "slug": "gumlet",
+            "name": "Gumlet &#8211; Image optimization with Resize, Compression, Lazy load, Caching &amp; CDN delivery"
+        },
+        {
+            "order": 26,
+            "slug": "speed-booster-pack",
+            "name": "Speed Booster Pack ⚡ PageSpeed Optimization Suite"
+        },
+        {
+            "order": 27,
+            "slug": "wpcacheon",
+            "name": "WPCacheOn &#8211; WordPress Caching plugin"
+        },
+        {
+            "order": 28,
+            "slug": "responsive-block-editor-addons",
+            "name": "Responsive Blocks &#8211; WordPress Gutenberg Blocks"
+        },
+        {
+            "order": 29,
+            "slug": "widget-for-zendesk-chat-via-api",
+            "name": "Widget for Zendesk Chat via API"
+        },
+        {
+            "order": 30,
+            "slug": "pearl-header-builder",
+            "name": "WordPress Header Builder Plugin – Pearl"
+        },
+        {
+            "order": 31,
+            "slug": "optimize-more",
+            "name": "Optimize More!"
+        },
+        {
+            "order": 32,
+            "slug": "best-youtube-video-lazyload",
+            "name": "Best Youtube Video LazyLoad"
+        },
+        {
+            "order": 33,
+            "slug": "imagify",
+            "name": "Imagify – Optimize Images &amp; Convert WebP &amp; AVIF | Compress Images Easily"
+        },
+        {
+            "order": 34,
+            "slug": "amigo-performance",
+            "name": "Amigo Performance"
+        },
+        {
+            "order": 35,
+            "slug": "tseo-portfolio",
+            "name": "TSEO Portfolio"
+        },
+        {
+            "order": 36,
+            "slug": "jetpack-boost",
+            "name": "Jetpack Boost &#8211; Website Speed, Performance and Critical CSS"
+        },
+        {
+            "order": 37,
+            "slug": "sproutedweb-wp-support",
+            "name": "WP Support by SproutedWeb"
+        },
+        {
+            "order": 38,
+            "slug": "ad-inserter",
+            "name": "Ad Inserter &#8211; Ad Manager &amp; AdSense Ads"
+        },
+        {
+            "order": 39,
+            "slug": "flying-pages",
+            "name": "Flying Pages: Preload Pages for Faster Navigation &amp; Improved User Experience"
+        },
+        {
+            "order": 40,
+            "slug": "w3-total-cache",
+            "name": "W3 Total Cache"
+        },
+        {
+            "order": 41,
+            "slug": "preload-featured-images",
+            "name": "Preload Featured Images"
+        },
+        {
+            "order": 42,
+            "slug": "code-profiler",
+            "name": "Code Profiler &#8211; WordPress Performance Profiling and Debugging Made Easy"
+        },
+        {
+            "order": 43,
+            "slug": "async-javascript",
+            "name": "Async JavaScript"
+        },
+        {
+            "order": 44,
+            "slug": "usagedd",
+            "name": "UsageDD"
+        },
+        {
+            "order": 45,
+            "slug": "persian-elementor",
+            "name": "المنتور فارسی"
+        },
+        {
+            "order": 46,
+            "slug": "kp-fastest-tidio-chat",
+            "name": "KP Fastest Tidio Chat"
+        },
+        {
+            "order": 47,
+            "slug": "app-for-cf",
+            "name": "App for Cloudflare®"
+        },
+        {
+            "order": 48,
+            "slug": "nitropack",
+            "name": "NitroPack – Caching &amp; Speed Optimization for Core Web Vitals, Defer CSS &amp; JS, Lazy load Images and CDN"
+        },
+        {
+            "order": 49,
+            "slug": "embed-video-thumbnail",
+            "name": "Embed Video Thumbnail"
+        },
+        {
+            "order": 50,
+            "slug": "darkmysite",
+            "name": "DarkMySite &#8211; Advanced Dark Mode Plugin for WordPress"
+        },
+        {
+            "order": 51,
+            "slug": "kp-fastest-cf7-recaptcha",
+            "name": "KP Fastest Contact Form 7 Recaptcha V3"
+        },
+        {
+            "order": 52,
+            "slug": "autotweaks",
+            "name": "AutoTweaks"
+        },
+        {
+            "order": 53,
+            "slug": "wp-roids",
+            "name": "WP Roids"
+        },
+        {
+            "order": 54,
+            "slug": "debugpress",
+            "name": "DebugPress: Debugger in Popup"
+        },
+        {
+            "order": 55,
+            "slug": "plugin-disabler",
+            "name": "Plugin Disabler"
+        },
+        {
+            "order": 56,
+            "slug": "unusedcss",
+            "name": "RapidLoad &#8211; Optimize Web Vitals Automatically"
+        },
+        {
+            "order": 57,
+            "slug": "easy-fast-optimization",
+            "name": "Easy &amp; Fast Optimization"
+        },
+        {
+            "order": 58,
+            "slug": "wpo-checker",
+            "name": "WPO Checker"
+        },
+        {
+            "order": 59,
+            "slug": "specify-missing-image-dimensions",
+            "name": "Specify Missing Image Dimensions"
+        },
+        {
+            "order": 60,
+            "slug": "speed-booster-by-melotheme",
+            "name": "Speed Booster By Melotheme"
+        },
+        {
+            "order": 61,
+            "slug": "mos-speed-up",
+            "name": "Mos Speed up"
+        },
+        {
+            "order": 62,
+            "slug": "performance-checker",
+            "name": "Performance Checker"
+        },
+        {
+            "order": 63,
+            "slug": "wp-simple-thimble",
+            "name": "WP Simple Thimble"
+        },
+        {
+            "order": 64,
+            "slug": "wp-speed-booster",
+            "name": "Static Resource Cleanup by Removing Query Strings"
+        },
+        {
+            "order": 65,
+            "slug": "genesis-club-lite",
+            "name": "Genesis Club Lite"
+        },
+        {
+            "order": 66,
+            "slug": "video-embed-optimizer",
+            "name": "Video Embed Optimizer"
+        },
+        {
+            "order": 67,
+            "slug": "wp-veloce",
+            "name": "WordPress Veloce"
+        },
+        {
+            "order": 68,
+            "slug": "query-string-remover-from-static-resources",
+            "name": "Query Strings Remover"
+        },
+        {
+            "order": 69,
+            "slug": "wp-optimize-it",
+            "name": "WP Optimize It"
+        },
+        {
+            "order": 70,
+            "slug": "aac-scoring",
+            "name": "AAC Scoring"
+        },
+        {
+            "order": 71,
+            "slug": "remove-query-arg-from-media",
+            "name": "Remove Query Arg from Media URLs ?_=1"
+        },
+        {
+            "order": 72,
+            "slug": "stm-woocommerce-gallery",
+            "name": "STM WooCommerce Gallery 1.9"
+        },
+        {
+            "order": 73,
+            "slug": "next-page-caching",
+            "name": "Next Page Caching"
+        },
+        {
+            "order": 74,
+            "slug": "gtmetrix-website-performance",
+            "name": "GTmetrix website performance widget"
+        }
+    ]
+}

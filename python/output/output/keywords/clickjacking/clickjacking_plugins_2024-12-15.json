@@ -1,0 +1,91 @@
+{
+    "tag_slug": "clickjacking",
+    "tag_label": "clickjacking",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "really-simple-ssl",
+            "name": "Really Simple Security &#8211; Simple and Performant Security (formerly Really Simple SSL)"
+        },
+        {
+            "order": 2,
+            "slug": "headers-security-advanced-hsts-wp",
+            "name": "Headers Security Advanced &amp; HSTS WP"
+        },
+        {
+            "order": 3,
+            "slug": "wp-anti-clickjack",
+            "name": "WP Anti-Clickjack"
+        },
+        {
+            "order": 4,
+            "slug": "wp-letsencrypt-ssl",
+            "name": "WP Encryption &#8211; One Click Free SSL Certificate &amp; SSL / HTTPS Redirect to Force HTTPS, Security+"
+        },
+        {
+            "order": 5,
+            "slug": "spinupwp",
+            "name": "SpinupWP"
+        },
+        {
+            "order": 6,
+            "slug": "wp-security-hardening",
+            "name": "WP Hardening (discontinued)"
+        },
+        {
+            "order": 7,
+            "slug": "security-header",
+            "name": "HTTP Security Header"
+        },
+        {
+            "order": 8,
+            "slug": "no-unsafe-inline",
+            "name": "No unsafe-inline"
+        },
+        {
+            "order": 9,
+            "slug": "secure-http-headers",
+            "name": "Secure HTTP Headers"
+        },
+        {
+            "order": 10,
+            "slug": "businesspress",
+            "name": "BusinessPress"
+        },
+        {
+            "order": 11,
+            "slug": "security-headers",
+            "name": "Security Headers"
+        },
+        {
+            "order": 12,
+            "slug": "wp-htaccess-optimize",
+            "name": "WP htaccess Optimize (beta)"
+        },
+        {
+            "order": 13,
+            "slug": "wp-secure-http-headers",
+            "name": "WP Secure HTTP Headers"
+        },
+        {
+            "order": 14,
+            "slug": "wp-content-security-policy",
+            "name": "WP Content Security Plugin"
+        },
+        {
+            "order": 15,
+            "slug": "simons-framekiller",
+            "name": "Simons FrameKiller"
+        },
+        {
+            "order": 16,
+            "slug": "iframe-killer",
+            "name": "iframe Killer"
+        },
+        {
+            "order": 17,
+            "slug": "do-not-iframe-me",
+            "name": "Do Not Iframe Me"
+        }
+    ]
+}

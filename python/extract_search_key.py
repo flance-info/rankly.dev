@@ -21,16 +21,38 @@ PLUGIN_API_BASE_URL = "https://api.wordpress.org/plugins/info/1.2/"
 
 # Updated list of proxies
 proxies = [
-    "http://198.23.239.134:6540",
-    "http://207.244.217.165:6712",
-    "http://107.172.163.27:6543",
-    "http://64.137.42.112:5157",
-    "http://173.211.0.148:6641",
-    "http://161.123.152.115:6360",
-    "http://167.160.180.203:6754",
-    "http://154.36.110.199:6853",
-    "http://173.0.9.70:5653"
+    "194.169.202.177:6582",
+    "64.64.115.243:5878",
+    "91.211.87.122:7112",
+    "89.43.32.83:5911",
+    "161.123.131.225:5830",
+    "194.38.27.13:6574",
+    "185.226.205.12:5544",
+    "92.42.0.6:6496",
+    "104.222.167.103:6505",
+    "104.239.2.208:6511",
+    "104.250.204.44:6135",
+    "192.177.87.67:5913",
+    "104.253.91.66:6499",
+    "31.58.32.69:6648",
+    "45.131.94.239:6226",
+    "64.137.124.59:6271",
+    "89.43.32.144:5972",
+    "191.96.170.43:5731",
+    "136.0.88.158:5216",
+    "161.123.101.132:6758",
+    "193.178.227.81:6112",
+    "45.61.98.12:5696",
+    "92.112.168.164:6248",
+    "92.112.171.12:5980",
+    "188.208.16.233:7004",
+    "46.203.206.248:5693",
+    "84.33.210.23:5957",
+    "145.223.53.62:6596",
+    "107.173.36.181:5636",
+    "45.61.97.105:6631"
 ]
+
 
 # Create an iterator to cycle through the proxies
 proxy_cycle = itertools.cycle(proxies)
@@ -56,17 +78,23 @@ async def check_proxy(proxy: str) -> bool:
     test_url = "http://ip-api.com/json/?fields=61439"
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(test_url, proxy=proxy, timeout=5) as response:
+            async with session.get(test_url, proxy=f"http://{proxy}", timeout=10) as response:
                 if response.status == 200:
                     data = await response.json()
-                    print(f"Proxy {proxy} is working. IP: {data.get('query'), data.get('city')}")
+                    print(f"Proxy {proxy} is working. IP: {data.get('query')}, City: {data.get('city')}")
                     return True
                 else:
                     print(f"Proxy {proxy} failed with status: {response.status}")
                     return False
+    except aiohttp.ClientProxyConnectionError as e:
+        print(f"Proxy connection error for {proxy}: {e}")
+    except aiohttp.ClientHttpProxyError as e:
+        print(f"HTTP proxy error for {proxy}: {e}")
+    except asyncio.TimeoutError:
+        print(f"Timeout error for {proxy}")
     except Exception as e:
         print(f"Error checking proxy {proxy}: {e}")
-        return False
+    return False
 
 async def get_working_proxy() -> str:
     """Get a random working proxy from the list."""
@@ -96,25 +124,22 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
     async with sem:  # Limit concurrent requests
         try:
             # Reduce delay between requests
-            await asyncio.sleep(0.5)  # Try with 0.5 seconds delay
+            await asyncio.sleep(1)  # Try with 0.5 seconds delay
             
             # Get a working proxy
             proxy = await get_working_proxy()
-            print(f"Using proxy {proxy} for page {page} of tag '{tag_label}'")
             
-            async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=proxy) as response:
+            async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=f"http://{proxy}", timeout=10) as response:
                 if response.status == 200:
                     data = await response.json()
-                    print(f"Fetched page {page} for tag '{tag_label}' using proxy {proxy}")
                     return page, data.get('plugins', [])
                 elif response.status == 429:
                     print(f"Rate limit hit for page {page} tag '{tag_label}', retrying after delay...")
-                    await asyncio.sleep(2)  # Wait a full minute before retry
+                    await asyncio.sleep(10)  # Wait a full minute before retry
                     # Retry the request
-                    async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=proxy) as retry_response:
+                    async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=f"http://{proxy}", timeout=10) as retry_response:
                         if retry_response.status == 200:
                             data = await retry_response.json()
-                            print(f"Successfully retried page {page} for tag '{tag_label}' using proxy {proxy}")
                             return page, data.get('plugins', [])
                         else:
                             print(f"Failed retry for page {page} tag '{tag_label}': {retry_response.status}")
@@ -122,9 +147,15 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
                 else:
                     print(f"Failed to fetch page {page} for tag '{tag_label}': {response.status}")
                     return page, []
+        except aiohttp.ClientProxyConnectionError as e:
+            print(f"Proxy connection error for {proxy}: {e}")
+        except aiohttp.ClientHttpProxyError as e:
+            print(f"HTTP proxy error for {proxy}: {e}")
+        except asyncio.TimeoutError:
+            print(f"Timeout error for {proxy}")
         except Exception as e:
             print(f"Error fetching page {page} for tag '{tag_label}': {e}")
-            return page, []
+        return page, []
 
 async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, tag_slug: str, sem: Semaphore) -> List[Dict]:
     """Search for plugins using the WordPress API by tag label asynchronously."""
@@ -148,7 +179,7 @@ async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, 
             # Set a timeout of 10 seconds for the request
             timeout = aiohttp.ClientTimeout(total=10)
             
-            async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=proxy, timeout=timeout) as response:
+            async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=f"http://{proxy}", timeout=timeout) as response:
                 if response.status != 200:
                     print(f"Failed to fetch initial data for tag '{tag_label}' using proxy {proxy}")
                     return []
@@ -179,9 +210,15 @@ async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, 
                 
                 return all_plugins
                 
+    except aiohttp.ClientProxyConnectionError as e:
+        print(f"Proxy connection error for {proxy}: {e}")
+    except aiohttp.ClientHttpProxyError as e:
+        print(f"HTTP proxy error for {proxy}: {e}")
+    except asyncio.TimeoutError:
+        print(f"Timeout error for {proxy}")
     except Exception as e:
         print(f"Error in search_plugins_by_tag for '{tag_label}': {e}")
-        return []
+    return []
 
 async def process_single_tag(session: aiohttp.ClientSession, tag: Dict, request_sem: Semaphore, tag_sem: Semaphore, tag_index: int, total_tags: int):
     """Process a single tag."""
@@ -253,7 +290,7 @@ if __name__ == "__main__":
     tags = load_tags(tags_file)
 
     
-    test_tags = tags[:2000]
+    test_tags = tags[:4]
     
     # Run the async process
     asyncio.run(process_tags(test_tags)) 

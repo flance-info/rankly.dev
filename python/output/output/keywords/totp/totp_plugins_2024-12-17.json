@@ -1,0 +1,101 @@
+{
+    "tag_slug": "totp",
+    "tag_label": "totp",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "wordfence",
+            "name": "Wordfence Security &#8211; Firewall, Malware Scan, and Login Security"
+        },
+        {
+            "order": 2,
+            "slug": "two-factor-authentication",
+            "name": "Two Factor Authentication"
+        },
+        {
+            "order": 3,
+            "slug": "two-factor",
+            "name": "Two-Factor"
+        },
+        {
+            "order": 4,
+            "slug": "wordfence-login-security",
+            "name": "Wordfence Login Security"
+        },
+        {
+            "order": 5,
+            "slug": "miniorange-2-factor-authentication",
+            "name": "Google Authenticator &#8211; WordPress 2FA, OTP SMS and Email"
+        },
+        {
+            "order": 6,
+            "slug": "change-wp-admin-login",
+            "name": "All In One Login — WordPress Login Security Plugin to Protect and Customize WP Admin"
+        },
+        {
+            "order": 7,
+            "slug": "rublon",
+            "name": "Rublon Multi-Factor Authentication (MFA)"
+        },
+        {
+            "order": 8,
+            "slug": "login-with-ajax",
+            "name": "Login With Ajax &#8211; Fast Logins, 2FA, Redirects"
+        },
+        {
+            "order": 9,
+            "slug": "miniorange-login-security",
+            "name": "Two Factor Authentication (2FA , MFA, OTP SMS and Email)"
+        },
+        {
+            "order": 10,
+            "slug": "better-wp-security",
+            "name": "Solid Security – Password, Two Factor Authentication, and Brute Force Protection"
+        },
+        {
+            "order": 11,
+            "slug": "vincss-fido2-login",
+            "name": "VinCSS FIDO2 Login"
+        },
+        {
+            "order": 12,
+            "slug": "notakey-two-factor-extension",
+            "name": "Notakey Provider for Two-Factor"
+        },
+        {
+            "order": 13,
+            "slug": "wp-otp",
+            "name": "WP-OTP"
+        },
+        {
+            "order": 14,
+            "slug": "authentiq",
+            "name": "Authentiq"
+        },
+        {
+            "order": 15,
+            "slug": "dovedi",
+            "name": "Dovedi"
+        },
+        {
+            "order": 16,
+            "slug": "two-factor-auth",
+            "name": "Two Factor Auth"
+        },
+        {
+            "order": 17,
+            "slug": "token2-hardware-tokens",
+            "name": "Token2 Hardware Tokens"
+        },
+        {
+            "order": 18,
+            "slug": "token2-two-factor-authentication",
+            "name": "Token2 Two Factor Authentication"
+        },
+        {
+            "order": 19,
+            "slug": "wp-qr-code-login",
+            "name": "Unlock Digital (No Passwords)"
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "tag_slug": "fail2ban",
+    "tag_label": "fail2ban",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "wp-fail2ban",
+            "name": "WP fail2ban &#8211; Advanced Security"
+        },
+        {
+            "order": 2,
+            "slug": "wpf2b-addon-blocklist",
+            "name": "WP fail2ban Blocklist"
+        },
+        {
+            "order": 3,
+            "slug": "wp-fail2ban-redux",
+            "name": "WP Fail2Ban Redux"
+        },
+        {
+            "order": 4,
+            "slug": "stop-user-enumeration",
+            "name": "Stop User Enumeration"
+        },
+        {
+            "order": 5,
+            "slug": "security-malware-firewall",
+            "name": "Security &amp; Malware scan by CleanTalk"
+        },
+        {
+            "order": 6,
+            "slug": "wp-fail2ban-addon-contact-form-7",
+            "name": "WP fail2ban Add-on for Contact Form 7"
+        },
+        {
+            "order": 7,
+            "slug": "wp-fail2ban-addon-gravity-forms",
+            "name": "WP fail2ban Add-on for Gravity Forms"
+        },
+        {
+            "order": 8,
+            "slug": "ninjafirewall",
+            "name": "NinjaFirewall (WP Edition) &#8211; Advanced Security Plugin and Firewall"
+        },
+        {
+            "order": 9,
+            "slug": "fail2wp",
+            "name": "Fail2WP"
+        },
+        {
+            "order": 10,
+            "slug": "apocalypse-meow",
+            "name": "Apocalypse Meow"
+        },
+        {
+            "order": 11,
+            "slug": "reportattacks",
+            "name": "WordPress Report Brute Force Attacks and Login Protection ReportAttacks Plugins"
+        },
+        {
+            "order": 12,
+            "slug": "ejabberd-account-tools",
+            "name": "Ejabberd Account Tools"
+        },
+        {
+            "order": 13,
+            "slug": "aati-wp-finetuning",
+            "name": "AATI WP Finetuning"
+        },
+        {
+            "order": 14,
+            "slug": "businesspress",
+            "name": "BusinessPress"
+        },
+        {
+            "order": 15,
+            "slug": "yalw",
+            "name": "YALW"
+        },
+        {
+            "order": 16,
+            "slug": "gravity-forms-zero-spam",
+            "name": "Gravity Forms Zero Spam"
+        },
+        {
+            "order": 17,
+            "slug": "magic-robots-txt",
+            "name": "Magic robots.txt"
+        },
+        {
+            "order": 18,
+            "slug": "wp-fail2ban-logging",
+            "name": "WordPress Fail2Ban"
+        },
+        {
+            "order": 19,
+            "slug": "authentication-and-xmlrpc-log-writer",
+            "name": "Authentication and xmlrpc log writer"
+        },
+        {
+            "order": 20,
+            "slug": "http11-403-forbidden-header-on-a-failed-login",
+            "name": "HTTP/1.1 403 Forbidden header on a failed login"
+        },
+        {
+            "order": 21,
+            "slug": "ip-geo-block",
+            "name": "IP Geo Block"
+        },
+        {
+            "order": 22,
+            "slug": "audit-trail",
+            "name": "Audit Trail"
+        },
+        {
+            "order": 23,
+            "slug": "awp-antivirus",
+            "name": "AWP antivirus"
+        },
+        {
+            "order": 24,
+            "slug": "frontend-debugger",
+            "name": "Frontend Debugger"
+        }
+    ]
+}

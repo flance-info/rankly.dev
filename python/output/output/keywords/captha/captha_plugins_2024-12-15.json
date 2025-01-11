@@ -1,0 +1,36 @@
+{
+    "tag_slug": "captha",
+    "tag_label": "captha",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "google-captcha",
+            "name": "reCaptcha by BestWebSoft"
+        },
+        {
+            "order": 2,
+            "slug": "image-captcha",
+            "name": "Image Captcha"
+        },
+        {
+            "order": 3,
+            "slug": "cp-contact-form-with-paypal",
+            "name": "CP Contact Form with PayPal"
+        },
+        {
+            "order": 4,
+            "slug": "wp-spammer",
+            "name": "WP Spammer"
+        },
+        {
+            "order": 5,
+            "slug": "themepaste-secure-admin",
+            "name": "Themepaste Secure Admin"
+        },
+        {
+            "order": 6,
+            "slug": "wp-vm-testimonials-plus",
+            "name": "VM Testimonials Plus"
+        }
+    ]
+}

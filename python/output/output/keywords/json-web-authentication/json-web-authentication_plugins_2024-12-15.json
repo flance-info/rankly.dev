@@ -1,0 +1,506 @@
+{
+    "tag_slug": "json-web-authentication",
+    "tag_label": "json web authentication",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "wordfence",
+            "name": "Wordfence Security &#8211; Firewall, Malware Scan, and Login Security"
+        },
+        {
+            "order": 2,
+            "slug": "jwt-authentication-for-wp-rest-api",
+            "name": "JWT Authentication for WP REST API"
+        },
+        {
+            "order": 3,
+            "slug": "litespeed-cache",
+            "name": "LiteSpeed Cache"
+        },
+        {
+            "order": 4,
+            "slug": "wp-rest-api-authentication",
+            "name": "WordPress REST API Authentication"
+        },
+        {
+            "order": 5,
+            "slug": "jwt-auth",
+            "name": "JWT Auth &#8211; WordPress JSON Web Token Authentication"
+        },
+        {
+            "order": 6,
+            "slug": "all-in-one-wp-security-and-firewall",
+            "name": "All-In-One Security (AIOS) – Security and Firewall"
+        },
+        {
+            "order": 7,
+            "slug": "jetpack",
+            "name": "Jetpack &#8211; WP Security, Backup, Speed, &amp; Growth"
+        },
+        {
+            "order": 8,
+            "slug": "wpdatatables",
+            "name": "wpDataTables &#8211; WordPress Data Table, Dynamic Tables &amp; Table Charts Plugin"
+        },
+        {
+            "order": 9,
+            "slug": "two-factor-authentication",
+            "name": "Two Factor Authentication"
+        },
+        {
+            "order": 10,
+            "slug": "w3-total-cache",
+            "name": "W3 Total Cache"
+        },
+        {
+            "order": 11,
+            "slug": "json-api-user",
+            "name": "JSON API User"
+        },
+        {
+            "order": 12,
+            "slug": "query-monitor",
+            "name": "Query Monitor &#8211; The developer tools panel for WordPress"
+        },
+        {
+            "order": 13,
+            "slug": "calculated-fields-form",
+            "name": "Calculated Fields Form"
+        },
+        {
+            "order": 14,
+            "slug": "wp-cloudflare-page-cache",
+            "name": "Super Page Cache"
+        },
+        {
+            "order": 15,
+            "slug": "wp-staging",
+            "name": "WP STAGING WordPress Backup Plugin &#8211; Migration Backup Restore"
+        },
+        {
+            "order": 16,
+            "slug": "wpvulnerability",
+            "name": "WPVulnerability"
+        },
+        {
+            "order": 17,
+            "slug": "oauth2-provider",
+            "name": "WP OAuth Server (OAuth Authentication)"
+        },
+        {
+            "order": 18,
+            "slug": "hide-my-wp",
+            "name": "Hide My WP Ghost &#8211; Security &amp; Firewall"
+        },
+        {
+            "order": 19,
+            "slug": "wp-hide-security-enhancer",
+            "name": "WP Hide &amp; Security Enhancer"
+        },
+        {
+            "order": 20,
+            "slug": "simply-static",
+            "name": "Simply Static &#8211; The WordPress Static Site Generator"
+        },
+        {
+            "order": 21,
+            "slug": "funnelkit-stripe-woo-payment-gateway",
+            "name": "Stripe Payment Gateway for WooCommerce"
+        },
+        {
+            "order": 22,
+            "slug": "sg-cachepress",
+            "name": "Speed Optimizer &#8211; The All-In-One Performance-Boosting Plugin"
+        },
+        {
+            "order": 23,
+            "slug": "custom-api-for-wp",
+            "name": "Custom API for WP"
+        },
+        {
+            "order": 24,
+            "slug": "miniorange-oauth-20-server",
+            "name": "WP OAuth Server ( Login with WordPress )"
+        },
+        {
+            "order": 25,
+            "slug": "indieauth",
+            "name": "IndieAuth"
+        },
+        {
+            "order": 26,
+            "slug": "w4os-opensimulator-web-interface",
+            "name": "w4os &#8211; OpenSimulator Web Interface"
+        },
+        {
+            "order": 27,
+            "slug": "login-register-using-jwt",
+            "name": "WP Login and Register using JWT"
+        },
+        {
+            "order": 28,
+            "slug": "next-active-directory-integration",
+            "name": "Next Active Directory Integration"
+        },
+        {
+            "order": 29,
+            "slug": "wpo365-msgraphmailer",
+            "name": "WPO365 | MICROSOFT 365 GRAPH MAILER"
+        },
+        {
+            "order": 30,
+            "slug": "beautiful-and-responsive-cookie-consent",
+            "name": "Beautiful Cookie Consent Banner"
+        },
+        {
+            "order": 31,
+            "slug": "gsheetconnector-formidable-forms",
+            "name": "Formidable Forms Google Sheet Connector"
+        },
+        {
+            "order": 32,
+            "slug": "integrate-google-drive",
+            "name": "Integrate Google Drive"
+        },
+        {
+            "order": 33,
+            "slug": "micropub",
+            "name": "Micropub"
+        },
+        {
+            "order": 34,
+            "slug": "bitfire",
+            "name": "BitFire Security &#8211; Firewall, WAF, Bot/Spam Blocker, Login Security"
+        },
+        {
+            "order": 35,
+            "slug": "convertkit",
+            "name": "Kit (formerly ConvertKit) &#8211; Email Newsletter, Email Marketing, Subscribers and Landing Pages"
+        },
+        {
+            "order": 36,
+            "slug": "rest-api-guard",
+            "name": "REST API Guard"
+        },
+        {
+            "order": 37,
+            "slug": "integration-cds",
+            "name": "Dataverse Integration"
+        },
+        {
+            "order": 38,
+            "slug": "bayarcash-wc",
+            "name": "Bayarcash WooCommerce"
+        },
+        {
+            "order": 39,
+            "slug": "login-with-phone-number",
+            "name": "Login with phone number"
+        },
+        {
+            "order": 40,
+            "slug": "o365-user-authentication",
+            "name": "Office 365 User Authentication for WordPress"
+        },
+        {
+            "order": 41,
+            "slug": "wpmastertoolkit",
+            "name": "WPMasterToolKit (WPMTK) &#8211; All in one plugin"
+        },
+        {
+            "order": 42,
+            "slug": "powerpress",
+            "name": "PowerPress Podcasting plugin by Blubrry"
+        },
+        {
+            "order": 43,
+            "slug": "wonder-cache",
+            "name": "Wonder Cache"
+        },
+        {
+            "order": 44,
+            "slug": "pressforward",
+            "name": "PressForward"
+        },
+        {
+            "order": 45,
+            "slug": "my-website-is-online-uptime-monitoring",
+            "name": "Uptime Monitoring for WordPress &#8211; My Website is Online"
+        },
+        {
+            "order": 46,
+            "slug": "flexmls-idx",
+            "name": "Flexmls® IDX Plugin"
+        },
+        {
+            "order": 47,
+            "slug": "astra-sites",
+            "name": "Starter Templates — Elementor, WordPress &amp; Beaver Builder Templates"
+        },
+        {
+            "order": 48,
+            "slug": "visualizer",
+            "name": "Visualizer: Tables and Charts Manager for WordPress"
+        },
+        {
+            "order": 49,
+            "slug": "awareid-wc-integration",
+            "name": "AwareID &#8211; Biometric Identity Authentication"
+        },
+        {
+            "order": 50,
+            "slug": "custom-fields-for-jwt-authentication-for-wp-rest-api",
+            "name": "User Data Fields For JWT Authentication"
+        },
+        {
+            "order": 51,
+            "slug": "well-handled",
+            "name": "Well-Handled Email Templates"
+        },
+        {
+            "order": 52,
+            "slug": "qubely",
+            "name": "Qubely &#8211; Advanced Gutenberg Blocks"
+        },
+        {
+            "order": 53,
+            "slug": "worpit-admin-dashboard-plugin",
+            "name": "iControlWP &#8211; Multiple WordPress Site Manager"
+        },
+        {
+            "order": 54,
+            "slug": "o365-wp-restrict",
+            "name": "Intranet and Extranet with O365 Login"
+        },
+        {
+            "order": 55,
+            "slug": "wise-chat",
+            "name": "Wise Chat"
+        },
+        {
+            "order": 56,
+            "slug": "wp-layouts",
+            "name": "WP Layouts"
+        },
+        {
+            "order": 57,
+            "slug": "google-apps-login",
+            "name": "Login for Google Apps"
+        },
+        {
+            "order": 58,
+            "slug": "beyondcart",
+            "name": "BeyondCart Connector"
+        },
+        {
+            "order": 59,
+            "slug": "rest-api-authentication-and-security",
+            "name": "REST API Authentication and Security"
+        },
+        {
+            "order": 60,
+            "slug": "listdom",
+            "name": "Listdom – Business Directory and Classified Ads Listings WordPress Plugin"
+        },
+        {
+            "order": 61,
+            "slug": "rest-xmlrpc-data-checker",
+            "name": "REST XML-RPC Data Checker"
+        },
+        {
+            "order": 62,
+            "slug": "backup",
+            "name": "JetBackup &#8211; WP Backup, Migrate &amp; Restore"
+        },
+        {
+            "order": 63,
+            "slug": "conveythis-translate",
+            "name": "Translate WordPress with ConveyThis"
+        },
+        {
+            "order": 64,
+            "slug": "sucuri-scanner",
+            "name": "Sucuri Security &#8211; Auditing, Malware Scanner and Security Hardening"
+        },
+        {
+            "order": 65,
+            "slug": "cardanopress",
+            "name": "CardanoPress &#8211; Cardano Blockchain Integration for WordPress"
+        },
+        {
+            "order": 66,
+            "slug": "conotoxia-payment-gateway",
+            "name": "Conotoxia Pay Payment Gateway"
+        },
+        {
+            "order": 67,
+            "slug": "ah-jwt-auth",
+            "name": "AH JWT Auth"
+        },
+        {
+            "order": 68,
+            "slug": "simple-jwt-auth",
+            "name": "Simple JWT Auth"
+        },
+        {
+            "order": 69,
+            "slug": "raopress-chat-firebase-chat-for-visitors",
+            "name": "Raopress Chat &#8211; Firebase Chat for Visitors"
+        },
+        {
+            "order": 70,
+            "slug": "wp-linked-data",
+            "name": "wp-linked-data"
+        },
+        {
+            "order": 71,
+            "slug": "limbo",
+            "name": "Limbo"
+        },
+        {
+            "order": 72,
+            "slug": "wpf2b-addon-blocklist",
+            "name": "WP fail2ban Blocklist"
+        },
+        {
+            "order": 73,
+            "slug": "mythic-wp-management",
+            "name": "Mythic WP Management"
+        },
+        {
+            "order": 74,
+            "slug": "newstatpress",
+            "name": "NewStatPress"
+        },
+        {
+            "order": 75,
+            "slug": "stionic-users",
+            "name": "Stionic Users &#8211; WordPress Users API"
+        },
+        {
+            "order": 76,
+            "slug": "code-profiler",
+            "name": "Code Profiler &#8211; WordPress Performance Profiling and Debugging Made Easy"
+        },
+        {
+            "order": 77,
+            "slug": "make-me-static",
+            "name": "Make Me Static, Static Site Generator, Git, Pages and Live Stats"
+        },
+        {
+            "order": 78,
+            "slug": "gs-jwt-auth-and-otp-varification",
+            "name": "GS JWT Authentication for WP REST API"
+        },
+        {
+            "order": 79,
+            "slug": "anrghg",
+            "name": "A.N.R.GHG Publishing Toolkit"
+        },
+        {
+            "order": 80,
+            "slug": "rapid-secure-login",
+            "name": "RapID Secure Login"
+        },
+        {
+            "order": 81,
+            "slug": "google-calendar-events",
+            "name": "Simple Calendar &#8211; Google Calendar Plugin"
+        },
+        {
+            "order": 82,
+            "slug": "keyring-social-importers",
+            "name": "Keyring Social Importers"
+        },
+        {
+            "order": 83,
+            "slug": "eliot-pro",
+            "name": "ElIoT Pro Passwordless Login"
+        },
+        {
+            "order": 84,
+            "slug": "cyberus-key",
+            "name": "Cyberus Key"
+        },
+        {
+            "order": 85,
+            "slug": "apppresser",
+            "name": "AppPresser &#8211; Mobile App Framework"
+        },
+        {
+            "order": 86,
+            "slug": "enhanced-e-commerce-for-woocommerce-store",
+            "name": "Google Analytics 4 (GA4), Google Ads, Meta Pixel, GTM &amp; Multiple Pixels for Woocommerce &amp; WordPress"
+        },
+        {
+            "order": 87,
+            "slug": "wp-marketing-automations",
+            "name": "Recover WooCommerce Cart Abandonment, Newsletter, Email Marketing, Marketing Automation By FunnelKit"
+        },
+        {
+            "order": 88,
+            "slug": "easify-server-woocommerce",
+            "name": "Easify Server WooCommerce"
+        },
+        {
+            "order": 89,
+            "slug": "reverse-proxy-auth-widget",
+            "name": "Datawiza Proxy Auth Plugin &#8211; SSO"
+        },
+        {
+            "order": 90,
+            "slug": "wp-rest-headless",
+            "name": "WP Headless CMS Framework"
+        },
+        {
+            "order": 91,
+            "slug": "dynamaker-cad-configurator-integration",
+            "name": "DynaMaker CAD Configurator Integration"
+        },
+        {
+            "order": 92,
+            "slug": "gp-google-login",
+            "name": "GP Google login"
+        },
+        {
+            "order": 93,
+            "slug": "fusion-web-app",
+            "name": "Fusion Web App"
+        },
+        {
+            "order": 94,
+            "slug": "disabling-user-enumeration",
+            "name": "Disable User Enumeration"
+        },
+        {
+            "order": 95,
+            "slug": "jwt-ssolo",
+            "name": "JWT SSOLO plugin"
+        },
+        {
+            "order": 96,
+            "slug": "tinywebdb-api",
+            "name": "TinyWebDB API"
+        },
+        {
+            "order": 97,
+            "slug": "fireauth",
+            "name": "Fireauth &#8211; Enable Firebase Authentication"
+        },
+        {
+            "order": 98,
+            "slug": "choice-payment-gateway-for-woocommerce",
+            "name": "Choice Payment Gateway for WooCommerce"
+        },
+        {
+            "order": 99,
+            "slug": "unofficial-frill-sso",
+            "name": "Unofficial &#8211; Frill.co SSO"
+        },
+        {
+            "order": 100,
+            "slug": "ip-geo-block",
+            "name": "IP Geo Block"
+        }
+    ]
+}

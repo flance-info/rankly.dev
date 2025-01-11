@@ -44,8 +44,8 @@ docker-compose down
 
 echo "🗑️ Cleaning up directories..."
 # Uncomment if you want to remove node_modules
-rm -rf node_modules/
-rm -rf public/build/
+# rm -rf node_modules/
+# rm -rf public/build/
 
 echo "🏗️ Rebuilding containers without cache..."
 docker-compose build --no-cache
@@ -53,13 +53,7 @@ docker-compose build --no-cache
 echo "📦 Starting node service..."
 docker-compose up -d node
 
-echo "⚙️ Installing npm dependencies..."
-docker-compose exec node npm install
-
-echo "🔨 Building assets for production..."
-docker-compose exec node npm run build
-
-
+docker 
 echo "🔍 Verifying contents of build directory in node container..."
 docker-compose exec node ls -la /app/public/build/
 

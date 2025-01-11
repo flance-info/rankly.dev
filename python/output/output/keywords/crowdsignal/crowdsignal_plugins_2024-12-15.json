@@ -1,0 +1,36 @@
+{
+    "tag_slug": "crowdsignal",
+    "tag_label": "crowdsignal",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "crowdsignal-forms",
+            "name": "Crowdsignal Forms"
+        },
+        {
+            "order": 2,
+            "slug": "polldaddy",
+            "name": "Crowdsignal Dashboard &#8211; Polls, Surveys &amp; more"
+        },
+        {
+            "order": 3,
+            "slug": "mailpoet",
+            "name": "MailPoet &#8211; Newsletters, Email Marketing, and Automation"
+        },
+        {
+            "order": 4,
+            "slug": "yeemail",
+            "name": "Email Templates Customizer for WordPress &#8211; Drag And Drop Email Templates Builder &#8211; YeeMail"
+        },
+        {
+            "order": 5,
+            "slug": "embed-consent",
+            "name": "Embed Consent"
+        },
+        {
+            "order": 6,
+            "slug": "embed-privacy",
+            "name": "Embed Privacy"
+        }
+    ]
+}

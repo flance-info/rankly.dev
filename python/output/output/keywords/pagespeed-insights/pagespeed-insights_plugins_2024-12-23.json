@@ -1,0 +1,506 @@
+{
+    "tag_slug": "pagespeed-insights",
+    "tag_label": "pagespeed insights",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "google-site-kit",
+            "name": "Site Kit by Google &#8211; Analytics, Search Console, AdSense, Speed"
+        },
+        {
+            "order": 2,
+            "slug": "w3-total-cache",
+            "name": "W3 Total Cache"
+        },
+        {
+            "order": 3,
+            "slug": "google-pagespeed-insights",
+            "name": "Insights from Google PageSpeed"
+        },
+        {
+            "order": 4,
+            "slug": "imagify",
+            "name": "Imagify – Optimize Images &amp; Convert WebP &amp; AVIF | Compress Images Easily"
+        },
+        {
+            "order": 5,
+            "slug": "wp-optimize",
+            "name": "WP-Optimize – Cache, Compress images, Minify &amp; Clean database to boost page speed &amp; performance"
+        },
+        {
+            "order": 6,
+            "slug": "google-analytics-for-wordpress",
+            "name": "MonsterInsights &#8211; Google Analytics Dashboard for WordPress (Website Stats Made Easy)"
+        },
+        {
+            "order": 7,
+            "slug": "psn-pagespeed-ninja",
+            "name": "PageSpeed Ninja &#8211; Cache, Minify, Defer CSS JavaScript, Critical CSS, Optimize Images, Convert WebP"
+        },
+        {
+            "order": 8,
+            "slug": "wp-smushit",
+            "name": "Smush Image Optimization – Optimize Images | Compress &amp; Lazy Load Images | Convert WebP | Image CDN"
+        },
+        {
+            "order": 9,
+            "slug": "autoptimize",
+            "name": "Autoptimize"
+        },
+        {
+            "order": 10,
+            "slug": "rocket-lazy-load",
+            "name": "LazyLoad Plugin – Lazy Load Images, Videos, and Iframes"
+        },
+        {
+            "order": 11,
+            "slug": "hummingbird-performance",
+            "name": "Hummingbird Performance &#8211; Cache &amp; Page Speed Optimization for Core Web Vitals | Critical CSS | Minify CSS | Defer CSS Javascript | CDN"
+        },
+        {
+            "order": 12,
+            "slug": "host-analyticsjs-local",
+            "name": "CAOS | Host Google Analytics Locally"
+        },
+        {
+            "order": 13,
+            "slug": "enable-svg-webp-ico-upload",
+            "name": "Enable SVG, WebP, and ICO Upload"
+        },
+        {
+            "order": 14,
+            "slug": "phastpress",
+            "name": "PhastPress"
+        },
+        {
+            "order": 15,
+            "slug": "adminify",
+            "name": "WP Adminify &#8211; Custom WordPress Dashboard, Login and Admin Customizer"
+        },
+        {
+            "order": 16,
+            "slug": "helper-lite-for-pagespeed",
+            "name": "Helper Lite for PageSpeed"
+        },
+        {
+            "order": 17,
+            "slug": "preload-lcp-image",
+            "name": "Preload LCP Image"
+        },
+        {
+            "order": 18,
+            "slug": "leverage-browser-caching",
+            "name": "Leverage Browser Caching"
+        },
+        {
+            "order": 19,
+            "slug": "sg-cachepress",
+            "name": "Speed Optimizer &#8211; The All-In-One Performance-Boosting Plugin"
+        },
+        {
+            "order": 20,
+            "slug": "searchpro",
+            "name": "BerqWP &#8211; Automated All-In-One PageSpeed Optimization for Core Web Vitals, Cache, CDN, Images, CSS, and JavaScript"
+        },
+        {
+            "order": 21,
+            "slug": "wp-asset-clean-up",
+            "name": "Asset CleanUp: Page Speed Booster"
+        },
+        {
+            "order": 22,
+            "slug": "speedguard",
+            "name": "Site Speed Test &#8211; SpeedGuard"
+        },
+        {
+            "order": 23,
+            "slug": "jch-optimize",
+            "name": "JCH Optimize"
+        },
+        {
+            "order": 24,
+            "slug": "wpspeed",
+            "name": "WPSpeed"
+        },
+        {
+            "order": 25,
+            "slug": "clearfy",
+            "name": "Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer"
+        },
+        {
+            "order": 26,
+            "slug": "fastpixel-website-accelerator",
+            "name": "FastPixel Caching &#8211; WP Optimization made easy"
+        },
+        {
+            "order": 27,
+            "slug": "gonzales",
+            "name": "WordPress Assets manager, dequeue scripts, dequeue styles"
+        },
+        {
+            "order": 28,
+            "slug": "nitropack",
+            "name": "NitroPack – Caching &amp; Speed Optimization for Core Web Vitals, Defer CSS &amp; JS, Lazy load Images and CDN"
+        },
+        {
+            "order": 29,
+            "slug": "shortpixel-image-optimiser",
+            "name": "ShortPixel Image Optimizer &#8211; Optimize Images, Convert WebP &amp; AVIF"
+        },
+        {
+            "order": 30,
+            "slug": "simple-google-analytics",
+            "name": "Local Google Analytics for WordPress &#8211; caches external requests"
+        },
+        {
+            "order": 31,
+            "slug": "elementor",
+            "name": "Elementor Website Builder &#8211; More Than Just a Page Builder"
+        },
+        {
+            "order": 32,
+            "slug": "fast-velocity-minify",
+            "name": "Fast Velocity Minify"
+        },
+        {
+            "order": 33,
+            "slug": "accessibility-plus",
+            "name": "AccessibilityPlus: Boost Accessibility &amp; SEO Score for Lighthouse"
+        },
+        {
+            "order": 34,
+            "slug": "inline-image-base64",
+            "name": "Inline Image Base64 &#8211; inline specific images into the HTML"
+        },
+        {
+            "order": 35,
+            "slug": "wpvivid-imgoptim",
+            "name": "Compress, Resize &amp; Lazy Load Images &#8211; WPvivid Image Optimization"
+        },
+        {
+            "order": 36,
+            "slug": "currency-converter-widget-pro",
+            "name": "Currency Converter Widget ⚡ PRO"
+        },
+        {
+            "order": 37,
+            "slug": "itman-page-speed-insights",
+            "name": "Page Speed Insights"
+        },
+        {
+            "order": 38,
+            "slug": "gumlet",
+            "name": "Gumlet &#8211; Image optimization with Resize, Compression, Lazy load, Caching &amp; CDN delivery"
+        },
+        {
+            "order": 39,
+            "slug": "preload-featured-images",
+            "name": "Preload Featured Images"
+        },
+        {
+            "order": 40,
+            "slug": "shortpixel-adaptive-images",
+            "name": "ShortPixel Adaptive Images &#8211; WebP, AVIF, CDN, Image Optimization"
+        },
+        {
+            "order": 41,
+            "slug": "seo-booster",
+            "name": "SEO Booster"
+        },
+        {
+            "order": 42,
+            "slug": "rabbit-loader",
+            "name": "RabbitLoader – Website Speed Optimization for improving Core Web Vital metrics with Cache, Image Optimization, and more"
+        },
+        {
+            "order": 43,
+            "slug": "wp-plugin-manager",
+            "name": "WP Plugin Manager &#8211; Deactivate plugins per page"
+        },
+        {
+            "order": 44,
+            "slug": "rocketcdn",
+            "name": "RocketCDN &#8211; WordPress CDN Plugin"
+        },
+        {
+            "order": 45,
+            "slug": "relentlosoftware",
+            "name": "StyleAI"
+        },
+        {
+            "order": 46,
+            "slug": "unusedcss",
+            "name": "RapidLoad &#8211; Optimize Web Vitals Automatically"
+        },
+        {
+            "order": 47,
+            "slug": "simple-webp-images",
+            "name": "Simple Webp Images"
+        },
+        {
+            "order": 48,
+            "slug": "lazyload-preload-and-more",
+            "name": "Lazyload, Preload, and More!"
+        },
+        {
+            "order": 49,
+            "slug": "spam-master",
+            "name": "Spam Master"
+        },
+        {
+            "order": 50,
+            "slug": "lazy-load-for-videos",
+            "name": "Lazy Load for Videos"
+        },
+        {
+            "order": 51,
+            "slug": "animate-on-scroll",
+            "name": "Animate on Scroll"
+        },
+        {
+            "order": 52,
+            "slug": "optimize-more",
+            "name": "Optimize More!"
+        },
+        {
+            "order": 53,
+            "slug": "enhance-wp-rocket-loadcss",
+            "name": "WP Rocket | Simple LoadCSS Preloader"
+        },
+        {
+            "order": 54,
+            "slug": "optipic",
+            "name": "OptiPic images optimization"
+        },
+        {
+            "order": 55,
+            "slug": "hitsteps-visitor-manager",
+            "name": "Hitsteps Web Analytics"
+        },
+        {
+            "order": 56,
+            "slug": "page-speed-score-on-dashboard",
+            "name": "PageSpeed Dashboard"
+        },
+        {
+            "order": 57,
+            "slug": "lifterlms",
+            "name": "LifterLMS &#8211; WP LMS for eLearning, Online Courses, &amp; Quizzes"
+        },
+        {
+            "order": 58,
+            "slug": "speed-checker",
+            "name": "Speed-Checker"
+        },
+        {
+            "order": 59,
+            "slug": "shareaholic",
+            "name": "Professional Social Sharing Buttons, Icons &amp; Related Posts &#8211; Shareaholic"
+        },
+        {
+            "order": 60,
+            "slug": "toast-responsive-menu",
+            "name": "Toast Mobile Menu &#8211; PageSpeed Insights Friendly"
+        },
+        {
+            "order": 61,
+            "slug": "wpturbo",
+            "name": "WPTurbo -WordPress性能优化插件"
+        },
+        {
+            "order": 62,
+            "slug": "specify-missing-image-dimensions",
+            "name": "Specify Missing Image Dimensions"
+        },
+        {
+            "order": 63,
+            "slug": "squirrly-seo",
+            "name": "SEO Plugin by Squirrly SEO"
+        },
+        {
+            "order": 64,
+            "slug": "performance-monitor",
+            "name": "Performance Monitor"
+        },
+        {
+            "order": 65,
+            "slug": "admin-bar-tools",
+            "name": "Admin Bar Tools"
+        },
+        {
+            "order": 66,
+            "slug": "optimize-more-images",
+            "name": "Optimize More! &#8211; Images"
+        },
+        {
+            "order": 67,
+            "slug": "child-theme-configurator",
+            "name": "Child Theme Configurator"
+        },
+        {
+            "order": 68,
+            "slug": "jetpack-boost",
+            "name": "Jetpack Boost &#8211; Website Speed, Performance and Critical CSS"
+        },
+        {
+            "order": 69,
+            "slug": "web-font-display",
+            "name": "Web Font Display"
+        },
+        {
+            "order": 70,
+            "slug": "performance-for-everyone",
+            "name": "WP-performance for everyone &#8211; boost page speed &amp; performance"
+        },
+        {
+            "order": 71,
+            "slug": "image-optimizer-pro",
+            "name": "Image Optimizer PRO &#8211; Optimize Images, Convert AVIF &amp; WebP"
+        },
+        {
+            "order": 72,
+            "slug": "opace-essential-seo-toolkit",
+            "name": "Opace Essential SEO Toolkit"
+        },
+        {
+            "order": 73,
+            "slug": "complete-google-seo-scan",
+            "name": "Complete Google Seo Scan"
+        },
+        {
+            "order": 74,
+            "slug": "quantumcloud-pagespeed-friendly-analytics-tracking",
+            "name": "QuantumCloud PageSpeed Friendly Analytics Tracking"
+        },
+        {
+            "order": 75,
+            "slug": "css-optimizer-remove-unused-css",
+            "name": "CSS Optimizer &#8211; Remove Unused CSS"
+        },
+        {
+            "order": 76,
+            "slug": "wpblast",
+            "name": "WP Blast | SEO &amp; Performance Booster"
+        },
+        {
+            "order": 77,
+            "slug": "simple-icons",
+            "name": "Popular Brand Icons &#8211; Simple Icons"
+        },
+        {
+            "order": 78,
+            "slug": "indexreloaded",
+            "name": "IndexReloaded"
+        },
+        {
+            "order": 79,
+            "slug": "best-youtube-video-lazyload",
+            "name": "Best Youtube Video LazyLoad"
+        },
+        {
+            "order": 80,
+            "slug": "fazae-wp-booster",
+            "name": "Plugin Fazaé WP Booster"
+        },
+        {
+            "order": 81,
+            "slug": "lazy-load-optimizer",
+            "name": "Lazy Load Optimizer"
+        },
+        {
+            "order": 82,
+            "slug": "hcaptcha-for-forms-and-more",
+            "name": "hCaptcha for WP"
+        },
+        {
+            "order": 83,
+            "slug": "page-speed",
+            "name": "Page Speed"
+        },
+        {
+            "order": 84,
+            "slug": "wp-health",
+            "name": "WP Umbrella: Update Backup Restore &amp; Monitoring"
+        },
+        {
+            "order": 85,
+            "slug": "flying-pages",
+            "name": "Flying Pages: Preload Pages for Faster Navigation &amp; Improved User Experience"
+        },
+        {
+            "order": 86,
+            "slug": "chaty",
+            "name": "Floating Chat Widget: Contact Chat Icons, Telegram Chat, Line Messenger, WeChat, Email, SMS, Call Button, WhatsApp – Chaty"
+        },
+        {
+            "order": 87,
+            "slug": "a2-optimized-wp",
+            "name": "A2 Optimized WP &#8211; Turbocharge and secure your WordPress site"
+        },
+        {
+            "order": 88,
+            "slug": "eacsimplecdn",
+            "name": "{eac}Doojigger Simple CDN Extension for WordPress"
+        },
+        {
+            "order": 89,
+            "slug": "ics-calendar",
+            "name": "ICS Calendar"
+        },
+        {
+            "order": 90,
+            "slug": "wp-speed-of-light",
+            "name": "WP Speed of Light"
+        },
+        {
+            "order": 91,
+            "slug": "wptools",
+            "name": "WP Tools Increase Maximum Limits, Repair, Server PHP Info, Javascript errors, File Permissions, Transients, Error Log"
+        },
+        {
+            "order": 92,
+            "slug": "image-video-lightbox",
+            "name": "Image &amp; Video Lightbox"
+        },
+        {
+            "order": 93,
+            "slug": "ecwid-shopping-cart",
+            "name": "Ecwid by Lightspeed Ecommerce Shopping Cart"
+        },
+        {
+            "order": 94,
+            "slug": "seo-site-auditor-agency",
+            "name": "WordPress SEO Audit Plugin &#8211; WP Site Auditor"
+        },
+        {
+            "order": 95,
+            "slug": "kp-fastest-tidio-chat",
+            "name": "KP Fastest Tidio Chat"
+        },
+        {
+            "order": 96,
+            "slug": "wp-accessibility-helper",
+            "name": "WP Accessibility Helper (WAH)"
+        },
+        {
+            "order": 97,
+            "slug": "easy-analytics-for-wp",
+            "name": "Easy Analytics For Wp"
+        },
+        {
+            "order": 98,
+            "slug": "optimize-more-css",
+            "name": "Optimize More! &#8211; CSS"
+        },
+        {
+            "order": 99,
+            "slug": "dts-debugger",
+            "name": "Scrape and Debug"
+        },
+        {
+            "order": 100,
+            "slug": "webyx",
+            "name": "Webyx"
+        }
+    ]
+}

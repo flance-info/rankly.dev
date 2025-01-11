@@ -1,0 +1,506 @@
+{
+    "tag_slug": "rss-import",
+    "tag_label": "rss import",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "wp-rss-aggregator",
+            "name": "RSS Aggregator &#8211; RSS Import, News Feeds, Feed to Post, and Autoblogging"
+        },
+        {
+            "order": 2,
+            "slug": "feedzy-rss-feeds",
+            "name": "RSS Aggregator by Feedzy – Feed to Post, Autoblogging, News &amp; YouTube Video Feeds Aggregator"
+        },
+        {
+            "order": 3,
+            "slug": "all-in-one-seo-pack",
+            "name": "All in One SEO – Powerful SEO Plugin to Boost SEO Rankings &amp; Increase Traffic"
+        },
+        {
+            "order": 4,
+            "slug": "rss-importer",
+            "name": "RSS Importer"
+        },
+        {
+            "order": 5,
+            "slug": "newsletter",
+            "name": "Newsletter &#8211; Send awesome emails from WordPress"
+        },
+        {
+            "order": 6,
+            "slug": "wpematico",
+            "name": "WPeMatico RSS Feed Fetcher"
+        },
+        {
+            "order": 7,
+            "slug": "all-in-one-wp-security-and-firewall",
+            "name": "All-In-One Security (AIOS) – Security and Firewall"
+        },
+        {
+            "order": 8,
+            "slug": "polylang",
+            "name": "Polylang"
+        },
+        {
+            "order": 9,
+            "slug": "seriously-simple-podcasting",
+            "name": "Seriously Simple Podcasting"
+        },
+        {
+            "order": 10,
+            "slug": "w3-total-cache",
+            "name": "W3 Total Cache"
+        },
+        {
+            "order": 11,
+            "slug": "redirection",
+            "name": "Redirection"
+        },
+        {
+            "order": 12,
+            "slug": "wp-seopress",
+            "name": "SEOPress &#8211; On-site SEO"
+        },
+        {
+            "order": 13,
+            "slug": "rss-feed-pro",
+            "name": "RSS Feed Pro"
+        },
+        {
+            "order": 14,
+            "slug": "wp-content-pilot",
+            "name": "WP Content Pilot &#8211; Autoblogging &amp; Affiliate Marketing Plugin"
+        },
+        {
+            "order": 15,
+            "slug": "insert-headers-and-footers",
+            "name": "WPCode &#8211; Insert Headers and Footers + Custom Code Snippets &#8211; WordPress Code Manager"
+        },
+        {
+            "order": 16,
+            "slug": "import-xml-feed",
+            "name": "Import XML and RSS Feeds"
+        },
+        {
+            "order": 17,
+            "slug": "slim-seo",
+            "name": "Slim SEO &#8211; Fast &amp; Automated WordPress SEO Plugin"
+        },
+        {
+            "order": 18,
+            "slug": "ad-inserter",
+            "name": "Ad Inserter &#8211; Ad Manager &amp; AdSense Ads"
+        },
+        {
+            "order": 19,
+            "slug": "powerpress",
+            "name": "PowerPress Podcasting plugin by Blubrry"
+        },
+        {
+            "order": 20,
+            "slug": "podcast-importer-secondline",
+            "name": "Podcast Importer SecondLine"
+        },
+        {
+            "order": 21,
+            "slug": "auto-podcast-import",
+            "name": "Auto podcast import"
+        },
+        {
+            "order": 22,
+            "slug": "wp-all-export",
+            "name": "Export any WordPress data to XML/CSV"
+        },
+        {
+            "order": 23,
+            "slug": "gwolle-gb",
+            "name": "Gwolle Guestbook"
+        },
+        {
+            "order": 24,
+            "slug": "mp3-music-player-by-sonaar",
+            "name": "MP3 Audio Player – Music Player, Podcast Player &amp; Radio by Sonaar"
+        },
+        {
+            "order": 25,
+            "slug": "go-fetch-jobs-wp-job-manager",
+            "name": "Go Fetch Jobs (for WP Job Manager)"
+        },
+        {
+            "order": 26,
+            "slug": "gpt3-ai-content-generator",
+            "name": "AI Power: Complete AI Pack"
+        },
+        {
+            "order": 27,
+            "slug": "smaily-for-woocommerce",
+            "name": "Smaily for WooCommerce"
+        },
+        {
+            "order": 28,
+            "slug": "wp-asset-clean-up",
+            "name": "Asset CleanUp: Page Speed Booster"
+        },
+        {
+            "order": 29,
+            "slug": "my-calendar",
+            "name": "My Calendar &#8211; Accessible Event Manager"
+        },
+        {
+            "order": 30,
+            "slug": "password-protect-page",
+            "name": "PPWP &#8211; Password Protect Pages"
+        },
+        {
+            "order": 31,
+            "slug": "ditty-news-ticker",
+            "name": "Ditty – Responsive News Tickers, Sliders, and Lists"
+        },
+        {
+            "order": 32,
+            "slug": "wp-rss-retriever",
+            "name": "RSS Feed Retriever"
+        },
+        {
+            "order": 33,
+            "slug": "podcast-player",
+            "name": "Podcast Player &#8211; Your Podcasting Companion"
+        },
+        {
+            "order": 34,
+            "slug": "t4b-news-ticker",
+            "name": "T4B News Ticker &#8211; Responsive News Scroller, Slider, and Animations"
+        },
+        {
+            "order": 35,
+            "slug": "wp-pipes",
+            "name": "WP Pipes"
+        },
+        {
+            "order": 36,
+            "slug": "wp-coder",
+            "name": "WP Coder &#8211; Code Snippets + HTML, CSS, JS and PHP Injection"
+        },
+        {
+            "order": 37,
+            "slug": "friends",
+            "name": "Friends"
+        },
+        {
+            "order": 38,
+            "slug": "woocommerce-exporter",
+            "name": "Store Exporter for WooCommerce – Export Products, Export Orders, Export Subscriptions, and More"
+        },
+        {
+            "order": 39,
+            "slug": "classified-listing",
+            "name": "Classified Listing – Classified ads &amp; Business Directory Plugin"
+        },
+        {
+            "order": 40,
+            "slug": "link-library",
+            "name": "Link Library"
+        },
+        {
+            "order": 41,
+            "slug": "mailster",
+            "name": "Mailster WordPress Newsletter Plugin"
+        },
+        {
+            "order": 42,
+            "slug": "podlove-podcasting-plugin-for-wordpress",
+            "name": "Podlove Podcast Publisher"
+        },
+        {
+            "order": 43,
+            "slug": "content-egg",
+            "name": "Content Egg"
+        },
+        {
+            "order": 44,
+            "slug": "auto-robot",
+            "name": "Auto Robot &#8211; WP Autoblogging and RSS Feed News Aggregator"
+        },
+        {
+            "order": 45,
+            "slug": "pressforward",
+            "name": "PressForward"
+        },
+        {
+            "order": 46,
+            "slug": "webappick-product-feed-for-woocommerce",
+            "name": "CTX Feed – WooCommerce Product Feed Manager"
+        },
+        {
+            "order": 47,
+            "slug": "nelio-content",
+            "name": "Nelio Content &#8211; Editorial Calendar &amp; Social Media Scheduling"
+        },
+        {
+            "order": 48,
+            "slug": "juicer",
+            "name": "Juicer.io: Effortlessly embed, curate, and aggregate social media feeds into your website"
+        },
+        {
+            "order": 49,
+            "slug": "shortcode-variables",
+            "name": "Snippet Shortcodes"
+        },
+        {
+            "order": 50,
+            "slug": "wp-job-portal",
+            "name": "WP Job Portal &#8211; A Complete Recruitment System for Company or Job Board website"
+        },
+        {
+            "order": 51,
+            "slug": "events-for-geodirectory",
+            "name": "Events Calendar for GeoDirectory"
+        },
+        {
+            "order": 52,
+            "slug": "disable-dashboard-for-woocommerce",
+            "name": "Disable Bloat for WordPress &amp; WooCommerce"
+        },
+        {
+            "order": 53,
+            "slug": "autowp-ai-content-writer-rewriter",
+            "name": "AutoWP &#8211; AI Content Writer &amp; Rewriter"
+        },
+        {
+            "order": 54,
+            "slug": "cleverreach-wp",
+            "name": "CleverReach® WP"
+        },
+        {
+            "order": 55,
+            "slug": "best-woocommerce-feed",
+            "name": "Product Feed Manager- WooCommerce Product Feeds For Google Shopping, Social Catalog, TikTok Ads, and 180+ Popular Marketplaces"
+        },
+        {
+            "order": 56,
+            "slug": "visual-portfolio",
+            "name": "Visual Portfolio, Photo Gallery &amp; Post Grid"
+        },
+        {
+            "order": 57,
+            "slug": "tweet-old-post",
+            "name": "Revive Social – Social Media Auto Post and Scheduling Automation Plugin"
+        },
+        {
+            "order": 58,
+            "slug": "library-bookshelves",
+            "name": "Library Bookshelves"
+        },
+        {
+            "order": 59,
+            "slug": "amazon-auto-links",
+            "name": "Auto Amazon Links &#8211; Amazon Associates Affiliate Plugin"
+        },
+        {
+            "order": 60,
+            "slug": "teachpress",
+            "name": "teachPress"
+        },
+        {
+            "order": 61,
+            "slug": "buddypress-media",
+            "name": "rtMedia for WordPress, BuddyPress and bbPress"
+        },
+        {
+            "order": 62,
+            "slug": "rapid-cache",
+            "name": "Rapid Cache"
+        },
+        {
+            "order": 63,
+            "slug": "smartcrawl-seo",
+            "name": "SmartCrawl WordPress SEO checker, SEO analyzer, SEO optimizer"
+        },
+        {
+            "order": 64,
+            "slug": "wpextended",
+            "name": "The Ultimate WordPress Toolkit &#8211; WP Extended"
+        },
+        {
+            "order": 65,
+            "slug": "ultimate-social-media-plus",
+            "name": "Social Share Icons &amp; Social Share Buttons"
+        },
+        {
+            "order": 66,
+            "slug": "seo-help",
+            "name": "AI Content Writer, RSS Feed to Post, Autoblogging SEO Help"
+        },
+        {
+            "order": 67,
+            "slug": "clearfy",
+            "name": "Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer"
+        },
+        {
+            "order": 68,
+            "slug": "comet-cache",
+            "name": "Comet Cache"
+        },
+        {
+            "order": 69,
+            "slug": "cleverreach-wc",
+            "name": "Official CleverReach® Plugin for WooCommerce"
+        },
+        {
+            "order": 70,
+            "slug": "gd-rating-system",
+            "name": "GD Rating System"
+        },
+        {
+            "order": 71,
+            "slug": "wp-speed-of-light",
+            "name": "WP Speed of Light"
+        },
+        {
+            "order": 72,
+            "slug": "seopress-for-mainwp",
+            "name": "SEOPress for MainWP"
+        },
+        {
+            "order": 73,
+            "slug": "mergado-marketing-pack",
+            "name": "Mergado Pack"
+        },
+        {
+            "order": 74,
+            "slug": "memberful-wp",
+            "name": "Memberful &#8211; Membership Plugin"
+        },
+        {
+            "order": 75,
+            "slug": "encyclopedia-lexicon-glossary-wiki-dictionary",
+            "name": "Encyclopedia / Glossary / Wiki"
+        },
+        {
+            "order": 76,
+            "slug": "recipe-card-blocks-by-wpzoom",
+            "name": "Recipe Card Blocks for Gutenberg &amp; Elementor &#8211; Best WordPress Recipe Plugin"
+        },
+        {
+            "order": 77,
+            "slug": "data-tables-generator-by-supsystic",
+            "name": "Data Tables Generator by Supsystic"
+        },
+        {
+            "order": 78,
+            "slug": "whats-new-for-ameba-blog",
+            "name": "What&#039;s New for Ameba blog"
+        },
+        {
+            "order": 79,
+            "slug": "wp-podcasts-manager",
+            "name": "WP Podcasts Manager"
+        },
+        {
+            "order": 80,
+            "slug": "powr-social-feed",
+            "name": "POWr Social Feed"
+        },
+        {
+            "order": 81,
+            "slug": "disqus-comment-system",
+            "name": "Disqus Comment System"
+        },
+        {
+            "order": 82,
+            "slug": "triberr-wordpress-plugin",
+            "name": "Triberr"
+        },
+        {
+            "order": 83,
+            "slug": "newsletters-lite",
+            "name": "Newsletters"
+        },
+        {
+            "order": 84,
+            "slug": "feed2post-ircf",
+            "name": "Import CSV, Excel, XML, JSON, SQL and multiple formats as posts or users (Feed2Post)"
+        },
+        {
+            "order": 85,
+            "slug": "connect-daily-web-calendar",
+            "name": "WordPress Events Calendar Plugin &#8211; connectDaily"
+        },
+        {
+            "order": 86,
+            "slug": "site-mode",
+            "name": "Coming Soon, Maintenance Mode &amp; Under Construction Page Builder by Site Mode"
+        },
+        {
+            "order": 87,
+            "slug": "tilda-publishing",
+            "name": "Tilda-publishing"
+        },
+        {
+            "order": 88,
+            "slug": "social-web-suite",
+            "name": "Social Web Suite &#8211; Social Media Auto Post, Social Media Auto Publish"
+        },
+        {
+            "order": 89,
+            "slug": "elderlawanswers-content-terminal",
+            "name": "ElderLawAnswers Content Terminal"
+        },
+        {
+            "order": 90,
+            "slug": "visualcomposer",
+            "name": "Visual Composer Website Builder"
+        },
+        {
+            "order": 91,
+            "slug": "sermon-manager-for-wordpress",
+            "name": "Sermon Manager"
+        },
+        {
+            "order": 92,
+            "slug": "chessgame-shizzle",
+            "name": "Chessgame Shizzle"
+        },
+        {
+            "order": 93,
+            "slug": "simple-podcasting",
+            "name": "Simple Podcasting"
+        },
+        {
+            "order": 94,
+            "slug": "restrict-content",
+            "name": "Membership Plugin &#8211; Restrict Content"
+        },
+        {
+            "order": 95,
+            "slug": "wp-meta-seo",
+            "name": "WP Meta SEO"
+        },
+        {
+            "order": 96,
+            "slug": "seo-booster",
+            "name": "SEO Booster"
+        },
+        {
+            "order": 97,
+            "slug": "wp-document-revisions",
+            "name": "WP Document Revisions"
+        },
+        {
+            "order": 98,
+            "slug": "wp-vgwort",
+            "name": "Prosodia VGW OS"
+        },
+        {
+            "order": 99,
+            "slug": "gutenverse-news",
+            "name": "Gutenverse News –  Advanced News Magazine Blog Gutenberg Blocks Addons"
+        },
+        {
+            "order": 100,
+            "slug": "wpmastertoolkit",
+            "name": "WPMasterToolKit (WPMTK) &#8211; All in one plugin"
+        }
+    ]
+}

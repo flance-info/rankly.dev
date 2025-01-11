@@ -1,0 +1,21 @@
+{
+    "tag_slug": "section508",
+    "tag_label": "section508",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "wp-accessibility",
+            "name": "WP Accessibility"
+        },
+        {
+            "order": 2,
+            "slug": "content-author-accessibility-preview",
+            "name": "Content Author Accessibility Preview"
+        },
+        {
+            "order": 3,
+            "slug": "stimulate-correct-headings",
+            "name": "Stimulate Correct Headings"
+        }
+    ]
+}

@@ -1,0 +1,506 @@
+{
+    "tag_slug": "regenerate-thumbnails",
+    "tag_label": "regenerate thumbnails",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "force-regenerate-thumbnails",
+            "name": "Force Regenerate Thumbnails"
+        },
+        {
+            "order": 2,
+            "slug": "regenerate-thumbnails-advanced",
+            "name": "reGenerate Thumbnails Advanced"
+        },
+        {
+            "order": 3,
+            "slug": "image-sizes",
+            "name": "ThumbPress &#8211; Disable Thumbnails, Regenerate Thumbnails, Optimize Images, Convert to WebP, Disable Right Click, Compress Images, Image Editor &amp; More"
+        },
+        {
+            "order": 4,
+            "slug": "regenerate-thumbnails",
+            "name": "Regenerate Thumbnails"
+        },
+        {
+            "order": 5,
+            "slug": "wp-retina-2x",
+            "name": "Perfect Images"
+        },
+        {
+            "order": 6,
+            "slug": "acme-fix-images",
+            "name": "Acme Fix Images &#8211; Regenerate Thumbnails"
+        },
+        {
+            "order": 7,
+            "slug": "resize-image-after-upload",
+            "name": "Resize Image After Upload"
+        },
+        {
+            "order": 8,
+            "slug": "smart-image-resize",
+            "name": "Smart Image Resize &#8211; Make WooCommerce Images the Same Size"
+        },
+        {
+            "order": 9,
+            "slug": "resmushit-image-optimizer",
+            "name": "reSmush.it : The original free image compressor and optimizer plugin"
+        },
+        {
+            "order": 10,
+            "slug": "shortpixel-image-optimiser",
+            "name": "ShortPixel Image Optimizer &#8211; Optimize Images, Convert WebP &amp; AVIF"
+        },
+        {
+            "order": 11,
+            "slug": "enable-media-replace",
+            "name": "Enable Media Replace"
+        },
+        {
+            "order": 12,
+            "slug": "de-updraftplus-backup-exclude-image-thumbnails",
+            "name": "Exclude Image Thumbnails From UpdraftPlus Backups"
+        },
+        {
+            "order": 13,
+            "slug": "webp-uploads",
+            "name": "Modern Image Formats"
+        },
+        {
+            "order": 14,
+            "slug": "ewww-image-optimizer",
+            "name": "EWWW Image Optimizer"
+        },
+        {
+            "order": 15,
+            "slug": "simple-image-sizes",
+            "name": "Simple Image Sizes"
+        },
+        {
+            "order": 16,
+            "slug": "real-thumbnail-generator-lite",
+            "name": "Real Thumbnail Generator: Efficient regeneration of thumbnails in all sizes"
+        },
+        {
+            "order": 17,
+            "slug": "auto-post-thumbnail",
+            "name": "Auto Featured Image (Auto Post Thumbnail)"
+        },
+        {
+            "order": 18,
+            "slug": "media-library-plus",
+            "name": "Media Library Folders"
+        },
+        {
+            "order": 19,
+            "slug": "wp-svg-images",
+            "name": "WP SVG Images"
+        },
+        {
+            "order": 20,
+            "slug": "pdf-thumbnail-generator",
+            "name": "PDF Thumbnail Generator"
+        },
+        {
+            "order": 21,
+            "slug": "disable-thumbnails-and-threshold",
+            "name": "Disable Thumbnails, Threshold and Image Options"
+        },
+        {
+            "order": 22,
+            "slug": "thumbnails",
+            "name": "Thumbnails"
+        },
+        {
+            "order": 23,
+            "slug": "shortpixel-adaptive-images",
+            "name": "ShortPixel Adaptive Images &#8211; WebP, AVIF, CDN, Image Optimization"
+        },
+        {
+            "order": 24,
+            "slug": "tiny-compress-images",
+            "name": "TinyPNG &#8211; JPEG, PNG &amp; WebP image compression"
+        },
+        {
+            "order": 25,
+            "slug": "amp-wp",
+            "name": "AMP WP &#8211; Google AMP For WordPress"
+        },
+        {
+            "order": 26,
+            "slug": "fr-thumbnails-folder",
+            "name": "Fr Thumbnails Folder"
+        },
+        {
+            "order": 27,
+            "slug": "shop-page-wp",
+            "name": "Shop Page WP"
+        },
+        {
+            "order": 28,
+            "slug": "superb-helper",
+            "name": "Superb Helper"
+        },
+        {
+            "order": 29,
+            "slug": "ajax-thumbnail-rebuild",
+            "name": "AJAX Thumbnail Rebuild"
+        },
+        {
+            "order": 30,
+            "slug": "nexter-extension",
+            "name": "Nexter Extension"
+        },
+        {
+            "order": 31,
+            "slug": "ilab-media-tools",
+            "name": "Media Cloud for Bunny CDN, Amazon S3, Cloudflare R2, Google Cloud Storage, DigitalOcean and more"
+        },
+        {
+            "order": 32,
+            "slug": "featured-image-admin-thumb-fiat",
+            "name": "Featured Image Admin Thumb"
+        },
+        {
+            "order": 33,
+            "slug": "better-images",
+            "name": "Better Images &#8211; Sharpen, compress, optimize and resize image after upload"
+        },
+        {
+            "order": 34,
+            "slug": "threewp-broadcast",
+            "name": "Broadcast"
+        },
+        {
+            "order": 35,
+            "slug": "yet-another-related-posts-plugin",
+            "name": "YARPP &#8211; Yet Another Related Posts Plugin"
+        },
+        {
+            "order": 36,
+            "slug": "youtube-channel",
+            "name": "My YouTube Channel"
+        },
+        {
+            "order": 37,
+            "slug": "ultimate-content-views",
+            "name": "Display Posts As List, Grid, Thumbs"
+        },
+        {
+            "order": 38,
+            "slug": "amazon-s3-and-cloudfront",
+            "name": "WP Offload Media Lite for Amazon S3, DigitalOcean Spaces, and Google Cloud Storage"
+        },
+        {
+            "order": 39,
+            "slug": "wp-recreate-thumbnails",
+            "name": "WP Recreate Thumbnails"
+        },
+        {
+            "order": 40,
+            "slug": "transcoder",
+            "name": "Transcoder"
+        },
+        {
+            "order": 41,
+            "slug": "sirv",
+            "name": "Image Optimizer, Resizer and CDN &#8211; Sirv"
+        },
+        {
+            "order": 42,
+            "slug": "classified-listing",
+            "name": "Classified Listing – Classified ads &amp; Business Directory Plugin"
+        },
+        {
+            "order": 43,
+            "slug": "wp-stateless",
+            "name": "WP-Stateless &#8211; Google Cloud Storage"
+        },
+        {
+            "order": 44,
+            "slug": "woocommerce-jetpack",
+            "name": "Booster for WooCommerce"
+        },
+        {
+            "order": 45,
+            "slug": "imagepilot",
+            "name": "ImagePilot &#8211; Save Money, Disk Space, and Bandwidth with Image Optimization"
+        },
+        {
+            "order": 46,
+            "slug": "my-album-gallery",
+            "name": "My Album Gallery"
+        },
+        {
+            "order": 47,
+            "slug": "square-thumbnails",
+            "name": "Square Thumbnails"
+        },
+        {
+            "order": 48,
+            "slug": "sharpen-resized-images",
+            "name": "Sharpen Resized Images"
+        },
+        {
+            "order": 49,
+            "slug": "image-quality",
+            "name": "Image Quality"
+        },
+        {
+            "order": 50,
+            "slug": "wp-imageflow2",
+            "name": "WP Flow Plus"
+        },
+        {
+            "order": 51,
+            "slug": "wp-performance-pack",
+            "name": "WP Performance Pack"
+        },
+        {
+            "order": 52,
+            "slug": "wp-drupal-imagecache",
+            "name": "Thumbnails like in Drupal"
+        },
+        {
+            "order": 53,
+            "slug": "pdf-invoice-packing-slip-generator-lite-for-woocommerce",
+            "name": "PDF Invoice &amp; Packing Slip Generator Lite For WooCommerce"
+        },
+        {
+            "order": 54,
+            "slug": "advanced-random-posts-widget",
+            "name": "Advanced Random Posts Widget"
+        },
+        {
+            "order": 55,
+            "slug": "sharethumb",
+            "name": "4Site ShareThumb &#8211; Branded Social Preview OG Image Plugin"
+        },
+        {
+            "order": 56,
+            "slug": "wps-team",
+            "name": "Team Members – Best WordPress Team Plugin with Team Slider, Team Showcase &amp; Team Builder"
+        },
+        {
+            "order": 57,
+            "slug": "uix-products",
+            "name": "Uix Products"
+        },
+        {
+            "order": 58,
+            "slug": "cyr2lat",
+            "name": "Cyr-To-Lat"
+        },
+        {
+            "order": 59,
+            "slug": "easy-watermark",
+            "name": "Easy Watermark"
+        },
+        {
+            "order": 60,
+            "slug": "webp-converter-for-media",
+            "name": "Converter for Media &#8211; Optimize images | Convert WebP &amp; AVIF"
+        },
+        {
+            "order": 61,
+            "slug": "imagify",
+            "name": "Imagify – Optimize Images &amp; Convert WebP &amp; AVIF | Compress Images Easily"
+        },
+        {
+            "order": 62,
+            "slug": "thumbs",
+            "name": "Thumbs"
+        },
+        {
+            "order": 63,
+            "slug": "simple-photo-album",
+            "name": "Simple Photo Album &#8211; by Simple Plugins"
+        },
+        {
+            "order": 64,
+            "slug": "another-simple-image-optimizer",
+            "name": "Another simple image optimizer"
+        },
+        {
+            "order": 65,
+            "slug": "slimage",
+            "name": "Slimage"
+        },
+        {
+            "order": 66,
+            "slug": "my-eyes-are-up-here",
+            "name": "My Eyes Are Up Here"
+        },
+        {
+            "order": 67,
+            "slug": "wpdiscuz",
+            "name": "Comments &#8211; wpDiscuz"
+        },
+        {
+            "order": 68,
+            "slug": "jeg-elementor-kit",
+            "name": "Jeg Elementor Kit"
+        },
+        {
+            "order": 69,
+            "slug": "rss-chimp",
+            "name": "Featured images in RSS feed — RSS Chimp"
+        },
+        {
+            "order": 70,
+            "slug": "yith-woocommerce-wishlist",
+            "name": "YITH WooCommerce Wishlist"
+        },
+        {
+            "order": 71,
+            "slug": "hd-quiz",
+            "name": "HD Quiz"
+        },
+        {
+            "order": 72,
+            "slug": "ultimate-posts-widget",
+            "name": "Ultimate Posts Widget"
+        },
+        {
+            "order": 73,
+            "slug": "disable-pdf-thumbnails",
+            "name": "Disable PDF Thumbnails"
+        },
+        {
+            "order": 74,
+            "slug": "gallery-custom-links",
+            "name": "Gallery Custom Links"
+        },
+        {
+            "order": 75,
+            "slug": "simple-blog-card",
+            "name": "Simple Blog Card"
+        },
+        {
+            "order": 76,
+            "slug": "kraken-image-optimizer",
+            "name": "Kraken.io Image Optimizer"
+        },
+        {
+            "order": 77,
+            "slug": "blocksy-companion",
+            "name": "Blocksy Companion"
+        },
+        {
+            "order": 78,
+            "slug": "sunshine-photo-cart",
+            "name": "Sunshine Photo Cart: Free Client Photo Galleries for Photographers"
+        },
+        {
+            "order": 79,
+            "slug": "shareaholic",
+            "name": "Professional Social Sharing Buttons, Icons &amp; Related Posts &#8211; Shareaholic"
+        },
+        {
+            "order": 80,
+            "slug": "simple-toolkit",
+            "name": "Simple Toolkit"
+        },
+        {
+            "order": 81,
+            "slug": "relevant",
+            "name": "Relevant &#8211; Related, Featured, Latest, and Popular Posts by BestWebSoft"
+        },
+        {
+            "order": 82,
+            "slug": "depicter",
+            "name": "Slider &amp; Popup Builder by Depicter &#8211; Add Image Slider, Carousel Slider, Exit Intent Popup, Popup Modal, Coupon Popup, Post Slider Carousel"
+        },
+        {
+            "order": 83,
+            "slug": "travelers-map",
+            "name": "Travelers&#039; Map"
+        },
+        {
+            "order": 84,
+            "slug": "feature-a-page-widget",
+            "name": "Feature A Page Widget"
+        },
+        {
+            "order": 85,
+            "slug": "simple-export-import-for-acf-data",
+            "name": "Simple Export Import for ACF Data"
+        },
+        {
+            "order": 86,
+            "slug": "pronamic-client",
+            "name": "Pronamic Client"
+        },
+        {
+            "order": 87,
+            "slug": "ilovepdf",
+            "name": "PDF Compressor &amp; Watermark &#8211; iLovePDF"
+        },
+        {
+            "order": 88,
+            "slug": "wp-quick-provision",
+            "name": "WP Quick Provision"
+        },
+        {
+            "order": 89,
+            "slug": "image-blur",
+            "name": "Image Blur"
+        },
+        {
+            "order": 90,
+            "slug": "fusion-extension-gallery",
+            "name": "Fusion Page Builder : Extension &#8211; Gallery"
+        },
+        {
+            "order": 91,
+            "slug": "full-screen-galleries",
+            "name": "Full Screen Galleries"
+        },
+        {
+            "order": 92,
+            "slug": "resizefly",
+            "name": "ResizeFly"
+        },
+        {
+            "order": 93,
+            "slug": "media-meta",
+            "name": "Media Meta &amp; Force Regenerate"
+        },
+        {
+            "order": 94,
+            "slug": "gs-portfolio",
+            "name": "WordPress Portfolio Plugin &#8211; A Plugin for Making Filterable Portfolio Grid, Portfolio Slider and more"
+        },
+        {
+            "order": 95,
+            "slug": "posts-grid",
+            "name": "The Best Post Grid Plugin to Display Posts in Grid, Slider, Popup, Masonry Layout, and more"
+        },
+        {
+            "order": 96,
+            "slug": "zionbuilder",
+            "name": "WordPress Page Builder – Zion Builder"
+        },
+        {
+            "order": 97,
+            "slug": "fws-resize-on-demand",
+            "name": "FWS On-Demand-Resizer"
+        },
+        {
+            "order": 98,
+            "slug": "brizy",
+            "name": "Brizy &#8211; Page Builder"
+        },
+        {
+            "order": 99,
+            "slug": "facebook-photo-fetcher",
+            "name": "Social Photo Fetcher"
+        },
+        {
+            "order": 100,
+            "slug": "sell-media",
+            "name": "Sell Media"
+        }
+    ]
+}

@@ -1,0 +1,501 @@
+{
+    "tag_slug": "dequeue",
+    "tag_label": "dequeue",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "gonzales",
+            "name": "WordPress Assets manager, dequeue scripts, dequeue styles"
+        },
+        {
+            "order": 2,
+            "slug": "freesoul-deactivate-plugins",
+            "name": "Freesoul Deactivate Plugins &#8211; Disable plugins on individual WordPress pages"
+        },
+        {
+            "order": 3,
+            "slug": "wp-asset-clean-up",
+            "name": "Asset CleanUp: Page Speed Booster"
+        },
+        {
+            "order": 4,
+            "slug": "robin-image-optimizer",
+            "name": "Robin image optimizer — save money on image compression"
+        },
+        {
+            "order": 5,
+            "slug": "cyrlitera",
+            "name": "Cyrlitera – transliteration of links and file names"
+        },
+        {
+            "order": 6,
+            "slug": "webcraftic-updates-manager",
+            "name": "Disable updates, Updates manager, Disable automatic updates"
+        },
+        {
+            "order": 7,
+            "slug": "easy-accordion-free",
+            "name": "Easy Accordion – Responsive Accordion FAQ Builder and Product FAQ"
+        },
+        {
+            "order": 8,
+            "slug": "simple-google-analytics",
+            "name": "Local Google Analytics for WordPress &#8211; caches external requests"
+        },
+        {
+            "order": 9,
+            "slug": "wp-carousel-free",
+            "name": "Carousel, Slider, Gallery by WP Carousel – Image Carousel with Lightbox &amp; Photo Gallery, Video Slider, Post Carousel &amp; Post Grid, Product Carousel &amp; Product Grid"
+        },
+        {
+            "order": 10,
+            "slug": "logo-carousel-free",
+            "name": "Logo Carousel – Responsive Logo Slider, Logo Showcase, and Clients Logo Gallery"
+        },
+        {
+            "order": 11,
+            "slug": "comments-plus",
+            "name": "Disable Comments for Any Post Types (Remove comments)"
+        },
+        {
+            "order": 12,
+            "slug": "woo-category-slider-grid",
+            "name": "Product Category Slider and Product Category Showcase for WooCommerce – WooCategory"
+        },
+        {
+            "order": 13,
+            "slug": "clearfy",
+            "name": "Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer"
+        },
+        {
+            "order": 14,
+            "slug": "wp-coder",
+            "name": "WP Coder &#8211; Code Snippets + HTML, CSS, JS and PHP Injection"
+        },
+        {
+            "order": 15,
+            "slug": "animated-typed-js-shortcode",
+            "name": "Animated Typed JS Shortcode"
+        },
+        {
+            "order": 16,
+            "slug": "osom-modal-login",
+            "name": "Osom Modal Login"
+        },
+        {
+            "order": 17,
+            "slug": "booster-sweeper",
+            "name": "Booster Sweeper: WordPress Asset Cleanup"
+        },
+        {
+            "order": 18,
+            "slug": "speed-booster-pack",
+            "name": "Speed Booster Pack ⚡ PageSpeed Optimization Suite"
+        },
+        {
+            "order": 19,
+            "slug": "video-gallery-playlist",
+            "name": "FancyTube &#8211; Video Gallery, Video Slider, and Playlist Slider for YouTube"
+        },
+        {
+            "order": 20,
+            "slug": "wc-speed-drain-repair",
+            "name": "WooCommerce Speed Drain Repair"
+        },
+        {
+            "order": 21,
+            "slug": "amigo-performance",
+            "name": "Amigo Performance"
+        },
+        {
+            "order": 22,
+            "slug": "replace-third-party-asset-source",
+            "name": "Replace Asset Source"
+        },
+        {
+            "order": 23,
+            "slug": "dark-mode-block",
+            "name": "Dark Mode Block"
+        },
+        {
+            "order": 24,
+            "slug": "idonate",
+            "name": "IDonate &#8211; Blood Donation, Request And Donor Management System"
+        },
+        {
+            "order": 25,
+            "slug": "rd-fontawesome",
+            "name": "Rundiz Font Awesome"
+        },
+        {
+            "order": 26,
+            "slug": "dequeue-jquery",
+            "name": "dequeue jquery"
+        },
+        {
+            "order": 27,
+            "slug": "autoptimize",
+            "name": "Autoptimize"
+        },
+        {
+            "order": 28,
+            "slug": "loginpress",
+            "name": "LoginPress | wp-login Custom Login Page Customizer"
+        },
+        {
+            "order": 29,
+            "slug": "menu-image",
+            "name": "Menu Image, Icons made easy"
+        },
+        {
+            "order": 30,
+            "slug": "megamenu",
+            "name": "Max Mega Menu"
+        },
+        {
+            "order": 31,
+            "slug": "woo-product-slider",
+            "name": "Product Carousel, Product Slider, Product Grid Gallery, and Product Table for WooCommerce – WooProduct Slider"
+        },
+        {
+            "order": 32,
+            "slug": "woosidebars",
+            "name": "WooSidebars"
+        },
+        {
+            "order": 33,
+            "slug": "testimonial-free",
+            "name": "Real Testimonials – Testimonial Slider, Carousel, Grid | Collect Customer Reviews and Video Testimonial with Testimonial Form | Social Proof Reviews and Review Slider"
+        },
+        {
+            "order": 34,
+            "slug": "woocommerce-pos",
+            "name": "WooCommerce POS &#8211; Point of Sale"
+        },
+        {
+            "order": 35,
+            "slug": "geo-my-wp",
+            "name": "GEO my WP"
+        },
+        {
+            "order": 36,
+            "slug": "bulky-bulk-edit-products-for-woo",
+            "name": "Bulky &#8211; Bulk Edit Products for WooCommerce"
+        },
+        {
+            "order": 37,
+            "slug": "a2-optimized-wp",
+            "name": "A2 Optimized WP &#8211; Turbocharge and secure your WordPress site"
+        },
+        {
+            "order": 38,
+            "slug": "disable-analytics-for-woocommerce",
+            "name": "Debloat for WooCommerce"
+        },
+        {
+            "order": 39,
+            "slug": "flexible-product-fields",
+            "name": "Flexible Product Fields (WooCommerce Product Addons) &#8211; WooCommerce Product Page Editor"
+        },
+        {
+            "order": 40,
+            "slug": "bf-wpo-dequeuer",
+            "name": "BF WPO Dequeuer"
+        },
+        {
+            "order": 41,
+            "slug": "wp-registration",
+            "name": "Simple User Registration"
+        },
+        {
+            "order": 42,
+            "slug": "thirstyaffiliates",
+            "name": "ThirstyAffiliates &#8211; Affiliate Links, Link Branding, Link Tracking &amp; Marketing Plugin"
+        },
+        {
+            "order": 43,
+            "slug": "block-visibility",
+            "name": "Block Visibility — Conditional Visibility Control for the Block Editor"
+        },
+        {
+            "order": 44,
+            "slug": "woo-category-slider-for-elementor",
+            "name": "Product Category Slider for Elementor"
+        },
+        {
+            "order": 45,
+            "slug": "smaily-for-woocommerce",
+            "name": "Smaily for WooCommerce"
+        },
+        {
+            "order": 46,
+            "slug": "team-free",
+            "name": "WP Team – Responsive Team Members Showcase, Team Grid, Team Slider, Organization Chart, and Staff List"
+        },
+        {
+            "order": 47,
+            "slug": "gallery-slider-for-woocommerce",
+            "name": "Product Gallery Slider, Additional Variation Images Gallery, Product Video Gallery, Product Video, and Product Image Zoom for WooCommerce – WooGallery"
+        },
+        {
+            "order": 48,
+            "slug": "supreme-modules-for-divi",
+            "name": "Supreme Modules Lite &#8211; Divi Theme, Extra Theme and Divi Builder"
+        },
+        {
+            "order": 49,
+            "slug": "no-nonsense",
+            "name": "No Nonsense"
+        },
+        {
+            "order": 50,
+            "slug": "lw-all-in-one",
+            "name": "LocalWeb All In One"
+        },
+        {
+            "order": 51,
+            "slug": "rover-idx",
+            "name": "Rover IDX"
+        },
+        {
+            "order": 52,
+            "slug": "variable-inspector",
+            "name": "Variable Inspector"
+        },
+        {
+            "order": 53,
+            "slug": "system-dashboard",
+            "name": "System Dashboard"
+        },
+        {
+            "order": 54,
+            "slug": "yet-another-related-posts-plugin",
+            "name": "YARPP &#8211; Yet Another Related Posts Plugin"
+        },
+        {
+            "order": 55,
+            "slug": "lh-dequeue-buddypress",
+            "name": "LH Dequeue Buddypress"
+        },
+        {
+            "order": 56,
+            "slug": "foxyshop",
+            "name": "FoxyShop"
+        },
+        {
+            "order": 57,
+            "slug": "cmb2",
+            "name": "CMB2"
+        },
+        {
+            "order": 58,
+            "slug": "simple-301-redirects-addon-bulk-uploader",
+            "name": "Simple 301 Redirects &#8211; Addon &#8211; Bulk Uploader"
+        },
+        {
+            "order": 59,
+            "slug": "buddyforms",
+            "name": "Post Form &#8211; Registration Form &#8211; Profile Form for User Profiles &#8211; Frontend Content Forms for User Submissions (UGC)"
+        },
+        {
+            "order": 60,
+            "slug": "gs-testimonial",
+            "name": "A WordPress Testimonial Plugin to Showcase Testimonial Slider, Testimonial Grid and More: Solid Testimonials"
+        },
+        {
+            "order": 61,
+            "slug": "upstream",
+            "name": "UpStream: a Project Management Plugin for WordPress"
+        },
+        {
+            "order": 62,
+            "slug": "rh-wp-property-feed",
+            "name": "WP Property Feed Connector for RealHomes Theme"
+        },
+        {
+            "order": 63,
+            "slug": "js-error-logger",
+            "name": "JS Error Logger"
+        },
+        {
+            "order": 64,
+            "slug": "speed-booster-by-melotheme",
+            "name": "Speed Booster By Melotheme"
+        },
+        {
+            "order": 65,
+            "slug": "inline-javascript-in-head",
+            "name": "Inline JavaScript in Head"
+        },
+        {
+            "order": 66,
+            "slug": "rundiz-downloads",
+            "name": "Rundiz Downloads"
+        },
+        {
+            "order": 67,
+            "slug": "enlighter",
+            "name": "Enlighter &#8211; Customizable Syntax Highlighter"
+        },
+        {
+            "order": 68,
+            "slug": "lh-dequeue-woo",
+            "name": "LH Dequeue Woo"
+        },
+        {
+            "order": 69,
+            "slug": "remove-emoji-styles-scripts",
+            "name": "Remove Emoji Styles &amp; Scripts"
+        },
+        {
+            "order": 70,
+            "slug": "lh-dequeue-the-event-calendar",
+            "name": "LH Dequeue the Event Calendar"
+        },
+        {
+            "order": 71,
+            "slug": "so-page-builder-animate",
+            "name": "SO Page Builder Animate"
+        },
+        {
+            "order": 72,
+            "slug": "tsp-easy-dev",
+            "name": "LAPDI Easy Dev"
+        },
+        {
+            "order": 73,
+            "slug": "columns",
+            "name": "Columns"
+        },
+        {
+            "order": 74,
+            "slug": "remove-scripts-styles",
+            "name": "Remove Scripts &amp; Styles"
+        },
+        {
+            "order": 75,
+            "slug": "quantity-increment-buttons-for-woocommerce",
+            "name": "WooCommerce Quantity Increment"
+        },
+        {
+            "order": 76,
+            "slug": "wp-disable",
+            "name": "Reduce HTTP Requests, Disable Emojis &amp; Disable Embeds, Speedup WooCommerce"
+        },
+        {
+            "order": 77,
+            "slug": "asset-queue-manager",
+            "name": "Asset Queue Manager"
+        },
+        {
+            "order": 78,
+            "slug": "wavesurfer-wp",
+            "name": "WaveSurfer-WP"
+        },
+        {
+            "order": 79,
+            "slug": "logic-hop-beaver-builder",
+            "name": "Logic Hop Personalization for Beaver Builder Add-on"
+        },
+        {
+            "order": 80,
+            "slug": "child-page-tree",
+            "name": "Child Page Tree"
+        },
+        {
+            "order": 81,
+            "slug": "slide-it-slider-for-woocommerce",
+            "name": "Slide It!"
+        },
+        {
+            "order": 82,
+            "slug": "retina-stripper",
+            "name": "Retina Stripper"
+        },
+        {
+            "order": 83,
+            "slug": "nix-prefix",
+            "name": "Nix Prefix"
+        },
+        {
+            "order": 84,
+            "slug": "option-tree",
+            "name": "OptionTree"
+        },
+        {
+            "order": 85,
+            "slug": "lazyload-woocommerce",
+            "name": "Lazy Load for WooCommerce"
+        },
+        {
+            "order": 86,
+            "slug": "aggregator",
+            "name": "Aggregator"
+        },
+        {
+            "order": 87,
+            "slug": "random-content-shortcode",
+            "name": "Random Content Shortcode"
+        },
+        {
+            "order": 88,
+            "slug": "query-all-the-post-types",
+            "name": "Query All The Post Types &#8211; WordPress Post Type Scanner Plugin"
+        },
+        {
+            "order": 89,
+            "slug": "woocommerce-product-archive-customiser",
+            "name": "WooCommerce Product Archive Customiser"
+        },
+        {
+            "order": 90,
+            "slug": "soronet-popup",
+            "name": "Soronet Popup"
+        },
+        {
+            "order": 91,
+            "slug": "call-button",
+            "name": "Call Button"
+        },
+        {
+            "order": 92,
+            "slug": "metro-share",
+            "name": "Metro Share"
+        },
+        {
+            "order": 93,
+            "slug": "mention-comments-authors",
+            "name": "Mention comment&#039;s Authors by Wabeo"
+        },
+        {
+            "order": 94,
+            "slug": "fx-share",
+            "name": "f(x) Share"
+        },
+        {
+            "order": 95,
+            "slug": "instant-search-suggest",
+            "name": "Instant Search &amp; Suggest"
+        },
+        {
+            "order": 96,
+            "slug": "aac-scoring",
+            "name": "AAC Scoring"
+        },
+        {
+            "order": 97,
+            "slug": "woocommerce-product-badge",
+            "name": "WooCommerce Product Badge"
+        },
+        {
+            "order": 98,
+            "slug": "woocommerce-new-product-badge",
+            "name": "WooCommerce New Product Badge"
+        },
+        {
+            "order": 99,
+            "slug": "livetv-bundle",
+            "name": "liveTV Bundle"
+        }
+    ]
+}

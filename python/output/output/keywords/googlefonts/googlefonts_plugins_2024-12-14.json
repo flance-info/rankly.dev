@@ -1,0 +1,31 @@
+{
+    "tag_slug": "googlefonts",
+    "tag_label": "googlefonts",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "local-google-fonts",
+            "name": "Local Google Fonts"
+        },
+        {
+            "order": 2,
+            "slug": "olympus-google-fonts",
+            "name": "Fonts Plugin | Use Google Fonts, Adobe Fonts or Upload Fonts"
+        },
+        {
+            "order": 3,
+            "slug": "easyfonts",
+            "name": "Local google fonts,  host google fonts locally by Easyfonts"
+        },
+        {
+            "order": 4,
+            "slug": "post-timeline",
+            "name": "Post Timeline"
+        },
+        {
+            "order": 5,
+            "slug": "wrap-google-fonts",
+            "name": "Google-Fonts-Wrapper"
+        }
+    ]
+}

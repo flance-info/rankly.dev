@@ -1,0 +1,506 @@
+{
+    "tag_slug": "outlook",
+    "tag_label": "outlook",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "wp-mail-smtp",
+            "name": "WP Mail SMTP by WPForms &#8211; The Most Popular SMTP and Email Log Plugin"
+        },
+        {
+            "order": 2,
+            "slug": "easy-wp-smtp",
+            "name": "Easy WP SMTP – WordPress SMTP and Email Logs: Gmail, Office 365, Outlook, Custom SMTP, and more"
+        },
+        {
+            "order": 3,
+            "slug": "post-smtp",
+            "name": "Post SMTP &#8211; WordPress SMTP Plugin with Email Logs and Mobile App for Failure Notifications &#8211; Gmail SMTP, Office 365, Brevo, Mailgun, Amazon SES and more"
+        },
+        {
+            "order": 4,
+            "slug": "fluent-smtp",
+            "name": "FluentSMTP &#8211; WP SMTP Plugin with Amazon SES, SendGrid, MailGun, Postmark, Google and Any SMTP Provider"
+        },
+        {
+            "order": 5,
+            "slug": "simple-google-icalendar-widget",
+            "name": "Simple Google Calendar Outlook Events Block Widget"
+        },
+        {
+            "order": 6,
+            "slug": "embed-outlook-teams-calendar-events",
+            "name": "Embed Outlook Teams Calendar Events"
+        },
+        {
+            "order": 7,
+            "slug": "mail-integration-365",
+            "name": "WPO365 | Mail Integration for Office 365 / Outlook"
+        },
+        {
+            "order": 8,
+            "slug": "wp-mail-logging",
+            "name": "WP Mail Logging"
+        },
+        {
+            "order": 9,
+            "slug": "wp-event-solution",
+            "name": "Event Manager, Events Calendar, Tickets, Registrations &#8211; Eventin"
+        },
+        {
+            "order": 10,
+            "slug": "check-email",
+            "name": "Check &amp; Log Email &#8211; Easy Email Testing &amp; Mail logging"
+        },
+        {
+            "order": 11,
+            "slug": "calculated-fields-form",
+            "name": "Calculated Fields Form"
+        },
+        {
+            "order": 12,
+            "slug": "gosmtp",
+            "name": "GoSMTP &#8211; SMTP for WordPress"
+        },
+        {
+            "order": 13,
+            "slug": "ameliabooking",
+            "name": "Booking for Appointments and Events Calendar &#8211; Amelia"
+        },
+        {
+            "order": 14,
+            "slug": "bit-smtp",
+            "name": "SMTP &#8211; 100% Free &amp; Open Source SMTP plugin for WordPress &#8211; Bit SMTP"
+        },
+        {
+            "order": 15,
+            "slug": "wp-smtp",
+            "name": "Solid Mail – SMTP email and logging made by SolidWP"
+        },
+        {
+            "order": 16,
+            "slug": "login-with-azure",
+            "name": "All-in-One Microsoft Office 365 Apps + Azure/EntraID Login"
+        },
+        {
+            "order": 17,
+            "slug": "add-to-calendar-button",
+            "name": "Add to Calendar Button"
+        },
+        {
+            "order": 18,
+            "slug": "wappointment",
+            "name": "Appointment Bookings for Zoom GoogleMeet and more &#8211; Wappointment"
+        },
+        {
+            "order": 19,
+            "slug": "wp-event-aggregator",
+            "name": "WP Event Aggregator: Import Eventbrite events, Meetup events, social events and any iCal Events into WordPress"
+        },
+        {
+            "order": 20,
+            "slug": "wp-mail-returnpath",
+            "name": "wp_mail return-path"
+        },
+        {
+            "order": 21,
+            "slug": "meeting-scheduler-by-vcita",
+            "name": "Online Booking &amp; Scheduling Calendar for WordPress by vcita"
+        },
+        {
+            "order": 22,
+            "slug": "yaysmtp",
+            "name": "YaySMTP &#8211; WP SMTP Plugin with Full Email Log &amp; 15+ SMTP Services"
+        },
+        {
+            "order": 23,
+            "slug": "chaty",
+            "name": "Floating Chat Widget: Contact Chat Icons, Telegram Chat, Line Messenger, WeChat, Email, SMS, Call Button, WhatsApp – Chaty"
+        },
+        {
+            "order": 24,
+            "slug": "leadin",
+            "name": "HubSpot &#8211; CRM, Email Marketing, Live Chat, Forms &amp; Analytics"
+        },
+        {
+            "order": 25,
+            "slug": "wpo365-login",
+            "name": "WordPress + Microsoft Office 365 / Azure AD | LOGIN"
+        },
+        {
+            "order": 26,
+            "slug": "app-for-cf",
+            "name": "App for Cloudflare®"
+        },
+        {
+            "order": 27,
+            "slug": "custom-smtp",
+            "name": "Custom SMTP: Email Deliverability &#8211; FREE &amp; Easy-to-use"
+        },
+        {
+            "order": 28,
+            "slug": "rublon",
+            "name": "Rublon Multi-Factor Authentication (MFA)"
+        },
+        {
+            "order": 29,
+            "slug": "bookingpress-appointment-booking",
+            "name": "Appointment Booking Calendar Plugin and Scheduling Plugin – BookingPress"
+        },
+        {
+            "order": 30,
+            "slug": "ical-feeds",
+            "name": "iCal Feeds"
+        },
+        {
+            "order": 31,
+            "slug": "smart-agenda-prise-de-rendez-vous-en-ligne",
+            "name": "Smart Agenda &#8211; Prise de rendez-vous en ligne"
+        },
+        {
+            "order": 32,
+            "slug": "timeslot",
+            "name": "Booking Plugin for Your WordPress Appointments &#8211; Time Slot"
+        },
+        {
+            "order": 33,
+            "slug": "sugar-calendar-lite",
+            "name": "Sugar Calendar &#8211; Event Calendar, Event Tickets, and Event Management Platform"
+        },
+        {
+            "order": 34,
+            "slug": "simple-smtp-by-maileroo",
+            "name": "Simple SMTP by Maileroo"
+        },
+        {
+            "order": 35,
+            "slug": "event-feed-for-eventbrite",
+            "name": "Show Eventbrite Events &#8211; Event Feed for Eventbrite"
+        },
+        {
+            "order": 36,
+            "slug": "timetics",
+            "name": "WP Timetics- AI-powered Appointment Booking Calendar and Online Scheduling Plugin"
+        },
+        {
+            "order": 37,
+            "slug": "10to8-online-booking",
+            "name": "Sign In Scheduling Online Appointment Booking System"
+        },
+        {
+            "order": 38,
+            "slug": "webinar-and-video-conference-with-jitsi-meet",
+            "name": "Webinar and Video Conference with Jitsi Meet &#8211; Create Branded Webinars for WordPress, Meetings &amp; Livestreaming"
+        },
+        {
+            "order": 39,
+            "slug": "plerdy-heatmap",
+            "name": "Website Optimization – Plerdy"
+        },
+        {
+            "order": 40,
+            "slug": "ticketmachine-event-manager",
+            "name": "TicketMachine Event Manager &amp; Calendar"
+        },
+        {
+            "order": 41,
+            "slug": "b-blocks",
+            "name": "B Blocks &#8211; The ultimate block collection"
+        },
+        {
+            "order": 42,
+            "slug": "megabase-calendar",
+            "name": "MegaCalendar"
+        },
+        {
+            "order": 43,
+            "slug": "fluent-booking",
+            "name": "Fluent Booking &#8211; The Ultimate Appointments Scheduling, Events Booking, Events Calendar Solution"
+        },
+        {
+            "order": 44,
+            "slug": "wp-email-template",
+            "name": "WP Email Template"
+        },
+        {
+            "order": 45,
+            "slug": "promolayer-popup-builder",
+            "name": "Pop ups, Exit intent popups, email popups, banners, bars, countdowns and cart savers &#8211; Promolayer"
+        },
+        {
+            "order": 46,
+            "slug": "ultimate-post-kit",
+            "name": "Ultimate Post Kit Addons For Elementor &#8211; (Post Grid, Post Carousel, Post Slider, Category List, Post Tabs, Timeline, Post Ticker and Tag Cloud)"
+        },
+        {
+            "order": 47,
+            "slug": "user-sync-for-azure-office365",
+            "name": "User Sync &amp; Business Directory for Azure AD / Azure B2C / Office 365"
+        },
+        {
+            "order": 48,
+            "slug": "appointment-booking-calendar",
+            "name": "Appointment Booking Calendar"
+        },
+        {
+            "order": 49,
+            "slug": "event-post",
+            "name": "Event post"
+        },
+        {
+            "order": 50,
+            "slug": "booking-system",
+            "name": "Pinpoint Booking System &#8211; #1 WordPress Booking Plugin"
+        },
+        {
+            "order": 51,
+            "slug": "wp-social-reviews",
+            "name": "WP Social Ninja – Social Feed, Reviews &amp; Chat Plugin for WP (Google Reviews, Photo Feeds &amp; More)"
+        },
+        {
+            "order": 52,
+            "slug": "cb-change-mail-sender",
+            "name": "Change Mail Sender"
+        },
+        {
+            "order": 53,
+            "slug": "elex-helpdesk-customer-support-ticket-system",
+            "name": "ELEX WordPress HelpDesk &amp; Customer Ticketing System"
+        },
+        {
+            "order": 54,
+            "slug": "wppool-turnstile-captcha-spam-filter",
+            "name": "Easy Cloudflare Turnstile &#8211; Privacy friendly reCAPTCHA alternative for WordPress, Contact Form 7, WPForms, BuddyPress, Elementor"
+        },
+        {
+            "order": 55,
+            "slug": "booking-system-trafft",
+            "name": "Booking System Trafft"
+        },
+        {
+            "order": 56,
+            "slug": "shareaholic",
+            "name": "Professional Social Sharing Buttons, Icons &amp; Related Posts &#8211; Shareaholic"
+        },
+        {
+            "order": 57,
+            "slug": "wpcal",
+            "name": "WPCal.io &#8211; Easy Meeting Scheduler"
+        },
+        {
+            "order": 58,
+            "slug": "yeemail",
+            "name": "Email Templates Customizer for WordPress &#8211; Drag And Drop Email Templates Builder &#8211; YeeMail"
+        },
+        {
+            "order": 59,
+            "slug": "mystickyelements",
+            "name": "All-in-one Floating Contact Form, Call, Chat, and 50+ Social Icon Tabs  &#8211; My Sticky Elements"
+        },
+        {
+            "order": 60,
+            "slug": "the-events-calendar-outlook-import-fix",
+            "name": "The Events Calendar Outlook Import Fix"
+        },
+        {
+            "order": 61,
+            "slug": "wp-film-studio",
+            "name": "WP Film Studio &#8211; WordPress Movie Maker/Production Plugin"
+        },
+        {
+            "order": 62,
+            "slug": "o365-wp-restrict",
+            "name": "Intranet and Extranet with O365 Login"
+        },
+        {
+            "order": 63,
+            "slug": "date-time-picker-field",
+            "name": "Availability datepicker &#8211; Integrate with Contact Form 7 and Divi"
+        },
+        {
+            "order": 64,
+            "slug": "quill-smtp",
+            "name": "Quill SMTP | Email Delivery &amp; Transactional Email | The best SMTP Plugin for WordPress that integrates with 20+ SMTP mailers"
+        },
+        {
+            "order": 65,
+            "slug": "spam-master",
+            "name": "Spam Master"
+        },
+        {
+            "order": 66,
+            "slug": "guten-post-layout",
+            "name": "Guten Post Layout &#8211; An Advanced Post Grid Collection"
+        },
+        {
+            "order": 67,
+            "slug": "motopress-appointment-lite",
+            "name": "WordPress Appointment Booking Plugin"
+        },
+        {
+            "order": 68,
+            "slug": "event-registration-calendar-by-vcita",
+            "name": "Event Registration Calendar By vcita"
+        },
+        {
+            "order": 69,
+            "slug": "faq-for-woocommerce",
+            "name": "Happy WooCommerce FAQs &amp; AI FAQ Generator (Formarly XPlainer)"
+        },
+        {
+            "order": 70,
+            "slug": "wp-webinarsystem",
+            "name": "WordPress Webinar Plugin &#8211; WebinarPress"
+        },
+        {
+            "order": 71,
+            "slug": "mailgo",
+            "name": "mailgo"
+        },
+        {
+            "order": 72,
+            "slug": "o365-user-authentication",
+            "name": "Office 365 User Authentication for WordPress"
+        },
+        {
+            "order": 73,
+            "slug": "meetinghub",
+            "name": "MeetingHub &#8211; Zoom Meeting, Google Meet, Jitsi Meet &amp; Webex integration. The All-in-One Webinar &amp; Video Conference Solution for WordPress"
+        },
+        {
+            "order": 74,
+            "slug": "connect-daily-web-calendar",
+            "name": "WordPress Events Calendar Plugin &#8211; connectDaily"
+        },
+        {
+            "order": 75,
+            "slug": "wp2leads",
+            "name": "WP2LEADS |  WordPress und KlickTipp einfach verbinden &#8211; WooCommerce und KlickTipp einfach verbinden"
+        },
+        {
+            "order": 76,
+            "slug": "hydra-booking",
+            "name": "Hydra Booking &#8211; All in One Appointment Scheduling and Booking Calendar Solution | WooCommerce Bookings"
+        },
+        {
+            "order": 77,
+            "slug": "wp-featured-news-custom-posts-listing-elements",
+            "name": "WP Featured News &#8211; Custom Posts Listing Elements"
+        },
+        {
+            "order": 78,
+            "slug": "newsletter",
+            "name": "Newsletter &#8211; Send awesome emails from WordPress"
+        },
+        {
+            "order": 79,
+            "slug": "bmlt2calendar",
+            "name": "BMLT2Calendar"
+        },
+        {
+            "order": 80,
+            "slug": "the-events-calendar",
+            "name": "The Events Calendar"
+        },
+        {
+            "order": 81,
+            "slug": "floating-share-button",
+            "name": "Floating Share Button"
+        },
+        {
+            "order": 82,
+            "slug": "candifly",
+            "name": "Candifly"
+        },
+        {
+            "order": 83,
+            "slug": "kadence-woocommerce-email-designer",
+            "name": "Kadence WooCommerce Email Designer"
+        },
+        {
+            "order": 84,
+            "slug": "crm-customer-relationship-management-by-vcita",
+            "name": "CRM and Lead Management by vcita"
+        },
+        {
+            "order": 85,
+            "slug": "socicon",
+            "name": "Socicon"
+        },
+        {
+            "order": 86,
+            "slug": "cf7-smtp",
+            "name": "SMTP for Contact From 7"
+        },
+        {
+            "order": 87,
+            "slug": "nuropedia",
+            "name": "Nuropedia"
+        },
+        {
+            "order": 88,
+            "slug": "orange-smtp",
+            "name": "Orange smtp"
+        },
+        {
+            "order": 89,
+            "slug": "brosh-crm",
+            "name": "BROSH CRM"
+        },
+        {
+            "order": 90,
+            "slug": "woo-cart-abandonment-recovery",
+            "name": "WooCommerce Cart Abandonment Recovery"
+        },
+        {
+            "order": 91,
+            "slug": "smart-post-lists-light",
+            "name": "Smart Post Lists Light"
+        },
+        {
+            "order": 92,
+            "slug": "wp-html-mail",
+            "name": "Email Template Designer &#8211; WP HTML Mail"
+        },
+        {
+            "order": 93,
+            "slug": "simple-icons",
+            "name": "Popular Brand Icons &#8211; Simple Icons"
+        },
+        {
+            "order": 94,
+            "slug": "sassy-social-share",
+            "name": "Social Sharing Plugin &#8211; Sassy Social Share"
+        },
+        {
+            "order": 95,
+            "slug": "email-template-customizer-for-woo",
+            "name": "Email Template Customizer for WooCommerce"
+        },
+        {
+            "order": 96,
+            "slug": "flows",
+            "name": "Flows"
+        },
+        {
+            "order": 97,
+            "slug": "500apps-schedulecc",
+            "name": "Schedule.cc by 500apps &#8211; Appointment Scheduling Plugin To Plan &amp; Schedule Events"
+        },
+        {
+            "order": 98,
+            "slug": "smtp-settings-for-gravity-forms",
+            "name": "SMTP Settings for Gravity Forms"
+        },
+        {
+            "order": 99,
+            "slug": "bookify",
+            "name": "Bookify"
+        },
+        {
+            "order": 100,
+            "slug": "wpvivid-backuprestore",
+            "name": "Migration, Backup, Staging – WPvivid Backup &amp; Migration"
+        }
+    ]
+}

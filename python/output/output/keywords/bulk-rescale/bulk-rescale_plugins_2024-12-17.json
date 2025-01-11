@@ -1,0 +1,16 @@
+{
+    "tag_slug": "bulk-rescale",
+    "tag_label": "bulk rescale",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "resize-image-after-upload",
+            "name": "Resize Image After Upload"
+        },
+        {
+            "order": 2,
+            "slug": "fpw-category-thumbnails",
+            "name": "FPW Category Thumbnails"
+        }
+    ]
+}

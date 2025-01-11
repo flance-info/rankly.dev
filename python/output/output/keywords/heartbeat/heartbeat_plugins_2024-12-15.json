@@ -1,0 +1,476 @@
+{
+    "tag_slug": "heartbeat",
+    "tag_label": "heartbeat",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "litespeed-cache",
+            "name": "LiteSpeed Cache"
+        },
+        {
+            "order": 2,
+            "slug": "backwpup",
+            "name": "BackWPup – WordPress Backup &amp; Restore Plugin"
+        },
+        {
+            "order": 3,
+            "slug": "sg-cachepress",
+            "name": "Speed Optimizer &#8211; The All-In-One Performance-Boosting Plugin"
+        },
+        {
+            "order": 4,
+            "slug": "breeze",
+            "name": "Breeze &#8211; WordPress Cache Plugin"
+        },
+        {
+            "order": 5,
+            "slug": "heartbeat-control",
+            "name": "Heartbeat Control"
+        },
+        {
+            "order": 6,
+            "slug": "dynamic-front-end-heartbeat-control",
+            "name": "Dynamic Front-End Heartbeat Control"
+        },
+        {
+            "order": 7,
+            "slug": "admin-site-enhancements",
+            "name": "Admin and Site Enhancements (ASE)"
+        },
+        {
+            "order": 8,
+            "slug": "powered-cache",
+            "name": "Powered Cache – Caching and Optimization for WordPress – Easily Improve PageSpeed &amp; Web Vitals Score"
+        },
+        {
+            "order": 9,
+            "slug": "clearfy",
+            "name": "Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer"
+        },
+        {
+            "order": 10,
+            "slug": "adminify",
+            "name": "WP Adminify &#8211; Custom WordPress Dashboard, Login and Admin Customizer"
+        },
+        {
+            "order": 11,
+            "slug": "wpo-tweaks",
+            "name": "WordPress WPO Tweaks &amp; Optimizations"
+        },
+        {
+            "order": 12,
+            "slug": "templ-optimizer",
+            "name": "Templ Optimizer"
+        },
+        {
+            "order": 13,
+            "slug": "disable-everything",
+            "name": "Disable Everything"
+        },
+        {
+            "order": 14,
+            "slug": "falcon",
+            "name": "Falcon &#8211; WordPress Optimizations &amp; Tweaks"
+        },
+        {
+            "order": 15,
+            "slug": "profilegrid-user-profiles-groups-and-communities",
+            "name": "ProfileGrid – User Profiles, Groups and Communities"
+        },
+        {
+            "order": 16,
+            "slug": "perform",
+            "name": "Perform"
+        },
+        {
+            "order": 17,
+            "slug": "speedycache",
+            "name": "SpeedyCache &#8211; Cache, Optimization, Performance"
+        },
+        {
+            "order": 18,
+            "slug": "unbloater",
+            "name": "Unbloater"
+        },
+        {
+            "order": 19,
+            "slug": "orbisius-seo-editor",
+            "name": "Orbisius SEO Editor"
+        },
+        {
+            "order": 20,
+            "slug": "disable-dashboard-for-woocommerce",
+            "name": "Disable Bloat for WordPress &amp; WooCommerce"
+        },
+        {
+            "order": 21,
+            "slug": "disabler",
+            "name": "Disabler"
+        },
+        {
+            "order": 22,
+            "slug": "fast-backend",
+            "name": "Fast Backend"
+        },
+        {
+            "order": 23,
+            "slug": "wpmastertoolkit",
+            "name": "WPMasterToolKit (WPMTK) &#8211; All in one plugin"
+        },
+        {
+            "order": 24,
+            "slug": "smsify",
+            "name": "SMSify"
+        },
+        {
+            "order": 25,
+            "slug": "bloat-buster",
+            "name": "Bloat Buster &#8211; A Simple Plugin To Kill Off Bloat"
+        },
+        {
+            "order": 26,
+            "slug": "swift-performance-lite",
+            "name": "Swift Performance Lite"
+        },
+        {
+            "order": 27,
+            "slug": "speed-booster-pack",
+            "name": "Speed Booster Pack ⚡ PageSpeed Optimization Suite"
+        },
+        {
+            "order": 28,
+            "slug": "performance-tweaks",
+            "name": "Performance Tweaks"
+        },
+        {
+            "order": 29,
+            "slug": "trimpress",
+            "name": "TrimPress"
+        },
+        {
+            "order": 30,
+            "slug": "ajax-heartbeat-tool",
+            "name": "AJAX Heartbeat Tool"
+        },
+        {
+            "order": 31,
+            "slug": "wp-optimize",
+            "name": "WP-Optimize – Cache, Compress images, Minify &amp; Clean database to boost page speed &amp; performance"
+        },
+        {
+            "order": 32,
+            "slug": "frontblocks",
+            "name": "FrontBlocks"
+        },
+        {
+            "order": 33,
+            "slug": "bullhorn-oscp",
+            "name": "Bullhorn Career Portal WordPress Plugin"
+        },
+        {
+            "order": 34,
+            "slug": "wp-performance-pack",
+            "name": "WP Performance Pack"
+        },
+        {
+            "order": 35,
+            "slug": "optimator",
+            "name": "Optimator &#8211; Simplify and streamline WordPress by removing unnecessary data and functionalities"
+        },
+        {
+            "order": 36,
+            "slug": "native-performance",
+            "name": "Native Performance"
+        },
+        {
+            "order": 37,
+            "slug": "wpturbo",
+            "name": "WPTurbo -WordPress性能优化插件"
+        },
+        {
+            "order": 38,
+            "slug": "bp-live-notification",
+            "name": "BuddyPress Live Notification"
+        },
+        {
+            "order": 39,
+            "slug": "scalooper-traffic-insights",
+            "name": "Scalooper Traffic Insights"
+        },
+        {
+            "order": 40,
+            "slug": "pinterest-for-woocommerce",
+            "name": "Pinterest for WooCommerce"
+        },
+        {
+            "order": 41,
+            "slug": "sucuri-scanner",
+            "name": "Sucuri Security &#8211; Auditing, Malware Scanner and Security Hardening"
+        },
+        {
+            "order": 42,
+            "slug": "ct-optimization",
+            "name": "CT Optimization"
+        },
+        {
+            "order": 43,
+            "slug": "metasync",
+            "name": "Search Atlas SEO &#8211; Best SEO Plugin for One-Click WP Publishing &amp; Integrated AI Optimization"
+        },
+        {
+            "order": 44,
+            "slug": "instawp-connect",
+            "name": "InstaWP Connect &#8211; 1-click WP Staging &amp; Migration"
+        },
+        {
+            "order": 45,
+            "slug": "rocket-lazy-load",
+            "name": "LazyLoad Plugin – Lazy Load Images, Videos, and Iframes"
+        },
+        {
+            "order": 46,
+            "slug": "aruba-hispeed-cache",
+            "name": "Aruba HiSpeed Cache"
+        },
+        {
+            "order": 47,
+            "slug": "zettle-pos-integration",
+            "name": "PayPal Zettle POS for WooCommerce"
+        },
+        {
+            "order": 48,
+            "slug": "easy-digital-downloads",
+            "name": "Easy Digital Downloads – eCommerce Payments and Subscriptions made easy"
+        },
+        {
+            "order": 49,
+            "slug": "backupwordpress",
+            "name": "BackUpWordPress"
+        },
+        {
+            "order": 50,
+            "slug": "admin-speedo",
+            "name": "Admin Speedo"
+        },
+        {
+            "order": 51,
+            "slug": "buddypress-docs",
+            "name": "BuddyPress Docs"
+        },
+        {
+            "order": 52,
+            "slug": "google-pagespeed-insights",
+            "name": "Insights from Google PageSpeed"
+        },
+        {
+            "order": 53,
+            "slug": "ilab-media-tools",
+            "name": "Media Cloud for Bunny CDN, Amazon S3, Cloudflare R2, Google Cloud Storage, DigitalOcean and more"
+        },
+        {
+            "order": 54,
+            "slug": "komito-analytics",
+            "name": "Komito Analytics"
+        },
+        {
+            "order": 55,
+            "slug": "wp-disable",
+            "name": "Reduce HTTP Requests, Disable Emojis &amp; Disable Embeds, Speedup WooCommerce"
+        },
+        {
+            "order": 56,
+            "slug": "assistant",
+            "name": "Assistant &#8211; Every Day Productivity Apps"
+        },
+        {
+            "order": 57,
+            "slug": "wp-w3all-phpbb-integration",
+            "name": "WP w3all phpBB"
+        },
+        {
+            "order": 58,
+            "slug": "svea-checkout-for-woocommerce",
+            "name": "Svea Checkout for WooCommerce"
+        },
+        {
+            "order": 59,
+            "slug": "amuga-ajax-log",
+            "name": "Amuga Ajax Log"
+        },
+        {
+            "order": 60,
+            "slug": "fix-alt-text",
+            "name": "Fix Alt Text"
+        },
+        {
+            "order": 61,
+            "slug": "autotweaks",
+            "name": "AutoTweaks"
+        },
+        {
+            "order": 62,
+            "slug": "buddy-notification-bell",
+            "name": "Buddy Notification Bell"
+        },
+        {
+            "order": 63,
+            "slug": "brightcove-video-connect",
+            "name": "Brightcove Video Connect"
+        },
+        {
+            "order": 64,
+            "slug": "basic-optimization",
+            "name": "Basic Optimization"
+        },
+        {
+            "order": 65,
+            "slug": "esselinknu-settings",
+            "name": "Esselink.nu Settings"
+        },
+        {
+            "order": 66,
+            "slug": "groundhogg",
+            "name": "WordPress CRM, Email &amp; Marketing Automation for WordPress | Award Winner — Groundhogg"
+        },
+        {
+            "order": 67,
+            "slug": "studiocart",
+            "name": "WordPress eCommerce Plugin &#8211; Studiocart"
+        },
+        {
+            "order": 68,
+            "slug": "pressforward",
+            "name": "PressForward"
+        },
+        {
+            "order": 69,
+            "slug": "cookie-tasting",
+            "name": "Cookie Tasting"
+        },
+        {
+            "order": 70,
+            "slug": "wpglobus-for-wpbakery-visual-composer",
+            "name": "WPGlobus for WPBakery Visual Composer"
+        },
+        {
+            "order": 71,
+            "slug": "wp-piwik",
+            "name": "Connect Matomo (WP-Matomo, WP-Piwik)"
+        },
+        {
+            "order": 72,
+            "slug": "simple-buddypress-notifications",
+            "name": "Simple BuddyPress Notifications"
+        },
+        {
+            "order": 73,
+            "slug": "pymseo",
+            "name": "pymSEO"
+        },
+        {
+            "order": 74,
+            "slug": "sell-media",
+            "name": "Sell Media"
+        },
+        {
+            "order": 75,
+            "slug": "like-post",
+            "name": "like post"
+        },
+        {
+            "order": 76,
+            "slug": "wp-deactivate-features",
+            "name": "WP Deactivate Features"
+        },
+        {
+            "order": 77,
+            "slug": "task-scheduler",
+            "name": "Task Scheduler"
+        },
+        {
+            "order": 78,
+            "slug": "scwriter",
+            "name": "SCwriter – AI SEO Content Generator &amp; Blog Writer"
+        },
+        {
+            "order": 79,
+            "slug": "kmm-hacks",
+            "name": "KMM Hacks"
+        },
+        {
+            "order": 80,
+            "slug": "whippet",
+            "name": "Whippet"
+        },
+        {
+            "order": 81,
+            "slug": "oxy-relogin-window",
+            "name": "OXY Re-Login Window"
+        },
+        {
+            "order": 82,
+            "slug": "wp-media-folders",
+            "name": "WP Media folders"
+        },
+        {
+            "order": 83,
+            "slug": "sf-adminbar-tools",
+            "name": "Admin Bar Tools"
+        },
+        {
+            "order": 84,
+            "slug": "wp-heart-throb",
+            "name": "WP Heart Throb"
+        },
+        {
+            "order": 85,
+            "slug": "post-lock",
+            "name": "Post Lock"
+        },
+        {
+            "order": 86,
+            "slug": "fullscreen-ajax-loader",
+            "name": "FullScreen AJAX Loader"
+        },
+        {
+            "order": 87,
+            "slug": "zu-contact",
+            "name": "Zu Contact"
+        },
+        {
+            "order": 88,
+            "slug": "mc-web-notes",
+            "name": "MC Web Notes"
+        },
+        {
+            "order": 89,
+            "slug": "cart66-cloud",
+            "name": "Cart66 Cloud :: WordPress Ecommerce The Easy Way"
+        },
+        {
+            "order": 90,
+            "slug": "wp-mybackup",
+            "name": "WP MyBackup"
+        },
+        {
+            "order": 91,
+            "slug": "bbpress-topic-lock",
+            "name": "bbPress &#8211; Topic Lock"
+        },
+        {
+            "order": 92,
+            "slug": "slimjetpack",
+            "name": "Slim Jetpack"
+        },
+        {
+            "order": 93,
+            "slug": "cnr-performance",
+            "name": "CNR Performance"
+        },
+        {
+            "order": 94,
+            "slug": "iconic-rating",
+            "name": "Iconic Rating"
+        }
+    ]
+}

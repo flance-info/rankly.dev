@@ -1,0 +1,506 @@
+{
+    "tag_slug": "two-factor-authentication",
+    "tag_label": "two factor authentication",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "better-wp-security",
+            "name": "Solid Security – Password, Two Factor Authentication, and Brute Force Protection"
+        },
+        {
+            "order": 2,
+            "slug": "all-in-one-wp-security-and-firewall",
+            "name": "All-In-One Security (AIOS) – Security and Firewall"
+        },
+        {
+            "order": 3,
+            "slug": "wp-2fa",
+            "name": "WP 2FA &#8211; Two-factor authentication for WordPress"
+        },
+        {
+            "order": 4,
+            "slug": "wordfence",
+            "name": "Wordfence Security &#8211; Firewall, Malware Scan, and Login Security"
+        },
+        {
+            "order": 5,
+            "slug": "really-simple-ssl",
+            "name": "Really Simple Security &#8211; Simple and Performant Security (formerly Really Simple SSL)"
+        },
+        {
+            "order": 6,
+            "slug": "two-factor-authentication",
+            "name": "Two Factor Authentication"
+        },
+        {
+            "order": 7,
+            "slug": "security-malware-firewall",
+            "name": "Security &amp; Malware scan by CleanTalk"
+        },
+        {
+            "order": 8,
+            "slug": "two-factor",
+            "name": "Two-Factor"
+        },
+        {
+            "order": 9,
+            "slug": "two-factor-2fa-via-email",
+            "name": "Two Factor (2FA) Authentication via Email"
+        },
+        {
+            "order": 10,
+            "slug": "jetpack",
+            "name": "Jetpack &#8211; WP Security, Backup, Speed, &amp; Growth"
+        },
+        {
+            "order": 11,
+            "slug": "woocommerce-paypal-payments",
+            "name": "WooCommerce PayPal Payments"
+        },
+        {
+            "order": 12,
+            "slug": "tutor",
+            "name": "Tutor LMS &#8211; eLearning and online course solution"
+        },
+        {
+            "order": 13,
+            "slug": "user-switching",
+            "name": "User Switching"
+        },
+        {
+            "order": 14,
+            "slug": "defender-security",
+            "name": "Defender Security &#8211; Malware Scanner, Login Security &amp; Firewall"
+        },
+        {
+            "order": 15,
+            "slug": "miniorange-2-factor-authentication",
+            "name": "Google Authenticator &#8211; WordPress 2FA, OTP SMS and Email"
+        },
+        {
+            "order": 16,
+            "slug": "user-registration",
+            "name": "User Registration &amp; Membership – Custom Registration Form, Login Form, and User Profile"
+        },
+        {
+            "order": 17,
+            "slug": "sg-security",
+            "name": "Security Optimizer &#8211; The All-In-One Protection Plugin"
+        },
+        {
+            "order": 18,
+            "slug": "keyy",
+            "name": "Keyy Two Factor Authentication (like Clef)"
+        },
+        {
+            "order": 19,
+            "slug": "simple-cloudflare-turnstile",
+            "name": "Simple Cloudflare Turnstile &#8211; CAPTCHA Alternative"
+        },
+        {
+            "order": 20,
+            "slug": "wordfence-login-security",
+            "name": "Wordfence Login Security"
+        },
+        {
+            "order": 21,
+            "slug": "rublon",
+            "name": "Rublon Multi-Factor Authentication (MFA)"
+        },
+        {
+            "order": 22,
+            "slug": "wp-twilio-core",
+            "name": "WP SMS Plugin &#8211; WordPress SMS Two Factor Authentication – 2FA, Two Factor, OTP SMS and Email"
+        },
+        {
+            "order": 23,
+            "slug": "two-factor-provider-webauthn",
+            "name": "WebAuthn Provider for Two Factor"
+        },
+        {
+            "order": 24,
+            "slug": "hide-my-wp",
+            "name": "Hide My WP Ghost &#8211; Security &amp; Firewall"
+        },
+        {
+            "order": 25,
+            "slug": "login-lockdown",
+            "name": "Login Lockdown &amp; Protection"
+        },
+        {
+            "order": 26,
+            "slug": "wp-sms",
+            "name": "WP SMS – Ultimate SMS &amp; MMS Notifications, 2FA, OTP, and Integrations with WooCommerce, GravityForms, and More"
+        },
+        {
+            "order": 27,
+            "slug": "wp-simple-firewall",
+            "name": "Shield: Blocks Bots, Protects Users, and Prevents Security Breaches"
+        },
+        {
+            "order": 28,
+            "slug": "xo-security",
+            "name": "XO Security"
+        },
+        {
+            "order": 29,
+            "slug": "wordpress-2-step-verification",
+            "name": "WordPress 2-step verification"
+        },
+        {
+            "order": 30,
+            "slug": "change-wp-admin-login",
+            "name": "All In One Login — WordPress Login Security Plugin to Protect and Customize WP Admin"
+        },
+        {
+            "order": 31,
+            "slug": "loginizer",
+            "name": "Loginizer"
+        },
+        {
+            "order": 32,
+            "slug": "fluent-security",
+            "name": "FluentAuth &#8211; The Ultimate Authorization &amp; Security Plugin for WordPress"
+        },
+        {
+            "order": 33,
+            "slug": "custom-registration-form-builder-with-submission-manager",
+            "name": "RegistrationMagic &#8211; Custom Registration Forms, User Registration, Payment, and User Login"
+        },
+        {
+            "order": 34,
+            "slug": "login-with-ajax",
+            "name": "Login With Ajax &#8211; Fast Logins, 2FA, Redirects"
+        },
+        {
+            "order": 35,
+            "slug": "rsfirewall",
+            "name": "RSFirewall!"
+        },
+        {
+            "order": 36,
+            "slug": "two-factor-login-telegram",
+            "name": "WP 2FA with Telegram"
+        },
+        {
+            "order": 37,
+            "slug": "use-administrator-password",
+            "name": "Use Administrator Password"
+        },
+        {
+            "order": 38,
+            "slug": "wt-security",
+            "name": "WebTotem Security"
+        },
+        {
+            "order": 39,
+            "slug": "learning-management-system",
+            "name": "Masteriyo LMS – eLearning and Online Course Builder for WordPress"
+        },
+        {
+            "order": 40,
+            "slug": "ithemes-sync",
+            "name": "Solid Central – Site Management, Backups, Security, and Reporting"
+        },
+        {
+            "order": 41,
+            "slug": "miniorange-login-security",
+            "name": "Two Factor Authentication (2FA , MFA, OTP SMS and Email)"
+        },
+        {
+            "order": 42,
+            "slug": "magic-login",
+            "name": "Magic Login &#8211; Passwordless Authentication for WordPress &#8211; Login Without Password"
+        },
+        {
+            "order": 43,
+            "slug": "secsign",
+            "name": "SecSign"
+        },
+        {
+            "order": 44,
+            "slug": "senpai-software-2fa",
+            "name": "Senpai Software &#8211; Two-factor authentication (2FA) with a key file"
+        },
+        {
+            "order": 45,
+            "slug": "armember-membership",
+            "name": "ARMember &#8211; Membership Plugin, Content Restriction, Member Levels, User Profile &amp; User signup"
+        },
+        {
+            "order": 46,
+            "slug": "duo-universal",
+            "name": "Duo Universal"
+        },
+        {
+            "order": 47,
+            "slug": "wp-user-avatar",
+            "name": "Paid Membership Plugin, Ecommerce, User Registration Form, Login Form, User Profile &amp; Restrict Content – ProfilePress"
+        },
+        {
+            "order": 48,
+            "slug": "secupress",
+            "name": "SecuPress Free — WordPress Security"
+        },
+        {
+            "order": 49,
+            "slug": "dologin",
+            "name": "DoLogin Security"
+        },
+        {
+            "order": 50,
+            "slug": "duo-wordpress",
+            "name": "Duo Two-Factor Authentication"
+        },
+        {
+            "order": 51,
+            "slug": "fluistr-authentication",
+            "name": "Fluistr Authentication"
+        },
+        {
+            "order": 52,
+            "slug": "gatewayapi",
+            "name": "GatewayAPI"
+        },
+        {
+            "order": 53,
+            "slug": "wpmastertoolkit",
+            "name": "WPMasterToolKit (WPMTK) &#8211; All in one plugin"
+        },
+        {
+            "order": 54,
+            "slug": "almefy-me",
+            "name": "ALMEFY: Two-Factor Authentication in one step. Without password​"
+        },
+        {
+            "order": 55,
+            "slug": "shortpixel-image-optimiser",
+            "name": "ShortPixel Image Optimizer &#8211; Optimize Images, Convert WebP &amp; AVIF"
+        },
+        {
+            "order": 56,
+            "slug": "nutsforpress-login-watchdog",
+            "name": "NutsForPress Login Watchdog"
+        },
+        {
+            "order": 57,
+            "slug": "google-authenticator",
+            "name": "Google Authenticator"
+        },
+        {
+            "order": 58,
+            "slug": "wp-analytify",
+            "name": "Analytify &#8211; Google Analytics Dashboard For WordPress (GA4 analytics made easy)"
+        },
+        {
+            "order": 59,
+            "slug": "alfacoins-for-woocommerce",
+            "name": "ALFAcoins for WooCommerce"
+        },
+        {
+            "order": 60,
+            "slug": "admin-toolbox",
+            "name": "Admin Toolbox"
+        },
+        {
+            "order": 61,
+            "slug": "secured-wp",
+            "name": "Secured WP"
+        },
+        {
+            "order": 62,
+            "slug": "ip-vault-wp-firewall",
+            "name": "Two-factor authentication (formerly IP Vault)"
+        },
+        {
+            "order": 63,
+            "slug": "woo-coupon-box",
+            "name": "Coupon Box for WooCommerce"
+        },
+        {
+            "order": 64,
+            "slug": "super-socializer",
+            "name": "Social Share, Social Login and Social Comments Plugin &#8211; Super Socializer"
+        },
+        {
+            "order": 65,
+            "slug": "cookie-wow-banner",
+            "name": "Cookie Wow PDPA Banner"
+        },
+        {
+            "order": 66,
+            "slug": "reverse-proxy",
+            "name": "Boost site performance with Reverse Proxy"
+        },
+        {
+            "order": 67,
+            "slug": "miniorange-login-openid",
+            "name": "miniOrange Social Login and Register (Discord, Google, Twitter, LinkedIn)"
+        },
+        {
+            "order": 68,
+            "slug": "access-guard",
+            "name": "Access Guard"
+        },
+        {
+            "order": 69,
+            "slug": "onelogin-saml-sso",
+            "name": "OneLogin SAML SSO"
+        },
+        {
+            "order": 70,
+            "slug": "google-apps-login",
+            "name": "Login for Google Apps"
+        },
+        {
+            "order": 71,
+            "slug": "ols-2fa",
+            "name": "OLS 2FA"
+        },
+        {
+            "order": 72,
+            "slug": "cloudinary-image-management-and-manipulation-in-the-cloud-cdn",
+            "name": "Cloudinary &#8211; Deliver Images and Videos at Scale"
+        },
+        {
+            "order": 73,
+            "slug": "wp-bouncer",
+            "name": "WP Bouncer &#8211; Limit Simultaneous Logins"
+        },
+        {
+            "order": 74,
+            "slug": "cloud-rebue-wpsms",
+            "name": "cloudrebuesms"
+        },
+        {
+            "order": 75,
+            "slug": "worais-login-protect",
+            "name": "Login Protect"
+        },
+        {
+            "order": 76,
+            "slug": "rocketcdn",
+            "name": "RocketCDN &#8211; WordPress CDN Plugin"
+        },
+        {
+            "order": 77,
+            "slug": "fair-analytics",
+            "name": "Google Analytics alternative – Privacy and legally compliant – Fair Analytics"
+        },
+        {
+            "order": 78,
+            "slug": "notakey-two-factor-extension",
+            "name": "Notakey Provider for Two-Factor"
+        },
+        {
+            "order": 79,
+            "slug": "malcare-security",
+            "name": "MalCare WordPress Security Plugin &#8211; Malware Scanner, Cleaner, Security Firewall"
+        },
+        {
+            "order": 80,
+            "slug": "login-customizer",
+            "name": "Custom Login Page Customizer"
+        },
+        {
+            "order": 81,
+            "slug": "wpremote",
+            "name": "The WP Remote WordPress Plugin"
+        },
+        {
+            "order": 82,
+            "slug": "face-authentication-login",
+            "name": "WP Face Login &#8211; Face Authentication For WordPress"
+        },
+        {
+            "order": 83,
+            "slug": "otp-authenticator",
+            "name": "OTP Authenticator"
+        },
+        {
+            "order": 84,
+            "slug": "blogvault-real-time-backup",
+            "name": "BlogVault WordPress Backup Plugin &#8211; Migration, Staging, and Backups"
+        },
+        {
+            "order": 85,
+            "slug": "actblue-contributions",
+            "name": "ActBlue Contributions"
+        },
+        {
+            "order": 86,
+            "slug": "vincss-fido2-login",
+            "name": "VinCSS FIDO2 Login"
+        },
+        {
+            "order": 87,
+            "slug": "melapress-login-security",
+            "name": "MelaPress Login Security"
+        },
+        {
+            "order": 88,
+            "slug": "application-passwords",
+            "name": "Application Passwords"
+        },
+        {
+            "order": 89,
+            "slug": "sendsms-dashboard",
+            "name": "SendSMS Dashboard"
+        },
+        {
+            "order": 90,
+            "slug": "surbma-secure-login",
+            "name": "Surbma | Secure Login"
+        },
+        {
+            "order": 91,
+            "slug": "analytics-integrator",
+            "name": "Analytics Integrator"
+        },
+        {
+            "order": 92,
+            "slug": "loginid-directweb",
+            "name": "FIDO-certified Passwordless biometric login"
+        },
+        {
+            "order": 93,
+            "slug": "emlg-tfa",
+            "name": "EMLG TFA"
+        },
+        {
+            "order": 94,
+            "slug": "experttexting-official",
+            "name": "ExpertTexting Official WordPress Plugin"
+        },
+        {
+            "order": 95,
+            "slug": "getotp-otp-verification",
+            "name": "GetOTP OTP Verification"
+        },
+        {
+            "order": 96,
+            "slug": "google-authenticator-per-user-prompt",
+            "name": "Per User Prompt for Google Authenticator"
+        },
+        {
+            "order": 97,
+            "slug": "anti-spam",
+            "name": "Titan Anti-spam &amp; Security"
+        },
+        {
+            "order": 98,
+            "slug": "orion-sms-otp-verification",
+            "name": "Orion SMS OTP Verification"
+        },
+        {
+            "order": 99,
+            "slug": "snapid-two-factor-authentication",
+            "name": "SnapID Two-Factor Authentication"
+        },
+        {
+            "order": 100,
+            "slug": "userswp",
+            "name": "UsersWP &#8211; Front-end login form, User Registration, User Profile &amp; Members Directory plugin for WP"
+        }
+    ]
+}

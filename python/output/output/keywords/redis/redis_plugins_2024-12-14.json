@@ -1,0 +1,506 @@
+{
+    "tag_slug": "redis",
+    "tag_label": "redis",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "redis-cache",
+            "name": "Redis Object Cache"
+        },
+        {
+            "order": 2,
+            "slug": "litespeed-cache",
+            "name": "LiteSpeed Cache"
+        },
+        {
+            "order": 3,
+            "slug": "w3-total-cache",
+            "name": "W3 Total Cache"
+        },
+        {
+            "order": 4,
+            "slug": "wp-redis",
+            "name": "WP Redis"
+        },
+        {
+            "order": 5,
+            "slug": "wpvulnerability",
+            "name": "WPVulnerability"
+        },
+        {
+            "order": 6,
+            "slug": "redi-restaurant-reservation",
+            "name": "ReDi Restaurant Reservation"
+        },
+        {
+            "order": 7,
+            "slug": "docket-cache",
+            "name": "Docket Cache &#8211; Object Cache Accelerator"
+        },
+        {
+            "order": 8,
+            "slug": "cache-warmer",
+            "name": "Cache Warmer"
+        },
+        {
+            "order": 9,
+            "slug": "redis-woo-dynamic-pricing-and-discounts",
+            "name": "REDIS &#8211; WooCommerce Dynamic Pricing and Discounts"
+        },
+        {
+            "order": 10,
+            "slug": "atec-cache-info",
+            "name": "atec Cache Info"
+        },
+        {
+            "order": 11,
+            "slug": "sqlite-object-cache",
+            "name": "SQLite Object Cache"
+        },
+        {
+            "order": 12,
+            "slug": "cachify",
+            "name": "Cachify"
+        },
+        {
+            "order": 13,
+            "slug": "atec-cache-apcu",
+            "name": "atec Cache APCu"
+        },
+        {
+            "order": 14,
+            "slug": "nginx-helper",
+            "name": "Nginx Helper"
+        },
+        {
+            "order": 15,
+            "slug": "flywp",
+            "name": "FlyWP Helper"
+        },
+        {
+            "order": 16,
+            "slug": "blizhost-cache-purge",
+            "name": "Blizhost CloudCache Purge – Speed, Security, and Optimization"
+        },
+        {
+            "order": 17,
+            "slug": "spinupwp",
+            "name": "SpinupWP"
+        },
+        {
+            "order": 18,
+            "slug": "woo-multi-currency",
+            "name": "CURCY &#8211; Multi Currency for WooCommerce &#8211; The best free currency exchange plugin &#8211; Run smoothly on WooCommerce 8.x"
+        },
+        {
+            "order": 19,
+            "slug": "the-cache-purger",
+            "name": "The Cache Purger"
+        },
+        {
+            "order": 20,
+            "slug": "powered-cache",
+            "name": "Powered Cache – Caching and Optimization for WordPress – Easily Improve PageSpeed &amp; Web Vitals Score"
+        },
+        {
+            "order": 21,
+            "slug": "critical-css-for-wp",
+            "name": "Reduce Unused CSS Solution with Critical CSS For WP"
+        },
+        {
+            "order": 22,
+            "slug": "pageviews-counter",
+            "name": "PageViews Counter"
+        },
+        {
+            "order": 23,
+            "slug": "a2-optimized-wp",
+            "name": "A2 Optimized WP &#8211; Turbocharge and secure your WordPress site"
+        },
+        {
+            "order": 24,
+            "slug": "product-size-chart-for-woo",
+            "name": "Product Size Chart For WooCommerce"
+        },
+        {
+            "order": 25,
+            "slug": "speedycache",
+            "name": "SpeedyCache &#8211; Cache, Optimization, Performance"
+        },
+        {
+            "order": 26,
+            "slug": "exmage-wp-image-links",
+            "name": "EXMAGE &#8211; WordPress Image Links"
+        },
+        {
+            "order": 27,
+            "slug": "email-template-customizer-for-woo",
+            "name": "Email Template Customizer for WooCommerce"
+        },
+        {
+            "order": 28,
+            "slug": "eu-cookies-bar",
+            "name": "EU Cookies Bar for WordPress"
+        },
+        {
+            "order": 29,
+            "slug": "woo-thank-you-page-customizer",
+            "name": "Thank You Page Customizer for WooCommerce &#8211; Increase Your Sales"
+        },
+        {
+            "order": 30,
+            "slug": "dynamic-front-end-heartbeat-control",
+            "name": "Dynamic Front-End Heartbeat Control"
+        },
+        {
+            "order": 31,
+            "slug": "woo-virtual-reviews",
+            "name": "Faview &#8211; Virtual Reviews for WooCommerce"
+        },
+        {
+            "order": 32,
+            "slug": "ggpush",
+            "name": "果果推送"
+        },
+        {
+            "order": 33,
+            "slug": "bulky-bulk-edit-products-for-woo",
+            "name": "Bulky &#8211; Bulk Edit Products for WooCommerce"
+        },
+        {
+            "order": 34,
+            "slug": "ip-locator",
+            "name": "IP Locator"
+        },
+        {
+            "order": 35,
+            "slug": "woo-advanced-product-information",
+            "name": "Advanced Product Information for WooCommerce"
+        },
+        {
+            "order": 36,
+            "slug": "import-shopify-to-woocommerce",
+            "name": "S2W &#8211; Import Shopify to WooCommerce"
+        },
+        {
+            "order": 37,
+            "slug": "woocommerce-currency-switcher",
+            "name": "FOX &#8211; Currency Switcher Professional for WooCommerce"
+        },
+        {
+            "order": 38,
+            "slug": "product-variations-swatches-for-woocommerce",
+            "name": "Product Variations Swatches for WooCommerce"
+        },
+        {
+            "order": 39,
+            "slug": "woo-orders-tracking",
+            "name": "Orders Tracking for WooCommerce"
+        },
+        {
+            "order": 40,
+            "slug": "mimi-captcha",
+            "name": "Mimi Captcha"
+        },
+        {
+            "order": 41,
+            "slug": "clear-autoptimize-cache-automatically",
+            "name": "Clear Autoptimize Cache Automatically"
+        },
+        {
+            "order": 42,
+            "slug": "woo-photo-reviews",
+            "name": "Photo Reviews for WooCommerce"
+        },
+        {
+            "order": 43,
+            "slug": "w2s-migrate-woo-to-shopify",
+            "name": "W2S &#8211; Migrate WooCommerce to Shopify"
+        },
+        {
+            "order": 44,
+            "slug": "sales-countdown-timer",
+            "name": "Sales Countdown Timer"
+        },
+        {
+            "order": 45,
+            "slug": "cache-master",
+            "name": "Cache Master"
+        },
+        {
+            "order": 46,
+            "slug": "woo-notification",
+            "name": "Notification for WooCommerce | Boost Your Sales &#8211; Recent Sales Popup &#8211; Live Feed Sales &#8211; Upsells"
+        },
+        {
+            "order": 47,
+            "slug": "product-pre-orders-for-woo",
+            "name": "Product Pre-Orders for WooCommerce"
+        },
+        {
+            "order": 48,
+            "slug": "woo-alidropship",
+            "name": "ALD &#8211; Dropshipping and Fulfillment for AliExpress and WooCommerce"
+        },
+        {
+            "order": 49,
+            "slug": "woo-abandoned-cart-recovery",
+            "name": "Abandoned Cart Recovery for WooCommerce"
+        },
+        {
+            "order": 50,
+            "slug": "woo-lookbook",
+            "name": "LookBook for WooCommerce &#8211; Shoppable with Product Tags"
+        },
+        {
+            "order": 51,
+            "slug": "system-dashboard",
+            "name": "System Dashboard"
+        },
+        {
+            "order": 52,
+            "slug": "woo-customer-coupons",
+            "name": "Customer Coupons for WooCommerce"
+        },
+        {
+            "order": 53,
+            "slug": "wp-optimizer",
+            "name": "WP Optimizer"
+        },
+        {
+            "order": 54,
+            "slug": "woo-free-shipping-bar",
+            "name": "Free Shipping Bar for WooCommerce"
+        },
+        {
+            "order": 55,
+            "slug": "wpbulky-wp-bulk-edit-post-types",
+            "name": "WPBulky &#8211; WordPress Bulk Edit Post Types"
+        },
+        {
+            "order": 56,
+            "slug": "woo-cart-all-in-one",
+            "name": "Cart All In One For WooCommerce"
+        },
+        {
+            "order": 57,
+            "slug": "checkout-upsell-funnel-for-woo",
+            "name": "Checkout Upsell Funnel for WooCommerce"
+        },
+        {
+            "order": 58,
+            "slug": "wp-lucky-wheel",
+            "name": "WordPress Lucky Wheel &#8211; Spin a Sale"
+        },
+        {
+            "order": 59,
+            "slug": "woo-coupon-box",
+            "name": "Coupon Box for WooCommerce"
+        },
+        {
+            "order": 60,
+            "slug": "pofily-woo-product-filters",
+            "name": "Pofily &#8211; WooCommerce Product Filters"
+        },
+        {
+            "order": 61,
+            "slug": "gift4u-gift-cards-all-in-one-for-woo",
+            "name": "GIFT4U &#8211; Gift Cards All in One for Woo"
+        },
+        {
+            "order": 62,
+            "slug": "woo-lucky-wheel",
+            "name": "Lucky Wheel for WooCommerce &#8211; Spin a Sale"
+        },
+        {
+            "order": 63,
+            "slug": "article-with-pictures",
+            "name": "文章配图"
+        },
+        {
+            "order": 64,
+            "slug": "9mail-wp-email-templates-designer",
+            "name": "9MAIL &#8211; WordPress Email Templates Designer"
+        },
+        {
+            "order": 65,
+            "slug": "bopo-woo-product-bundle-builder",
+            "name": "Bopo &#8211; WooCommerce Product Bundle Builder"
+        },
+        {
+            "order": 66,
+            "slug": "woo-coupon-reminder",
+            "name": "Coreem &#8211; Coupon Reminder for WooCommerce"
+        },
+        {
+            "order": 67,
+            "slug": "subre-product-subscription-for-woo",
+            "name": "SUBRE – Product Subscription for WooCommerce &#8211; Recurring Payments"
+        },
+        {
+            "order": 68,
+            "slug": "jagif-woo-free-gift",
+            "name": "Jagif &#8211; WooCommerce Free Gift"
+        },
+        {
+            "order": 69,
+            "slug": "mega-cache",
+            "name": "Mega Cache"
+        },
+        {
+            "order": 70,
+            "slug": "woo-product-builder",
+            "name": "Product Builder for WooCommerce &#8211; Custom PC Builder"
+        },
+        {
+            "order": 71,
+            "slug": "dxp-toolkit",
+            "name": "DXP ToolKit"
+        },
+        {
+            "order": 72,
+            "slug": "content-hiding",
+            "name": "隐藏内容"
+        },
+        {
+            "order": 73,
+            "slug": "chinads-dropshipping-taobao-woocommerce",
+            "name": "ChinaDS – Tmall-Taobao Dropshipping for WooCommerce"
+        },
+        {
+            "order": 74,
+            "slug": "wp-redis-user-session-storage",
+            "name": "Redis User Session Storage"
+        },
+        {
+            "order": 75,
+            "slug": "woo-boost-sales",
+            "name": "Boost Sales for WooCommerce &#8211; Set up Up-Sells &amp; Cross-Sells Popups &amp; Auto Apply Coupon"
+        },
+        {
+            "order": 76,
+            "slug": "compe-woo-compare-products",
+            "name": "COMPE &#8211; WooCommerce Compare Products"
+        },
+        {
+            "order": 77,
+            "slug": "woo-suggestion-engine",
+            "name": "Suggestion Engine for WooCommerce"
+        },
+        {
+            "order": 78,
+            "slug": "webpos-point-of-sale-for-woocommerce",
+            "name": "WebPOS – Point of Sale for WooCommerce"
+        },
+        {
+            "order": 79,
+            "slug": "wp-shieldon",
+            "name": "WP Shieldon &#8211; WordPress Firewall"
+        },
+        {
+            "order": 80,
+            "slug": "double-title",
+            "name": "双标题"
+        },
+        {
+            "order": 81,
+            "slug": "epoi-wp-points-and-rewards",
+            "name": "EPOI &#8211; WP Points and Rewards"
+        },
+        {
+            "order": 82,
+            "slug": "catna-woo-name-your-price-and-offers",
+            "name": "Catna &#8211; Woo Name Your Price and Offers"
+        },
+        {
+            "order": 83,
+            "slug": "rees-real-estate-for-woo",
+            "name": "REES &#8211; Real Estate for Woo"
+        },
+        {
+            "order": 84,
+            "slug": "mailchimp-for-woocommerce",
+            "name": "Mailchimp for WooCommerce"
+        },
+        {
+            "order": 85,
+            "slug": "prompress",
+            "name": "PromPress"
+        },
+        {
+            "order": 86,
+            "slug": "cache-purge-helper",
+            "name": "Cache Purge Helper"
+        },
+        {
+            "order": 87,
+            "slug": "myclub-groups",
+            "name": "MyClub Groups"
+        },
+        {
+            "order": 88,
+            "slug": "simple-cache",
+            "name": "Simple Cache"
+        },
+        {
+            "order": 89,
+            "slug": "epow-custom-product-options-for-woocommerce",
+            "name": "EPOW &#8211; Custom Product Options for WooCommerce"
+        },
+        {
+            "order": 90,
+            "slug": "hummingbird-performance",
+            "name": "Hummingbird Performance &#8211; Cache &amp; Page Speed Optimization for Core Web Vitals | Critical CSS | Minify CSS | Defer CSS Javascript | CDN"
+        },
+        {
+            "order": 91,
+            "slug": "simple-icons",
+            "name": "Popular Brand Icons &#8211; Simple Icons"
+        },
+        {
+            "order": 92,
+            "slug": "depart-deposit-and-part-payment-for-woo",
+            "name": "DEPART &#8211; Deposit and Part payment for Woo"
+        },
+        {
+            "order": 93,
+            "slug": "instagram-feed",
+            "name": "Smash Balloon Social Photo Feed – Easy Social Feeds Plugin"
+        },
+        {
+            "order": 94,
+            "slug": "matador-jobs",
+            "name": "Matador Jobs Lite"
+        },
+        {
+            "order": 95,
+            "slug": "pj-page-cache-red",
+            "name": "Redis Page Cache"
+        },
+        {
+            "order": 96,
+            "slug": "wpforo",
+            "name": "wpForo Forum"
+        },
+        {
+            "order": 97,
+            "slug": "redisearch",
+            "name": "RediSearch"
+        },
+        {
+            "order": 98,
+            "slug": "transients-manager",
+            "name": "Transients Manager"
+        },
+        {
+            "order": 99,
+            "slug": "index-wp-mysql-for-speed",
+            "name": "Index WP MySQL For Speed"
+        },
+        {
+            "order": 100,
+            "slug": "handmade-dropshipping-for-etsy-and-woo",
+            "name": "HANDMADE &#8211; Dropshipping for Etsy and WooCommerce"
+        }
+    ]
+}

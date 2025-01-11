@@ -1,0 +1,41 @@
+{
+    "tag_slug": "%d0%bc%d0%b5%d1%82%d1%80%d0%b8%d0%ba%d0%b0",
+    "tag_label": "метрика",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "wp-yandex-metrika",
+            "name": "Yandex.Metrica"
+        },
+        {
+            "order": 2,
+            "slug": "abwp-simple-counter",
+            "name": "Simple Counter"
+        },
+        {
+            "order": 3,
+            "slug": "easy-yandex-metrica",
+            "name": "Easy Yandex Metrica"
+        },
+        {
+            "order": 4,
+            "slug": "fast-yandex-metrika",
+            "name": "Fast Yandex Metrika"
+        },
+        {
+            "order": 5,
+            "slug": "wt-yandex-metrika",
+            "name": "WT Yandex Metrika"
+        },
+        {
+            "order": 6,
+            "slug": "yandex-metrika",
+            "name": "Яндекс Метрика"
+        },
+        {
+            "order": 7,
+            "slug": "yandex-share",
+            "name": "Яндекс Поделиться"
+        }
+    ]
+}

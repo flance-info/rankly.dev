@@ -1,0 +1,31 @@
+{
+    "tag_slug": "downsize",
+    "tag_label": "downsize",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "resize-image-after-upload",
+            "name": "Resize Image After Upload"
+        },
+        {
+            "order": 2,
+            "slug": "image-upload-for-bbpress",
+            "name": "Inline Image Upload for BBPress"
+        },
+        {
+            "order": 3,
+            "slug": "auto-smart-thumbnails",
+            "name": "Auto Smart Thumbnails"
+        },
+        {
+            "order": 4,
+            "slug": "wurfl-image-tailor-connector",
+            "name": "WURFL Image Tailor (WIT)"
+        },
+        {
+            "order": 5,
+            "slug": "wp-image-shrinker",
+            "name": "WordPress Image shrinker"
+        }
+    ]
+}

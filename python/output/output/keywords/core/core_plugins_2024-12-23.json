@@ -1,0 +1,3006 @@
+{
+    "tag_slug": "core",
+    "tag_label": "core",
+    "plugins": [
+        {
+            "order": 1,
+            "slug": "woocommerce",
+            "name": "WooCommerce"
+        },
+        {
+            "order": 2,
+            "slug": "wordfence",
+            "name": "Wordfence Security &#8211; Firewall, Malware Scan, and Login Security"
+        },
+        {
+            "order": 3,
+            "slug": "wp-fastest-cache",
+            "name": "WP Fastest Cache"
+        },
+        {
+            "order": 4,
+            "slug": "autoptimize",
+            "name": "Autoptimize"
+        },
+        {
+            "order": 5,
+            "slug": "core-framework",
+            "name": "Core Framework"
+        },
+        {
+            "order": 6,
+            "slug": "litespeed-cache",
+            "name": "LiteSpeed Cache"
+        },
+        {
+            "order": 7,
+            "slug": "core-rollback",
+            "name": "Core Rollback"
+        },
+        {
+            "order": 8,
+            "slug": "wp-job-manager",
+            "name": "WP Job Manager"
+        },
+        {
+            "order": 9,
+            "slug": "ninja-forms",
+            "name": "Ninja Forms &#8211; The Contact Form Builder That Grows With You"
+        },
+        {
+            "order": 10,
+            "slug": "jetpack-boost",
+            "name": "Jetpack Boost &#8211; Website Speed, Performance and Critical CSS"
+        },
+        {
+            "order": 11,
+            "slug": "woocommerce-gateway-stripe",
+            "name": "WooCommerce Stripe Payment Gateway"
+        },
+        {
+            "order": 12,
+            "slug": "hummingbird-performance",
+            "name": "Hummingbird Performance &#8211; Cache &amp; Page Speed Optimization for Core Web Vitals | Critical CSS | Minify CSS | Defer CSS Javascript | CDN"
+        },
+        {
+            "order": 13,
+            "slug": "w3-total-cache",
+            "name": "W3 Total Cache"
+        },
+        {
+            "order": 14,
+            "slug": "imagify",
+            "name": "Imagify – Optimize Images &amp; Convert WebP &amp; AVIF | Compress Images Easily"
+        },
+        {
+            "order": 15,
+            "slug": "really-simple-ssl",
+            "name": "Really Simple Security &#8211; Simple and Performant Security (formerly Really Simple SSL)"
+        },
+        {
+            "order": 16,
+            "slug": "tenweb-speed-optimizer",
+            "name": "10Web Booster &#8211; Website speed optimization, Cache &amp; Page Speed optimizer"
+        },
+        {
+            "order": 17,
+            "slug": "members",
+            "name": "Members &#8211; Membership &amp; User Role Editor Plugin"
+        },
+        {
+            "order": 18,
+            "slug": "jupiterx-core",
+            "name": "Jupiter X Core"
+        },
+        {
+            "order": 19,
+            "slug": "walker-core",
+            "name": "Walker Core"
+        },
+        {
+            "order": 20,
+            "slug": "disable-updates",
+            "name": "Disable Updates for WordPress Core, Plugins and Themes"
+        },
+        {
+            "order": 21,
+            "slug": "simple-comment-editing",
+            "name": "Comment Edit Core &#8211; Simple Comment Editing"
+        },
+        {
+            "order": 22,
+            "slug": "wpsso",
+            "name": "WPSSO Core &#8211; Complete and Optimized Structured Data SEO"
+        },
+        {
+            "order": 23,
+            "slug": "nitropack",
+            "name": "NitroPack – Caching &amp; Speed Optimization for Core Web Vitals, Defer CSS &amp; JS, Lazy load Images and CDN"
+        },
+        {
+            "order": 24,
+            "slug": "bbp-core",
+            "name": "BBP Core &#8211; Expand bbPress powered forums with useful features"
+        },
+        {
+            "order": 25,
+            "slug": "updraftplus",
+            "name": "UpdraftPlus: WP Backup &amp; Migration Plugin"
+        },
+        {
+            "order": 26,
+            "slug": "all-in-one-wp-migration",
+            "name": "All-in-One WP Migration and Backup"
+        },
+        {
+            "order": 27,
+            "slug": "core-web-vitals-pagespeed-booster",
+            "name": "Core Web Vitals &amp; PageSpeed Booster"
+        },
+        {
+            "order": 28,
+            "slug": "polylang",
+            "name": "Polylang"
+        },
+        {
+            "order": 29,
+            "slug": "wordpress-seo",
+            "name": "Yoast SEO"
+        },
+        {
+            "order": 30,
+            "slug": "searchpro",
+            "name": "BerqWP &#8211; Automated All-In-One PageSpeed Optimization for Core Web Vitals, Cache, CDN, Images, CSS, and JavaScript"
+        },
+        {
+            "order": 31,
+            "slug": "disable-email-notification-for-auto-updates",
+            "name": "Disable Auto Update Emails and Block Updates for Plugins, WP Core, and Themes"
+        },
+        {
+            "order": 32,
+            "slug": "woocommerce-checkout-manager",
+            "name": "Checkout Field Manager (Checkout Manager) for WooCommerce"
+        },
+        {
+            "order": 33,
+            "slug": "gutenberg-block-for-slick-slider",
+            "name": "Simple Slider Block &#8211; Create Sliders From Core Blocks"
+        },
+        {
+            "order": 34,
+            "slug": "tutor",
+            "name": "Tutor LMS &#8211; eLearning and online course solution"
+        },
+        {
+            "order": 35,
+            "slug": "jetpack",
+            "name": "Jetpack &#8211; WP Security, Backup, Speed, &amp; Growth"
+        },
+        {
+            "order": 36,
+            "slug": "wp-core-update-cleaner",
+            "name": "WP Core Update Cleaner"
+        },
+        {
+            "order": 37,
+            "slug": "better-core-video-embeds",
+            "name": "Better Core Video Embeds"
+        },
+        {
+            "order": 38,
+            "slug": "cls-lcp-issues-fix",
+            "name": "WP Google Core Web Vitals Fix"
+        },
+        {
+            "order": 39,
+            "slug": "megamenu",
+            "name": "Max Mega Menu"
+        },
+        {
+            "order": 40,
+            "slug": "wps-hide-login",
+            "name": "WPS Hide Login"
+        },
+        {
+            "order": 41,
+            "slug": "rabbit-loader",
+            "name": "RabbitLoader – Website Speed Optimization for improving Core Web Vital metrics with Cache, Image Optimization, and more"
+        },
+        {
+            "order": 42,
+            "slug": "stops-core-theme-and-plugin-updates",
+            "name": "Easy Updates Manager"
+        },
+        {
+            "order": 43,
+            "slug": "better-wp-security",
+            "name": "Solid Security – Password, Two Factor Authentication, and Brute Force Protection"
+        },
+        {
+            "order": 44,
+            "slug": "burst-statistics",
+            "name": "Burst Statistics &#8211; Privacy-Friendly Analytics for WordPress"
+        },
+        {
+            "order": 45,
+            "slug": "advanced-database-cleaner",
+            "name": "Advanced Database Cleaner"
+        },
+        {
+            "order": 46,
+            "slug": "wpvivid-backuprestore",
+            "name": "Migration, Backup, Staging – WPvivid Backup &amp; Migration"
+        },
+        {
+            "order": 47,
+            "slug": "post-expirator",
+            "name": "Schedule Post Changes With PublishPress Future: Unpublish, Delete, Change Status, Trash, Change Categories"
+        },
+        {
+            "order": 48,
+            "slug": "ultimate-addons-for-gutenberg",
+            "name": "Spectra &#8211; WordPress Gutenberg Blocks"
+        },
+        {
+            "order": 49,
+            "slug": "newsletter",
+            "name": "Newsletter &#8211; Send awesome emails from WordPress"
+        },
+        {
+            "order": 50,
+            "slug": "hester-core",
+            "name": "Hester Core"
+        },
+        {
+            "order": 51,
+            "slug": "easy-fancybox",
+            "name": "Firelight Lightbox"
+        },
+        {
+            "order": 52,
+            "slug": "performance-lab",
+            "name": "Performance Lab"
+        },
+        {
+            "order": 53,
+            "slug": "compressx",
+            "name": "AVIF, WebP Converter"
+        },
+        {
+            "order": 54,
+            "slug": "pwa",
+            "name": "PWA"
+        },
+        {
+            "order": 55,
+            "slug": "defender-security",
+            "name": "Defender Security &#8211; Malware Scanner, Login Security &amp; Firewall"
+        },
+        {
+            "order": 56,
+            "slug": "lifterlms",
+            "name": "LifterLMS &#8211; WP LMS for eLearning, Online Courses, &amp; Quizzes"
+        },
+        {
+            "order": 57,
+            "slug": "themerain-core",
+            "name": "ThemeRain Core"
+        },
+        {
+            "order": 58,
+            "slug": "wp-downgrade",
+            "name": "WP Downgrade | Specific Core Version"
+        },
+        {
+            "order": 59,
+            "slug": "mainwp-child",
+            "name": "MainWP Child &#8211; Securely Connects to the MainWP Dashboard to Manage Multiple Sites"
+        },
+        {
+            "order": 60,
+            "slug": "mainwp",
+            "name": "MainWP Dashboard: WordPress Management without the SaaS"
+        },
+        {
+            "order": 61,
+            "slug": "menu-icons",
+            "name": "Menu Icons by ThemeIsle"
+        },
+        {
+            "order": 62,
+            "slug": "gotmls",
+            "name": "Anti-Malware Security and Brute-Force Firewall"
+        },
+        {
+            "order": 63,
+            "slug": "speedien",
+            "name": "Core Web Vitals Booster"
+        },
+        {
+            "order": 64,
+            "slug": "user-switching",
+            "name": "User Switching"
+        },
+        {
+            "order": 65,
+            "slug": "wp-accessibility",
+            "name": "WP Accessibility"
+        },
+        {
+            "order": 66,
+            "slug": "health-check",
+            "name": "Health Check &amp; Troubleshooting"
+        },
+        {
+            "order": 67,
+            "slug": "wpvulnerability",
+            "name": "WPVulnerability"
+        },
+        {
+            "order": 68,
+            "slug": "security-ninja",
+            "name": "Security Ninja &#8211; Secure Firewall &amp; Secure Malware Scanner"
+        },
+        {
+            "order": 69,
+            "slug": "query-monitor",
+            "name": "Query Monitor &#8211; The developer tools panel for WordPress"
+        },
+        {
+            "order": 70,
+            "slug": "patchstack",
+            "name": "Patchstack &#8211; WordPress &amp; Plugins Security"
+        },
+        {
+            "order": 71,
+            "slug": "co-authors-plus",
+            "name": "Co-Authors Plus"
+        },
+        {
+            "order": 72,
+            "slug": "wp-meteor",
+            "name": "WP Meteor Website Speed Optimization Addon"
+        },
+        {
+            "order": 73,
+            "slug": "wp-auto-updater",
+            "name": "WP Auto Updater"
+        },
+        {
+            "order": 74,
+            "slug": "ajax-search-lite",
+            "name": "Ajax Search Lite &#8211; Live Search &amp; Filter"
+        },
+        {
+            "order": 75,
+            "slug": "rocket-lazy-load",
+            "name": "LazyLoad Plugin – Lazy Load Images, Videos, and Iframes"
+        },
+        {
+            "order": 76,
+            "slug": "greenshift-animation-and-page-builder-blocks",
+            "name": "Greenshift &#8211; animation and page builder blocks"
+        },
+        {
+            "order": 77,
+            "slug": "better-youtube-embed-block",
+            "name": "YouTube Block &#8211; A better way to embed YouTube videos, shorts, playlists"
+        },
+        {
+            "order": 78,
+            "slug": "display-a-meta-field-as-block",
+            "name": "Meta Field Block"
+        },
+        {
+            "order": 79,
+            "slug": "extendify",
+            "name": "Extendify"
+        },
+        {
+            "order": 80,
+            "slug": "manage-notification-emails",
+            "name": "Manage Notification E-mails"
+        },
+        {
+            "order": 81,
+            "slug": "wp-retina-2x",
+            "name": "Perfect Images"
+        },
+        {
+            "order": 82,
+            "slug": "webcraftic-updates-manager",
+            "name": "Disable updates, Updates manager, Disable automatic updates"
+        },
+        {
+            "order": 83,
+            "slug": "gpt3-ai-content-generator",
+            "name": "AI Power: Complete AI Pack"
+        },
+        {
+            "order": 84,
+            "slug": "block-manager",
+            "name": "Block Manager"
+        },
+        {
+            "order": 85,
+            "slug": "ewww-image-optimizer",
+            "name": "EWWW Image Optimizer"
+        },
+        {
+            "order": 86,
+            "slug": "a3-lazy-load",
+            "name": "a3 Lazy Load"
+        },
+        {
+            "order": 87,
+            "slug": "typer-core",
+            "name": "Typer Core"
+        },
+        {
+            "order": 88,
+            "slug": "unbloater",
+            "name": "Unbloater"
+        },
+        {
+            "order": 89,
+            "slug": "longer-permalinks",
+            "name": "Longer Permalinks"
+        },
+        {
+            "order": 90,
+            "slug": "no-category-base-wpml",
+            "name": "No Category Base (WPML)"
+        },
+        {
+            "order": 91,
+            "slug": "say-what",
+            "name": "Say what?"
+        },
+        {
+            "order": 92,
+            "slug": "learning-management-system",
+            "name": "Masteriyo LMS – eLearning and Online Course Builder for WordPress"
+        },
+        {
+            "order": 93,
+            "slug": "wp-consent-api",
+            "name": "WP Consent API"
+        },
+        {
+            "order": 94,
+            "slug": "sg-cachepress",
+            "name": "Speed Optimizer &#8211; The All-In-One Performance-Boosting Plugin"
+        },
+        {
+            "order": 95,
+            "slug": "disable-wordpress-updates",
+            "name": "Disable All WordPress Updates"
+        },
+        {
+            "order": 96,
+            "slug": "string-locator",
+            "name": "String locator"
+        },
+        {
+            "order": 97,
+            "slug": "icon-block",
+            "name": "The Icon Block"
+        },
+        {
+            "order": 98,
+            "slug": "listdomer-core",
+            "name": "Listdomer Core &#8211; Core of Listdomer Theme"
+        },
+        {
+            "order": 99,
+            "slug": "image-optimization",
+            "name": "Image Optimizer &#8211; Optimize Images and Convert to WebP or AVIF"
+        },
+        {
+            "order": 100,
+            "slug": "ajax-load-more",
+            "name": "WordPress Infinite Scroll &#8211; Ajax Load More"
+        },
+        {
+            "order": 101,
+            "slug": "wp-simple-firewall",
+            "name": "Shield: Blocks Bots, Protects Users, and Prevents Security Breaches"
+        },
+        {
+            "order": 102,
+            "slug": "awesome-support",
+            "name": "Awesome Support &#8211; WordPress HelpDesk &amp; Support Plugin"
+        },
+        {
+            "order": 103,
+            "slug": "powerkit",
+            "name": "Powerkit – Supercharge your WordPress Site"
+        },
+        {
+            "order": 104,
+            "slug": "foogallery",
+            "name": "FooGallery – Responsive Photo Gallery, Image Viewer, Justified, Masonry &amp; Carousel"
+        },
+        {
+            "order": 105,
+            "slug": "easy-hide-login",
+            "name": "Easy Hide Login"
+        },
+        {
+            "order": 106,
+            "slug": "cpt-editor",
+            "name": "Custom Post Type Editor"
+        },
+        {
+            "order": 107,
+            "slug": "admin-notices-manager",
+            "name": "Admin Notices Manager"
+        },
+        {
+            "order": 108,
+            "slug": "boxzilla",
+            "name": "Boxzilla"
+        },
+        {
+            "order": 109,
+            "slug": "ghostkit",
+            "name": "Ghost Kit – Page Builder Blocks, Motion Effects &amp; Extensions"
+        },
+        {
+            "order": 110,
+            "slug": "profilegrid-user-profiles-groups-and-communities",
+            "name": "ProfileGrid – User Profiles, Groups and Communities"
+        },
+        {
+            "order": 111,
+            "slug": "kitestudio-core",
+            "name": "core plugin for kitestudio themes"
+        },
+        {
+            "order": 112,
+            "slug": "amp",
+            "name": "AMP"
+        },
+        {
+            "order": 113,
+            "slug": "customize-my-account-for-woocommerce",
+            "name": "SysBasics Customize My Account for WooCommerce"
+        },
+        {
+            "order": 114,
+            "slug": "docket-cache",
+            "name": "Docket Cache &#8211; Object Cache Accelerator"
+        },
+        {
+            "order": 115,
+            "slug": "debloat",
+            "name": "Debloat &#8211; Remove Unused CSS, Optimize JS"
+        },
+        {
+            "order": 116,
+            "slug": "loginizer",
+            "name": "Loginizer"
+        },
+        {
+            "order": 117,
+            "slug": "wpdiscuz",
+            "name": "Comments &#8211; wpDiscuz"
+        },
+        {
+            "order": 118,
+            "slug": "cloudinary-image-management-and-manipulation-in-the-cloud-cdn",
+            "name": "Cloudinary &#8211; Deliver Images and Videos at Scale"
+        },
+        {
+            "order": 119,
+            "slug": "directorist",
+            "name": "Directorist: AI-Powered WordPress Business Directory Plugin with Classified Ads Listings"
+        },
+        {
+            "order": 120,
+            "slug": "updater",
+            "name": "Updater by BestWebSoft"
+        },
+        {
+            "order": 121,
+            "slug": "multiple-pages-generator-by-porthas",
+            "name": "Multiple Page Generator Plugin &#8211; MPG"
+        },
+        {
+            "order": 122,
+            "slug": "woocommerce-extra-product-sorting-options",
+            "name": "Extra Product Sorting Options for WooCommerce"
+        },
+        {
+            "order": 123,
+            "slug": "map-block-gutenberg",
+            "name": "Map Block for Google Maps"
+        },
+        {
+            "order": 124,
+            "slug": "advanced-access-manager",
+            "name": "Advanced Access Manager &#8211; Restricted Content, Users &amp; Roles, Enhanced Security and More"
+        },
+        {
+            "order": 125,
+            "slug": "meow-gallery",
+            "name": "Meow Gallery"
+        },
+        {
+            "order": 126,
+            "slug": "userswp",
+            "name": "UsersWP &#8211; Front-end login form, User Registration, User Profile &amp; Members Directory plugin for WP"
+        },
+        {
+            "order": 127,
+            "slug": "lifterlms-labs",
+            "name": "LifterLMS Labs"
+        },
+        {
+            "order": 128,
+            "slug": "enable-svg-webp-ico-upload",
+            "name": "Enable SVG, WebP, and ICO Upload"
+        },
+        {
+            "order": 129,
+            "slug": "disable-update-notifications",
+            "name": "Disable WordPress Update Notifications and auto-update Email Notifications"
+        },
+        {
+            "order": 130,
+            "slug": "cookie-notice",
+            "name": "Cookie Notice &amp; Compliance for GDPR / CCPA"
+        },
+        {
+            "order": 131,
+            "slug": "notification",
+            "name": "Notification &#8211; Custom Notifications and Alerts for WordPress"
+        },
+        {
+            "order": 132,
+            "slug": "acf-better-search",
+            "name": "ACF: Better Search"
+        },
+        {
+            "order": 133,
+            "slug": "ocean-extra",
+            "name": "Ocean Extra"
+        },
+        {
+            "order": 134,
+            "slug": "zero-bs-crm",
+            "name": "Jetpack CRM &#8211; Clients, Leads, Invoices, Billing, Email Marketing, &amp; Automation"
+        },
+        {
+            "order": 135,
+            "slug": "wp-hide-security-enhancer",
+            "name": "WP Hide &amp; Security Enhancer"
+        },
+        {
+            "order": 136,
+            "slug": "ns-cloner-site-copier",
+            "name": "NS Cloner &#8211; Site Copier"
+        },
+        {
+            "order": 137,
+            "slug": "realtyna-core",
+            "name": "Realtyna Core"
+        },
+        {
+            "order": 138,
+            "slug": "content-blocks-builder",
+            "name": "Content Blocks Builder &#8211; Create block, variation, repeater block with carousel, grid, accordion, popup, off-canvas layout"
+        },
+        {
+            "order": 139,
+            "slug": "hide-updates",
+            "name": "Hide Updates"
+        },
+        {
+            "order": 140,
+            "slug": "post-types-unlimited",
+            "name": "Post Types Unlimited"
+        },
+        {
+            "order": 141,
+            "slug": "disable-wp-core-updates-advance",
+            "name": "Disable WP Core Updates Advance"
+        },
+        {
+            "order": 142,
+            "slug": "back-in-stock-notifier-for-woocommerce",
+            "name": "Back In Stock Notifier for WooCommerce | WooCommerce Waitlist Pro"
+        },
+        {
+            "order": 143,
+            "slug": "wp-sitemaps-config",
+            "name": "WP Sitemaps Config"
+        },
+        {
+            "order": 144,
+            "slug": "ics-calendar",
+            "name": "ICS Calendar"
+        },
+        {
+            "order": 145,
+            "slug": "smntcs-disable-rest-api-user-endpoints",
+            "name": "SMNTCS Disable REST API User Endpoints"
+        },
+        {
+            "order": 146,
+            "slug": "duplicate-menu",
+            "name": "Duplicate Menu"
+        },
+        {
+            "order": 147,
+            "slug": "code-syntax-block",
+            "name": "Code Syntax Block"
+        },
+        {
+            "order": 148,
+            "slug": "wp-seopress",
+            "name": "SEOPress &#8211; On-site SEO"
+        },
+        {
+            "order": 149,
+            "slug": "social-sharing-block",
+            "name": "Social Sharing Block"
+        },
+        {
+            "order": 150,
+            "slug": "companion-auto-update",
+            "name": "Companion Auto Update"
+        },
+        {
+            "order": 151,
+            "slug": "wp-remote-users-sync",
+            "name": "WP Remote Users Sync"
+        },
+        {
+            "order": 152,
+            "slug": "admin-site-enhancements",
+            "name": "Admin and Site Enhancements (ASE)"
+        },
+        {
+            "order": 153,
+            "slug": "xcloner-backup-and-restore",
+            "name": "Backup, Restore and Migrate your sites with XCloner"
+        },
+        {
+            "order": 154,
+            "slug": "speed-booster-pack",
+            "name": "Speed Booster Pack ⚡ PageSpeed Optimization Suite"
+        },
+        {
+            "order": 155,
+            "slug": "psn-pagespeed-ninja",
+            "name": "PageSpeed Ninja &#8211; Cache, Minify, Defer CSS JavaScript, Critical CSS, Optimize Images, Convert WebP"
+        },
+        {
+            "order": 156,
+            "slug": "hot-blocks",
+            "name": "Hot Blocks"
+        },
+        {
+            "order": 157,
+            "slug": "wp-sheet-editor-bulk-spreadsheet-editor-for-posts-and-pages",
+            "name": "Bulk Edit Posts and Products in Spreadsheet"
+        },
+        {
+            "order": 158,
+            "slug": "website-file-changes-monitor",
+            "name": "Melapress File Monitor"
+        },
+        {
+            "order": 159,
+            "slug": "stop-emails",
+            "name": "Stop Emails"
+        },
+        {
+            "order": 160,
+            "slug": "gutenberg",
+            "name": "Gutenberg"
+        },
+        {
+            "order": 161,
+            "slug": "wp-health",
+            "name": "WP Umbrella: Update Backup Restore &amp; Monitoring"
+        },
+        {
+            "order": 162,
+            "slug": "carousel-slider",
+            "name": "Carousel Slider"
+        },
+        {
+            "order": 163,
+            "slug": "modular-custom-css",
+            "name": "Modular Custom CSS"
+        },
+        {
+            "order": 164,
+            "slug": "wp-members",
+            "name": "WP-Members Membership Plugin"
+        },
+        {
+            "order": 165,
+            "slug": "analytify-analytics-dashboard-widget",
+            "name": "Google Analytics Dashboard Widget by Analytify"
+        },
+        {
+            "order": 166,
+            "slug": "antivirus",
+            "name": "AntiVirus"
+        },
+        {
+            "order": 167,
+            "slug": "relevanssi-live-ajax-search",
+            "name": "Relevanssi Live Ajax Search"
+        },
+        {
+            "order": 168,
+            "slug": "mollie-payments-for-woocommerce",
+            "name": "Mollie Payments for WooCommerce"
+        },
+        {
+            "order": 169,
+            "slug": "woo-wallet",
+            "name": "Wallet for WooCommerce"
+        },
+        {
+            "order": 170,
+            "slug": "stackable-ultimate-gutenberg-blocks",
+            "name": "Stackable &#8211; Page Builder Gutenberg Blocks"
+        },
+        {
+            "order": 171,
+            "slug": "wp-security-audit-log",
+            "name": "WP Activity Log"
+        },
+        {
+            "order": 172,
+            "slug": "wpsso-wp-sitemaps",
+            "name": "WPSSO WP Sitemaps XML with News, Image, and Video Sitemaps"
+        },
+        {
+            "order": 173,
+            "slug": "wp-datepicker",
+            "name": "WP Datepicker"
+        },
+        {
+            "order": 174,
+            "slug": "surge",
+            "name": "Surge"
+        },
+        {
+            "order": 175,
+            "slug": "worpit-admin-dashboard-plugin",
+            "name": "iControlWP &#8211; Multiple WordPress Site Manager"
+        },
+        {
+            "order": 176,
+            "slug": "woocommerce-sequential-order-numbers",
+            "name": "Sequential Order Numbers for WooCommerce"
+        },
+        {
+            "order": 177,
+            "slug": "oxyplug-preload",
+            "name": "Oxyplug Preload"
+        },
+        {
+            "order": 178,
+            "slug": "wpsso-tune-image-editors",
+            "name": "WPSSO Tune WP Image Editors"
+        },
+        {
+            "order": 179,
+            "slug": "editor-bridge",
+            "name": "Editor Bridge"
+        },
+        {
+            "order": 180,
+            "slug": "sinatra-core",
+            "name": "Sinatra Core"
+        },
+        {
+            "order": 181,
+            "slug": "wp-smushit",
+            "name": "Smush Image Optimization – Optimize Images | Compress &amp; Lazy Load Images | Convert WebP | Image CDN"
+        },
+        {
+            "order": 182,
+            "slug": "stop-spammer-registrations-plugin",
+            "name": "Anti-Spam: Spam Protection | Block Spam Users, Comments, Forms"
+        },
+        {
+            "order": 183,
+            "slug": "featured-image-in-content",
+            "name": "Featured Image in Content"
+        },
+        {
+            "order": 184,
+            "slug": "phastpress",
+            "name": "PhastPress"
+        },
+        {
+            "order": 185,
+            "slug": "wcboost-products-compare",
+            "name": "WCBoost &#8211; Products Compare"
+        },
+        {
+            "order": 186,
+            "slug": "wp-header-images",
+            "name": "WP Header Images"
+        },
+        {
+            "order": 187,
+            "slug": "stop-user-enumeration",
+            "name": "Stop User Enumeration"
+        },
+        {
+            "order": 188,
+            "slug": "cache-enabler",
+            "name": "Cache Enabler"
+        },
+        {
+            "order": 189,
+            "slug": "automatic-youtube-gallery",
+            "name": "Automatic YouTube Gallery"
+        },
+        {
+            "order": 190,
+            "slug": "quiz-master-next",
+            "name": "Quiz and Survey Master (QSM) &#8211; Easy Quiz and Survey Maker"
+        },
+        {
+            "order": 191,
+            "slug": "black-studio-tinymce-widget",
+            "name": "Black Studio TinyMCE Widget"
+        },
+        {
+            "order": 192,
+            "slug": "coblocks",
+            "name": "Page Builder Gutenberg Blocks – CoBlocks"
+        },
+        {
+            "order": 193,
+            "slug": "stream",
+            "name": "Stream"
+        },
+        {
+            "order": 194,
+            "slug": "still-be-image-quality-control",
+            "name": "Image Quality Control | Still BE"
+        },
+        {
+            "order": 195,
+            "slug": "siteguard",
+            "name": "SiteGuard WP Plugin"
+        },
+        {
+            "order": 196,
+            "slug": "flexible-spacer-block",
+            "name": "Flexible Spacer Block"
+        },
+        {
+            "order": 197,
+            "slug": "optimole-wp",
+            "name": "Image Optimization by Optimole &#8211; Lazy Load, CDN, Convert WebP &amp; AVIF"
+        },
+        {
+            "order": 198,
+            "slug": "fluent-support",
+            "name": "Fluent Support &#8211; Helpdesk &amp; Customer Support Ticket System"
+        },
+        {
+            "order": 199,
+            "slug": "plover-kit",
+            "name": "Plover Kit &#8211; Blocks, Patterns and Editor Enhancements"
+        },
+        {
+            "order": 200,
+            "slug": "watchful",
+            "name": "Remote Website Management Plugin by Watchful"
+        },
+        {
+            "order": 201,
+            "slug": "fastpixel-website-accelerator",
+            "name": "FastPixel Caching &#8211; WP Optimization made easy"
+        },
+        {
+            "order": 202,
+            "slug": "genesis-blocks",
+            "name": "Genesis Blocks"
+        },
+        {
+            "order": 203,
+            "slug": "bnfw",
+            "name": "Customize WordPress Emails and Alerts &#8211; Better Notifications for WP"
+        },
+        {
+            "order": 204,
+            "slug": "envira-gallery-lite",
+            "name": "Gallery Plugin for WordPress &#8211; Envira Photo Gallery"
+        },
+        {
+            "order": 205,
+            "slug": "wp-console",
+            "name": "WP Console &#8211; WordPress PHP Console powered by PsySH"
+        },
+        {
+            "order": 206,
+            "slug": "all-in-one-video-gallery",
+            "name": "All-in-One Video Gallery"
+        },
+        {
+            "order": 207,
+            "slug": "system-dashboard",
+            "name": "System Dashboard"
+        },
+        {
+            "order": 208,
+            "slug": "critical-css-for-wp",
+            "name": "Reduce Unused CSS Solution with Critical CSS For WP"
+        },
+        {
+            "order": 209,
+            "slug": "page-builder-add",
+            "name": "Landing Page Builder &#8211; Coming Soon page, Maintenance Mode, Lead Page, WordPress Landing Pages"
+        },
+        {
+            "order": 210,
+            "slug": "blogvault-real-time-backup",
+            "name": "BlogVault WordPress Backup Plugin &#8211; Migration, Staging, and Backups"
+        },
+        {
+            "order": 211,
+            "slug": "hcaptcha-for-forms-and-more",
+            "name": "hCaptcha for WP"
+        },
+        {
+            "order": 212,
+            "slug": "wpsso-breadcrumbs",
+            "name": "WPSSO Schema Breadcrumbs Markup"
+        },
+        {
+            "order": 213,
+            "slug": "press-this",
+            "name": "Press This"
+        },
+        {
+            "order": 214,
+            "slug": "bogo",
+            "name": "Bogo"
+        },
+        {
+            "order": 215,
+            "slug": "attachment-taxonomies",
+            "name": "Attachment Taxonomies"
+        },
+        {
+            "order": 216,
+            "slug": "learnpress",
+            "name": "LearnPress &#8211; WordPress LMS Plugin"
+        },
+        {
+            "order": 217,
+            "slug": "author-avatars",
+            "name": "Author Avatars List/Block"
+        },
+        {
+            "order": 218,
+            "slug": "wpf2b-addon-blocklist",
+            "name": "WP fail2ban Blocklist"
+        },
+        {
+            "order": 219,
+            "slug": "wpsso-wc-shipping-delivery-time",
+            "name": "WPSSO Shipping Delivery Time for WooCommerce SEO"
+        },
+        {
+            "order": 220,
+            "slug": "wc-donation-platform",
+            "name": "Donation Platform for WooCommerce: Fundraising &amp; Donation Management"
+        },
+        {
+            "order": 221,
+            "slug": "wpsso-wc-metadata",
+            "name": "WPSSO Product Metadata (aka Custom Fields) for WooCommerce SEO &#8211; MPN, ISBN, GTIN, UPC, EAN, Global Identifiers"
+        },
+        {
+            "order": 222,
+            "slug": "gutena-forms",
+            "name": "Gutena Forms &#8211; Contact Forms Block"
+        },
+        {
+            "order": 223,
+            "slug": "rename-wp-admin-login",
+            "name": "Rename wp-admin login"
+        },
+        {
+            "order": 224,
+            "slug": "beaver-builder-lite-version",
+            "name": "Beaver Builder &#8211; WordPress Page Builder"
+        },
+        {
+            "order": 225,
+            "slug": "mediapress",
+            "name": "MediaPress"
+        },
+        {
+            "order": 226,
+            "slug": "blockons",
+            "name": "Blockons &#8211; Gutenberg blocks for WordPress and WooCommerce websites"
+        },
+        {
+            "order": 227,
+            "slug": "erp",
+            "name": "WP ERP | Complete HR solution with recruitment &amp; job listings | WooCommerce CRM &amp; Accounting"
+        },
+        {
+            "order": 228,
+            "slug": "food-store",
+            "name": "Food Store &#8211; Online Food Delivery &amp; Pickup"
+        },
+        {
+            "order": 229,
+            "slug": "speedguard",
+            "name": "Site Speed Test &#8211; SpeedGuard"
+        },
+        {
+            "order": 230,
+            "slug": "3d-flipbook-dflip-lite",
+            "name": "Dear Flipbook &#8211; PDF Flipbook, 3D Flipbook, PDF embed, PDF viewer"
+        },
+        {
+            "order": 231,
+            "slug": "propertyhive",
+            "name": "Property Hive"
+        },
+        {
+            "order": 232,
+            "slug": "block-enhancements",
+            "name": "Block Enhancements &#8211; Add practical features to Gutenberg blocks"
+        },
+        {
+            "order": 233,
+            "slug": "remove-site-heath-from-dashboard",
+            "name": "Remove Site Health From Dashboard"
+        },
+        {
+            "order": 234,
+            "slug": "otter-blocks",
+            "name": "Otter Blocks &#8211; Gutenberg Blocks, Page Builder for Gutenberg Editor &amp; FSE"
+        },
+        {
+            "order": 235,
+            "slug": "security-safe",
+            "name": "WP Security Safe"
+        },
+        {
+            "order": 236,
+            "slug": "wpsso-merchant-return-policy",
+            "name": "WPSSO Merchant Return Policy Manager"
+        },
+        {
+            "order": 237,
+            "slug": "checkoutwc-lite",
+            "name": "WooCommerce Checkout by CheckoutWC &#8211; Custom Checkout Templates, Reduce Cart Abandonment and Increase Conversions"
+        },
+        {
+            "order": 238,
+            "slug": "wp-malware-removal",
+            "name": "Malcure Malware Scanner — #1 Toolset for WordPress Malware Removal"
+        },
+        {
+            "order": 239,
+            "slug": "twentig",
+            "name": "Toolkit for Block Theme (Starter Templates, Portfolio, Gutenberg Blocks, Patterns) – Twentig"
+        },
+        {
+            "order": 240,
+            "slug": "sqlite-database-integration",
+            "name": "SQLite Database Integration"
+        },
+        {
+            "order": 241,
+            "slug": "gutenbee",
+            "name": "GutenBee &#8211; Gutenberg Blocks"
+        },
+        {
+            "order": 242,
+            "slug": "reorder-by-term",
+            "name": "Reorder by Term"
+        },
+        {
+            "order": 243,
+            "slug": "best-woocommerce-feed",
+            "name": "Product Feed Manager- WooCommerce Product Feeds For Google Shopping, Social Catalog, TikTok Ads, and 180+ Popular Marketplaces"
+        },
+        {
+            "order": 244,
+            "slug": "wordpress-beta-tester",
+            "name": "WordPress Beta Tester"
+        },
+        {
+            "order": 245,
+            "slug": "invoicing",
+            "name": "Payment forms, Buy now buttons, and Invoicing System | GetPaid"
+        },
+        {
+            "order": 246,
+            "slug": "wpsso-strip-schema-microdata",
+            "name": "WPSSO Strip Schema Microdata"
+        },
+        {
+            "order": 247,
+            "slug": "jquery-validation-for-contact-form-7",
+            "name": "Jquery Validation For Contact Form 7"
+        },
+        {
+            "order": 248,
+            "slug": "disable-admin-notices",
+            "name": "Disable Admin Notices individually"
+        },
+        {
+            "order": 249,
+            "slug": "ocean-modal-window",
+            "name": "Ocean Modal Window"
+        },
+        {
+            "order": 250,
+            "slug": "advanced-wp-reset",
+            "name": "Advanced WordPress Reset &#8211; Debug, Recover &amp; Reset WP"
+        },
+        {
+            "order": 251,
+            "slug": "disable-dashboard-for-woocommerce",
+            "name": "Disable Bloat for WordPress &amp; WooCommerce"
+        },
+        {
+            "order": 252,
+            "slug": "unlist-posts",
+            "name": "Unlist Posts &amp; Pages"
+        },
+        {
+            "order": 253,
+            "slug": "solid-performance",
+            "name": "Solid Performance – Your No-Code Caching, Performance, &amp; Page Speed Solution"
+        },
+        {
+            "order": 254,
+            "slug": "multisite-custom-css",
+            "name": "Multisite Custom CSS"
+        },
+        {
+            "order": 255,
+            "slug": "turn-comments-off",
+            "name": "Turn Comments Off"
+        },
+        {
+            "order": 256,
+            "slug": "pareto-security",
+            "name": "Pareto Security"
+        },
+        {
+            "order": 257,
+            "slug": "hivepress",
+            "name": "HivePress &#8211; Business Directory &amp; Classified Ads Plugin"
+        },
+        {
+            "order": 258,
+            "slug": "translation-tools",
+            "name": "Translation Tools"
+        },
+        {
+            "order": 259,
+            "slug": "robo-gallery",
+            "name": "Photo Gallery, Images, Slider in Rbs Image Gallery"
+        },
+        {
+            "order": 260,
+            "slug": "disable-lazy-loading",
+            "name": "Disable Lazy Load"
+        },
+        {
+            "order": 261,
+            "slug": "gettext-override-translations",
+            "name": "Gettext override translations"
+        },
+        {
+            "order": 262,
+            "slug": "custom-post-types",
+            "name": "Custom post types, Custom Fields &amp; more"
+        },
+        {
+            "order": 263,
+            "slug": "hkdev-maintenance-mode",
+            "name": "Maintenance Mode"
+        },
+        {
+            "order": 264,
+            "slug": "wpsso-add-five-stars",
+            "name": "WPSSO Add Five Stars for Google Rich Snippets"
+        },
+        {
+            "order": 265,
+            "slug": "wpnextpreviouslink",
+            "name": "CBX Next Previous Article"
+        },
+        {
+            "order": 266,
+            "slug": "favicon-generator",
+            "name": "Favicon Generator (CLOSED)"
+        },
+        {
+            "order": 267,
+            "slug": "security-malware-firewall",
+            "name": "Security &amp; Malware scan by CleanTalk"
+        },
+        {
+            "order": 268,
+            "slug": "simple-cpt",
+            "name": "Simple CPT"
+        },
+        {
+            "order": 269,
+            "slug": "aryo-activity-log",
+            "name": "Activity Log &#8211; Monitor &amp; Record User Changes"
+        },
+        {
+            "order": 270,
+            "slug": "emoji-toolbar",
+            "name": "Emoji Toolbar"
+        },
+        {
+            "order": 271,
+            "slug": "cbxuseronline",
+            "name": "CBX User Online &amp; Last Login"
+        },
+        {
+            "order": 272,
+            "slug": "wp-native-php-sessions",
+            "name": "WordPress Native PHP Sessions"
+        },
+        {
+            "order": 273,
+            "slug": "fusion",
+            "name": "Fusion Page Builder"
+        },
+        {
+            "order": 274,
+            "slug": "inseri-core",
+            "name": "Scientific and Interactive Blocks &#8211; inseri core"
+        },
+        {
+            "order": 275,
+            "slug": "user-submitted-posts",
+            "name": "User Submitted Posts – Enable Users to Submit Posts from the Front End"
+        },
+        {
+            "order": 276,
+            "slug": "wp-hooks-finder",
+            "name": "WP Hooks Finder"
+        },
+        {
+            "order": 277,
+            "slug": "shopmagic-abandoned-carts",
+            "name": "Recover Abandoned Carts for WooCommerce by ShopMagic"
+        },
+        {
+            "order": 278,
+            "slug": "aco-product-labels-for-woocommerce",
+            "name": "Product Labels For Woocommerce (Sale Badges)"
+        },
+        {
+            "order": 279,
+            "slug": "aam-protected-media-files",
+            "name": "AAM Protected Media Files"
+        },
+        {
+            "order": 280,
+            "slug": "wpfunnels",
+            "name": "Easiest Funnel Builder For WordPress &amp; WooCommerce by WPFunnels"
+        },
+        {
+            "order": 281,
+            "slug": "change-last-modified-date",
+            "name": "Change Last Modified Date"
+        },
+        {
+            "order": 282,
+            "slug": "wpsso-ratings-and-reviews",
+            "name": "WPSSO Ratings and Reviews"
+        },
+        {
+            "order": 283,
+            "slug": "blockmeister",
+            "name": "BlockMeister &#8211; Block Pattern Builder"
+        },
+        {
+            "order": 284,
+            "slug": "automatic-translations-for-polylang",
+            "name": "AI Automatic Translations For Polylang"
+        },
+        {
+            "order": 285,
+            "slug": "re-add-underline-justify",
+            "name": "Re-add text underline and justify"
+        },
+        {
+            "order": 286,
+            "slug": "template-editor",
+            "name": "Options for Block Themes"
+        },
+        {
+            "order": 287,
+            "slug": "wpide",
+            "name": "WPIDE &#8211; File Manager &amp; Code Editor"
+        },
+        {
+            "order": 288,
+            "slug": "admin-login-url-change",
+            "name": "Admin login URL Change"
+        },
+        {
+            "order": 289,
+            "slug": "decalog",
+            "name": "DecaLog"
+        },
+        {
+            "order": 290,
+            "slug": "ninjascanner",
+            "name": "NinjaScanner &#8211; Virus &amp; Malware scan"
+        },
+        {
+            "order": 291,
+            "slug": "oik-privacy-policy",
+            "name": "oik-privacy-policy"
+        },
+        {
+            "order": 292,
+            "slug": "rsfirewall",
+            "name": "RSFirewall!"
+        },
+        {
+            "order": 293,
+            "slug": "oxyplug-prefetch",
+            "name": "Oxyplug Prefetch &amp; Prerender"
+        },
+        {
+            "order": 294,
+            "slug": "find-my-blocks",
+            "name": "Find My Blocks &#8211; Locate blocks on your site"
+        },
+        {
+            "order": 295,
+            "slug": "cbxwpbookmark",
+            "name": "CBX Bookmark &amp; Favorite"
+        },
+        {
+            "order": 296,
+            "slug": "captcha-them-all",
+            "name": "Captcha Them All"
+        },
+        {
+            "order": 297,
+            "slug": "wp-speedup",
+            "name": "WP SpeedUp"
+        },
+        {
+            "order": 298,
+            "slug": "wc-frontend-manager-elementor",
+            "name": "WCFM &#8211; WCFM Marketplace integrate Elementor"
+        },
+        {
+            "order": 299,
+            "slug": "geodirectory",
+            "name": "GeoDirectory &#8211; WP Business Directory Plugin and Classified Listings Directory"
+        },
+        {
+            "order": 300,
+            "slug": "texty",
+            "name": "Texty &#8211; SMS Notification for WordPress, WooCommerce, Dokan and more"
+        },
+        {
+            "order": 301,
+            "slug": "add-to-calendar-button",
+            "name": "Add to Calendar Button"
+        },
+        {
+            "order": 302,
+            "slug": "secupress",
+            "name": "SecuPress Free — WordPress Security"
+        },
+        {
+            "order": 303,
+            "slug": "rollback-update-failure",
+            "name": "Rollback Auto Update"
+        },
+        {
+            "order": 304,
+            "slug": "disable-media-pages",
+            "name": "Disable Media Pages"
+        },
+        {
+            "order": 305,
+            "slug": "uncanny-automator",
+            "name": "Uncanny Automator &#8211; Easy Automation, Integration, Webhooks &amp; Workflow Builder Plugin"
+        },
+        {
+            "order": 306,
+            "slug": "wp-referral-code",
+            "name": "WP Referral Code"
+        },
+        {
+            "order": 307,
+            "slug": "post-snippets",
+            "name": "Post Snippets &#8211; Custom WordPress Code Snippets Customizer"
+        },
+        {
+            "order": 308,
+            "slug": "wp-hotelier",
+            "name": "WP Hotelier"
+        },
+        {
+            "order": 309,
+            "slug": "password-protected",
+            "name": "Password Protected – Password Protect your WordPress Site, Pages, &amp; WooCommerce Products &#8211; Restrict Content, Protect WooCommerce Category, and more"
+        },
+        {
+            "order": 310,
+            "slug": "xml-sitemaps-manager",
+            "name": "XML Sitemaps Manager"
+        },
+        {
+            "order": 311,
+            "slug": "error-log-viewer",
+            "name": "Error Log Viewer by BestWebSoft"
+        },
+        {
+            "order": 312,
+            "slug": "gdpr-data-request-form",
+            "name": "GDPR Data Request Form"
+        },
+        {
+            "order": 313,
+            "slug": "go-live-update-urls",
+            "name": "Go Live Update Urls"
+        },
+        {
+            "order": 314,
+            "slug": "wp-html-mail",
+            "name": "Email Template Designer &#8211; WP HTML Mail"
+        },
+        {
+            "order": 315,
+            "slug": "admin-menu-manager",
+            "name": "Admin Menu Manager"
+        },
+        {
+            "order": 316,
+            "slug": "optimize-more",
+            "name": "Optimize More!"
+        },
+        {
+            "order": 317,
+            "slug": "my-wp",
+            "name": "My WP Customize Admin/Frontend"
+        },
+        {
+            "order": 318,
+            "slug": "woo-sku-label-changer",
+            "name": "SKU Label Changer For WooCommerce"
+        },
+        {
+            "order": 319,
+            "slug": "multi-device-switcher",
+            "name": "Multi Device Switcher"
+        },
+        {
+            "order": 320,
+            "slug": "connections",
+            "name": "Connections Business Directory"
+        },
+        {
+            "order": 321,
+            "slug": "thoughtful-comments",
+            "name": "FV Thoughtful Comments"
+        },
+        {
+            "order": 322,
+            "slug": "wpsso-faq",
+            "name": "WPSSO FAQ Manager"
+        },
+        {
+            "order": 323,
+            "slug": "all-in-one-intranet",
+            "name": "All-In-One Intranet"
+        },
+        {
+            "order": 324,
+            "slug": "real-cookie-banner",
+            "name": "Real Cookie Banner: GDPR &amp; ePrivacy Cookie Consent"
+        },
+        {
+            "order": 325,
+            "slug": "duplicate-content-addon-for-polylang",
+            "name": "Polylang Duplicate Content Addon"
+        },
+        {
+            "order": 326,
+            "slug": "wpcasa-advanced-search",
+            "name": "WPCasa Advanced Search"
+        },
+        {
+            "order": 327,
+            "slug": "svg-block",
+            "name": "SVG Block"
+        },
+        {
+            "order": 328,
+            "slug": "getwid",
+            "name": "Getwid &#8211; Gutenberg Blocks"
+        },
+        {
+            "order": 329,
+            "slug": "autodescription",
+            "name": "The SEO Framework – Fast, Automated, Effortless."
+        },
+        {
+            "order": 330,
+            "slug": "http-requests-manager",
+            "name": "HTTP Requests Manager"
+        },
+        {
+            "order": 331,
+            "slug": "disabler",
+            "name": "Disabler"
+        },
+        {
+            "order": 332,
+            "slug": "cwis-antivirus-malware-detected",
+            "name": "WebDefender Security – Protection &amp; AntiSpam"
+        },
+        {
+            "order": 333,
+            "slug": "google-captcha",
+            "name": "reCaptcha by BestWebSoft"
+        },
+        {
+            "order": 334,
+            "slug": "iframe",
+            "name": "iframe"
+        },
+        {
+            "order": 335,
+            "slug": "reorder-terms",
+            "name": "Reorder Terms"
+        },
+        {
+            "order": 336,
+            "slug": "tk-google-fonts",
+            "name": "TK Google Fonts GDPR Compliant"
+        },
+        {
+            "order": 337,
+            "slug": "custom-login",
+            "name": "Custom Login"
+        },
+        {
+            "order": 338,
+            "slug": "mihdan-index-now",
+            "name": "CrawlWP SEO &#8211; Instant Search Engine Indexing &amp; SEO Performance Monitor"
+        },
+        {
+            "order": 339,
+            "slug": "gutena-tabs",
+            "name": "Gutena Tabs"
+        },
+        {
+            "order": 340,
+            "slug": "wpsso-google-merchant-feed",
+            "name": "WPSSO Google Merchant Feed XML"
+        },
+        {
+            "order": 341,
+            "slug": "woocommerce-jetpack",
+            "name": "Booster for WooCommerce"
+        },
+        {
+            "order": 342,
+            "slug": "apexchat",
+            "name": "Blazeo"
+        },
+        {
+            "order": 343,
+            "slug": "wpsso-rest-api",
+            "name": "WPSSO REST API"
+        },
+        {
+            "order": 344,
+            "slug": "wp-bootscraper",
+            "name": "WordPress Bootscraper"
+        },
+        {
+            "order": 345,
+            "slug": "you-save-x-for-woocommerce",
+            "name": "You Save for Woocommerce"
+        },
+        {
+            "order": 346,
+            "slug": "leyka",
+            "name": "Leyka"
+        },
+        {
+            "order": 347,
+            "slug": "wpsso-commerce-manager-catalog-feed",
+            "name": "WPSSO Commerce Manager Catalog Feed XML"
+        },
+        {
+            "order": 348,
+            "slug": "really-simple-featured-video",
+            "name": "Really Simple Featured Video &#8211; Featured video support for Posts, Pages &amp; WooCommerce Products"
+        },
+        {
+            "order": 349,
+            "slug": "trusted-shops-easy-integration-for-woocommerce",
+            "name": "Trusted Shops Easy Integration for WooCommerce"
+        },
+        {
+            "order": 350,
+            "slug": "fourteen-colors",
+            "name": "Fourteen Colors"
+        },
+        {
+            "order": 351,
+            "slug": "boldgrid-backup",
+            "name": "Total Upkeep – WordPress Backup Plugin plus Restore &amp; Migrate by BoldGrid"
+        },
+        {
+            "order": 352,
+            "slug": "getwid-megamenu",
+            "name": "WordPress Mega Menu Block"
+        },
+        {
+            "order": 353,
+            "slug": "live-sales-notifications-for-woocommerce",
+            "name": "Live sales notification for WooCommerce, Fake sales notification for WooCommerce, Recent sales popup for WooCommerce"
+        },
+        {
+            "order": 354,
+            "slug": "accelerated-mobile-pages",
+            "name": "AMP for WP &#8211; Accelerated Mobile Pages"
+        },
+        {
+            "order": 355,
+            "slug": "clear-cache-for-widgets",
+            "name": "Clear Cache for Me"
+        },
+        {
+            "order": 356,
+            "slug": "pdf-print",
+            "name": "PDF &amp; Print by BestWebSoft &#8211; WordPress Posts and Pages PDF Generator Plugin"
+        },
+        {
+            "order": 357,
+            "slug": "shop-feed-for-instagram-by-snapppt",
+            "name": "Shoppable Social Media Galleries by Sauce"
+        },
+        {
+            "order": 358,
+            "slug": "accessibility-plus",
+            "name": "AccessibilityPlus: Boost Accessibility &amp; SEO Score for Lighthouse"
+        },
+        {
+            "order": 359,
+            "slug": "debug-log-manager",
+            "name": "Debug Log Manager"
+        },
+        {
+            "order": 360,
+            "slug": "custom-codes",
+            "name": "CodeKit &#8211; Custom Codes Editor"
+        },
+        {
+            "order": 361,
+            "slug": "enhanced-media-library",
+            "name": "Enhanced Media Library"
+        },
+        {
+            "order": 362,
+            "slug": "visual-regression-tests",
+            "name": "VRTs &#8211; Visual Regression Tests"
+        },
+        {
+            "order": 363,
+            "slug": "wallets",
+            "name": "Bitcoin and Altcoin Wallets"
+        },
+        {
+            "order": 364,
+            "slug": "wpsso-organization-place",
+            "name": "WPSSO Organization and Place Manager"
+        },
+        {
+            "order": 365,
+            "slug": "disable-global-style",
+            "name": "Disable Global Style"
+        },
+        {
+            "order": 366,
+            "slug": "civic-cookie-control-8",
+            "name": "Civic Cookie Control"
+        },
+        {
+            "order": 367,
+            "slug": "wpsso-user-locale",
+            "name": "WPSSO User Locale Selector"
+        },
+        {
+            "order": 368,
+            "slug": "kenta-blocks",
+            "name": "Kenta Blocks – Responsive Blocks and block templates library"
+        },
+        {
+            "order": 369,
+            "slug": "fluent-security",
+            "name": "FluentAuth &#8211; The Ultimate Authorization &amp; Security Plugin for WordPress"
+        },
+        {
+            "order": 370,
+            "slug": "uichemy",
+            "name": "UiChemy &#8211; Figma to WordPress (Gutenberg, Elementor, Bricks)"
+        },
+        {
+            "order": 371,
+            "slug": "cbcurrencyconverter",
+            "name": "CBX Currency Converter"
+        },
+        {
+            "order": 372,
+            "slug": "syntax-highlighting-code-block",
+            "name": "Syntax-highlighting Code Block (with Server-side Rendering)"
+        },
+        {
+            "order": 373,
+            "slug": "simple-basic-contact-form",
+            "name": "Simple Basic Contact Form"
+        },
+        {
+            "order": 374,
+            "slug": "wh-tweaks",
+            "name": "WH Tweaks"
+        },
+        {
+            "order": 375,
+            "slug": "wp-migration-duplicator",
+            "name": "WebToffee WP Backup and Migration"
+        },
+        {
+            "order": 376,
+            "slug": "track-the-click",
+            "name": "Track The Click"
+        },
+        {
+            "order": 377,
+            "slug": "remove-meta-generators",
+            "name": "Remove Meta Generators"
+        },
+        {
+            "order": 378,
+            "slug": "clearfy",
+            "name": "Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer"
+        },
+        {
+            "order": 379,
+            "slug": "freesoul-deactivate-plugins",
+            "name": "Freesoul Deactivate Plugins &#8211; Disable plugins on individual WordPress pages"
+        },
+        {
+            "order": 380,
+            "slug": "pagination",
+            "name": "Pagination by BestWebSoft &#8211; Customizable WordPress Content Splitter and Navigation Plugin"
+        },
+        {
+            "order": 381,
+            "slug": "premmerce",
+            "name": "Premmerce"
+        },
+        {
+            "order": 382,
+            "slug": "google-sitemap-plugin",
+            "name": "Sitemap by BestWebSoft &#8211; WordPress XML Site Map Page Generator Plugin"
+        },
+        {
+            "order": 383,
+            "slug": "disable-auto-update-email-notifications",
+            "name": "Disable auto-update Email Notifications"
+        },
+        {
+            "order": 384,
+            "slug": "the-plus-addons-for-elementor-page-builder",
+            "name": "The Plus Addons for Elementor &#8211; Elementor Addons, Page Templates, Widgets, Mega Menu, WooCommerce"
+        },
+        {
+            "order": 385,
+            "slug": "instawp-connect",
+            "name": "InstaWP Connect &#8211; 1-click WP Staging &amp; Migration"
+        },
+        {
+            "order": 386,
+            "slug": "opcache-reset",
+            "name": "OPcache Reset"
+        },
+        {
+            "order": 387,
+            "slug": "bws-google-analytics",
+            "name": "Analytics by BestWebSoft &#8211; Google Analytics Dashboard and Statistic Plugin for WordPress"
+        },
+        {
+            "order": 388,
+            "slug": "kia-subtitle",
+            "name": "KIA Subtitle"
+        },
+        {
+            "order": 389,
+            "slug": "wpsso-rrssb",
+            "name": "WPSSO Ridiculously Responsive Social Sharing Buttons (RRSSB)"
+        },
+        {
+            "order": 390,
+            "slug": "all-in-one-event-calendar",
+            "name": "Timely All-in-One Events Calendar"
+        },
+        {
+            "order": 391,
+            "slug": "user-role",
+            "name": "User Role by BestWebSoft &#8211; Add and Customize Roles and Capabilities in WordPress"
+        },
+        {
+            "order": 392,
+            "slug": "fv-wordpress-flowplayer",
+            "name": "FV Flowplayer Video Player"
+        },
+        {
+            "order": 393,
+            "slug": "woocommerce-remove-sku",
+            "name": "Remove SKU From Product detail page"
+        },
+        {
+            "order": 394,
+            "slug": "preferred-languages",
+            "name": "Preferred Languages"
+        },
+        {
+            "order": 395,
+            "slug": "counting-number-block",
+            "name": "Counting Number Block"
+        },
+        {
+            "order": 396,
+            "slug": "wpsso-am",
+            "name": "WPSSO Mobile App Meta Tags"
+        },
+        {
+            "order": 397,
+            "slug": "shopmagic-for-contact-form-7",
+            "name": "ShopMagic for Contact Form 7 and WooCommerce"
+        },
+        {
+            "order": 398,
+            "slug": "acf-extended",
+            "name": "Advanced Custom Fields: Extended"
+        },
+        {
+            "order": 399,
+            "slug": "visitors-online",
+            "name": "Visitors Online by BestWebSoft"
+        },
+        {
+            "order": 400,
+            "slug": "cookie-notice-consent",
+            "name": "Cookie Notice &amp; Consent"
+        },
+        {
+            "order": 401,
+            "slug": "publishpress-statuses",
+            "name": "PublishPress Statuses &#8211; Custom Post Status and Workflow"
+        },
+        {
+            "order": 402,
+            "slug": "translate-words",
+            "name": "Translate Words"
+        },
+        {
+            "order": 403,
+            "slug": "revisionary",
+            "name": "PublishPress Revisions: Duplicate Posts, Submit, Approve and Schedule Content Changes"
+        },
+        {
+            "order": 404,
+            "slug": "social-rocket",
+            "name": "Social Rocket &#8211; Social Sharing Plugin"
+        },
+        {
+            "order": 405,
+            "slug": "jetpack-protect",
+            "name": "Jetpack Protect"
+        },
+        {
+            "order": 406,
+            "slug": "shmapper-by-teplitsa",
+            "name": "ShMapper by Teplitsa"
+        },
+        {
+            "order": 407,
+            "slug": "flexible-subscriptions",
+            "name": "Flexible Subscriptions"
+        },
+        {
+            "order": 408,
+            "slug": "updraftcentral",
+            "name": "UpdraftCentral Dashboard"
+        },
+        {
+            "order": 409,
+            "slug": "tangible-loops-and-logic",
+            "name": "Loops &amp; Logic"
+        },
+        {
+            "order": 410,
+            "slug": "blocks-kit",
+            "name": "Blocks Kit &#8211; Gutenberg Blocks for Freelancers"
+        },
+        {
+            "order": 411,
+            "slug": "delicious-recipes",
+            "name": "WP Delicious &#8211; Recipe Plugin for Food Bloggers (formerly Delicious Recipes)"
+        },
+        {
+            "order": 412,
+            "slug": "disable-webp-by-default",
+            "name": "Disable WebP By Default"
+        },
+        {
+            "order": 413,
+            "slug": "businesspress",
+            "name": "BusinessPress"
+        },
+        {
+            "order": 414,
+            "slug": "remove-code-version-tags",
+            "name": "No Version Tags"
+        },
+        {
+            "order": 415,
+            "slug": "purify-wp-menues",
+            "name": "Purify WordPress Menus"
+        },
+        {
+            "order": 416,
+            "slug": "shortpixel-adaptive-images",
+            "name": "ShortPixel Adaptive Images &#8211; WebP, AVIF, CDN, Image Optimization"
+        },
+        {
+            "order": 417,
+            "slug": "breadcrumb-block",
+            "name": "Breadcrumb Block"
+        },
+        {
+            "order": 418,
+            "slug": "raw-html-snippets",
+            "name": "Raw HTML Snippets"
+        },
+        {
+            "order": 419,
+            "slug": "profile-extra-fields",
+            "name": "Profile Extra Fields by BestWebSoft"
+        },
+        {
+            "order": 420,
+            "slug": "dx-delete-attached-media",
+            "name": "DX Delete Attached Media"
+        },
+        {
+            "order": 421,
+            "slug": "repeat-order-for-woocommerce",
+            "name": "Repeat Order for WooCommerce"
+        },
+        {
+            "order": 422,
+            "slug": "wp-ultimate-csv-importer",
+            "name": "Import Export Suite for CSV and XML Datafeed"
+        },
+        {
+            "order": 423,
+            "slug": "woocommerce-paynl-payment-methods",
+            "name": "Pay. Payment Methods for WooCommerce"
+        },
+        {
+            "order": 424,
+            "slug": "artiss-transient-cleaner",
+            "name": "Transient Cleaner"
+        },
+        {
+            "order": 425,
+            "slug": "quotes-and-tips",
+            "name": "Quotes and Tips by BestWebSoft"
+        },
+        {
+            "order": 426,
+            "slug": "shopmagic-for-twilio",
+            "name": "Free Twilio SMS integration for WooCommerce by ShopMagic"
+        },
+        {
+            "order": 427,
+            "slug": "slider-bws",
+            "name": "Slider by BestWebSoft"
+        },
+        {
+            "order": 428,
+            "slug": "gmail-smtp",
+            "name": "Gmail SMTP"
+        },
+        {
+            "order": 429,
+            "slug": "multilanguage",
+            "name": "Multilanguage by BestWebSoft &#8211; WordPress Translation Plugin and Language Switcher"
+        },
+        {
+            "order": 430,
+            "slug": "indieweb",
+            "name": "IndieWeb"
+        },
+        {
+            "order": 431,
+            "slug": "anti-spam",
+            "name": "Titan Anti-spam &amp; Security"
+        },
+        {
+            "order": 432,
+            "slug": "wapuu-dashboard-pet",
+            "name": "Wapuu Dashboard Pet"
+        },
+        {
+            "order": 433,
+            "slug": "primary-addon-for-elementor",
+            "name": "Primary Addon for Elementor"
+        },
+        {
+            "order": 434,
+            "slug": "order-tip-woo",
+            "name": "Order Tip for WooCommerce"
+        },
+        {
+            "order": 435,
+            "slug": "mrw-web-design-simple-tinymce",
+            "name": "MRW Simplified Editor"
+        },
+        {
+            "order": 436,
+            "slug": "beagle-security-wp-security-advanced-penetration-testing",
+            "name": "Beagle Security &#8211; WP Security, Advanced Penetration Testing"
+        },
+        {
+            "order": 437,
+            "slug": "cryout-serious-slider",
+            "name": "Serious Slider"
+        },
+        {
+            "order": 438,
+            "slug": "limit-attempts",
+            "name": "Limit Attempts by BestWebSoft &#8211; WordPress Anti-Bot and Security Plugin for Login and Forms"
+        },
+        {
+            "order": 439,
+            "slug": "reseller-store",
+            "name": "Reseller Store"
+        },
+        {
+            "order": 440,
+            "slug": "inherit-featured-image",
+            "name": "JSM Inherit Parent Featured Image"
+        },
+        {
+            "order": 441,
+            "slug": "custom-layouts",
+            "name": "Custom Layouts &#8211; Post + Product grids made easy"
+        },
+        {
+            "order": 442,
+            "slug": "themezee-magazine-blocks",
+            "name": "ThemeZee Magazine Blocks"
+        },
+        {
+            "order": 443,
+            "slug": "actirise",
+            "name": "Actirise"
+        },
+        {
+            "order": 444,
+            "slug": "cf-image-resizing",
+            "name": "Cloudflare Image Resizing &#8211; Optimize &amp; Accelerate Your Images"
+        },
+        {
+            "order": 445,
+            "slug": "scanpay-for-woocommerce",
+            "name": "Scanpay for WooCommerce"
+        },
+        {
+            "order": 446,
+            "slug": "medical-addon-for-elementor",
+            "name": "Medical Addon for Elementor"
+        },
+        {
+            "order": 447,
+            "slug": "disable-auto-updates",
+            "name": "Disable Auto Updates"
+        },
+        {
+            "order": 448,
+            "slug": "hw-wp-status-manager",
+            "name": "WP Custom Status Manager"
+        },
+        {
+            "order": 449,
+            "slug": "cart-rest-api-for-woocommerce",
+            "name": "CoCart &#8211; Decoupling Made Easy for WooCommerce"
+        },
+        {
+            "order": 450,
+            "slug": "responsive-block-control",
+            "name": "Responsive Block Control &#8211; Hide blocks based on display width"
+        },
+        {
+            "order": 451,
+            "slug": "aploblocks",
+            "name": "Aploblocks &#8211; Styling and Patterns for the block editor"
+        },
+        {
+            "order": 452,
+            "slug": "wp-migrate-2-aws",
+            "name": "WP on AWS"
+        },
+        {
+            "order": 453,
+            "slug": "wp-fail2ban-redux",
+            "name": "WP Fail2Ban Redux"
+        },
+        {
+            "order": 454,
+            "slug": "multimanager-wp",
+            "name": "MultiManager WP &#8211; Manage All Your WordPress Sites Easily"
+        },
+        {
+            "order": 455,
+            "slug": "extended-crm-for-users-insights",
+            "name": "Extended CRM for Users Insights"
+        },
+        {
+            "order": 456,
+            "slug": "wp-client-reports",
+            "name": "WP Client Reports"
+        },
+        {
+            "order": 457,
+            "slug": "colibri-page-builder",
+            "name": "Colibri Page Builder"
+        },
+        {
+            "order": 458,
+            "slug": "oembed-manager",
+            "name": "oEmbed Manager"
+        },
+        {
+            "order": 459,
+            "slug": "support-wp",
+            "name": "Support WP"
+        },
+        {
+            "order": 460,
+            "slug": "boostbox",
+            "name": "BoostBox &#8211; Popup Builder for the Core Editor"
+        },
+        {
+            "order": 461,
+            "slug": "woocommerce-embed-videos-to-product-image-gallery",
+            "name": "Embed Videos For Product Image Gallery Using WooCommerce"
+        },
+        {
+            "order": 462,
+            "slug": "daily-prayer-time-for-mosques",
+            "name": "Daily Prayer Time"
+        },
+        {
+            "order": 463,
+            "slug": "theme-switcha",
+            "name": "Theme Switcha &#8211; Easily Switch Themes for Development and Testing"
+        },
+        {
+            "order": 464,
+            "slug": "code-block-pro",
+            "name": "Code Block Pro &#8211; Beautiful Syntax Highlighting"
+        },
+        {
+            "order": 465,
+            "slug": "facebook-button-plugin",
+            "name": "BestWebSoft&#039;s Like &amp; Share &#8211; Posts, Pages and Widget Social Extension plugin for WordPress"
+        },
+        {
+            "order": 466,
+            "slug": "sunshine-photo-cart",
+            "name": "Sunshine Photo Cart: Free Client Photo Galleries for Photographers"
+        },
+        {
+            "order": 467,
+            "slug": "nexter-extension",
+            "name": "Nexter Extension"
+        },
+        {
+            "order": 468,
+            "slug": "user-activity-log",
+            "name": "User Activity Log"
+        },
+        {
+            "order": 469,
+            "slug": "custom-search-plugin",
+            "name": "Custom Search by BestWebSoft &#8211; Advanced WordPress Search Bar Plugin"
+        },
+        {
+            "order": 470,
+            "slug": "order-hours-scheduler-for-woocommerce",
+            "name": "Store Hours for WooCommerce"
+        },
+        {
+            "order": 471,
+            "slug": "sar-friendly-smtp",
+            "name": "SAR Friendly SMTP"
+        },
+        {
+            "order": 472,
+            "slug": "personalize-woocommerce-cart-page",
+            "name": "GoHero Store Customizer for WooCommerce"
+        },
+        {
+            "order": 473,
+            "slug": "audio-album",
+            "name": "Audio Album"
+        },
+        {
+            "order": 474,
+            "slug": "sumome",
+            "name": "Website Pop-up Builder by BDOW! (formerly Sumo): Pop-ups + forms for email opt-ins and lead generation"
+        },
+        {
+            "order": 475,
+            "slug": "dilli-email-validator",
+            "name": "Dilli Email Validator"
+        },
+        {
+            "order": 476,
+            "slug": "simple-disable-xml-rpc",
+            "name": "Simple Disable XML-RPC"
+        },
+        {
+            "order": 477,
+            "slug": "ultimate-woocommerce-auction",
+            "name": "Ultimate Auction for WooCommerce &#8211; Excellent WP Auction Plugin"
+        },
+        {
+            "order": 478,
+            "slug": "retro-winamp-block",
+            "name": "Retro Winamp Block"
+        },
+        {
+            "order": 479,
+            "slug": "affiliatex",
+            "name": "AffiliateX – Amazon Affiliate Plugin"
+        },
+        {
+            "order": 480,
+            "slug": "maxi-blocks",
+            "name": "MaxiBlocks: 2300+ Patterns, 280+ Pages, 14.3K Icons &amp; 100 Styles"
+        },
+        {
+            "order": 481,
+            "slug": "contact-form-block",
+            "name": "Contact Form Block"
+        },
+        {
+            "order": 482,
+            "slug": "contact-form-to-db",
+            "name": "Contact Form to DB by BestWebSoft &#8211; Messages Database Plugin For WordPress"
+        },
+        {
+            "order": 483,
+            "slug": "contact-form-plugin",
+            "name": "Contact Form by BestWebSoft &#8211; Advanced Contact Us Form Builder for WordPress"
+        },
+        {
+            "order": 484,
+            "slug": "custom-admin-page",
+            "name": "Custom Admin Page by BestWebSoft &#8211; Configurable WordPress Dashboard Pages Plugin"
+        },
+        {
+            "order": 485,
+            "slug": "simple-youtube-embed",
+            "name": "Simple YouTube Embed"
+        },
+        {
+            "order": 486,
+            "slug": "webmaster-user-role",
+            "name": "Simple Client Dashboard"
+        },
+        {
+            "order": 487,
+            "slug": "easy-custom-code",
+            "name": "Easy Custom Code (LESS/CSS/JS) &#8211; Live editing"
+        },
+        {
+            "order": 488,
+            "slug": "gallery-styles",
+            "name": "Gallery Styles"
+        },
+        {
+            "order": 489,
+            "slug": "gallery-plugin",
+            "name": "Gallery by BestWebSoft &#8211; Customizable Image and Photo Galleries for WordPress"
+        },
+        {
+            "order": 490,
+            "slug": "makeiteasy-popup",
+            "name": "MakeITeasy Popup"
+        },
+        {
+            "order": 491,
+            "slug": "ulimate-client-dash",
+            "name": "Ultimate Client Dash"
+        },
+        {
+            "order": 492,
+            "slug": "taxonomy-images",
+            "name": "Taxonomy Images"
+        },
+        {
+            "order": 493,
+            "slug": "bulk-edit-categories-tags",
+            "name": "Bulk Edit Categories and Tags &#8211; Create Thousands Quickly on the Editor"
+        },
+        {
+            "order": 494,
+            "slug": "mine-cloudvod",
+            "name": "Video and Audio Player for WordPress &#8211; Mine CloudVod LMS"
+        },
+        {
+            "order": 495,
+            "slug": "apocalypse-meow",
+            "name": "Apocalypse Meow"
+        },
+        {
+            "order": 496,
+            "slug": "woo-align-buttons",
+            "name": "Woo Align Buttons"
+        },
+        {
+            "order": 497,
+            "slug": "real-media-library-lite",
+            "name": "Real Media Library: Media Library Folder &amp; File Manager"
+        },
+        {
+            "order": 498,
+            "slug": "panelhelper",
+            "name": "Panelhelper &#8211; SMM Panel API tool"
+        },
+        {
+            "order": 499,
+            "slug": "htaccess",
+            "name": "Htaccess by BestWebSoft &#8211; WordPress Website Access Control Plugin"
+        },
+        {
+            "order": 500,
+            "slug": "ai-editor",
+            "name": "AI Block Editor"
+        },
+        {
+            "order": 501,
+            "slug": "genesis-columns-advanced",
+            "name": "Genesis Columns Advanced"
+        },
+        {
+            "order": 502,
+            "slug": "sheet-music-library",
+            "name": "Sheet Music Libary"
+        },
+        {
+            "order": 503,
+            "slug": "sully",
+            "name": "SULly"
+        },
+        {
+            "order": 504,
+            "slug": "advanced-columns-block",
+            "name": "Advanced Columns Block: Layout builder"
+        },
+        {
+            "order": 505,
+            "slug": "wp-ajaxify-comments",
+            "name": "Ajaxify Comments &#8211; Ajax and Lazy Loading Comments"
+        },
+        {
+            "order": 506,
+            "slug": "simple-revisions-delete",
+            "name": "Simple Revisions Delete"
+        },
+        {
+            "order": 507,
+            "slug": "disable-css-js-cache",
+            "name": "Disable CSS JS Cache"
+        },
+        {
+            "order": 508,
+            "slug": "leaky-paywall",
+            "name": "Leaky Paywall"
+        },
+        {
+            "order": 509,
+            "slug": "woo-store-vacation",
+            "name": "Woo Store Vacation"
+        },
+        {
+            "order": 510,
+            "slug": "contact-form-multi",
+            "name": "Contact Form Multi by BestWebSoft &#8211; Multiple Forms Plugin for Single WordPress Website"
+        },
+        {
+            "order": 511,
+            "slug": "rating-bws",
+            "name": "Rating by BestWebSoft"
+        },
+        {
+            "order": 512,
+            "slug": "popup-maker-wp",
+            "name": "Popup Maker &#8211; Responsive popup, Exit Intent Pop up, Email Optins, Autoresponder &amp; More"
+        },
+        {
+            "order": 513,
+            "slug": "ai-alt-text-generator",
+            "name": "AI Alt Text Generator"
+        },
+        {
+            "order": 514,
+            "slug": "awin-advertiser-tracking",
+            "name": "Awin &#8211; Advertiser Tracking for WooCommerce"
+        },
+        {
+            "order": 515,
+            "slug": "cbxchangelog",
+            "name": "CBX Changelog"
+        },
+        {
+            "order": 516,
+            "slug": "core-files-update-cleanup",
+            "name": "Core Files Update Cleanup"
+        },
+        {
+            "order": 517,
+            "slug": "woo-product-table",
+            "name": "Product Table for WooCommerce by CodeAstrology (wooproducttable.com)"
+        },
+        {
+            "order": 518,
+            "slug": "twitter-plugin",
+            "name": "BestWebSoft&#039;s Twitter"
+        },
+        {
+            "order": 519,
+            "slug": "smm-api",
+            "name": "SMM API"
+        },
+        {
+            "order": 520,
+            "slug": "wp-product-feed-manager",
+            "name": "WooCommerce Google Feed Manager"
+        },
+        {
+            "order": 521,
+            "slug": "simplybook",
+            "name": "SimplyBook.me &#8211; Online Booking System"
+        },
+        {
+            "order": 522,
+            "slug": "core-a11y-for-elementor",
+            "name": "Core A11Y &#8211; Accessibility for Elementor"
+        },
+        {
+            "order": 523,
+            "slug": "force-update-check-for-plugins-and-themes",
+            "name": "Force Update Check for Plugins and Themes"
+        },
+        {
+            "order": 524,
+            "slug": "digital-license-manager",
+            "name": "Digital License Manager"
+        },
+        {
+            "order": 525,
+            "slug": "diagnoseo",
+            "name": "DiagnoSEO – SEO Plugin for WordPress – AI-Powered – Best in 2024"
+        },
+        {
+            "order": 526,
+            "slug": "finale-woocommerce-sales-countdown-timer-discount",
+            "name": "Finale Lite &#8211; Sales Countdown Timer &amp; Discount for WooCommerce"
+        },
+        {
+            "order": 527,
+            "slug": "wpematico",
+            "name": "WPeMatico RSS Feed Fetcher"
+        },
+        {
+            "order": 528,
+            "slug": "disable-blog",
+            "name": "Disable Blog"
+        },
+        {
+            "order": 529,
+            "slug": "real-category-library-lite",
+            "name": "Real Category Management: Content Management in Category Folders"
+        },
+        {
+            "order": 530,
+            "slug": "update-intervals",
+            "name": "Update Intervals"
+        },
+        {
+            "order": 531,
+            "slug": "simple-feed-stats",
+            "name": "Simple Statistics for Feeds"
+        },
+        {
+            "order": 532,
+            "slug": "freeze",
+            "name": "Freeze | The protection for abandoned websites"
+        },
+        {
+            "order": 533,
+            "slug": "wpfrom-email",
+            "name": "WPFrom Email"
+        },
+        {
+            "order": 534,
+            "slug": "relevant",
+            "name": "Relevant &#8211; Related, Featured, Latest, and Popular Posts by BestWebSoft"
+        },
+        {
+            "order": 535,
+            "slug": "animation-addons-for-elementor",
+            "name": "Animation Addons for Elementor"
+        },
+        {
+            "order": 536,
+            "slug": "dollie",
+            "name": "Dollie Hub &#8211; Build Your Own WordPress Cloud Platform"
+        },
+        {
+            "order": 537,
+            "slug": "personio-integration-light",
+            "name": "Personio Integration Light"
+        },
+        {
+            "order": 538,
+            "slug": "bdthemes-prime-slider-lite",
+            "name": "Prime Slider &#8211; Addons For Elementor (Revolution of a slider, Hero Slider, Post Slider and Ecommerce Slider)"
+        },
+        {
+            "order": 539,
+            "slug": "bulk-edit-user-profiles-in-spreadsheet",
+            "name": "Bulk Edit and Create User Profiles &#8211; WP Sheet Editor"
+        },
+        {
+            "order": 540,
+            "slug": "wp-scheduled-posts",
+            "name": "SchedulePress – Auto Post &amp; Publish, Auto Social Share, Schedule Posts with Editorial Calendar &amp; Missed Schedule Post Publisher"
+        },
+        {
+            "order": 541,
+            "slug": "vdocipher",
+            "name": "VdoCipher: Secure Video Player and Hosting"
+        },
+        {
+            "order": 542,
+            "slug": "demo-bar",
+            "name": "Demo Bar- Best Tool To Showcase Website Demos and Product Features With Styles"
+        },
+        {
+            "order": 543,
+            "slug": "host-header-injection-fix",
+            "name": "Host Header Injection Fix"
+        },
+        {
+            "order": 544,
+            "slug": "captcha-bws",
+            "name": "Captcha by BestWebSoft &#8211; Spam Protection, Security Plugin for WordPress Forms"
+        },
+        {
+            "order": 545,
+            "slug": "addressfinder-woo",
+            "name": "WooCommerce Address Validation and Autocomplete | Addressfinder"
+        },
+        {
+            "order": 546,
+            "slug": "wt-security",
+            "name": "WebTotem Security"
+        },
+        {
+            "order": 547,
+            "slug": "header-footer-code",
+            "name": "NinjaTeam Header Footer Custom Code"
+        },
+        {
+            "order": 548,
+            "slug": "bws-testimonials",
+            "name": "Testimonials by BestWebSoft"
+        },
+        {
+            "order": 549,
+            "slug": "wpmastertoolkit",
+            "name": "WPMasterToolKit (WPMTK) &#8211; All in one plugin"
+        },
+        {
+            "order": 550,
+            "slug": "alpus-core",
+            "name": "Funtionalities for Alpus theme"
+        },
+        {
+            "order": 551,
+            "slug": "i-toolbar",
+            "name": "&lt;i&gt; Toolbar"
+        },
+        {
+            "order": 552,
+            "slug": "wp-admin-audit",
+            "name": "WP Admin Audit"
+        },
+        {
+            "order": 553,
+            "slug": "editorplus",
+            "name": "Gutenberg Blocks Library &amp; Toolkit &#8211; Editor Plus"
+        },
+        {
+            "order": 554,
+            "slug": "wp-contributions",
+            "name": "WP Contributions"
+        },
+        {
+            "order": 555,
+            "slug": "jc-importer",
+            "name": "Import WP – Export and Import CSV and XML files to WordPress"
+        },
+        {
+            "order": 556,
+            "slug": "setup-default-feature-image",
+            "name": "Setup Default Featured Image"
+        },
+        {
+            "order": 557,
+            "slug": "simple-lightgallery",
+            "name": "Simple lightGallery"
+        },
+        {
+            "order": 558,
+            "slug": "bws-pinterest",
+            "name": "BestWebSoft’s Pinterest"
+        },
+        {
+            "order": 559,
+            "slug": "block-logic",
+            "name": "Block Logic &#8211; Full Gutenberg Block Display Control"
+        },
+        {
+            "order": 560,
+            "slug": "wp-analytify",
+            "name": "Analytify &#8211; Google Analytics Dashboard For WordPress (GA4 analytics made easy)"
+        },
+        {
+            "order": 561,
+            "slug": "connections-toolbar",
+            "name": "Connections Business Directory Toolbar"
+        },
+        {
+            "order": 562,
+            "slug": "bigcommerce",
+            "name": "BigCommerce For WordPress"
+        },
+        {
+            "order": 563,
+            "slug": "banhammer",
+            "name": "Banhammer – Monitor Site Traffic, Block Bad Users and Bots"
+        },
+        {
+            "order": 564,
+            "slug": "wp-travel-engine",
+            "name": "WP Travel Engine &#8211; Tour Booking Plugin &#8211; Tour Operator Software"
+        },
+        {
+            "order": 565,
+            "slug": "contextual-adminbar-color",
+            "name": "Contextual Adminbar Color"
+        },
+        {
+            "order": 566,
+            "slug": "hngamers-atavism-core",
+            "name": "HNGamers Atavism Core"
+        },
+        {
+            "order": 567,
+            "slug": "restaurant-cafe-addon-for-elementor",
+            "name": "Restaurant &amp; Cafe Addon for Elementor"
+        },
+        {
+            "order": 568,
+            "slug": "rt-filter-page-list",
+            "name": "RT Filter Page List"
+        },
+        {
+            "order": 569,
+            "slug": "free-shipping-hide-other-methods-woo",
+            "name": "Free shipping + Flat rate and hide other methods for WooCommerce"
+        },
+        {
+            "order": 570,
+            "slug": "addonify-wishlist",
+            "name": "Addonify &#8211; WooCommerce Wishlist"
+        },
+        {
+            "order": 571,
+            "slug": "quick-featured-images",
+            "name": "Quick Featured Images"
+        },
+        {
+            "order": 572,
+            "slug": "customize-dokan-dashboard-endpoints",
+            "name": "Customize Dokan Dashboard Endpoints"
+        },
+        {
+            "order": 573,
+            "slug": "logo-slider-wp",
+            "name": "Logo Slider &#8211; Logo Carousel, Logo Showcase &amp; Client Logo Slider Plugin"
+        },
+        {
+            "order": 574,
+            "slug": "mail-boxes-etc",
+            "name": "MBE eShip"
+        },
+        {
+            "order": 575,
+            "slug": "if-so-geolocation",
+            "name": "If-So Geolocation"
+        },
+        {
+            "order": 576,
+            "slug": "userlike",
+            "name": "Userlike – WordPress Live Chat plugin"
+        },
+        {
+            "order": 577,
+            "slug": "opt-out-for-google-analytics",
+            "name": "Opt-Out for Google Analytics (DSGVO / GDPR)"
+        },
+        {
+            "order": 578,
+            "slug": "organize-series",
+            "name": "Issues and Series for Newspapers, Magazines, Publishers, Writers"
+        },
+        {
+            "order": 579,
+            "slug": "seomix-disable-core-sitemaps",
+            "name": "SX Disable WordPress XML sitemaps"
+        },
+        {
+            "order": 580,
+            "slug": "bws-linkedin",
+            "name": "BestWebSoft&#039;s LinkedIn"
+        },
+        {
+            "order": 581,
+            "slug": "animate-on-scroll",
+            "name": "Animate on Scroll"
+        },
+        {
+            "order": 582,
+            "slug": "portfolio",
+            "name": "Portfolio by BestWebSoft &#8211; Work and Projects Presentation Plugin for WordPress"
+        },
+        {
+            "order": 583,
+            "slug": "social-buttons-pack",
+            "name": "Social Buttons Pack by BestWebSoft"
+        },
+        {
+            "order": 584,
+            "slug": "cocart-get-cart-enhanced",
+            "name": "CoCart &#8211; Cart API Enhanced"
+        },
+        {
+            "order": 585,
+            "slug": "mail-mint",
+            "name": "Email Marketing, Email Automation, Newsletter &amp; Cart Abandonment for WordPress and WooCommerce – Mail Mint"
+        },
+        {
+            "order": 586,
+            "slug": "cbxtakeatour",
+            "name": "CBX Tour &#8211; User Walkthroughs/Guided Tours"
+        },
+        {
+            "order": 587,
+            "slug": "content-slider-block",
+            "name": "Content Slider Block"
+        },
+        {
+            "order": 588,
+            "slug": "imagekit",
+            "name": "ImageKit &#8211; URL based image manipulation and optimization"
+        },
+        {
+            "order": 589,
+            "slug": "smart-marketing-for-wp",
+            "name": "Smart Marketing SMS and Newsletters Forms"
+        },
+        {
+            "order": 590,
+            "slug": "pattern-wrangler",
+            "name": "Pattern Wrangler &#8211; Manage WordPress Block Patterns Effortlessly"
+        },
+        {
+            "order": 591,
+            "slug": "custom-store-locator",
+            "name": "Custom WP Store Locator"
+        },
+        {
+            "order": 592,
+            "slug": "falang-for-wpbakery-lite",
+            "name": "Falang for WPBakery Lite"
+        },
+        {
+            "order": 593,
+            "slug": "biblesupersearch",
+            "name": "Bible SuperSearch"
+        },
+        {
+            "order": 594,
+            "slug": "revision-manager-tmc",
+            "name": "Revision Manager TMC"
+        },
+        {
+            "order": 595,
+            "slug": "custom-sidebars",
+            "name": "Custom Sidebars &#8211; Dynamic Sidebar Widget Area Manager"
+        },
+        {
+            "order": 596,
+            "slug": "subscriber",
+            "name": "Subscriber by BestWebSoft"
+        },
+        {
+            "order": 597,
+            "slug": "ai-image-generator-lab",
+            "name": "AI Image Lab &#8211; Free AI Image Generator"
+        },
+        {
+            "order": 598,
+            "slug": "zephyr-project-manager",
+            "name": "Zephyr Project Manager"
+        },
+        {
+            "order": 599,
+            "slug": "bp-beta-tester",
+            "name": "BP Beta Tester"
+        },
+        {
+            "order": 600,
+            "slug": "bws-google-2-step-verification",
+            "name": "2-Step Verification by BestWebSoft &#8211; WordPress Anti-spam and Anti Hacker Plugin"
+        }
+    ]
+}
