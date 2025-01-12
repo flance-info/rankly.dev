@@ -99,6 +99,22 @@ def load_tags(file_path):
 
     return []
 
+def load_tags_from_db(conn):
+    """Load tags from the 'keywords' table in the database, sorted by id."""
+    cursor = conn.cursor()
+    try:
+        # Query to select all tags from the 'keywords' table, sorted by id
+        cursor.execute("SELECT slug, name FROM keywords ORDER BY id")
+        tags = cursor.fetchall()
+        
+        # Convert the result to a list of dictionaries
+        return [{'slug': tag[0], 'label': tag[1]} for tag in tags]
+    except Exception as e:
+        print(f"Error loading tags from database: {e}")
+        return []
+    finally:
+        cursor.close()
+
 async def check_proxy(proxy: str) -> bool:
     """Check if a proxy is working by making a request to IP-API."""
     test_url = "http://ip-api.com/json/?fields=61439"
@@ -329,7 +345,7 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
         exists = cursor.fetchone()
 
         if exists:
-            print(f"Record for plugin '{plugin_slug}' on date '{stat_date}' already exists. Skipping insertion.")
+            logging.info(f"Record for plugin '{plugin_slug}' on date '{stat_date}' already exists. Skipping insertion.")
             return
 
         # Proceed with insertion if the record does not exist
@@ -358,8 +374,8 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
         
         now = datetime.now()
         
-        # Debugging: Print the values being inserted
-        print(f"Inserting plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
+        # Debugging: Log the values being inserted
+        logging.info(f"Inserting plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
         
         cursor.execute(sql, (
             plugin_slug,
@@ -375,12 +391,12 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
         ))
         
         conn.commit()
-        print(f"Successfully inserted/updated keyword stats for plugin: {plugin_slug}")
+        logging.info(f"Successfully inserted/updated keyword stats for plugin: {plugin_slug}")
         
     except Exception as e:
-        # Debugging: Print the error and the values that caused it
-        print(f"Error inserting keyword stats for plugin {plugin_slug}: {e}")
-        print(f"Problematic values - plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
+        # Debugging: Log the error and the values that caused it
+        logging.error(f"Error inserting keyword stats for plugin {plugin_slug}: {e}")
+        logging.error(f"Problematic values - plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
         conn.rollback()
     finally:
         cursor.close()
@@ -405,12 +421,28 @@ def process_and_store_plugins(conn, plugins, tag_slug):
         except Exception as e:
             print(f"Error inserting keyword stats for plugin {plugin['slug']}: {e}")
 
-if __name__ == "__main__":
-    # Load tags from the tags file
-    tags = load_tags(tags_file)
+def main():
+    # Establish a database connection
+    conn = connect_db()
+
+    # tags = load_tags(tags_file)
 
     
-    test_tags = tags[:2]
+    # test_tags = tags[:2000]
     
     # Run the async process
-    asyncio.run(process_tags(test_tags)) 
+    # asyncio.run(process_tags(test_tags))
+    
+    try:
+        # Load tags from the database
+        tags = load_tags_from_db(conn)
+        test_tags = tags[:18000];
+        
+        # Process the tags
+        asyncio.run(process_tags(test_tags))
+    finally:
+        # Close the database connection
+        conn.close()
+
+if __name__ == "__main__":
+    main() 
