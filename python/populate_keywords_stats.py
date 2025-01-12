@@ -10,6 +10,7 @@ from datetime import timedelta
 import itertools
 import random
 import logging
+import psycopg2
 
 # Configure logging
 log_file_path = '/usr/src/app/logs/extract_search_key.log'
@@ -63,7 +64,22 @@ proxies = [
     "45.61.97.105:6631"
 ]
 
+DB_CONFIG = {
+    'dbname': 'laravel',
+    'user': 'laravel',
+    'password': 'secret',
+    'host': 'db',
+    'port': '5432'
+}
 
+def connect_db():
+    """Establish database connection"""
+    try:
+        conn = psycopg2.connect(**DB_CONFIG)
+        return conn
+    except Exception as e:
+        logging.error(f"Database connection error: {str(e)}")
+        raise
 # Create an iterator to cycle through the proxies
 proxy_cycle = itertools.cycle(proxies)
 
@@ -170,15 +186,15 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
 
 async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, tag_slug: str, sem: Semaphore) -> List[Dict]:
     """Search for plugins using the WordPress API by tag label asynchronously."""
-    if is_tag_processed(tag_slug):
-        print(f"Tag '{tag_label}' already processed for today, skipping.")
-        return []
+    # if is_tag_processed(tag_slug):
+    #    print(f"Tag '{tag_label}' already processed for today, skipping.")
+    #    return []
     
     params = {
         "action": "query_plugins",
         "search": tag_label,
         "page": 1,
-        "per_page": 200
+        "per_page": 250
     }
     
     try:
@@ -246,14 +262,17 @@ async def process_single_tag(session: aiohttp.ClientSession, tag: Dict, request_
         elapsed_formatted = str(timedelta(seconds=int(elapsed_time)))
         print(f"Completed tag '{tag_label_to_search}' in {elapsed_formatted}")
         print(f"Found {len(plugins)} plugins for tag '{tag_label_to_search}'")
-        
+        conn = connect_db()
+        cur = conn.cursor()
         if plugins:
-            save_results_to_file(plugins, tag_slug, tag_label_to_search)
+          #  save_results_to_file(plugins, tag_slug, tag_label_to_search)
+          process_and_store_plugins(conn, plugins, tag_slug) 
         else:
             print(f"No plugins found for tag '{tag_label_to_search}'")
 
 async def process_tags(tags: List[Dict]):
     """Process multiple tags concurrently."""
+
     start_time = time.time()
     total_tags = len(tags)
     print(f"Starting processing of {total_tags} tags at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -296,12 +315,89 @@ def save_results_to_file(plugins, tag_slug, tag_label):
     except Exception as e:
         print(f"Error saving results to file: {e}")
 
+def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank_order, active_installs=0, rating=0, num_ratings=0, downloaded=0):
+    """Insert plugin keyword stats into the database."""
+    cursor = conn.cursor()
+    
+    try:
+        sql = """
+        INSERT INTO plugin_keyword_stats (
+            plugin_slug, 
+            keyword_slug, 
+            stat_date, 
+            rank_order, 
+            active_installs, 
+            rating, 
+            num_ratings,
+            created_at,
+            updated_at,
+            downloaded
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        ON CONFLICT (plugin_slug, keyword_slug, stat_date) 
+        DO UPDATE SET 
+            rank_order = EXCLUDED.rank_order,
+            active_installs = COALESCE(EXCLUDED.active_installs, plugin_keyword_stats.active_installs),
+            rating = COALESCE(EXCLUDED.rating, plugin_keyword_stats.rating),
+            num_ratings = COALESCE(EXCLUDED.num_ratings, plugin_keyword_stats.num_ratings),
+            downloaded = COALESCE(EXCLUDED.downloaded, plugin_keyword_stats.downloaded),
+            updated_at = EXCLUDED.updated_at
+        """
+        
+        now = datetime.now()
+        
+        # Debugging: Print the values being inserted
+        print(f"Inserting plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
+        
+        cursor.execute(sql, (
+            plugin_slug,
+            keyword_slug,
+            stat_date,
+            rank_order,
+            active_installs,
+            rating,
+            num_ratings,
+            now,
+            now,
+            downloaded
+        ))
+        
+        conn.commit()
+        print(f"Successfully inserted/updated keyword stats for plugin: {plugin_slug}")
+        
+    except Exception as e:
+        # Debugging: Print the error and the values that caused it
+        print(f"Error inserting keyword stats for plugin {plugin_slug}: {e}")
+        print(f"Problematic values - plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
+        conn.rollback()
+    finally:
+        cursor.close()
+        
+def process_and_store_plugins(conn, plugins, tag_slug):
+    """Process and store plugin data into the database."""
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    for rank_order, plugin in enumerate(plugins, start=1):
+        try:
+            insert_plugin_keyword_stats(
+                conn,
+                plugin_slug=plugin['slug'],
+                keyword_slug=tag_slug,
+                stat_date=current_date,
+                rank_order=rank_order,
+                active_installs=plugin.get('active_installs', 0),
+                rating=plugin.get('rating', 0),
+                num_ratings=plugin.get('num_ratings', 0),
+                downloaded=plugin.get('downloaded', 0)
+            )
+            print(f"Successfully inserted/updated keyword stats for plugin: {plugin['slug']}")
+        except Exception as e:
+            print(f"Error inserting keyword stats for plugin {plugin['slug']}: {e}")
+
 if __name__ == "__main__":
     # Load tags from the tags file
     tags = load_tags(tags_file)
 
     
-    test_tags = tags[:18000]
+    test_tags = tags[:1]
     
     # Run the async process
     asyncio.run(process_tags(test_tags)) 
