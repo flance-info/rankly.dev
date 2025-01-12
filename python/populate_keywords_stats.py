@@ -320,6 +320,19 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
     cursor = conn.cursor()
     
     try:
+        # Check if the record already exists
+        check_sql = """
+        SELECT 1 FROM plugin_keyword_stats
+        WHERE plugin_slug = %s AND keyword_slug = %s AND stat_date = %s
+        """
+        cursor.execute(check_sql, (plugin_slug, keyword_slug, stat_date))
+        exists = cursor.fetchone()
+
+        if exists:
+            print(f"Record for plugin '{plugin_slug}' on date '{stat_date}' already exists. Skipping insertion.")
+            return
+
+        # Proceed with insertion if the record does not exist
         sql = """
         INSERT INTO plugin_keyword_stats (
             plugin_slug, 
@@ -397,7 +410,7 @@ if __name__ == "__main__":
     tags = load_tags(tags_file)
 
     
-    test_tags = tags[:1]
+    test_tags = tags[:2]
     
     # Run the async process
     asyncio.run(process_tags(test_tags)) 
