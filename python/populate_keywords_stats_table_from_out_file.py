@@ -64,7 +64,7 @@ def populate_plugin_keyword_stats_from_json(conn, json_data, stat_date):
     """Populate the plugin_keyword_stats table from JSON data."""
     tag_slug = json_data.get('tag_slug')
     plugins = json_data.get('plugins', [])
-
+    print(f"Processing {len(plugins)} plugins for tag: {tag_slug} on date: {stat_date}")
     for plugin in plugins:
         try:
             insert_plugin_keyword_stats(
@@ -78,7 +78,7 @@ def populate_plugin_keyword_stats_from_json(conn, json_data, stat_date):
                 num_ratings=plugin.get('num_ratings', 0),
                 downloaded=plugin.get('downloaded', 0)
             )
-            logging.info(f"Inserting plugin: {plugin['slug']}, keyword: {tag_slug}, date: {stat_date}, rank: {plugin['order']}, installs: {plugin.get('active_installs', 0)}, rating: {plugin.get('rating', 0)}, num_ratings: {plugin.get('num_ratings', 0)}, downloaded: {plugin.get('downloaded', 0)}")
+           # logging.info(f"Inserting plugin: {plugin['slug']}, keyword: {tag_slug}, date: {stat_date}, rank: {plugin['order']}, installs: {plugin.get('active_installs', 0)}, rating: {plugin.get('rating', 0)}, num_ratings: {plugin.get('num_ratings', 0)}, downloaded: {plugin.get('downloaded', 0)}")
         except Exception as e:
             logging.error(f"Error processing plugin {plugin['slug']}: {e}")
 
@@ -99,7 +99,7 @@ def main():
         # Iterate over all JSON files in the directory
         for root, dirs, files in os.walk(json_dir):
             for file_name in files:
-                logging.info(f"Processing file: {file_name}")
+               # logging.info(f"Processing file: {file_name}")
                 if file_name.endswith('.json'):
                     file_path = os.path.join(root, file_name)
                     json_data = load_json_data(file_path)
@@ -125,7 +125,7 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
         exists = cursor.fetchone()
 
         if exists:
-            print(f"Record for plugin '{plugin_slug}' on date '{stat_date}' already exists. Skipping insertion.")
+           # print(f"Record for plugin '{plugin_slug}' on date '{stat_date}' already exists. Skipping insertion.")
             return
 
         # Proceed with insertion if the record does not exist
@@ -170,11 +170,11 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
         ))
         
         conn.commit()
-        logging.info(f"Successfully inserted/updated keyword stats for plugin: {plugin_slug}")
+        #logging.info(f"Successfully inserted/updated keyword stats for plugin: {plugin_slug}")
         
     except Exception as e:
         # Debugging: Log the error and the values that caused it
-        logging.error(f"Error inserting keyword stats for plugin {plugin_slug}: {e}")
+        # logging.error(f"Error inserting keyword stats for plugin {plugin_slug}: {e}")
         logging.error(f"Problematic values - plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
         conn.rollback()
     finally:

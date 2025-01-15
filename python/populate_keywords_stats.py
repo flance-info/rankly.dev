@@ -133,7 +133,7 @@ async def check_proxy(proxy: str) -> bool:
     except aiohttp.ClientHttpProxyError as e:
         print(f"HTTP proxy error for {proxy}: {e}")
     except asyncio.TimeoutError:
-        print(f"Timeout error for {proxy}")
+        print(f"Timeout error for line 136 {proxy}")
     except Exception as e:
         print(f"Error checking proxy {proxy}: {e}")
     return False
@@ -178,7 +178,7 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
                     return page, data.get('plugins', [])
                 elif response.status == 429:
                     print(f"Rate limit hit for page {page} tag '{tag_label}', retrying after delay...")
-                    await asyncio.sleep(10)  # Wait a full minute before retry
+                    await asyncio.sleep(30)  # Wait a full minute before retry
                     # Retry the request
                     async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=f"http://{proxy}", timeout=10) as retry_response:
                         if retry_response.status == 200:
@@ -195,7 +195,7 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
         except aiohttp.ClientHttpProxyError as e:
             print(f"HTTP proxy error for {proxy}: {e}")
         except asyncio.TimeoutError:
-            print(f"Timeout error for {proxy}")
+            print(f"Timeout error for l-198 {proxy}")
         except Exception as e:
             print(f"Error fetching page {page} for tag '{tag_label}': {e}")
         return page, []
@@ -210,17 +210,17 @@ async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, 
         "action": "query_plugins",
         "search": tag_label,
         "page": 1,
-        "per_page": 250
+        "per_page": 300
     }
     
     try:
         async with sem:
             # Get a working proxy
             proxy = await get_working_proxy()
-            print(f"Using proxy {proxy} for initial request of tag '{tag_label}'")
+            #print(f"Using proxy {proxy} for initial request of tag '{tag_label}'")
             
             # Set a timeout of 10 seconds for the request
-            timeout = aiohttp.ClientTimeout(total=10)
+            timeout = aiohttp.ClientTimeout(total=30)
             
             async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=f"http://{proxy}", timeout=timeout) as response:
                 if response.status != 200:
@@ -258,7 +258,7 @@ async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, 
     except aiohttp.ClientHttpProxyError as e:
         print(f"HTTP proxy error for {proxy}: {e}")
     except asyncio.TimeoutError:
-        print(f"Timeout error for {proxy}")
+        print(f"Timeout error for line 261 {proxy}")
     except Exception as e:
         print(f"Error in search_plugins_by_tag for '{tag_label}': {e}")
     return []
@@ -281,7 +281,7 @@ async def process_single_tag(session: aiohttp.ClientSession, tag: Dict, request_
         conn = connect_db()
         cur = conn.cursor()
         if plugins:
-          #  save_results_to_file(plugins, tag_slug, tag_label_to_search)
+          #save_results_to_file(plugins, tag_slug, tag_label_to_search)
           process_and_store_plugins(conn, plugins, tag_slug) 
         else:
             print(f"No plugins found for tag '{tag_label_to_search}'")
@@ -293,8 +293,8 @@ async def process_tags(tags: List[Dict]):
     total_tags = len(tags)
     print(f"Starting processing of {total_tags} tags at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
-    request_sem = Semaphore(7)
-    tag_sem = Semaphore(5)
+    request_sem = Semaphore(40)
+    tag_sem = Semaphore(30)
     
     async with aiohttp.ClientSession() as session:
         tasks = [
@@ -336,18 +336,28 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
     cursor = conn.cursor()
     
     try:
+        # Start time measurement
+        #start_time = time.time()
+
         # Check if the record already exists
-        check_sql = """
-        SELECT 1 FROM plugin_keyword_stats
-        WHERE plugin_slug = %s AND keyword_slug = %s AND stat_date = %s
-        """
-        cursor.execute(check_sql, (plugin_slug, keyword_slug, stat_date))
-        exists = cursor.fetchone()
+        #check_sql = """
+        #SELECT 1 FROM plugin_keyword_stats
+        #WHERE plugin_slug = %s AND keyword_slug = %s AND stat_date = %s
+        #"""
+      #  cursor.execute(check_sql, (plugin_slug, keyword_slug, stat_date))
+      #  exists = cursor.fetchone()
 
-        if exists:
-            logging.info(f"Record for plugin '{plugin_slug}' on date '{stat_date}' already exists. Skipping insertion.")
-            return
+        # End time measurement
+        #end_time = time.time()
+        #query_duration = end_time - start_time
 
+        # Log the time taken for the query
+        #print(f"Query execution time: {query_duration:.4f} seconds for select")
+
+        #if exists:
+           # logging.info(f"Record for plugin '{plugin_slug}' on date '{stat_date}' already exists. Skipping insertion.")
+        #    return
+        #start_time = time.time()
         # Proceed with insertion if the record does not exist
         sql = """
         INSERT INTO plugin_keyword_stats (
@@ -375,7 +385,7 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
         now = datetime.now()
         
         # Debugging: Log the values being inserted
-        logging.info(f"Inserting plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
+        #logging.info(f"Inserting plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
         
         cursor.execute(sql, (
             plugin_slug,
@@ -391,11 +401,16 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
         ))
         
         conn.commit()
-        logging.info(f"Successfully inserted/updated keyword stats for plugin: {plugin_slug}")
-        
+        #print(f"Inserting plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
+    
+        #end_time = time.time()
+        #query_duration = end_time - start_time
+        #logging.info(f"Inserting plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
+          # Log the time taken for the query
+        #print(f"Query execution time: {query_duration:.4f} seconds for insert")
     except Exception as e:
         # Debugging: Log the error and the values that caused it
-        logging.error(f"Error inserting keyword stats for plugin {plugin_slug}: {e}")
+       # logging.error(f"Error inserting keyword stats for plugin {plugin_slug}: {e}")
         logging.error(f"Problematic values - plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
         conn.rollback()
     finally:
@@ -417,7 +432,7 @@ def process_and_store_plugins(conn, plugins, tag_slug):
                 num_ratings=plugin.get('num_ratings', 0),
                 downloaded=plugin.get('downloaded', 0)
             )
-            print(f"Successfully inserted/updated keyword stats for plugin: {plugin['slug']}")
+           # print(f"Successfully inserted/updated keyword stats for plugin: {plugin['slug']}")
         except Exception as e:
             print(f"Error inserting keyword stats for plugin {plugin['slug']}: {e}")
 
@@ -436,7 +451,7 @@ def main():
     try:
         # Load tags from the database
         tags = load_tags_from_db(conn)
-        test_tags = tags[:18000];
+        test_tags = tags[:100];
         
         # Process the tags
         asyncio.run(process_tags(test_tags))
