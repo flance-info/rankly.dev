@@ -106,7 +106,7 @@ def load_tags_from_db(conn):
         # Query to select all tags from the 'keywords' table, sorted by id
         cursor.execute("SELECT slug, name FROM keywords ORDER BY id")
         tags = cursor.fetchall()
-        
+
         # Convert the result to a list of dictionaries
         return [{'slug': tag[0], 'label': tag[1]} for tag in tags]
     except Exception as e:
@@ -163,16 +163,16 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
         "page": page,
         "per_page": 300
     }
-    
+
     async with sem:  # Limit concurrent requests
         try:
             # Reduce delay between requests
             await asyncio.sleep(1)  # Try with 0.5 seconds delay
-            
+
             # Get a working proxy
             proxy = await get_working_proxy()
-            
-            async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=f"http://{proxy}", timeout=10) as response:
+
+            async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=f"http://{proxy}", timeout=30) as response:
                 if response.status == 200:
                     data = await response.json()
                     return page, data.get('plugins', [])
@@ -180,7 +180,7 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
                     print(f"Rate limit hit for page {page} tag '{tag_label}', retrying after delay...")
                     await asyncio.sleep(30)  # Wait a full minute before retry
                     # Retry the request
-                    async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=f"http://{proxy}", timeout=10) as retry_response:
+                    async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=f"http://{proxy}", timeout=30) as retry_response:
                         if retry_response.status == 200:
                             data = await retry_response.json()
                             return page, data.get('plugins', [])
@@ -205,54 +205,54 @@ async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, 
     # if is_tag_processed(tag_slug):
     #    print(f"Tag '{tag_label}' already processed for today, skipping.")
     #    return []
-    
+
     params = {
         "action": "query_plugins",
         "search": tag_label,
         "page": 1,
         "per_page": 300
     }
-    
+
     try:
         async with sem:
             # Get a working proxy
             proxy = await get_working_proxy()
             #print(f"Using proxy {proxy} for initial request of tag '{tag_label}'")
-            
+
             # Set a timeout of 10 seconds for the request
             timeout = aiohttp.ClientTimeout(total=30)
-            
+
             async with session.get(PLUGIN_API_BASE_URL, params=params, proxy=f"http://{proxy}", timeout=timeout) as response:
                 if response.status != 200:
                     print(f"Failed to fetch initial data for tag '{tag_label}' using proxy {proxy}")
                     return []
-                
+
                 data = await response.json()
                 total_pages = data.get('info', {}).get('pages', 1)
                 all_plugins = data.get('plugins', [])  # First page plugins
-                
+
                 # Add a small delay after fetching the initial data
                 await asyncio.sleep(0.5)  # Adjust the delay as needed
-                
+
                 if total_pages <= 1:
                     return all_plugins
-                
+
                 # Create tasks for remaining pages
                 tasks = [
                     search_plugins_by_tag_page(session, tag_label, page, sem)
                     for page in range(2, total_pages + 1)
                 ]
-                
+
                 # Gather results
                 results = await asyncio.gather(*tasks)
-                
+
                 # Sort results by page number and combine plugins
                 sorted_results = sorted(results, key=lambda x: x[0])
                 for _, plugins in sorted_results:
                     all_plugins.extend(plugins)
-                
+
                 return all_plugins
-                
+
     except aiohttp.ClientProxyConnectionError as e:
         print(f"Proxy connection error for {proxy}: {e}")
     except aiohttp.ClientHttpProxyError as e:
@@ -268,12 +268,12 @@ async def process_single_tag(session: aiohttp.ClientSession, tag: Dict, request_
     async with tag_sem:  # Limit concurrent tag processing
         tag_label_to_search = tag['label']
         tag_slug = tag['slug']
-        
+
         start_time = time.time()
         print(f"\nStarting tag {tag_index + 1}/{total_tags}: {tag_label_to_search}")
-        
+
         plugins = await search_plugins_by_tag(session, tag_label_to_search, tag_slug, request_sem)
-        
+
         elapsed_time = time.time() - start_time
         elapsed_formatted = str(timedelta(seconds=int(elapsed_time)))
         print(f"Completed tag '{tag_label_to_search}' in {elapsed_formatted}")
@@ -282,7 +282,7 @@ async def process_single_tag(session: aiohttp.ClientSession, tag: Dict, request_
         cur = conn.cursor()
         if plugins:
           #save_results_to_file(plugins, tag_slug, tag_label_to_search)
-          process_and_store_plugins(conn, plugins, tag_slug) 
+          process_and_store_plugins(conn, plugins, tag_slug)
         else:
             print(f"No plugins found for tag '{tag_label_to_search}'")
 
@@ -292,17 +292,17 @@ async def process_tags(tags: List[Dict]):
     start_time = time.time()
     total_tags = len(tags)
     print(f"Starting processing of {total_tags} tags at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    
+
     request_sem = Semaphore(40)
     tag_sem = Semaphore(30)
-    
+
     async with aiohttp.ClientSession() as session:
         tasks = [
             process_single_tag(session, tag, request_sem, tag_sem, index, total_tags)
             for index, tag in enumerate(tags)
         ]
         await asyncio.gather(*tasks)
-    
+
     elapsed_time = time.time() - start_time
     elapsed_formatted = str(timedelta(seconds=int(elapsed_time)))
     print(f"\nTotal processing time: {elapsed_formatted}")
@@ -334,7 +334,7 @@ def save_results_to_file(plugins, tag_slug, tag_label):
 def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank_order, active_installs=0, rating=0, num_ratings=0, downloaded=0):
     """Insert plugin keyword stats into the database."""
     cursor = conn.cursor()
-    
+
     try:
         # Start time measurement
         #start_time = time.time()
@@ -361,19 +361,19 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
         # Proceed with insertion if the record does not exist
         sql = """
         INSERT INTO plugin_keyword_stats (
-            plugin_slug, 
-            keyword_slug, 
-            stat_date, 
-            rank_order, 
-            active_installs, 
-            rating, 
+            plugin_slug,
+            keyword_slug,
+            stat_date,
+            rank_order,
+            active_installs,
+            rating,
             num_ratings,
             created_at,
             updated_at,
             downloaded
         ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-        ON CONFLICT (plugin_slug, keyword_slug, stat_date) 
-        DO UPDATE SET 
+        ON CONFLICT (plugin_slug, keyword_slug, stat_date)
+        DO UPDATE SET
             rank_order = EXCLUDED.rank_order,
             active_installs = COALESCE(EXCLUDED.active_installs, plugin_keyword_stats.active_installs),
             rating = COALESCE(EXCLUDED.rating, plugin_keyword_stats.rating),
@@ -381,12 +381,12 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
             downloaded = COALESCE(EXCLUDED.downloaded, plugin_keyword_stats.downloaded),
             updated_at = EXCLUDED.updated_at
         """
-        
+
         now = datetime.now()
-        
+
         # Debugging: Log the values being inserted
         #logging.info(f"Inserting plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
-        
+
         cursor.execute(sql, (
             plugin_slug,
             keyword_slug,
@@ -399,10 +399,10 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
             now,
             downloaded
         ))
-        
+
         conn.commit()
         #print(f"Inserting plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
-    
+
         #end_time = time.time()
         #query_duration = end_time - start_time
         #logging.info(f"Inserting plugin: {plugin_slug}, keyword: {keyword_slug}, date: {stat_date}, rank: {rank_order}, installs: {active_installs}, rating: {rating}, num_ratings: {num_ratings}, downloaded: {downloaded}")
@@ -415,7 +415,7 @@ def insert_plugin_keyword_stats(conn, plugin_slug, keyword_slug, stat_date, rank
         conn.rollback()
     finally:
         cursor.close()
-        
+
 def process_and_store_plugins(conn, plugins, tag_slug):
     """Process and store plugin data into the database."""
     current_date = datetime.now().strftime("%Y-%m-%d")
@@ -436,23 +436,36 @@ def process_and_store_plugins(conn, plugins, tag_slug):
         except Exception as e:
             print(f"Error inserting keyword stats for plugin {plugin['slug']}: {e}")
 
+async def fetch_with_retry(session, url, proxy, retries=3):
+    for attempt in range(retries):
+        try:
+            async with session.get(url, proxy=f"http://{proxy}", timeout=10) as response:
+                return await response.json()
+        except asyncio.TimeoutError:
+            print(f"Timeout error for attempt {attempt + 1} with proxy {proxy}")
+            if attempt < retries - 1:
+                await asyncio.sleep(2)  # Wait before retrying
+            else:
+                print(f"Failed to fetch data after {retries} attempts")
+                return None
+
 def main():
     # Establish a database connection
     conn = connect_db()
 
     # tags = load_tags(tags_file)
 
-    
+
     # test_tags = tags[:2000]
-    
+
     # Run the async process
     # asyncio.run(process_tags(test_tags))
-    
+
     try:
         # Load tags from the database
         tags = load_tags_from_db(conn)
-        test_tags = tags[:100];
-        
+        test_tags = tags[:20000];
+
         # Process the tags
         asyncio.run(process_tags(test_tags))
     finally:
@@ -460,4 +473,4 @@ def main():
         conn.close()
 
 if __name__ == "__main__":
-    main() 
+    main()
