@@ -557,6 +557,40 @@ const fetchActiveInstallsData = async (slug) => {
     }
 };
 
+const fetchPositionMovementData = async (slug) => {
+    try {
+        // Extract tags from pluginData
+        const keywords = Object.values(pluginData.tags);
+
+        // Send tags as keywords in the request
+        const response = await axios.post(`/api/plugin-position-movement`, {
+            slug,
+            keywords
+        });
+
+        if (response.data.success) {
+            const positionData = response.data.data;
+            console.log('Position Movement Data:', positionData);
+
+            const labels = positionData.map(item => item.stat_date);
+            const data = positionData.map(item => item.rank_order);
+
+            chartData.positionMovement.labels = labels;
+            chartData.positionMovement.data = data;
+
+            if (!chartInstance) {
+                initializeChart(labels, data);
+            } else if (activeChart.value === 'positionMovement') {
+                updateChart('positionMovement');
+            }
+        } else {
+            console.error('Failed to fetch position movement data:', response.data.message);
+        }
+    } catch (error) {
+        console.error('An error occurred while fetching position movement data:', error);
+    }
+};
+
 // Make sure fetchActiveInstallsData is called when trend changes
 watch(selectedTrend, () => {
     if (activeChart.value === 'activeInstalls') {
@@ -597,10 +631,28 @@ const formatLastUpdated = (dateString) => {
     }); // British English format puts day before month
 };
 
+const fetchPluginData = async (slug) => {
+    try {
+        const response = await axios.get(`/api/plugin-data/${slug}`);
+        if (response.data.success) {
+            console.log('Plugin Data:', response.data.data);
+            // Process the plugin data as needed
+        } else {
+            console.error('Failed to fetch plugin data:', response.data.message);
+        }
+    } catch (error) {
+        console.error('An error occurred while fetching plugin data:', error);
+    }
+};
+
 onMounted(() => {
+  
+    //fetchPluginData(pluginData.slug);       
     initializeChart(chartData.averagePosition.labels, chartData.averagePosition.data);
     fetchDownloadData(pluginData.slug);
     fetchActiveInstallsData(pluginData.slug);
+    fetchPositionMovementData(pluginData.slug);
+   
 });
 </script>
 

@@ -288,5 +288,41 @@ class PluginController extends Controller {
 
         return round((($last - $first) / $first) * 100, 2);
     }
+
+    public function getPositionMovement(Request $request)
+    {
+        try {
+            $slug = $request->input('slug');
+            $keywords = $request->input('keywords');
+
+            // Fetch position movement data for the given keywords
+            $data = DB::table('plugin_keyword_stats')
+                ->select('keyword_slug', 'rank_order', 'stat_date')
+                ->where('plugin_slug', $slug)
+                ->whereIn('keyword_slug', $keywords)
+                ->orderBy('stat_date', 'asc')
+                ->get();
+
+            return response()->json(['success' => true, 'data' => $data]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Failed to fetch data'], 500);
+        }
+    }
+
+    public function getPluginData($slug)
+    {
+        try {
+            // Fetch plugin data from the database
+            $plugin = Plugin::where('slug', $slug)->first();
+
+            if ($plugin) {
+                return response()->json(['success' => true, 'data' => $plugin]);
+            } else {
+                return response()->json(['success' => false, 'message' => 'Plugin not found'], 404);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Failed to fetch plugin data'], 500);
+        }
+    }
 }
 

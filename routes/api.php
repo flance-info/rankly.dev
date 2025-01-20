@@ -44,3 +44,12 @@ Route::middleware( 'auth:sanctum' )->get( '/plugin-stats/{slug}', [ PluginStatsC
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/plugin-active-installs/{slug}', [PluginController::class, 'getActiveInstalls']);
 });
+
+Route::middleware('auth:sanctum')->post('plugin-position-movement', [PluginController::class, 'getPositionMovement']);
+
+Route::middleware('auth:sanctum')->get('/plugin-average-position/{slug}', [PluginController::class, 'getAveragePosition']);
+
+Route::middleware('auth:sanctum')->get('/plugin-downloads/{slug}', [PluginController::class, 'getDownloads']);
+
+Route::middleware('auth:sanctum')->get('/plugin-data/{slug}', [PluginController::class, 'getPluginData']);
+
