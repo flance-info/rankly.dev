@@ -450,19 +450,46 @@ const chartData = {
 
 const initializeChart = (labels, data) => {
     const ctx = document.getElementById('line-chart').getContext('2d');
+    
+    // Define chart options based on active chart type
+    const chartOptions = {
+        averagePosition: {
+            label: 'Average Position',
+            reverse: true,
+            tooltipLabel: (context) => `Average Position: ${context.parsed.y.toFixed(2)}`
+        },
+        positionMovement: {
+            label: 'Position Movement',
+            reverse: false,
+            tooltipLabel: (context) => `Movement: ${context.parsed.y.toFixed(2)}`
+        },
+        activeInstalls: {
+            label: 'Active Installs',
+            reverse: false,
+            tooltipLabel: (context) => `Active Installs: ${context.parsed.y.toFixed(0)}`
+        },
+        downloads: {
+            label: 'Downloads',
+            reverse: false,
+            tooltipLabel: (context) => `Downloads: ${context.parsed.y.toFixed(0)}`
+        }
+    };
+
+    const currentOptions = chartOptions[activeChart.value] || chartOptions.downloads;
+
     chartInstance = new Chart(ctx, {
         type: 'line',
         data: {
             labels,
             datasets: [
                 {
-                    label: currentChartTitle.value,
+                    label: currentOptions.label,
                     data,
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 2,
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    backgroundColor: 'transparent',  // Set to transparent
                     pointRadius: 3,
-                    fill: true,
+                    fill: false,  // Disable fill
                     tension: 0.1,
                 },
             ],
@@ -472,16 +499,32 @@ const initializeChart = (labels, data) => {
                 legend: {
                     display: false,
                 },
+                tooltip: {
+                    callbacks: {
+                        label: currentOptions.tooltipLabel
+                    }
+                }
             },
             scales: {
                 x: {
                     grid: {
                         display: true,
+                        color: 'rgba(255, 255, 255, 0.1)'
                     },
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    }
                 },
                 y: {
                     beginAtZero: true,
-                },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    },
+                    reverse: currentOptions.reverse
+                }
             },
         },
     });
@@ -490,9 +533,41 @@ const initializeChart = (labels, data) => {
 const updateChart = (type) => {
     activeChart.value = type;
     currentChartTitle.value = chartData[type].title;
-    chartInstance.data.labels = chartData[type].labels;
-    chartInstance.data.datasets[0].data = chartData[type].data;
-    chartInstance.update();
+    
+    if (chartInstance) {
+        const chartOptions = {
+            averagePosition: {
+                label: 'Average Position',
+                reverse: true,
+                tooltipLabel: (context) => `Average Position: ${context.parsed.y.toFixed(2)}`
+            },
+            positionMovement: {
+                label: 'Position Movement',
+                reverse: false,
+                tooltipLabel: (context) => `Movement: ${context.parsed.y.toFixed(2)}`
+            },
+            activeInstalls: {
+                label: 'Active Installs',
+                reverse: false,
+                tooltipLabel: (context) => `Active Installs: ${context.parsed.y.toFixed(0)}`
+            },
+            downloads: {
+                label: 'Downloads',
+                reverse: false,
+                tooltipLabel: (context) => `Downloads: ${context.parsed.y.toFixed(0)}`
+            }
+        };
+
+        const currentOptions = chartOptions[type];
+        
+        chartInstance.data.labels = chartData[type].labels;
+        chartInstance.data.datasets[0].data = chartData[type].data;
+        chartInstance.data.datasets[0].label = currentOptions.label;
+        chartInstance.options.scales.y.reverse = currentOptions.reverse;
+        chartInstance.options.plugins.tooltip.callbacks.label = currentOptions.tooltipLabel;
+        
+        chartInstance.update();
+    }
 };
 
 const fetchDownloadData = async (slug) => {
@@ -559,7 +634,7 @@ const fetchActiveInstallsData = async (slug) => {
 
 const fetchPositionMovementData = async (slug) => {
     try {
-        const keywords = Object.values(pluginData.tags);
+        const keywords = Object.values(pluginData.value.tags);
         const response = await axios.post(`/api/plugin-position-movement`, {
             slug,
             keywords,
@@ -570,17 +645,50 @@ const fetchPositionMovementData = async (slug) => {
             const positionData = response.data.data;
             console.log('Position Movement Data:', positionData);
 
-            const labels = positionData.map(item => item.stat_date);
+            // Extract labels (dates) and average rank_order values
+            const labels = positionData.map(item => {
+                // Format the date as needed, e.g., 'Jan 15'
+                return new Date(item.stat_date).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric'
+                });
+            });
+            
             const data = positionData.map(item => item.rank_order);
 
+            // Update chart data
             chartData.positionMovement.labels = labels;
             chartData.positionMovement.data = data;
 
             if (!chartInstance) {
                 initializeChart(labels, data);
             } else if (activeChart.value === 'positionMovement') {
-                updateChart('positionMovement');
+                // Update existing chart
+                chartInstance.data.labels = labels;
+                chartInstance.data.datasets[0].data = data;
+                chartInstance.update();
             }
+
+            // Calculate and update average position metrics
+            if (data.length > 0) {
+                const currentAvg = data[data.length - 1];
+                const previousAvg = data[data.length - 2] || currentAvg;
+                const change = previousAvg - currentAvg;
+                
+                // Update the position movement button display
+                const positionMovementButton = document.querySelector('[data-metric="positionMovement"]');
+                if (positionMovementButton) {
+                    const valueElement = positionMovementButton.querySelector('.value');
+                    const changeElement = positionMovementButton.querySelector('.change');
+                    
+                    if (valueElement) valueElement.textContent = currentAvg.toFixed(2);
+                    if (changeElement) {
+                        changeElement.textContent = `${change >= 0 ? '▲' : '▼'} ${Math.abs(change).toFixed(2)}`;
+                        changeElement.className = `text-sm ${change >= 0 ? 'text-green-500' : 'text-red-500'}`;
+                    }
+                }
+            }
+
         } else {
             console.error('Failed to fetch position movement data:', response.data.message);
         }

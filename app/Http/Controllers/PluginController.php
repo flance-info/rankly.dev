@@ -294,20 +294,19 @@ class PluginController extends Controller {
         try {
             $slug = $request->input('slug');
             $keywords = $request->input('keywords');
-            $trend = $request->input('trend', '7'); // Default to 7 days
+            $trend = $request->input('trend', '7');
 
-            // Convert trend to integer for date calculation
             $days = match($trend) {
                 '7' => 7,
                 '15' => 15,
                 '30' => 30,
                 '90' => 90,
-                '365' => 365,  // Added last year option
+                '365' => 365,
                 default => 7,
             };
 
-            // Fetch position movement data for the given keywords and trend
-            $data = DB::table('plugin_keyword_stats')
+            // Fetch raw data
+            $rawData = DB::table('plugin_keyword_stats')
                 ->select('keyword_slug', 'rank_order', 'stat_date')
                 ->where('plugin_slug', $slug)
                 ->whereIn('keyword_slug', $keywords)
@@ -315,7 +314,34 @@ class PluginController extends Controller {
                 ->orderBy('stat_date', 'asc')
                 ->get();
 
-            return response()->json(['success' => true, 'data' => $data]);
+            // Calculate averages for each date
+            $averagesByDate = [];
+            foreach ($rawData as $record) {
+                $date = $record->stat_date;
+                if (!isset($averagesByDate[$date])) {
+                    $averagesByDate[$date] = [
+                        'total' => 0,
+                        'count' => 0,
+                    ];
+                }
+                $averagesByDate[$date]['total'] += $record->rank_order;
+                $averagesByDate[$date]['count']++;
+            }
+
+            // Format the response data
+            $averagedData = [];
+            foreach ($averagesByDate as $date => $values) {
+                $averagedData[] = [
+                    'stat_date' => $date,
+                    'rank_order' => round($values['total'] / $values['count'], 2),
+                    'raw_data' => $rawData->where('stat_date', $date)->values()
+                ];
+            }
+
+            return response()->json([
+                'success' => true,
+                'data' => $averagedData
+            ]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Failed to fetch data'], 500);
         }
