@@ -487,9 +487,12 @@ const initializeChart = (labels, data) => {
                     data,
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 2,
-                    backgroundColor: 'transparent',  // Set to transparent
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',  // Very transparent blue
                     pointRadius: 3,
-                    fill: false,  // Disable fill
+                    fill: {
+                        target: 'start',  // Fill to the origin (bottom)
+                        above: 'rgba(54, 162, 235, 0.2)'  // Fill color above the line
+                    },
                     tension: 0.1,
                 },
             ],
