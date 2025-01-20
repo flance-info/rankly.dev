@@ -559,13 +559,11 @@ const fetchActiveInstallsData = async (slug) => {
 
 const fetchPositionMovementData = async (slug) => {
     try {
-        // Extract tags from pluginData
         const keywords = Object.values(pluginData.tags);
-
-        // Send tags as keywords in the request
         const response = await axios.post(`/api/plugin-position-movement`, {
             slug,
-            keywords
+            keywords,
+            trend: selectedTrend.value
         });
 
         if (response.data.success) {
@@ -593,9 +591,11 @@ const fetchPositionMovementData = async (slug) => {
 
 // Make sure fetchActiveInstallsData is called when trend changes
 watch(selectedTrend, () => {
-    if (activeChart.value === 'activeInstalls') {
+    
+ console.log('selectedTrend for:', selectedTrend.value);
         fetchActiveInstallsData(pluginData.slug);
-    }
+        fetchPositionMovementData(pluginData.slug);
+    
 });
 
 const isTestedVersionRecent = computed(() => {

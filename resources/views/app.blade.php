@@ -30,7 +30,7 @@
         @endproduction
         @inertiaHead
     </head>
-    <body class="font-sans antialiased">qqqq
+    <body class="font-sans antialiased">
         @inertia
     </body>
 </html>

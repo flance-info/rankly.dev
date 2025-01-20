@@ -294,12 +294,24 @@ class PluginController extends Controller {
         try {
             $slug = $request->input('slug');
             $keywords = $request->input('keywords');
+            $trend = $request->input('trend', '7'); // Default to 7 days
 
-            // Fetch position movement data for the given keywords
+            // Convert trend to integer for date calculation
+            $days = match($trend) {
+                '7' => 7,
+                '15' => 15,
+                '30' => 30,
+                '90' => 90,
+                '365' => 365,  // Added last year option
+                default => 7,
+            };
+
+            // Fetch position movement data for the given keywords and trend
             $data = DB::table('plugin_keyword_stats')
                 ->select('keyword_slug', 'rank_order', 'stat_date')
                 ->where('plugin_slug', $slug)
                 ->whereIn('keyword_slug', $keywords)
+                ->where('stat_date', '>=', Carbon::now()->subDays($days))
                 ->orderBy('stat_date', 'asc')
                 ->get();
 
