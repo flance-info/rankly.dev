@@ -657,7 +657,7 @@ const updateChart = (type) => {
         chartInstance.options.scales.y = {
             ...chartInstance.options.scales.y,
             ...currentOptions.scales.y,
-            suggestedMax:  maxValue * 2,
+            suggestedMax: type === 'averagePosition' || type === 'positionMovement' ?  maxValue * 2: maxValue * 0.5,
             suggestedMin: 0
         };
         
