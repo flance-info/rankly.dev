@@ -428,13 +428,13 @@ let chartInstance;
 const chartData = {
     averagePosition: {
         title: 'Average Position',
-        labels: ['Nov 22', 'Nov 23', 'Nov 24', 'Nov 25', 'Nov 26', 'Nov 27', 'Nov 28', 'Nov 29'],
-        data: [10, 12, 8, 9, 7, 6, 5, 4],
+        labels: [],
+        data: [],
     },
     positionMovement: {
         title: 'Position Movement',
-        labels: ['Nov 22', 'Nov 23', 'Nov 24', 'Nov 25', 'Nov 26', 'Nov 27', 'Nov 28', 'Nov 29'],
-        data: [0, 1, -1, 2, -2, 3, -3, 4],
+        labels: [],
+        data: [],
     },
     activeInstalls: {
         title: 'Active Installs',
@@ -451,17 +451,50 @@ const chartData = {
 const initializeChart = (labels, data) => {
     const ctx = document.getElementById('line-chart').getContext('2d');
     
-    // Define chart options based on active chart type
+    // Convert data to numbers and find actual max value
+    const numericData = data.map(Number);
+    const maxValue = Math.max(...numericData);
+    console.log('init Data array:', numericData);
+    console.log('init Max value:', maxValue);
+    
     const chartOptions = {
         averagePosition: {
             label: 'Average Position',
             reverse: true,
-            tooltipLabel: (context) => `Average Position: ${context.parsed.y.toFixed(2)}`
+            tooltipLabel: (context) => `Average Position: ${context.parsed.y.toFixed(2)}`,
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    suggestedMin: maxValue * 2,  // Make bottom value twice the highest value
+                    suggestedMax: 0,  // Start from 0 at top
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    },
+                    reverse: true
+                }
+            }
         },
         positionMovement: {
             label: 'Position Movement',
             reverse: false,
-            tooltipLabel: (context) => `Movement: ${context.parsed.y.toFixed(2)}`
+            tooltipLabel: (context) => `Movement: ${context.parsed.y.toFixed(2)}`,
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    suggestedMin: maxValue * 2,  // Make bottom value twice the highest value
+                    suggestedMax: 0,  // Start from 0 at top
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    },
+                    reverse: true
+                }
+            }
         },
         activeInstalls: {
             label: 'Active Installs',
@@ -476,9 +509,9 @@ const initializeChart = (labels, data) => {
     };
 
     const currentOptions = chartOptions[activeChart.value] || chartOptions.downloads;
-
+    console.log('chart option max',Math.max(...data));
     chartInstance = new Chart(ctx, {
-        type: 'line',
+        type: 'line', 
         data: {
             labels,
             datasets: [
@@ -508,6 +541,7 @@ const initializeChart = (labels, data) => {
                     }
                 }
             },
+            
             scales: {
                 x: {
                     grid: {
@@ -519,6 +553,8 @@ const initializeChart = (labels, data) => {
                     }
                 },
                 y: {
+                    suggestedMin: 0,
+                    suggestedMax: maxValue,  // Ensure suggestedMax is set here
                     beginAtZero: true,
                     grid: {
                         color: 'rgba(255, 255, 255, 0.1)'
@@ -538,35 +574,93 @@ const updateChart = (type) => {
     currentChartTitle.value = chartData[type].title;
     
     if (chartInstance) {
+        const data = chartData[type].data;
+        const numericData = data.map(Number);
+        const maxValue = Math.max(...numericData);
+        console.log('Update Data array:', numericData);
+        console.log('Update Max value:', maxValue);
+        
         const chartOptions = {
             averagePosition: {
                 label: 'Average Position',
                 reverse: true,
-                tooltipLabel: (context) => `Average Position: ${context.parsed.y.toFixed(2)}`
+                tooltipLabel: (context) => `Average Position: ${context.parsed.y.toFixed(2)}`,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        suggestedMin: maxValue * 2,
+                        suggestedMax: 0,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        },
+                        reverse: true
+                    }
+                }
             },
             positionMovement: {
                 label: 'Position Movement',
                 reverse: true,
-                tooltipLabel: (context) => `Movement: ${context.parsed.y.toFixed(2)}`
+                tooltipLabel: (context) => `Movement: ${context.parsed.y.toFixed(2)}`,
+                 scales: {
+                    y: {
+                        beginAtZero: false,
+                        suggestedMin: maxValue * 2,  // Make bottom value twice the highest value
+                        suggestedMax: 7,  // Start from 0 at top
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        },
+                        reverse: true
+                    }
+                }
+            
             },
             activeInstalls: {
                 label: 'Active Installs',
                 reverse: false,
-                tooltipLabel: (context) => `Active Installs: ${context.parsed.y.toFixed(0)}`
+                tooltipLabel: (context) => `Active Installs: ${context.parsed.y.toFixed(0)}`,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        suggestedMin: 0,
+                        reverse: false
+                    }
+                }
             },
             downloads: {
                 label: 'Downloads',
                 reverse: false,
-                tooltipLabel: (context) => `Downloads: ${context.parsed.y.toFixed(0)}`
+                tooltipLabel: (context) => `Downloads: ${context.parsed.y.toFixed(0)}`,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        suggestedMin: 0,
+                        reverse: false
+
+                    }
+                }
             }
         };
 
         const currentOptions = chartOptions[type];
         
         chartInstance.data.labels = chartData[type].labels;
-        chartInstance.data.datasets[0].data = chartData[type].data;
+        chartInstance.data.datasets[0].data = data;
         chartInstance.data.datasets[0].label = currentOptions.label;
-        chartInstance.options.scales.y.reverse = currentOptions.reverse;
+        
+        // Update the scales configuration
+        chartInstance.options.scales.y = {
+            ...chartInstance.options.scales.y,
+            ...currentOptions.scales.y,
+            suggestedMax:  maxValue * 2,
+            suggestedMin: 0
+        };
+        
         chartInstance.options.plugins.tooltip.callbacks.label = currentOptions.tooltipLabel;
         
         chartInstance.update();
@@ -762,10 +856,11 @@ const fetchPluginData = async (slug) => {
 onMounted(() => {
   
     //fetchPluginData(pluginData.slug);       
-    initializeChart(chartData.averagePosition.labels, chartData.averagePosition.data);
+
     fetchDownloadData(pluginData.slug);
     fetchActiveInstallsData(pluginData.slug);
     fetchPositionMovementData(pluginData.slug);
+   
    
 });
 </script>
