@@ -464,7 +464,7 @@ def main():
     try:
         # Load tags from the database
         tags = load_tags_from_db(conn)
-        test_tags = tags[:20000];
+        test_tags = tags[:60000];
 
         # Process the tags
         asyncio.run(process_tags(test_tags))

@@ -546,7 +546,7 @@ const updateChart = (type) => {
             },
             positionMovement: {
                 label: 'Position Movement',
-                reverse: false,
+                reverse: true,
                 tooltipLabel: (context) => `Movement: ${context.parsed.y.toFixed(2)}`
             },
             activeInstalls: {
@@ -637,7 +637,7 @@ const fetchActiveInstallsData = async (slug) => {
 
 const fetchPositionMovementData = async (slug) => {
     try {
-        const keywords = Object.values(pluginData.value.tags);
+        const keywords = Object.values(pluginData.tags);
         const response = await axios.post(`/api/plugin-position-movement`, {
             slug,
             keywords,
@@ -648,9 +648,8 @@ const fetchPositionMovementData = async (slug) => {
             const positionData = response.data.data;
             console.log('Position Movement Data:', positionData);
 
-            // Extract labels (dates) and average rank_order values
+            // Extract labels and data
             const labels = positionData.map(item => {
-                // Format the date as needed, e.g., 'Jan 15'
                 return new Date(item.stat_date).toLocaleDateString('en-US', {
                     month: 'short',
                     day: 'numeric'
@@ -659,20 +658,24 @@ const fetchPositionMovementData = async (slug) => {
             
             const data = positionData.map(item => item.rank_order);
 
-            // Update chart data
+            // Update both position movement and average position chart data
             chartData.positionMovement.labels = labels;
             chartData.positionMovement.data = data;
+            
+            // Use the same data for average position
+            chartData.averagePosition = {
+                title: 'Average Position',
+                labels: labels,
+                data: data
+            };
 
             if (!chartInstance) {
                 initializeChart(labels, data);
-            } else if (activeChart.value === 'positionMovement') {
-                // Update existing chart
-                chartInstance.data.labels = labels;
-                chartInstance.data.datasets[0].data = data;
-                chartInstance.update();
+            } else if (activeChart.value === 'positionMovement' || activeChart.value === 'averagePosition') {
+                updateChart(activeChart.value);
             }
 
-            // Calculate and update average position metrics
+            // Calculate and update metrics if needed
             if (data.length > 0) {
                 const currentAvg = data[data.length - 1];
                 const previousAvg = data[data.length - 2] || currentAvg;
