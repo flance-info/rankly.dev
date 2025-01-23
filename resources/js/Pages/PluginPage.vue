@@ -34,7 +34,7 @@
                                         <h2 class="text-lg font-semibold">{{ currentChartTitle }}</h2>
                                         <select
                                             v-model="selectedTrend"
-                                            @change="fetchDownloadData(pluginData.slug)"
+                                           
                                             class="bg-gray-700 text-white rounded-lg px-4 py-1 focus:outline-none appearance-none pr-8"
                                             style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%275%27 viewBox=%270 0 10 5%27><path d=%27M0 0l5 5 5-5H0z%27 fill=%27%23ffffff%27/></svg>'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 10px 5px;"
                                         >
@@ -683,7 +683,7 @@ const fetchDownloadData = async (slug) => {
             chartData.downloads.labels = labels;
             chartData.downloads.data = data;
 
-            summary.value = response.data.summary;
+           summary.value = response.data.summary;
 
             // Only initialize or update chart after data is available
             if (!chartInstance) {
@@ -796,13 +796,125 @@ const fetchPositionMovementData = async (slug) => {
     }
 };
 
-// Make sure fetchActiveInstallsData is called when trend changes
-watch(selectedTrend, () => {
+// Add a flag to track if data has been loaded
+const dataLoaded = ref({
+    downloads: false,
+    activeInstalls: false,
+    positionMovement: false
+});
+
+// Modify the handleMetricClick function
+const handleMetricClick = (metricType) => {
+    console.log('Switching to metric:', metricType);
     
- console.log('selectedTrend for:', selectedTrend.value);
-        fetchActiveInstallsData(pluginData.slug);
-        fetchPositionMovementData(pluginData.slug);
+    // Update active chart type
+    activeChart.value = metricType;
     
+    // Update chart title based on metric type
+    switch (metricType) {
+        case 'downloads':
+            currentChartTitle.value = 'Downloads Per Day';
+            break;
+        case 'activeInstalls':
+            currentChartTitle.value = 'Active Installs';
+            break;
+        case 'averagePosition':
+            currentChartTitle.value = 'Average Position';
+            break;
+        case 'positionMovement':
+            currentChartTitle.value = 'Position Movement';
+            break;
+    }
+    
+    // Update the chart with existing data
+    updateChart(metricType);
+};
+
+// Modify onMounted to set the dataLoaded flags
+onMounted(async () => {
+    if (props.plugin && props.plugin.plugin_data) {
+        console.log('Loading initial data for plugin:', props.plugin.plugin_data.slug);
+        
+        try {
+            // Fetch downloads data first and initialize chart
+            await fetchDownloadData(props.plugin.plugin_data.slug);
+            dataLoaded.value.downloads = true;
+            
+            // Then fetch other data in parallel
+            await Promise.all([
+                fetchPositionMovementData(props.plugin.plugin_data.slug).then(() => {
+                    dataLoaded.value.positionMovement = true;
+                }),
+                fetchActiveInstallsData(props.plugin.plugin_data.slug).then(() => {
+                    dataLoaded.value.activeInstalls = true;
+                })
+            ]);
+        } catch (error) {
+            console.error('Error loading initial data:', error);
+        }
+    } else {
+        console.error('Plugin data not available');
+    }
+});
+
+// Modify the trend watcher and data fetching logic
+watch(selectedTrend, async () => {
+    console.log('selectedTrend changed:', selectedTrend.value);
+    if (props.plugin && props.plugin.plugin_data) {
+        try {
+            // Store current active chart type
+            const currentActiveChart = activeChart.value;
+            
+            // Reset data loaded flags
+            Object.keys(dataLoaded.value).forEach(key => {
+                dataLoaded.value[key] = false;
+            });
+            
+            // Determine which data to fetch first based on current chart type
+            let firstFetch;
+            switch (currentActiveChart) {
+                case 'downloads':
+                    firstFetch = fetchDownloadData(props.plugin.plugin_data.slug);
+                    break;
+                case 'activeInstalls':
+                    firstFetch = fetchActiveInstallsData(props.plugin.plugin_data.slug);
+                    break;
+                case 'averagePosition':
+                case 'positionMovement':
+                    firstFetch = fetchPositionMovementData(props.plugin.plugin_data.slug);
+                    break;
+            }
+            
+            // Fetch current chart data first
+            await firstFetch.then(() => {
+                dataLoaded.value[currentActiveChart === 'averagePosition' ? 'positionMovement' : currentActiveChart] = true;
+            });
+            
+            // Then fetch remaining data in parallel
+            const remainingFetches = [];
+            if (currentActiveChart !== 'downloads') {
+                remainingFetches.push(fetchDownloadData(props.plugin.plugin_data.slug)
+                    .then(() => dataLoaded.value.downloads = true));
+            }
+            if (currentActiveChart !== 'activeInstalls') {
+                remainingFetches.push(fetchActiveInstallsData(props.plugin.plugin_data.slug)
+                    .then(() => dataLoaded.value.activeInstalls = true));
+            }
+            if (currentActiveChart !== 'averagePosition' && currentActiveChart !== 'positionMovement') {
+                remainingFetches.push(fetchPositionMovementData(props.plugin.plugin_data.slug)
+                    .then(() => dataLoaded.value.positionMovement = true));
+            }
+            
+            // Update chart immediately with current type's data
+            updateChart(currentActiveChart);
+            
+            // Fetch remaining data in background
+            await Promise.all(remainingFetches);
+            
+        } catch (error) {
+            console.error('Error updating data with new trend:', error);
+        }
+    }
 });
 
 const isTestedVersionRecent = computed(() => {
@@ -851,60 +963,6 @@ const fetchPluginData = async (slug) => {
         console.error('An error occurred while fetching plugin data:', error);
     }
 };
-
-// Add method to handle metric button clicks
-const handleMetricClick = async (metricType) => {
-    console.log('Switching to metric:', metricType);
-    
-    try {
-        // Update active chart type
-        activeChart.value = metricType;
-        
-        // Ensure data is loaded for the selected metric
-        switch (metricType) {
-            case 'downloads':
-                await fetchDownloadData(pluginData.slug);
-                currentChartTitle.value = 'Downloads Per Day';
-                break;
-            case 'activeInstalls':
-                await fetchActiveInstallsData(pluginData.slug);
-                currentChartTitle.value = 'Active Installs';
-                break;
-            case 'averagePosition':
-            case 'positionMovement':
-                await fetchPositionMovementData(pluginData.slug);
-                currentChartTitle.value = metricType === 'averagePosition' ? 'Average Position' : 'Position Movement';
-                break;
-        }
-        
-        // Update the chart with new data
-        updateChart(metricType);
-        
-    } catch (error) {
-        console.error('Error switching metric:', error);
-    }
-};
-
-onMounted(async () => {
-    if (props.plugin && props.plugin.plugin_data) {
-        console.log('Loading initial data for plugin:', props.plugin.plugin_data.slug);
-        
-        try {
-            // Fetch downloads data first and initialize chart only after data is available
-            await fetchDownloadData(props.plugin.plugin_data.slug);
-            
-            // Then fetch other data in parallel
-            await Promise.all([
-                fetchPositionMovementData(props.plugin.plugin_data.slug),
-                fetchActiveInstallsData(props.plugin.plugin_data.slug)
-            ]);
-        } catch (error) {
-            console.error('Error loading initial data:', error);
-        }
-    } else {
-        console.error('Plugin data not available');
-    }
-});
 </script>
 
 
