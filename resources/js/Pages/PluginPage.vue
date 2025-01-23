@@ -54,12 +54,12 @@
                                     <div class="mb-4">
                                         <button @click="handleMetricClick('downloads')"
                                                 :class="{
-                                          'bg-gray-700': activeChart === 'downloads',
-                                          'bg-gray-800': activeChart !== 'downloads',
+                                          'bg-gray-800 hover:bg-gray-700': activeChart !== 'downloads',
+                                          'bg-gray-700 hover:bg-gray-700 shadow-lg transform scale-[1.02]': activeChart === 'downloads'
                                         }"
 
 
-                                                class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
+                                                class="flex items-center justify-between text-white font-bold py-6 px-6 rounded-lg w-full transition-all duration-200">
                                             <div>
                                                 <h3 class="text-sm font-semibold text-left">Downloads</h3>
                                                 <p class="text-2xl text-left">
@@ -78,11 +78,11 @@
                                     <div class="mb-4">
                                         <button @click="handleMetricClick('activeInstalls')"
                                                 :class="{
-                                          'bg-gray-700': activeChart === 'activeInstalls',
-                                          'bg-gray-800': activeChart !== 'activeInstalls',
+                                          'bg-gray-800 hover:bg-gray-700': activeChart !== 'activeInstalls',
+                                          'bg-gray-700 hover:bg-gray-700 shadow-lg transform scale-[1.02]': activeChart === 'activeInstalls'
                                         }"
 
-                                                class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
+                                                class="flex items-center justify-between text-white font-bold py-6 px-6 rounded-lg w-full transition-all duration-200">
                                             <div>
                                                 <h3 class="text-sm font-semibold text-left">Active Installs</h3>
                                                 <p class="text-2xl text-left">{{ summary2.total_active_installs }}
@@ -102,15 +102,21 @@
                                     <div class="mb-4">
                                         <button @click="handleMetricClick('averagePosition')"
                                                 :class="{
-                                          'bg-gray-700': activeChart === 'averagePosition',
-                                          'bg-gray-800': activeChart !== 'averagePosition',
+                                          'bg-gray-800 hover:bg-gray-700': activeChart !== 'averagePosition',
+                                          'bg-gray-700 hover:bg-gray-700 shadow-lg transform scale-[1.02]': activeChart === 'averagePosition'
                                         }"
 
 
-                                                class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
+                                                class="flex items-center justify-between text-white font-bold py-6 px-6 rounded-lg w-full transition-all duration-200">
                                             <div>
                                                 <h3 class="text-sm font-semibold text-left">Average Position</h3>
-                                                <p class="text-2xl text-left">2320.80 <span class="text-red-500 text-sm">▼ 13.20</span></p>
+                                                <p class="text-2xl text-left">
+                                                    {{ summary3?.current_position ? summary3.current_position.toFixed(2) : '0.00' }}
+                                                    <span :class="{'text-red-500': summary3?.percentage_change < 0, 'text-green-500': summary3?.percentage_change >= 0}" 
+                                                          class="text-sm">
+                                                        {{ summary3?.percentage_change < 0 ? '▼' : '▲' }} {{ Math.abs(summary3?.percentage_change || 0) }}%
+                                                    </span>
+                                                </p>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -120,12 +126,12 @@
                                     <div>
                                         <button @click="handleMetricClick('positionMovement')"
                                                 :class="{
-                                          'bg-gray-700': activeChart === 'positionMovement',
-                                          'bg-gray-800': activeChart !== 'positionMovement',
+                                          'bg-gray-800 hover:bg-gray-700': activeChart !== 'positionMovement',
+                                          'bg-gray-700 hover:bg-gray-700 shadow-lg transform scale-[1.02]': activeChart === 'positionMovement'
                                         }"
 
 
-                                                class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
+                                                class="flex items-center justify-between text-white font-bold py-6 px-6 rounded-lg w-full transition-all duration-200">
                                             <div>
                                                 <h3 class="text-sm font-semibold text-left">Position Movement</h3>
                                                 <p class="text-2xl text-left">0 <span class="text-green-500 text-sm">▲ 5</span></p>
@@ -395,6 +401,11 @@ const summary2 = ref({
         percentage_change: 0
 });
 
+// Add summary3 for average position
+const summary3 = ref({
+    current_position: 0,
+    percentage_change: 0
+});
 
 const props = defineProps({
     plugin: Object,
@@ -731,65 +742,41 @@ const fetchActiveInstallsData = async (slug) => {
 
 const fetchPositionMovementData = async (slug) => {
     try {
-        const keywords = Object.values(pluginData.tags);
         const response = await axios.post(`/api/plugin-position-movement`, {
             slug,
-            keywords,
+            keywords: Object.values(pluginData.tags),
             trend: selectedTrend.value
         });
-
+        
         if (response.data.success) {
             const positionData = response.data.data;
-            console.log('Position Movement Data:', positionData);
-
-            // Extract labels and data
             const labels = positionData.map(item => {
                 return new Date(item.stat_date).toLocaleDateString('en-US', {
                     month: 'short',
                     day: 'numeric'
                 });
             });
-            
             const data = positionData.map(item => item.rank_order);
-
-            // Update both position movement and average position chart data
+            
+            // Calculate summary for average position
+            const currentPosition = data[data.length - 1];
+            const previousPosition = data[data.length - 2] || currentPosition;
+            const change = previousPosition - currentPosition;
+            const percentageChange = previousPosition !== 0 
+                ? ((change) / previousPosition) * 100 
+                : 0;
+            
+            // Update summary3
+            summary3.value = {
+                current_position: currentPosition,
+                percentage_change: Number(percentageChange.toFixed(2))
+            };
+            
+            // Update chart data
             chartData.positionMovement.labels = labels;
             chartData.positionMovement.data = data;
-            
-            // Use the same data for average position
-            chartData.averagePosition = {
-                title: 'Average Position',
-                labels: labels,
-                data: data
-            };
-
-            // Only update chart if it's the active type
-            if (chartInstance && (activeChart.value === 'positionMovement' || activeChart.value === 'averagePosition')) {
-                updateChart(activeChart.value);
-            }
-
-            // Calculate and update metrics if needed
-            if (data.length > 0) {
-                const currentAvg = data[data.length - 1];
-                const previousAvg = data[data.length - 2] || currentAvg;
-                const change = previousAvg - currentAvg;
-                
-                // Update the position movement button display
-                const positionMovementButton = document.querySelector('[data-metric="positionMovement"]');
-                if (positionMovementButton) {
-                    const valueElement = positionMovementButton.querySelector('.value');
-                    const changeElement = positionMovementButton.querySelector('.change');
-                    
-                    if (valueElement) valueElement.textContent = currentAvg.toFixed(2);
-                    if (changeElement) {
-                        changeElement.textContent = `${change >= 0 ? '▲' : '▼'} ${Math.abs(change).toFixed(2)}`;
-                        changeElement.className = `text-sm ${change >= 0 ? 'text-green-500' : 'text-red-500'}`;
-                    }
-                }
-            }
-
-        } else {
-            console.error('Failed to fetch position movement data:', response.data.message);
+            chartData.averagePosition.labels = labels;
+            chartData.averagePosition.data = data;
         }
     } catch (error) {
         console.error('An error occurred while fetching position movement data:', error);
