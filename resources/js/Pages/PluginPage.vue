@@ -423,7 +423,7 @@ const decodeHTML = (html) => {
 };
 
 const selectedTrend = ref('30'); // Default trend value
-let chartInstance;
+let chartInstance = null;
 
 const chartData = {
     averagePosition: {
@@ -683,8 +683,9 @@ const fetchDownloadData = async (slug) => {
             chartData.downloads.labels = labels;
             chartData.downloads.data = data;
 
-           summary.value = response.data.summary;
+            summary.value = response.data.summary;
 
+            // Only initialize or update chart after data is available
             if (!chartInstance) {
                 initializeChart(labels, data);
             } else if (activeChart.value === 'downloads') {
@@ -716,10 +717,8 @@ const fetchActiveInstallsData = async (slug) => {
             chartData.activeInstalls.data = data;
             summary2.value = response.data.summary;
     
-           
-            if (!chartInstance) {
-                initializeChart(labels, data);
-            } else if (activeChart.value === 'activeInstalls') {
+            // Only update chart if it's the active type
+            if (chartInstance && activeChart.value === 'activeInstalls') {
                 updateChart('activeInstalls');
             }
         } else {
@@ -764,9 +763,8 @@ const fetchPositionMovementData = async (slug) => {
                 data: data
             };
 
-            if (!chartInstance) {
-                initializeChart(labels, data);
-            } else if (activeChart.value === 'positionMovement' || activeChart.value === 'averagePosition') {
+            // Only update chart if it's the active type
+            if (chartInstance && (activeChart.value === 'positionMovement' || activeChart.value === 'averagePosition')) {
                 updateChart(activeChart.value);
             }
 
@@ -887,15 +885,25 @@ const handleMetricClick = async (metricType) => {
     }
 };
 
-onMounted(() => {
-  
-    fetchPluginData(pluginData.slug);       
-
-    fetchDownloadData(pluginData.slug);
-    fetchActiveInstallsData(pluginData.slug);
-    fetchPositionMovementData(pluginData.slug);
-
-   
+onMounted(async () => {
+    if (props.plugin && props.plugin.plugin_data) {
+        console.log('Loading initial data for plugin:', props.plugin.plugin_data.slug);
+        
+        try {
+            // Fetch downloads data first and initialize chart only after data is available
+            await fetchDownloadData(props.plugin.plugin_data.slug);
+            
+            // Then fetch other data in parallel
+            await Promise.all([
+                fetchPositionMovementData(props.plugin.plugin_data.slug),
+                fetchActiveInstallsData(props.plugin.plugin_data.slug)
+            ]);
+        } catch (error) {
+            console.error('Error loading initial data:', error);
+        }
+    } else {
+        console.error('Plugin data not available');
+    }
 });
 </script>
 
