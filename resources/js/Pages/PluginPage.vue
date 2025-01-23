@@ -52,17 +52,23 @@
                                 <!-- Buttons Section -->
                                 <div class="w-1/3 pl-6 flex flex-col justify-between">
                                     <div class="mb-4">
-                                        <button @click="updateChart('averagePosition')"
+                                        <button @click="handleMetricClick('downloads')"
                                                 :class="{
-                                          'bg-gray-700': activeChart === 'averagePosition',
-                                          'bg-gray-800': activeChart !== 'averagePosition',
+                                          'bg-gray-700': activeChart === 'downloads',
+                                          'bg-gray-800': activeChart !== 'downloads',
                                         }"
 
 
                                                 class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
-                                                <h3 class="text-sm font-semibold text-left">Average Position</h3>
-                                                <p class="text-2xl text-left">2320.80 <span class="text-red-500 text-sm">▼ 13.20</span></p>
+                                                <h3 class="text-sm font-semibold text-left">Downloads</h3>
+                                                <p class="text-2xl text-left">
+                                                    {{ summary.total_downloads }}
+                                                    <span :class="{'text-red-500': summary.percentage_change < 0, 'text-green-500': summary.percentage_change >= 0}" class="text-sm">
+                                                        {{ summary.percentage_change < 0 ? '▼' : '▲' }} {{ Math.abs(summary.percentage_change) }}%
+                                                    </span>
+                                                </p>
+
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -70,25 +76,7 @@
                                         </button>
                                     </div>
                                     <div class="mb-4">
-                                        <button @click="updateChart('positionMovement')"
-                                                :class="{
-                                          'bg-gray-700': activeChart === 'positionMovement',
-                                          'bg-gray-800': activeChart !== 'positionMovement',
-                                        }"
-
-
-                                                class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
-                                            <div>
-                                                <h3 class="text-sm font-semibold text-left">Position Movement</h3>
-                                                <p class="text-2xl text-left">0 <span class="text-green-500 text-sm">▲ 5</span></p>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="mb-4">
-                                        <button @click="updateChart('activeInstalls')"
+                                        <button @click="handleMetricClick('activeInstalls')"
                                                 :class="{
                                           'bg-gray-700': activeChart === 'activeInstalls',
                                           'bg-gray-800': activeChart !== 'activeInstalls',
@@ -111,24 +99,36 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <div>
-                                        <button
-                                            :class="{
-                                          'bg-gray-700': activeChart === 'downloads',
-                                          'bg-gray-800': activeChart !== 'downloads',
+                                    <div class="mb-4">
+                                        <button @click="handleMetricClick('averagePosition')"
+                                                :class="{
+                                          'bg-gray-700': activeChart === 'averagePosition',
+                                          'bg-gray-800': activeChart !== 'averagePosition',
                                         }"
 
 
-                                            @click="updateChart('downloads')" class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
+                                                class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
                                             <div>
-                                                <h3 class="text-sm font-semibold text-left">Downloads</h3>
-                                                <p class="text-2xl text-left">
-                                                    {{ summary.total_downloads }}
-                                                    <span :class="{'text-red-500': summary.percentage_change < 0, 'text-green-500': summary.percentage_change >= 0}" class="text-sm">
-                                                        {{ summary.percentage_change < 0 ? '▼' : '▲' }} {{ Math.abs(summary.percentage_change) }}%
-                                                    </span>
-                                                </p>
+                                                <h3 class="text-sm font-semibold text-left">Average Position</h3>
+                                                <p class="text-2xl text-left">2320.80 <span class="text-red-500 text-sm">▼ 13.20</span></p>
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button @click="handleMetricClick('positionMovement')"
+                                                :class="{
+                                          'bg-gray-700': activeChart === 'positionMovement',
+                                          'bg-gray-800': activeChart !== 'positionMovement',
+                                        }"
 
+
+                                                class="flex items-center justify-between bg-gray-800 hover:bg-gray-700 text-white font-bold py-6 px-6 rounded-lg w-full">
+                                            <div>
+                                                <h3 class="text-sm font-semibold text-left">Position Movement</h3>
+                                                <p class="text-2xl text-left">0 <span class="text-green-500 text-sm">▲ 5</span></p>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -377,9 +377,10 @@ import {defineProps, onMounted, ref, watch, computed} from 'vue';
 import {Chart, registerables} from 'chart.js';
 import axios from 'axios';
 
-const activeChart = ref(null);
-// Register all necessary components
+const activeChart = ref('downloads');
 Chart.register(...registerables);
+const currentChartTitle = ref('Downloads Per Day');
+
 const summary = ref({
     total_downloads: 0,
     percentage_change: 0,
@@ -421,8 +422,7 @@ const decodeHTML = (html) => {
     return txt.value;
 };
 
-const selectedTrend = ref('7'); // Default trend value
-const currentChartTitle = ref('Downloads Per Day');
+const selectedTrend = ref('30'); // Default trend value
 let chartInstance;
 
 const chartData = {
@@ -458,6 +458,17 @@ const initializeChart = (labels, data) => {
     console.log('init Max value:', maxValue);
     
     const chartOptions = {
+        activeInstalls: {
+            label: 'Active Installs',
+            reverse: false,
+            tooltipLabel: (context) => `Active Installs: ${context.parsed.y.toFixed(0)}`
+        },
+        downloads: {
+            label: 'Downloads',
+            reverse: false,
+            tooltipLabel: (context) => `Downloads: ${context.parsed.y.toFixed(0)}`
+        },
+        
         averagePosition: {
             label: 'Average Position',
             reverse: true,
@@ -495,16 +506,6 @@ const initializeChart = (labels, data) => {
                     reverse: true
                 }
             }
-        },
-        activeInstalls: {
-            label: 'Active Installs',
-            reverse: false,
-            tooltipLabel: (context) => `Active Installs: ${context.parsed.y.toFixed(0)}`
-        },
-        downloads: {
-            label: 'Downloads',
-            reverse: false,
-            tooltipLabel: (context) => `Downloads: ${context.parsed.y.toFixed(0)}`
         }
     };
 
@@ -608,7 +609,7 @@ const updateChart = (type) => {
                     y: {
                         beginAtZero: false,
                         suggestedMin: maxValue * 2,  // Make bottom value twice the highest value
-                        suggestedMax: 7,  // Start from 0 at top
+                        suggestedMax: 0,  // Start from 0 at top
                         grid: {
                             color: 'rgba(255, 255, 255, 0.1)'
                         },
@@ -853,14 +854,47 @@ const fetchPluginData = async (slug) => {
     }
 };
 
+// Add method to handle metric button clicks
+const handleMetricClick = async (metricType) => {
+    console.log('Switching to metric:', metricType);
+    
+    try {
+        // Update active chart type
+        activeChart.value = metricType;
+        
+        // Ensure data is loaded for the selected metric
+        switch (metricType) {
+            case 'downloads':
+                await fetchDownloadData(pluginData.slug);
+                currentChartTitle.value = 'Downloads Per Day';
+                break;
+            case 'activeInstalls':
+                await fetchActiveInstallsData(pluginData.slug);
+                currentChartTitle.value = 'Active Installs';
+                break;
+            case 'averagePosition':
+            case 'positionMovement':
+                await fetchPositionMovementData(pluginData.slug);
+                currentChartTitle.value = metricType === 'averagePosition' ? 'Average Position' : 'Position Movement';
+                break;
+        }
+        
+        // Update the chart with new data
+        updateChart(metricType);
+        
+    } catch (error) {
+        console.error('Error switching metric:', error);
+    }
+};
+
 onMounted(() => {
   
-    //fetchPluginData(pluginData.slug);       
+    fetchPluginData(pluginData.slug);       
 
     fetchDownloadData(pluginData.slug);
     fetchActiveInstallsData(pluginData.slug);
     fetchPositionMovementData(pluginData.slug);
-   
+
    
 });
 </script>
