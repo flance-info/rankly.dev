@@ -9,8 +9,12 @@
                     <th class="px-2 py-3 items-center relative group">
                         Keyword
                         <div class="ml-2 flex flex-col float-right w-[40%] pt-[5px]">
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▲</div>
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▼</div>
+                            <div @click="sort('keyword', 'asc')" 
+                                 :class="getSortClass('keyword', 'asc')"
+                                 class="cursor-pointer text-[8px] leading-[8px]">▲</div>
+                            <div @click="sort('keyword', 'desc')" 
+                                 :class="getSortClass('keyword', 'desc')"
+                                 class="cursor-pointer text-[8px] leading-[8px]">▼</div>
                         </div>
                         <div class="tooltip">
                             <div class="font-medium">The keyword being </div>
@@ -20,8 +24,12 @@
                     <th class="px-2 py-3 items-center relative group">
                         Position
                         <div class="ml-2 flex flex-col float-right w-[25%] pt-[5px]">
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▲</div>
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▼</div>
+                            <div @click="sort('position', 'asc')" 
+                                 :class="getSortClass('position', 'asc')"
+                                 class="cursor-pointer text-[8px] leading-[8px]">▲</div>
+                            <div @click="sort('position', 'desc')" 
+                                 :class="getSortClass('position', 'desc')"
+                                 class="cursor-pointer text-[8px] leading-[8px]">▼</div>
                         </div>
                         <div class="tooltip">
                             <div class="font-medium">Search Position</div>
@@ -31,8 +39,12 @@
                     <th class="px-4 py-3 relative group">
                         Occurrences
                         <div class="ml-2 flex flex-col float-right w-[20%] pt-[5px]">
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▲</div>
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▼</div>
+                            <div @click="sort('occurrences', 'asc')" 
+                                 :class="getSortClass('occurrences', 'asc')"
+                                 class="cursor-pointer text-[8px] leading-[8px]">▲</div>
+                            <div @click="sort('occurrences', 'desc')" 
+                                 :class="getSortClass('occurrences', 'desc')"
+                                 class="cursor-pointer text-[8px] leading-[8px]">▼</div>
                         </div>
                         <div class="tooltip">
                             <div class="font-medium">Keyword Count</div>
@@ -42,8 +54,12 @@
                     <th class="px-4 py-3 relative group">
                         Language
                         <div class="ml-2 flex flex-col float-right w-[25%] pt-[5px]">
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▲</div>
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▼</div>
+                            <div @click="sort('language', 'asc')" 
+                                 :class="getSortClass('language', 'asc')"
+                                 class="cursor-pointer text-[8px] leading-[8px]">▲</div>
+                            <div @click="sort('language', 'desc')" 
+                                 :class="getSortClass('language', 'desc')"
+                                 class="cursor-pointer text-[8px] leading-[8px]">▼</div>
                         </div>
                         <div class="tooltip">
                             <div class="font-medium">Search Language</div>
@@ -53,8 +69,12 @@
                     <th class="px-4 py-3 relative group">
                         Updated
                         <div class="ml-2 flex flex-col float-right w-[50%] pt-[5px]">
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▲</div>
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▼</div>
+                            <div @click="sort('updated_date', 'asc')" 
+                                 :class="getSortClass('updated_date', 'asc')"
+                                 class="cursor-pointer text-[8px] leading-[8px]">▲</div>
+                            <div @click="sort('updated_date', 'desc')" 
+                                 :class="getSortClass('updated_date', 'desc')"
+                                 class="cursor-pointer text-[8px] leading-[8px]">▼</div>
                         </div>
                         <div class="tooltip">
                             <div class="font-medium">Last Updated</div>
@@ -64,7 +84,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(tag, index) in tagData" :key="index" class="border-t border-gray-700 hover:bg-gray-700">
+                <tr v-for="(tag, index) in sortedData" :key="index" class="border-t border-gray-700 hover:bg-gray-700">
                     <td class="px-4 py-3">
                         <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
                     </td>
@@ -85,43 +105,8 @@
     </div>
 </template>
 
-<style scoped>
-.tooltip {
-    @apply invisible group-hover:visible absolute z-50 p-3 mt-1 
-           text-xs bg-gray-900 rounded-md shadow-lg 
-           whitespace-nowrap border border-gray-700 capitalize;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.tooltip div {
-    @apply leading-5;
-}
-
-.tooltip div:first-child {
-    @apply mb-1;
-}
-
-/* Add a small arrow to the tooltip */
-.tooltip::before {
-    content: '';
-    @apply absolute -top-1 left-1/2 -ml-1 border-4 border-transparent 
-           border-b-gray-900;
-}
-
-/* Ensure the tooltip container has proper positioning */
-.relative {
-    position: relative;
-}
-
-.group:hover .tooltip {
-    @apply visible;
-}
-</style>
-
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 import axios from 'axios';
 
 const props = defineProps({
@@ -142,6 +127,52 @@ const props = defineProps({
 const tagData = ref([]);
 const loading = ref(false);
 const error = ref(null);
+
+const sortColumn = ref('');
+const sortDirection = ref('');
+
+const sortedData = computed(() => {
+    if (!sortColumn.value) return tagData.value;
+
+    return [...tagData.value].sort((a, b) => {
+        let aValue = a[sortColumn.value];
+        let bValue = b[sortColumn.value];
+
+        // Handle special cases
+        if (sortColumn.value === 'position') {
+            aValue = a.position || 0;
+            bValue = b.position || 0;
+        } else if (sortColumn.value === 'updated_date') {
+            aValue = new Date(a.updated_date);
+            bValue = new Date(b.updated_date);
+        }
+
+        if (sortDirection.value === 'asc') {
+            return aValue > bValue ? 1 : -1;
+        } else {
+            return aValue < bValue ? 1 : -1;
+        }
+    });
+});
+
+const sort = (column, direction) => {
+    if (sortColumn.value === column && sortDirection.value === direction) {
+        // Clear sort if clicking the same column and direction
+        sortColumn.value = '';
+        sortDirection.value = '';
+    } else {
+        sortColumn.value = column;
+        sortDirection.value = direction;
+    }
+};
+
+const getSortClass = (column, direction) => {
+    const isActive = sortColumn.value === column && sortDirection.value === direction;
+    return {
+        'text-gray-400 hover:text-gray-50': !isActive,
+        'text-blue-500 hover:text-blue-400': isActive
+    };
+};
 
 // Fetch tag data from backend
 const fetchTagData = async () => {
@@ -206,4 +237,37 @@ watch(() => props.selectedTrend, () => {
 onMounted(() => {
     fetchTagData();
 });
-</script> 
+</script>
+
+<style scoped>
+.tooltip {
+    @apply invisible group-hover:visible absolute z-50 p-3 mt-1 
+           text-xs bg-gray-900 rounded-md shadow-lg 
+           whitespace-nowrap border border-gray-700;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip div {
+    @apply leading-5;
+}
+
+.tooltip div:first-child {
+    @apply mb-1;
+}
+
+.tooltip::before {
+    content: '';
+    @apply absolute -top-1 left-1/2 -ml-1 border-4 border-transparent 
+           border-b-gray-900;
+}
+
+.relative {
+    position: relative;
+}
+
+.group:hover .tooltip {
+    @apply visible;
+}
+</style> 
