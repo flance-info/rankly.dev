@@ -7,6 +7,7 @@ use App\Models\PluginKeywordStat;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class PluginKeywordController extends Controller
 {
@@ -25,14 +26,39 @@ class PluginKeywordController extends Controller
             $trendDays = (int) $request->input('trend');
             $startDate = Carbon::now()->subDays($trendDays);
 
+            // Get readme content from WordPress.org API
+            $readmeUrl = "https://plugins.svn.wordpress.org/{$slug}/trunk/readme.txt";
+            $response = Http::get($readmeUrl);
+            
+            // Get plugin description as fallback
+            $plugin = Plugin::where('slug', $slug)
+                ->select('plugin_data->description as description')
+                ->first();
+
+            // Use readme content if available, otherwise use description
+            $content = $response->successful() 
+                ? strtolower($response->body()) 
+                : strtolower($plugin->description ?? '');
+
+            // Remove all URLs
+           // $textWithoutUrls = preg_replace('/https?:\/\/\S+/', '', $content);
+           // $textWithoutUrls = preg_replace('/www\.\S+/', '', $textWithoutUrls);
+           $textWithoutUrls = $content;
+            // Count keyword occurrences in cleaned content
+            $keywordOccurrences = collect($keywords)->mapWithKeys(function ($keyword) use ($textWithoutUrls) {
+                // Count occurrences with word boundaries
+                $pattern = '/\b' . preg_quote(strtolower($keyword), '/') . '\b/';
+                preg_match_all($pattern, $textWithoutUrls, $matches);
+                return [$keyword => count($matches[0])];
+            });
+
             // Get latest stats for each keyword
             $latestStats = DB::table('plugin_keyword_stats as pks1')
                 ->select(
                     'pks1.keyword_slug as keyword',
                     'pks1.rank_order',
                     'pks1.stat_date as latest_date',
-                    DB::raw('\'en\' as language'),
-                    DB::raw('COUNT(*) as occurrences')
+                    DB::raw('\'en\' as language')
                 )
                 ->joinSub(
                     DB::table('plugin_keyword_stats')
@@ -70,7 +96,7 @@ class PluginKeywordController extends Controller
             });
 
             // Create response including all keywords
-            $response = collect($keywords)->map(function ($keyword) use ($latestStats, $previousStats) {
+            $response = collect($keywords)->map(function ($keyword) use ($latestStats, $previousStats, $keywordOccurrences) {
                 $currentStat = $latestStats->get($keyword);
                 $previousStat = $previousStats->get($keyword);
 
@@ -80,7 +106,7 @@ class PluginKeywordController extends Controller
                     'position_change' => $currentStat && $previousStat 
                         ? $previousStat->rank_order - $currentStat->rank_order 
                         : 0,
-                    'occurrences' => $currentStat ? $currentStat->occurrences : 0,
+                    'occurrences' => $keywordOccurrences[$keyword] ?? 0,
                     'language' => 'en',
                     'updated_at' => $currentStat ? $currentStat->latest_date : null
                 ];
