@@ -6,79 +6,99 @@
                     <th class="px-4 py-3">
                         <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
                     </th>
-                    <th class="px-2 py-3 items-center relative group">
-                        Keyword
-                        <div class="ml-2 flex flex-col float-right w-[40%] pt-[5px]">
-                            <div @click="sort('keyword', 'asc')" 
-                                 :class="getSortClass('keyword', 'asc')"
-                                 class="cursor-pointer text-[8px] leading-[8px]">▲</div>
-                            <div @click="sort('keyword', 'desc')" 
-                                 :class="getSortClass('keyword', 'desc')"
-                                 class="cursor-pointer text-[8px] leading-[8px]">▼</div>
-                        </div>
-                        <div class="tooltip">
-                            <div class="font-medium">The keyword being </div>
-                            <div class="text-gray-400">tracked for the plugin</div>
-                        </div>
-                    </th>
-                    <th class="px-2 py-3 items-center relative group">
-                        Position
-                        <div class="ml-2 flex flex-col float-right w-[25%] pt-[5px]">
-                            <div @click="sort('position', 'asc')" 
-                                 :class="getSortClass('position', 'asc')"
-                                 class="cursor-pointer text-[8px] leading-[8px]">▲</div>
-                            <div @click="sort('position', 'desc')" 
-                                 :class="getSortClass('position', 'desc')"
-                                 class="cursor-pointer text-[8px] leading-[8px]">▼</div>
-                        </div>
-                        <div class="tooltip">
-                            <div class="font-medium">Search Position</div>
-                            <div class="text-gray-400">In The WordPress.org Search Results</div>
+                    <th class="px-2 py-3 items-center">
+                        <div class="flex justify-between items-center">
+                            <span class="relative group">
+                                Keyword
+                                <div class="tooltip">
+                                    <div class="font-medium">Tracked Keyword</div>
+                                    <div class="text-gray-400">The Search Term Being Tracked For Your Plugin</div>
+                                </div>
+                            </span>
+                            <div class="flex flex-col w-[40%] pt-[5px]">
+                                <div @click="sort('keyword', 'asc')" 
+                                     :class="getSortClass('keyword', 'asc')"
+                                     class="cursor-pointer text-[8px] leading-[8px]">▲</div>
+                                <div @click="sort('keyword', 'desc')" 
+                                     :class="getSortClass('keyword', 'desc')"
+                                     class="cursor-pointer text-[8px] leading-[8px]">▼</div>
+                            </div>
                         </div>
                     </th>
-                    <th class="px-4 py-3 relative group">
-                        Occurrences
-                        <div class="ml-2 flex flex-col float-right w-[20%] pt-[5px]">
-                            <div @click="sort('occurrences', 'asc')" 
-                                 :class="getSortClass('occurrences', 'asc')"
-                                 class="cursor-pointer text-[8px] leading-[8px]">▲</div>
-                            <div @click="sort('occurrences', 'desc')" 
-                                 :class="getSortClass('occurrences', 'desc')"
-                                 class="cursor-pointer text-[8px] leading-[8px]">▼</div>
-                        </div>
-                        <div class="tooltip">
-                            <div class="font-medium">Keyword Count</div>
-                            <div class="text-gray-400">Number Of Times The Keyword Appears In The Readme.txt</div>
-                        </div>
-                    </th>
-                    <th class="px-4 py-3 relative group">
-                        Language
-                        <div class="ml-2 flex flex-col float-right w-[25%] pt-[5px]">
-                            <div @click="sort('language', 'asc')" 
-                                 :class="getSortClass('language', 'asc')"
-                                 class="cursor-pointer text-[8px] leading-[8px]">▲</div>
-                            <div @click="sort('language', 'desc')" 
-                                 :class="getSortClass('language', 'desc')"
-                                 class="cursor-pointer text-[8px] leading-[8px]">▼</div>
-                        </div>
-                        <div class="tooltip">
-                            <div class="font-medium">Search Language</div>
-                            <div class="text-gray-400">The Language Used For Keyword Tracking</div>
+                    <th class="px-2 py-3 items-center">
+                        <div class="flex justify-between items-center">
+                            <span class="relative group">
+                                Position
+                                <div class="tooltip">
+                                    <div class="font-medium">Search Position</div>
+                                    <div class="text-gray-400">Your Plugin's Position In The WordPress.org Search Results</div>
+                                </div>
+                            </span>
+                            <div class="flex flex-col w-[25%] pt-[5px]">
+                                <div @click="sort('position', 'asc')" 
+                                     :class="getSortClass('position', 'asc')"
+                                     class="cursor-pointer text-[8px] leading-[8px]">▲</div>
+                                <div @click="sort('position', 'desc')" 
+                                     :class="getSortClass('position', 'desc')"
+                                     class="cursor-pointer text-[8px] leading-[8px]">▼</div>
+                            </div>
                         </div>
                     </th>
-                    <th class="px-4 py-3 relative group">
-                        Updated
-                        <div class="ml-2 flex flex-col float-right w-[50%] pt-[5px]">
-                            <div @click="sort('updated_date', 'asc')" 
-                                 :class="getSortClass('updated_date', 'asc')"
-                                 class="cursor-pointer text-[8px] leading-[8px]">▲</div>
-                            <div @click="sort('updated_date', 'desc')" 
-                                 :class="getSortClass('updated_date', 'desc')"
-                                 class="cursor-pointer text-[8px] leading-[8px]">▼</div>
+                    <th class="px-4 py-3">
+                        <div class="flex justify-between items-center">
+                            <span class="relative group">
+                                Occurrences
+                                <div class="tooltip">
+                                    <div class="font-medium">Keyword Count</div>
+                                    <div class="text-gray-400">Number Of Times The Keyword Appears In The Readme.txt</div>
+                                </div>
+                            </span>
+                            <div class="flex flex-col w-[20%] pt-[5px]">
+                                <div @click="sort('occurrences', 'asc')" 
+                                     :class="getSortClass('occurrences', 'asc')"
+                                     class="cursor-pointer text-[8px] leading-[8px]">▲</div>
+                                <div @click="sort('occurrences', 'desc')" 
+                                     :class="getSortClass('occurrences', 'desc')"
+                                     class="cursor-pointer text-[8px] leading-[8px]">▼</div>
+                            </div>
                         </div>
-                        <div class="tooltip">
-                            <div class="font-medium">Last Updated</div>
-                            <div class="text-gray-400">Most Recent Update Of The Keyword Data</div>
+                    </th>
+                    <th class="px-4 py-3">
+                        <div class="flex justify-between items-center">
+                            <span class="relative group">
+                                Language
+                                <div class="tooltip">
+                                    <div class="font-medium">Search Language</div>
+                                    <div class="text-gray-400">The Language Used For Keyword Tracking</div>
+                                </div>
+                            </span>
+                            <div class="flex flex-col w-[25%] pt-[5px]">
+                                <div @click="sort('language', 'asc')" 
+                                     :class="getSortClass('language', 'asc')"
+                                     class="cursor-pointer text-[8px] leading-[8px]">▲</div>
+                                <div @click="sort('language', 'desc')" 
+                                     :class="getSortClass('language', 'desc')"
+                                     class="cursor-pointer text-[8px] leading-[8px]">▼</div>
+                            </div>
+                        </div>
+                    </th>
+                    <th class="px-4 py-3">
+                        <div class="flex justify-between items-center">
+                            <span class="relative group">
+                                Updated
+                                <div class="tooltip">
+                                    <div class="font-medium">Last Updated</div>
+                                    <div class="text-gray-400">Most Recent Update Of The Keyword Data</div>
+                                </div>
+                            </span>
+                            <div class="flex flex-col w-[50%] pt-[5px]">
+                                <div @click="sort('updated_date', 'asc')" 
+                                     :class="getSortClass('updated_date', 'asc')"
+                                     class="cursor-pointer text-[8px] leading-[8px]">▲</div>
+                                <div @click="sort('updated_date', 'desc')" 
+                                     :class="getSortClass('updated_date', 'desc')"
+                                     class="cursor-pointer text-[8px] leading-[8px]">▼</div>
+                            </div>
                         </div>
                     </th>
                 </tr>
@@ -243,7 +263,7 @@ onMounted(() => {
 .tooltip {
     @apply invisible group-hover:visible absolute z-50 p-3 mt-1 
            text-xs bg-gray-900 rounded-md shadow-lg 
-           whitespace-nowrap border border-gray-700;
+           border border-gray-700 capitalize;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
@@ -261,10 +281,6 @@ onMounted(() => {
     content: '';
     @apply absolute -top-1 left-1/2 -ml-1 border-4 border-transparent 
            border-b-gray-900;
-}
-
-.relative {
-    position: relative;
 }
 
 .group:hover .tooltip {
