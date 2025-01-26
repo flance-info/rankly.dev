@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PluginController;
 use App\Http\Controllers\PluginStatsController;
+use App\Http\Controllers\PluginKeywordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -52,4 +53,6 @@ Route::middleware('auth:sanctum')->get('/plugin-average-position/{slug}', [Plugi
 Route::middleware('auth:sanctum')->get('/plugin-downloads/{slug}', [PluginController::class, 'getDownloads']);
 
 Route::middleware('auth:sanctum')->get('/plugin-data/{slug}', [PluginController::class, 'getPluginData']);
+
+Route::post('plugin-keywords', [PluginKeywordController::class, 'getKeywords']);
 

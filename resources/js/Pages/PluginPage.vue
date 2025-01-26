@@ -207,7 +207,11 @@
                             </div>
                         </div>
 
-                        <KeywordTable :tags="plugin.plugin_data.tags" />
+                        <KeywordTable 
+                            :plugin-slug="plugin.plugin_data.slug"
+                            :selected-trend="selectedTrend"
+                            :keywords="Object.values(plugin.plugin_data.tags)"
+                        />
 
 
 
