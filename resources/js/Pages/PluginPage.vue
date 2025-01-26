@@ -207,156 +207,11 @@
                             </div>
                         </div>
 
-                        <div class="overflow-x-auto bg-gray-900 p-6 rounded-lg">
-                            <table class="table-auto w-full text-left text-sm text-gray-400  bg-gray-800 rounded-lg">
-                                <thead class=" text-gray-300 uppercase">
-                                <tr>
-                                    <th class="px-4 py-3">
-                                        <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
-                                    </th>
-                                    <th class="px-2 py-3  items-center">
-                                        Keyword
-                                        <div class="ml-2 flex flex-col float-right w-[40%] pt-[5px]">
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▲
-
-                                            </div>
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▼
-                                            </div>
-                                        </div>
-
-                                    </th>
-                                    <th class="px-2 py-3 items-center">
-                                        Position
-                                        <div class="ml-2 flex flex-col float-right w-[25%] pt-[5px]">
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▲
-
-                                            </div>
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▼
-                                            </div>
-                                        </div>
-
-                                    </th>
-                                    <th class="px-4 py-3">
-                                        Priority
-                                        <div class="ml-2 flex flex-col float-right w-[25%] pt-[5px]">
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▲
-
-                                            </div>
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▼
-                                            </div>
-                                        </div>
+                        <KeywordTable :tags="plugin.plugin_data.tags" />
 
 
-                                    </th>
-                                    <th class="px-4 py-3">
-                                        Occurrences
-                                        <div class="ml-2 flex flex-col float-right w-[20%] pt-[5px]">
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▲
 
-                                            </div>
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▼
-                                            </div>
-                                        </div>
-
-                                    </th>
-                                    <th class="px-4 py-3">
-                                        Language
-                                        <div class="ml-2 flex flex-col float-right w-[25%] pt-[5px]">
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▲
-
-                                            </div>
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▼
-                                            </div>
-                                        </div>
-
-
-                                    </th>
-                                    <th class="px-4 py-3">
-                                        Tracked
-                                        <div class="ml-2 flex flex-col float-right w-[50%] pt-[5px]">
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▲
-
-                                            </div>
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▼
-                                            </div>
-                                        </div>
-
-                                    </th>
-                                    <th class="px-4 py-3">
-                                        Updated
-                                        <div class="ml-2 flex flex-col float-right w-[50%] pt-[5px]">
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▲
-
-                                            </div>
-                                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">
-                                                ▼
-                                            </div>
-                                        </div>
-
-
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr class=" border-t border-gray-700 hover:bg-gray-700">
-                                    <td class="px-4 py-3">
-                                        <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
-                                    </td>
-                                    <td class="px-4 py-3">woocommerce</td>
-                                    <td class="px-4 py-3 flex items-center gap-2">
-                                        <span>9915</span>
-
-
-                                        <span class="text-green-500 text-sm">▲ 38</span>
-                                    </td>
-                                    <td class="px-4 py-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M10 15a1 1 0 011-1h4a1 1 0 110 2h-4a1 1 0 01-1-1zM10 5a1 1 0 011-1h4a1 1 0 110 2h-4a1 1 0 01-1-1zM7 12a1 1 0 100-2 1 1 0 000 2z"/>
-                                        </svg>
-                                    </td>
-                                    <td class="px-4 py-3">3</td>
-                                    <td class="px-4 py-3">English</td>
-                                    <td class="px-4 py-3">November 25, 2024</td>
-                                    <td class="px-4 py-3">November 30, 2024</td>
-                                </tr>
-                                <tr class=" border-t border-gray-700 hover:bg-gray-700">
-                                    <td class="px-4 py-3">
-                                        <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
-                                    </td>
-                                    <td class="px-4 py-3">add to cart</td>
-                                    <td class="px-4 py-3 flex items-center gap-2">
-                                        <span>419</span>
-                                        <span class="text-red-500 text-sm">▼ 8</span>
-                                    </td>
-                                    <td class="px-4 py-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M10 15a1 1 0 011-1h4a1 1 0 110 2h-4a1 1 0 01-1-1zM10 5a1 1 0 011-1h4a1 1 0 110 2h-4a1 1 0 01-1-1zM7 12a1 1 0 100-2 1 1 0 000 2z"/>
-                                        </svg>
-                                    </td>
-                                    <td class="px-4 py-3">3</td>
-                                    <td class="px-4 py-3">English</td>
-                                    <td class="px-4 py-3">November 25, 2024</td>
-                                    <td class="px-4 py-3">November 30, 2024</td>
-                                </tr>
-                                <!-- Repeat more rows as necessary -->
-                                </tbody>
-                            </table>
-                        </div>
-
-
+                        
                     </div>
                     <div v-else>
                         <p>Loading plugin information...</p>
@@ -382,6 +237,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import {defineProps, onMounted, ref, watch, computed} from 'vue';
 import {Chart, registerables} from 'chart.js';
 import axios from 'axios';
+import KeywordTable from '@/Components/KeywordTable.vue';
 
 const activeChart = ref('downloads');
 Chart.register(...registerables);
