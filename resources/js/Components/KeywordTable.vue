@@ -1,10 +1,25 @@
 <template>
-    <div class="overflow-x-auto bg-gray-900 p-6 rounded-lg">
+    <div class=" bg-gray-900 p-6 rounded-lg">
+        <!-- Delete Button -->
+        <div v-if="selectedKeywords.length > 0" class="flex justify-end mb-4">
+            <button @click="confirmDelete" 
+                    class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md flex items-center space-x-2 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+                <span>Delete Selected ({{ selectedKeywords.length }})</span>
+            </button>
+        </div>
+
         <table class="table-auto w-full text-left text-sm text-gray-400 bg-gray-800 rounded-lg">
             <thead class="text-gray-300 uppercase">
                 <tr>
                     <th class="px-4 py-3">
-                        <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
+                        <input type="checkbox" 
+                               class="rounded border-gray-600 bg-gray-700"
+                               :checked="isAllSelected"
+                               @change="toggleAllSelection"
+                               :indeterminate="isIndeterminate">
                     </th>
                     <th class="px-2 py-3 items-center">
                         <div class="flex justify-between items-center">
@@ -104,9 +119,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(tag, index) in sortedData" :key="index" class="border-t border-gray-700 hover:bg-gray-700">
+                <tr v-for="(tag, index) in sortedData" 
+                    :key="index" 
+                    class="border-t border-gray-700 hover:bg-gray-700">
                     <td class="px-4 py-3">
-                        <input type="checkbox" class="rounded border-gray-600 bg-gray-700">
+                        <input type="checkbox" 
+                               class="rounded border-gray-600 bg-gray-700"
+                               v-model="selectedKeywords"
+                               :value="tag.keyword">
                     </td>
                     <td class="px-4 py-3">{{ tag.keyword }}</td>
                     <td class="px-4 py-3 flex items-center gap-2">
@@ -122,6 +142,27 @@
                 </tr>
             </tbody>
         </table>
+
+        <!-- Delete Confirmation Modal -->
+        <div v-if="showDeleteModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl max-w-md w-full mx-4">
+                <h3 class="text-lg font-medium text-gray-200 mb-4">Confirm Deletion</h3>
+                <p class="text-gray-400 mb-6">
+                    Are you sure you want to delete {{ selectedKeywords.length }} selected keyword{{ selectedKeywords.length > 1 ? 's' : '' }}?
+                    This action cannot be undone.
+                </p>
+                <div class="flex justify-end space-x-4">
+                    <button @click="showDeleteModal = false" 
+                            class="px-4 py-2 text-gray-400 hover:text-gray-200">
+                        Cancel
+                    </button>
+                    <button @click="deleteKeywords" 
+                            class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -150,6 +191,11 @@ const error = ref(null);
 
 const sortColumn = ref('');
 const sortDirection = ref('');
+
+const selectedKeywords = ref([]);
+const showDeleteModal = ref(false);
+
+const emit = defineEmits(['keywords-updated']);
 
 const sortedData = computed(() => {
     if (!sortColumn.value) return tagData.value;
@@ -257,6 +303,50 @@ watch(() => props.selectedTrend, () => {
 onMounted(() => {
     fetchTagData();
 });
+
+const isAllSelected = computed(() => {
+    return tagData.value.length > 0 && selectedKeywords.value.length === tagData.value.length;
+});
+
+const isIndeterminate = computed(() => {
+    return selectedKeywords.value.length > 0 && !isAllSelected.value;
+});
+
+const toggleAllSelection = () => {
+    if (isAllSelected.value) {
+        selectedKeywords.value = [];
+    } else {
+        selectedKeywords.value = tagData.value.map(tag => tag.keyword);
+    }
+};
+
+const confirmDelete = () => {
+    showDeleteModal.value = true;
+};
+
+const deleteKeywords = async () => {
+    try {
+        await axios.delete('/api/keywords', {
+            data: {
+                slug: props.pluginSlug,
+                keywords: selectedKeywords.value
+            }
+        });
+        
+        // Emit event to parent to update keywords list
+        emit('keywords-updated');
+        
+        // Clear selection
+        selectedKeywords.value = [];
+        showDeleteModal.value = false;
+        
+        // Refresh the table data
+        await fetchTagData();
+        
+    } catch (error) {
+        console.error('Error removing keywords:', error);
+    }
+};
 </script>
 
 <style scoped>
@@ -287,5 +377,10 @@ onMounted(() => {
 
 .group:hover .tooltip {
     @apply visible;
+}
+
+/* Add styles for checkbox indeterminate state */
+input[type="checkbox"]:indeterminate {
+    @apply bg-gray-500;
 }
 </style> 

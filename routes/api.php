@@ -56,3 +56,8 @@ Route::middleware('auth:sanctum')->get('/plugin-data/{slug}', [PluginController:
 
 Route::post('plugin-keywords', [PluginKeywordController::class, 'getKeywords']);
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::delete('/keywords', [PluginKeywordController::class, 'deleteKeywords']);
+    Route::post('/keywords', [PluginKeywordController::class, 'addKeywords']);
+});
+

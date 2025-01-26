@@ -211,6 +211,7 @@
                             :plugin-slug="plugin.plugin_data.slug"
                             :selected-trend="selectedTrend"
                             :keywords="Object.values(plugin.plugin_data.tags)"
+                            @keywords-updated="handleKeywordsUpdated"
                         />
 
 
