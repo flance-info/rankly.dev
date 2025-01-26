@@ -35,13 +35,6 @@
                         </div>
                     </th>
                     <th class="px-4 py-3">
-                        Tracked
-                        <div class="ml-2 flex flex-col float-right w-[50%] pt-[5px]">
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▲</div>
-                            <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▼</div>
-                        </div>
-                    </th>
-                    <th class="px-4 py-3">
                         Updated
                         <div class="ml-2 flex flex-col float-right w-[50%] pt-[5px]">
                             <div class="cursor-pointer text-gray-400 hover:text-gray-50 text-[8px] leading-[8px]">▲</div>
@@ -57,16 +50,15 @@
                     </td>
                     <td class="px-4 py-3">{{ tag.keyword }}</td>
                     <td class="px-4 py-3 flex items-center gap-2">
-                        <span>{{ tag.position }}</span>
-                        <span :class="getChangeClass(tag.position_change)" class="text-sm">
+                        <span>{{ tag.position || 0 }}</span>
+                        <span v-if="tag.position" :class="getChangeClass(tag.position_change)" class="text-sm">
                             {{ getChangeSymbol(tag.position_change) }} 
                             {{ Math.abs(tag.position_change) }}
                         </span>
                     </td>
                     <td class="px-4 py-3">{{ tag.occurrences }}</td>
                     <td class="px-4 py-3">{{ tag.language }}</td>
-                    <td class="px-4 py-3">{{ formatDate(tag.tracked_date) }}</td>
-                    <td class="px-4 py-3">{{ formatDate(tag.updated_date) }}</td>
+                    <td class="px-4 py-3">{{ formatDate(tag.updated_at) }}</td>
                 </tr>
             </tbody>
         </table>
@@ -115,8 +107,7 @@ const fetchTagData = async () => {
                 position_change: tag.position_change,
                 occurrences: tag.occurrences,
                 language: tag.language,
-                tracked_date: tag.tracked_at,
-                updated_date: tag.updated_at
+                updated_at: tag.updated_at
             }));
         } else {
             error.value = 'Failed to fetch keyword data';
@@ -141,17 +132,11 @@ const getChangeSymbol = (change) => {
 const formatDate = (date) => {
     if (!date) return 'N/A';
     try {
-        const dateObj = new Date(date);
-        const now = new Date();
-        const diffTime = Math.abs(now - dateObj);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        
-        if (diffDays === 0) return 'Today';
-        if (diffDays === 1) return 'Yesterday';
-        if (diffDays < 7) return `${diffDays} days ago`;
-        if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-        if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
-        return `${Math.floor(diffDays / 365)} years ago`;
+        return new Date(date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
     } catch (err) {
         return 'Invalid date';
     }
