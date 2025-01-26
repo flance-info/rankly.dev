@@ -267,6 +267,8 @@ onMounted(() => {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
+    width: 170px;
+    white-space: normal; /* Allow text to wrap */
 }
 
 .tooltip div {
