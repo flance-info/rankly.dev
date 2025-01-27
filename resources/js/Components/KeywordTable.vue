@@ -182,6 +182,10 @@ const props = defineProps({
     keywords: {
         type: Array,
         required: true
+    },
+    onUpdate: {
+        type: Function,
+        default: () => {}
     }
 });
 
@@ -333,7 +337,7 @@ const deleteKeywords = async () => {
             }
         });
         
-        // Emit event to parent to update keywords list
+        // Emit event to parent to update keywords list and average position
         emit('keywords-updated');
         
         // Clear selection

@@ -18,7 +18,7 @@ class PluginKeywordController extends Controller
             // Validate request parameters
             $request->validate([
                 'slug' => 'required|string',
-                'keywords' => 'required|array',
+                'keywords' => 'array',
                 'trend' => 'required|in:7,30,90,365'
             ]);
 
@@ -27,38 +27,16 @@ class PluginKeywordController extends Controller
             $trendDays = (int) $request->input('trend');
             $startDate = Carbon::now()->subDays($trendDays);
 
-            // Get user's tracked keywords
-            $userKeywords = UserKeyword::where('user_id', auth()->id())
-                ->where('plugin_slug', $slug)
-                ->pluck('keyword_slug')
-                ->toArray();
+            // Fetch and update user keywords
+            $this->updateUserKeywords($slug);
 
-            // Find keywords that aren't tracked yet
-            $newKeywords = array_diff($keywords, $userKeywords);
-
-            // If there are new keywords, add them for the user
-            if (!empty($newKeywords)) {
-                $keywordsToAdd = collect($newKeywords)->map(function($keyword) use ($slug) {
-                    return [
-                        'user_id' => auth()->id(),
-                        'plugin_slug' => $slug,
-                        'keyword_slug' => $keyword,
-                        'status' => 'published',
-                        'created_at' => now(),
-                        'updated_at' => now()
-                    ];
-                })->toArray();
-
-                UserKeyword::insert($keywordsToAdd);
-                
-                // Update userKeywords array with newly added keywords
-                $userKeywords = array_merge($userKeywords, $newKeywords);
-            }
+            // Fetch user's published keywords
             $keywords = UserKeyword::where('user_id', auth()->id())
                 ->where('plugin_slug', $slug)
                 ->where('status', 'published')
                 ->pluck('keyword_slug')
                 ->toArray();
+
             // Get readme content from WordPress.org API
             $readmeUrl = "https://plugins.svn.wordpress.org/{$slug}/trunk/readme.txt";
             $response = Http::get($readmeUrl);
@@ -158,6 +136,34 @@ class PluginKeywordController extends Controller
         }
     }
 
+    private function updateUserKeywords($slug)
+    {
+        // Fetch plugin keywords from the plugin data
+        $plugin = Plugin::where('slug', $slug)->first();
+        $pluginKeywords = $plugin ? $plugin->plugin_data['tags'] ?? [] : [];
+
+        // Fetch user's existing keywords
+        $userKeywords = UserKeyword::where('user_id', auth()->id())
+            ->where('plugin_slug', $slug)
+            ->pluck('keyword_slug')
+            ->toArray();
+
+        // Find new keywords that are not yet tracked by the user
+        $newKeywords = array_diff($pluginKeywords, $userKeywords);
+
+        // Insert new keywords into user_keywords table
+        foreach ($newKeywords as $keyword) {
+            UserKeyword::create([
+                'user_id' => auth()->id(),
+                'plugin_slug' => $slug,
+                'keyword_slug' => $keyword,
+                'status' => 'published',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
+    }
+
     public function deleteKeywords(Request $request)
     {
         $request->validate([
@@ -217,6 +223,29 @@ class PluginKeywordController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Error adding keywords: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function getUserKeywords($slug)
+    {
+        try {
+
+            $this->updateUserKeywords($slug);
+            $keywords = UserKeyword::where('user_id', auth()->id())
+                ->where('plugin_slug', $slug)
+                ->where('status', 'published')
+                ->pluck('keyword_slug')
+                ->toArray();
+
+            return response()->json([
+                'success' => true,
+                'keywords' => $keywords
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error fetching user keywords: ' . $e->getMessage()
             ], 500);
         }
     }

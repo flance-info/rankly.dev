@@ -210,7 +210,7 @@
                         <KeywordTable 
                             :plugin-slug="plugin.plugin_data.slug"
                             :selected-trend="selectedTrend"
-                            :keywords="Object.values(plugin.plugin_data.tags)"
+                            :keywords="userKeywords"
                             @keywords-updated="handleKeywordsUpdated"
                         />
 
@@ -603,9 +603,16 @@ const fetchActiveInstallsData = async (slug) => {
 
 const fetchPositionMovementData = async (slug) => {
     try {
+        // First get user keywords
+        const userKeywordsResponse = await axios.get(`/api/user-keywords/${slug}`);
+        if (!userKeywordsResponse.data.success) {
+            throw new Error('Failed to fetch user keywords');
+        }
+
+        // Then use those keywords for position movement data
         const response = await axios.post(`/api/plugin-position-movement`, {
             slug,
-            keywords: Object.values(pluginData.tags),
+            keywords: userKeywordsResponse.data.keywords, // Use user keywords instead of plugin tags
             trend: selectedTrend.value
         });
         
@@ -678,6 +685,21 @@ const handleMetricClick = (metricType) => {
     updateChart(metricType);
 };
 
+// Add ref for user keywords
+const userKeywords = ref([]);
+
+// Function to fetch user keywords
+const fetchUserKeywords = async (slug) => {
+    try {
+        const response = await axios.get(`/api/user-keywords/${slug}`);
+        if (response.data.success) {
+            userKeywords.value = response.data.keywords;
+        }
+    } catch (error) {
+        console.error('Error fetching user keywords:', error);
+    }
+};
+
 // Modify onMounted to set the dataLoaded flags
 onMounted(async () => {
     if (props.plugin && props.plugin.plugin_data) {
@@ -697,6 +719,9 @@ onMounted(async () => {
                     dataLoaded.value.activeInstalls = true;
                 })
             ]);
+
+            // Fetch user keywords
+            await fetchUserKeywords(props.plugin.plugin_data.slug);
         } catch (error) {
             console.error('Error loading initial data:', error);
         }
@@ -809,6 +834,17 @@ const fetchPluginData = async (slug) => {
         }
     } catch (error) {
         console.error('An error occurred while fetching plugin data:', error);
+    }
+};
+
+// Update handleKeywordsUpdated
+const handleKeywordsUpdated = async () => {
+    await fetchUserKeywords(props.plugin.plugin_data.slug);
+    await fetchPositionMovementData(props.plugin.plugin_data.slug);
+    
+    // Update the chart if it's showing position data
+    if (activeChart.value === 'averagePosition' || activeChart.value === 'positionMovement') {
+        updateChart(activeChart.value);
     }
 };
 </script>

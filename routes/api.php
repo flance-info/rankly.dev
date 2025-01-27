@@ -61,3 +61,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/keywords', [PluginKeywordController::class, 'addKeywords']);
 });
 
+Route::get('/user-keywords/{slug}', [PluginKeywordController::class, 'getUserKeywords'])
+    ->middleware('auth:sanctum');
+
