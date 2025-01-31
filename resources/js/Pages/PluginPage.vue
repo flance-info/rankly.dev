@@ -45,7 +45,8 @@
                                         </select>
 
                                     </div>
-                                    <canvas id="line-chart" class=""></canvas>
+                                    <canvas id="line-chart" class="chart-container"></canvas>
+                                    <canvas id="line-chart-keyword" class="chart-container"></canvas>
                                 </div>
 
 
@@ -133,7 +134,7 @@
 
                                                 class="flex items-center justify-between text-white font-bold py-6 px-6 rounded-lg w-full transition-all duration-200">
                                             <div>
-                                                <h3 class="text-sm font-semibold text-left">Position Movement</h3>
+                                                <h3 class="text-sm font-semibold text-left">Plugin Position by Keywords</h3>
                                                 <p class="text-2xl text-left">0 <span class="text-green-500 text-sm">▲ 5</span></p>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -210,11 +211,12 @@
                         <KeywordTable 
                             :plugin-slug="plugin.plugin_data.slug"
                             :selected-trend="selectedTrend"
-                            :keywords="userKeywords"
-                            @keywords-updated="handleKeywordsUpdated"
+                             :keywords="keywords"
+                            @keywords-updated="handleKeywordsUpdated"                          
                         />
 
-
+                        <canvas id="line-chart" class=""></canvas>
+                        <canvas id="line-chart-keyword" class=""></canvas>
 
                         
                     </div>
@@ -239,7 +241,7 @@
 
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import {defineProps, onMounted, ref, watch, computed} from 'vue';
+import {defineProps, onMounted, ref, watch, computed, onBeforeUnmount} from 'vue';
 import {Chart, registerables} from 'chart.js';
 import axios from 'axios';
 import KeywordTable from '@/Components/KeywordTable.vue';
@@ -247,7 +249,7 @@ import KeywordTable from '@/Components/KeywordTable.vue';
 const activeChart = ref('downloads');
 Chart.register(...registerables);
 const currentChartTitle = ref('Downloads Per Day');
-
+const keywords = ref([]);
 const summary = ref({
     total_downloads: 0,
     percentage_change: 0,
@@ -304,7 +306,7 @@ const chartData = {
         data: [],
     },
     positionMovement: {
-        title: 'Position Movement',
+        title: 'Positionfff Movement',
         labels: [],
         data: [],
     },
@@ -361,7 +363,7 @@ const initializeChart = (labels, data) => {
             }
         },
         positionMovement: {
-            label: 'Position Movement',
+            label: 'Position Movementee',
             reverse: false,
             tooltipLabel: (context) => `Movement: ${context.parsed.y.toFixed(2)}`,
             scales: {
@@ -450,8 +452,7 @@ const updateChart = (type) => {
         const data = chartData[type].data;
         const numericData = data.map(Number);
         const maxValue = Math.max(...numericData);
-        console.log('Update Data array:', numericData);
-        console.log('Update Max value:', maxValue);
+   
         
         const chartOptions = {
             averagePosition: {
@@ -625,7 +626,7 @@ const fetchPositionMovementData = async (slug) => {
                 });
             });
             const data = positionData.map(item => item.rank_order);
-            
+            keywordData.value = positionData;
             // Calculate summary for average position
             const currentPosition = data[data.length - 1];
             const previousPosition = data[data.length - 2] || currentPosition;
@@ -658,7 +659,19 @@ const dataLoaded = ref({
     positionMovement: false
 });
 
-// Modify the handleMetricClick function
+// Add this ref to store keyword data
+const keywordData = ref([]);
+
+// Add this method to receive keyword data from KeywordTable
+const handleKeywordData = (data) => {
+    console.log('handleKeywordData', data);
+    keywordData.value = dat;
+    if (activeChart.value === 'positionMovement') {
+      //  updateKeywordPositionChart(data);
+    }
+};
+
+// Modify the existing handleMetricClick function
 const handleMetricClick = (metricType) => {
     console.log('Switching to metric:', metricType);
     
@@ -669,20 +682,25 @@ const handleMetricClick = (metricType) => {
     switch (metricType) {
         case 'downloads':
             currentChartTitle.value = 'Downloads Per Day';
+            updateChart(metricType);
             break;
         case 'activeInstalls':
             currentChartTitle.value = 'Active Installs';
+            updateChart(metricType);
             break;
         case 'averagePosition':
             currentChartTitle.value = 'Average Position';
+            updateChart(metricType);
             break;
         case 'positionMovement':
-            currentChartTitle.value = 'Position Movement';
+            currentChartTitle.value = 'Search Position by Keyword';
+            console.log('keywordData', keywordData.value);
+            // Use the new keyword position chart
+            if (keywordData.value.length > 0) {
+                updateKeywordPositionChart(keywordData.value);
+            }
             break;
     }
-    
-    // Update the chart with existing data
-    updateChart(metricType);
 };
 
 // Add ref for user keywords
@@ -847,11 +865,139 @@ const handleKeywordsUpdated = async () => {
         updateChart(activeChart.value);
     }
 };
+
+// Add these new refs and methods
+const keywordChartInstance = ref(null);
+
+const updateKeywordPositionChart = (keywordData) => {
+    if (keywordChartInstance.value) {
+        keywordChartInstance.value.destroy();
+    }
+    const ctx = document.getElementById('line-chart-keyword').getContext('2d');
+    const keywords = keywordData.map(tag => tag.keyword);
+    const positions = keywordData.map(tag => tag.position || 0);
+
+    // Destroy both chart instances before creating a new one
+   
+  
+    const dummyData = {
+        dates: ['2024-01-01', '2024-01-02', '2024-01-03', '2024-01-04', '2024-01-05'],
+        keywords: {
+            'wordpress': [5, 3, 4, 2, 1],
+            'plugin': [3, 4, 2, 3, 2],
+            'elementor': [1, 2, 3, 2, 1],
+            'page builder': [4, 3, 2, 1, 2]
+        }
+    };
+
+    // Convert to Chart.js format
+
+
+    chartInstance = new Chart(ctx, {
+        type: 'line', 
+        data: {
+            labels: dummyData.dates.map(date => new Date(date).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric'
+            })),
+            datasets: Object.entries(dummyData.keywords).map(([keyword, positions]) => ({
+                label: keyword,
+                data: positions,
+                borderColor: `hsl(${Math.random() * 360}, 70%, 50%)`, // Random color for each line
+                backgroundColor: 'transparent',
+                borderWidth: 2,
+                tension: 0.1,
+                fill: false,
+                pointRadius: 4,
+            })),
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                    align: 'start',
+                    labels: {
+                        color: 'rgba(255, 255, 255, 0.7)',
+                        padding: 20,
+                        usePointStyle: true, // Uses points instead of boxes in legend
+                        pointStyle: 'circle',
+                        font: {
+                            size: 11
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.dataset.label || '';
+                            const value = context.formattedValue;
+                            return `${label}: ${value}`;
+                        }
+                    }
+                }
+            },
+           
+            scales: {
+                x: {
+                    grid: {
+                        display: true,
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    }
+                },
+                y: {                 
+                   
+                   
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.7)',
+                        stepSize: 1, // Force step size to be 1
+                        callback: function(value) {
+                            if (Number.isInteger(value)) {
+                                return value;
+                            }
+                        }
+                    },
+                    reverse: true
+                }
+            },
+        },
+    });
+};
+
+// Watch for keyword changes if necessary
+watch(keywordData, (newData) => {
+    if (activeChart.value === 'positionMovement') {
+        updateKeywordPositionChart(newData);
+    }
+});
+
+// Destroy chart instance when component unmounts to prevent memory leaks
+onBeforeUnmount(() => {
+    if (keywordChartInstance.value) {
+        keywordChartInstance.value.destroy();
+    }
+});
+
+// Clean up Chart instance on component unmount
+
 </script>
 
 
 <style scoped>
 .text-yellow-500 {
     color: #f59e0b; /* Tailwind's yellow-500 color */
+}
+
+/* Add these styles if needed */
+.chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
 }
 </style>

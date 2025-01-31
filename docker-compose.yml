@@ -32,6 +32,13 @@ services:
       context: .
       dockerfile: Dockerfile.node
     container_name: node-app
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"       # Limit the container to use at most 1 CPU
+          memory: "256M"    # Limit the container to use at most 256MB of memory
+        reservations:
+          memory: "128M"    # Reserve 128MB of memory for the container
     ports:
       - "5173:5173"
     volumes:
@@ -40,7 +47,7 @@ services:
       - ./vite.config.js:/app/vite.config.js:cached
     environment:
       - NODE_OPTIONS=--max-old-space-size=2048
-    command: npm run build
+    command: sh -c "npm run build && exit"
 
   db:
     image: postgres:13

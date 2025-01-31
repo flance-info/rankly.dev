@@ -169,6 +169,7 @@
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue';
 import axios from 'axios';
+import { defineEmits } from 'vue';
 
 const props = defineProps({
     pluginSlug: {
@@ -265,6 +266,7 @@ const fetchTagData = async () => {
                 language: tag.language,
                 updated_at: tag.updated_at
             }));
+            emit('keyword-data', tagData.value);
         } else {
             error.value = 'Failed to fetch keyword data';
         }
