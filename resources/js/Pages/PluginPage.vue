@@ -45,8 +45,16 @@
                                         </select>
 
                                     </div>
-                                    <canvas id="line-chart" class="chart-container"></canvas>
-                                    <canvas id="line-chart-keyword" class="chart-container"></canvas>
+                                    <canvas 
+                                        v-if="activeChart === 'keyword'" 
+                                        id="line-chart-keyword" 
+                                        class="chart-container"
+                                    ></canvas>
+                                    <canvas 
+                                        v-if="activeChart !== 'keyword'" 
+                                        id="line-chart" 
+                                        class="chart-container"
+                                    ></canvas>
                                 </div>
 
 
@@ -214,9 +222,6 @@
                              :keywords="keywords"
                             @keywords-updated="handleKeywordsUpdated"                          
                         />
-
-                        <canvas id="line-chart" class=""></canvas>
-                        <canvas id="line-chart-keyword" class=""></canvas>
 
                         
                     </div>
