@@ -12,7 +12,7 @@ DUMP_FILE="laravel_db_${TIMESTAMP}.sql.gz"
 DUMP_FILE_PATH="/app/dumps/${DUMP_FILE}"
 
 # Start dump with progress
-echo -e "${BLUE}Starting database dump...${NC}"
+echo -e "${BLUE}Starting database dump and upload process...${NC}"
 echo -e "${BLUE}Output file: ${NC}$DUMP_FILE"
 echo -e "${BLUE}----------------------------------------${NC}"
 
@@ -24,30 +24,18 @@ DB_SIZE=$(docker exec laravel-db psql -U laravel -d laravel -c "SELECT pg_size_p
 
 echo -e "${GREEN}Database size estimate: ${DB_SIZE}${NC}"
 
-# Execute pg_dump inside the database container with progress and gzip compression
-echo -e "${GREEN}[$(date +%H:%M:%S)] Creating database dump with progress...${NC}"
+# Execute pg_dump inside the database container with progress and pipe directly to rclone
+echo -e "${GREEN}[$(date +%H:%M:%S)] Creating database dump and uploading simultaneously...${NC}"
 
 docker exec laravel-db pg_dump -U laravel laravel \
     | pv -s $(docker exec laravel-db psql -U laravel -d laravel -c "SELECT pg_database_size('laravel');" -t | tr -d ' ') \
     | gzip \
-    | docker exec -i laravel-app tee "$DUMP_FILE_PATH" >/dev/null
+    | rclone rcat "stylemixrusty:/rankly_backups/${DUMP_FILE}" --progress
 
-# Check if dump was successful
-if docker exec laravel-app test -s "$DUMP_FILE_PATH"; then
+if [ $? -eq 0 ]; then
     echo -e "${BLUE}----------------------------------------${NC}"
-    echo -e "${GREEN}Dump completed successfully!${NC}"
-    echo -e "${GREEN}File size: $(docker exec laravel-app du -h "$DUMP_FILE_PATH" | cut -f1)${NC}"
-
-    # Use rclone to move the dump to the specified remote location
-    echo -e "${BLUE}Uploading to Google Drive...${NC}"
-    rclone move "/path/to/local/dumps/${DUMP_FILE}" "stylemixrusty:/rankly_backups/" --progress
-
-    if [ $? -eq 0 ]; then
-        echo -e "${GREEN}Upload completed successfully!${NC}"
-    else
-        echo -e "${RED}Error: Upload failed!${NC}"
-    fi
+    echo -e "${GREEN}Dump and upload completed successfully!${NC}"
 else
-    echo -e "${RED}Error: Dump file is empty or not created!${NC}"
+    echo -e "${RED}Error: Dump and upload process failed!${NC}"
     exit 1
 fi

@@ -46,12 +46,14 @@
 
                                     </div>
                                     <canvas 
-                                        v-if="activeChart === 'keyword'" 
+                                        v-show="activeChart === 'positionMovement'"
+                                        ref="keywordChartCanvas" 
                                         id="line-chart-keyword" 
                                         class="chart-container"
                                     ></canvas>
                                     <canvas 
-                                        v-if="activeChart !== 'keyword'" 
+                                        v-show="activeChart !== 'positionMovement'"
+                                        ref="lineChartCanvas" 
                                         id="line-chart" 
                                         class="chart-container"
                                     ></canvas>
@@ -222,6 +224,9 @@
                              :keywords="keywords"
                             @keywords-updated="handleKeywordsUpdated"                          
                         />
+
+                        <canvas id="line-chart" class=""></canvas>
+                        <canvas id="line-chart-keyword" class=""></canvas>
 
                         
                     </div>
@@ -678,9 +683,11 @@ const handleKeywordData = (data) => {
 
 // Modify the existing handleMetricClick function
 const handleMetricClick = (metricType) => {
-    console.log('Switching to metric:', metricType);
+    // Destroy existing charts before switching
+    if (metricType !== 'positionMovement' && keywordChartInstance.value) {
+        keywordChartInstance.value.destroy();
+    } 
     
-    // Update active chart type
     activeChart.value = metricType;
     
     // Update chart title based on metric type
@@ -1001,6 +1008,7 @@ onBeforeUnmount(() => {
 
 /* Add these styles if needed */
 .chart-container {
+    display: block;
     position: relative;
     height: 400px;
     width: 100%;
