@@ -308,6 +308,7 @@ const decodeHTML = (html) => {
 
 const selectedTrend = ref('30'); // Default trend value
 let chartInstance = null;
+let chartInstanceSecond = null;
 
 const chartData = {
     averagePosition: {
@@ -316,7 +317,7 @@ const chartData = {
         data: [],
     },
     positionMovement: {
-        title: 'Positionfff Movement',
+        title: 'Search Position by Keyword',
         labels: [],
         data: [],
     },
@@ -394,7 +395,7 @@ const initializeChart = (labels, data) => {
     };
 
     const currentOptions = chartOptions[activeChart.value] || chartOptions.downloads;
-    console.log('chart option max',Math.max(...data));
+
     chartInstance = new Chart(ctx, {
         type: 'line', 
         data: {
@@ -686,8 +687,8 @@ const handleMetricClick = (metricType) => {
     // Destroy existing charts before switching
     if (metricType !== 'positionMovement' && keywordChartInstance.value) {
         keywordChartInstance.value.destroy();
+        keywordChartInstance.value = null;
     } 
-    
     activeChart.value = metricType;
     
     // Update chart title based on metric type
@@ -884,6 +885,7 @@ const keywordChartInstance = ref(null);
 const updateKeywordPositionChart = (keywordData) => {
     if (keywordChartInstance.value) {
         keywordChartInstance.value.destroy();
+        keywordChartInstance.value = null;
     }
     const ctx = document.getElementById('line-chart-keyword').getContext('2d');
     const keywords = keywordData.map(tag => tag.keyword);
@@ -901,11 +903,30 @@ const updateKeywordPositionChart = (keywordData) => {
             'page builder': [4, 3, 2, 1, 2]
         }
     };
+   let labels = dummyData.dates.map(date => new Date(date).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric'
+            }));
+          let  dataPoints = Object.entries(dummyData.keywords).map(([keyword, positions]) => ({
+                label: keyword,
+                data: positions,
+                borderColor: `hsl(${Math.random() * 360}, 70%, 50%)`, // Random color for each line
+                backgroundColor: 'transparent',
+                borderWidth: 2,
+                tension: 0.1,
+                fill: false,
+                pointRadius: 4,
+            }));
 
-    // Convert to Chart.js format
-
-
-    chartInstance = new Chart(ctx, {
+    // Update or create chart
+    if (chartInstanceSecond) {
+        // Update existing chart
+      chartInstanceSecond.data.labels = labels;
+      chartInstanceSecond.data.datasets[0].data = dataPoints;
+        
+      chartInstanceSecond.update();
+    } else {
+        chartInstanceSecond = new Chart(ctx, {
         type: 'line', 
         data: {
             labels: dummyData.dates.map(date => new Date(date).toLocaleDateString('en-US', {
@@ -980,6 +1001,7 @@ const updateKeywordPositionChart = (keywordData) => {
             },
         },
     });
+    }
 };
 
 // Watch for keyword changes if necessary
