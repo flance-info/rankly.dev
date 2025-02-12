@@ -283,7 +283,7 @@ const summary3 = ref({
 const props = defineProps({
     plugin: Object,
 });
-
+let pluginKeywordsData = ref(null);
 const getPluginIconUrl = (slug) => {
     return `https://ps.w.org/${slug}/assets/icon-128x128.png`;
 };
@@ -630,6 +630,7 @@ const fetchPositionMovementData = async (slug) => {
         
         if (response.data.success) {
             const positionData = response.data.data;
+            pluginKeywordsData = response.data.data;
             const labels = positionData.map(item => {
                 return new Date(item.stat_date).toLocaleDateString('en-US', {
                     month: 'short',
@@ -671,7 +672,7 @@ const dataLoaded = ref({
 });
 
 // Add this ref to store keyword data
-const keywordData = ref([]);
+let keywordData = ref(null);
 
 // Add this method to receive keyword data from KeywordTable
 const handleKeywordData = (data) => {
@@ -894,7 +895,7 @@ const updateKeywordPositionChart = (keywordData) => {
     // Destroy both chart instances before creating a new one
    
   
-    const dummyData = {
+    let dummyDatas = {
         dates: ['2024-01-01', '2024-01-02', '2024-01-03', '2024-01-04', '2024-01-05'],
         keywords: {
             'wordpress': [5, 3, 4, 2, 1],
@@ -903,6 +904,8 @@ const updateKeywordPositionChart = (keywordData) => {
             'page builder': [4, 3, 2, 1, 2]
         }
     };
+   let dummyData = transformKeywordData(pluginKeywordsData);
+    console.log('  dummyData ',  dummyData );
    let labels = dummyData.dates.map(date => new Date(date).toLocaleDateString('en-US', {
                 month: 'short',
                 day: 'numeric'
@@ -1019,6 +1022,53 @@ onBeforeUnmount(() => {
 });
 
 // Clean up Chart instance on component unmount
+
+function transformKeywordData(pluginKeywordsData) {
+    // Sort entries by date
+    const sortedEntries = [...pluginKeywordsData].sort((a, b) => 
+        new Date(a.stat_date) - new Date(b.stat_date)
+    );
+
+    // Extract and format dates
+    const dates = sortedEntries.map(entry => 
+        new Date(entry.stat_date).toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric' 
+        })
+    );
+
+    // Collect all unique keywords
+    const keywords = {};
+    sortedEntries.forEach(entry => {
+        entry.raw_data.forEach(keyword => {
+            const slug = keyword.keyword_slug;
+            if (!keywords[slug]) {
+                keywords[slug] = [];
+            }
+        });
+    });
+
+    // Initialize arrays for each keyword
+    Object.keys(keywords).forEach(keyword => {
+        keywords[keyword] = new Array(dates.length).fill(null);
+    });
+
+    // Populate keyword rankings
+    sortedEntries.forEach((entry, dateIndex) => {
+        entry.raw_data.forEach(keyword => {
+            const slug = keyword.keyword_slug;
+            keywords[slug][dateIndex] = keyword.rank_order;
+        });
+    });
+
+    return {
+        dates: dates,
+        keywords: keywords
+    };
+}
+
+// Usage
+
 
 </script>
 
