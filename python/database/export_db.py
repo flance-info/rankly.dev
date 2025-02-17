@@ -4,6 +4,7 @@ import time
 import sys
 from datetime import datetime
 from dotenv import load_dotenv
+import psycopg2
 
 # Load environment variables
 load_dotenv()
@@ -201,3 +202,11 @@ if __name__ == "__main__":
     else:
         print("❌ Export process failed!")
     print("=" * 50 + "\n")
+
+conn = psycopg2.connect(
+    dbname='rankly-db1',
+    user='laravel',
+    password='secret',
+    host='db',
+    port='5432'
+)
