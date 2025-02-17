@@ -1,0 +1,28 @@
+FROM debian:bullseye-slim
+
+RUN apt-get update && \
+    apt-get install -y \
+      postgresql-client \
+      postgresql-server-dev-13 \
+      gcc \
+      make \
+      wget \
+      unzip \
+      libssl-dev \
+      zlib1g-dev \
+      libreadline-dev && \
+    wget https://api.pgxn.org/dist/pg_repack/1.5.2/pg_repack-1.5.2.zip && \
+    unzip pg_repack-1.5.2.zip && \
+    cd pg_repack-1.5.2 && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf pg_repack-1.5.2 pg_repack-1.5.2.zip && \
+    apt-get remove -y postgresql-server-dev-13 gcc make wget unzip libssl-dev zlib1g-dev libreadline-dev && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
+
+
+
+
+ENTRYPOINT ["pg_repack"]
