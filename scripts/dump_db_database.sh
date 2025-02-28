@@ -33,10 +33,7 @@ upload_with_backoff() {
     while [ $retry_count -lt $max_retries ]; do
         echo -e "${GREEN}[$(date +%H:%M:%S)] Creating database dump and uploading simultaneously...${NC}"
 
-        # Use pg_dump with options to handle TimescaleDB hypertables properly
         docker exec laravel-db-timescale pg_dump -U laravel laravel \
-            --no-owner --no-acl --clean --if-exists \
-            --disable-triggers \
             | pv -s $(docker exec laravel-db-timescale psql -U laravel -d laravel -c "SELECT pg_database_size('laravel');" -t | tr -d ' ') \
             | gzip \
             | rclone rcat "stylemixrusty:/rankly_backups/${DUMP_FILE}" --progress
