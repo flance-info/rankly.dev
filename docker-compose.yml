@@ -18,7 +18,7 @@ services:
       - DB_CONNECTION=pgsql
       - DB_HOST=db
       - DB_PORT=5432
-      - DB_DATABASE=rankly-db1
+      - DB_DATABASE=laravel
       - DB_USERNAME=laravel
       - DB_PASSWORD=secret
       - APACHE_RUN_USER=#1000
@@ -55,7 +55,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: rankly-db1
+      POSTGRES_DB: laravel
       POSTGRES_USER: laravel
       POSTGRES_PASSWORD: secret
     volumes:
@@ -63,11 +63,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "1.0"       # Limit the container to use at most 1 CPU
-          memory: "1G"      # Increase memory limit to 1 GB
+          cpus: '6'
+          memory: 8G
         reservations:
-          memory: "512M"    # Increase memory reservation to 512 MB
-    shm_size: "512M"  # Add this line to increase shared memory size
+          memory: 8G
+    shm_size: "8G"  # Add this line to increase shared memory size
 
   python:
     build:
@@ -96,8 +96,35 @@ services:
     depends_on:
       - db
 
+  laravel-db-timescale-new:
+    image: timescale/timescaledb:latest-pg13
+    container_name: laravel-db-timescale-new
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: laravel-db-mod
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: laravel
+      TIMESCALEDB_TELEMETRY: 'off'
+    volumes:
+      - timescaledb_data:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+    networks:
+      - rankly_default
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U laravel -d laravel-db-mod"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
 volumes:
   db_data:
     driver: local
   node_modules:
     driver: local
+  timescaledb_data:
+    driver: local
+
+networks:
+  rankly_default:
+    external: true

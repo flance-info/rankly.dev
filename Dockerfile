@@ -28,12 +28,17 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /app
 
-# Copy existing application directory contents
-COPY . /app
+# Copy composer files first for better cache utilization
+COPY composer.json composer.lock ./
 
-# Install PHP dependencies (including dev dependencies)
-RUN composer install --prefer-dist --no-scripts --no-progress --no-interaction \
-    && composer clear-cache
+# Run composer install with better error handling
+RUN composer install --prefer-dist --no-scripts --no-progress --no-interaction --no-dev || \
+    (echo "Composer install failed. Retrying..." && \
+     composer clear-cache && \
+     composer install --prefer-dist --no-scripts --no-progress --no-interaction --no-dev)
+
+# Copy the rest of the application code
+COPY . /app
 
 # Optimize Laravel
 RUN php artisan optimize \
