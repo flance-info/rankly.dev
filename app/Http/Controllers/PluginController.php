@@ -292,6 +292,17 @@ class PluginController extends Controller {
     public function getPositionMovement(Request $request)
     {
         try {
+            // Display current database connection info
+            $connection = DB::connection();
+            $currentDatabase = $connection->getDatabaseName();
+            $currentHost = $connection->getConfig('host');
+            
+           dd("Database Connection Info:", [
+                'database' => $currentDatabase,
+                'host' => $currentHost,
+                'driver' => $connection->getConfig('driver')
+            ]);
+            
             $slug = $request->input('slug');
             $keywords = $request->input('keywords');
             $trend = $request->input('trend', '7');
