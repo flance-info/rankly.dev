@@ -63,43 +63,61 @@ class PluginKeywordController extends Controller
                 return [$keyword => count($matches[0])];
             });
 
+            // Get plugin ID from slug
+            $pluginId = DB::table('plugins')->where('slug', $slug)->value('id');
+            if (!$pluginId) {
+                return response()->json(['success' => false, 'message' => 'Plugin not found'], 404);
+            }
+
+            // Get keyword IDs and create a mapping of slug to ID
+            $keywordData = DB::table('keywords')
+                ->whereIn('slug', $keywords)
+                ->select('id', 'slug')
+                ->get();
+
+            $keywordIds = $keywordData->pluck('id')->toArray();
+            $keywordSlugToId = $keywordData->pluck('id', 'slug')->toArray();
+            $keywordIdToSlug = $keywordData->pluck('slug', 'id')->toArray();
+
             // Get latest stats for each keyword
             $latestStats = DB::table('plugin_keyword_stats as pks1')
                 ->select(
-                    'pks1.keyword_slug as keyword',
+                    'k.slug as keyword',  // Get the slug from keywords table
                     'pks1.rank_order',
                     'pks1.stat_date as latest_date',
                     DB::raw('\'en\' as language')
                 )
+                ->join('keywords as k', 'pks1.keyword_id', '=', 'k.id')  // Join with keywords table
                 ->joinSub(
                     DB::table('plugin_keyword_stats')
-                        ->select('keyword_slug', DB::raw('MAX(stat_date) as max_date'))
-                        ->where('plugin_slug', $slug)
-                        ->whereIn('keyword_slug', $keywords)
-                        ->groupBy('keyword_slug'),
+                        ->select('keyword_id', DB::raw('MAX(stat_date) as max_date'))  // Use keyword_id
+                        ->where('plugin_id', $pluginId)  // Use plugin_id
+                        ->whereIn('keyword_id', $keywordIds)  // Use keyword_ids array
+                        ->groupBy('keyword_id'),
                     'pks2',
                     function($join) {
-                        $join->on('pks1.keyword_slug', '=', 'pks2.keyword_slug')
+                        $join->on('pks1.keyword_id', '=', 'pks2.keyword_id')  // Use keyword_id
                              ->on('pks1.stat_date', '=', 'pks2.max_date');
                     }
                 )
-                ->where('pks1.plugin_slug', $slug)
-                ->whereIn('pks1.keyword_slug', $keywords)
-                ->groupBy('pks1.keyword_slug', 'pks1.rank_order', 'pks1.stat_date')
+                ->where('pks1.plugin_id', $pluginId)  // Use plugin_id
+                ->whereIn('pks1.keyword_id', $keywordIds)  // Use keyword_ids array
+                ->groupBy('k.slug', 'pks1.rank_order', 'pks1.stat_date')  // Group by slug from keywords table
                 ->get()
                 ->keyBy('keyword');
 
             // Get previous stats for position change calculation
-            $previousStats = collect($keywords)->mapWithKeys(function ($keyword) use ($slug, $latestStats) {
+            $previousStats = collect($keywords)->mapWithKeys(function ($keyword) use ($slug, $latestStats, $pluginId, $keywordSlugToId) {
                 $latestDate = $latestStats->get($keyword)?->latest_date;
+                $keywordId = $keywordSlugToId[$keyword] ?? null;
                 
-                if (!$latestDate) {
+                if (!$latestDate || !$keywordId) {
                     return [$keyword => null];
                 }
 
                 return [$keyword => DB::table('plugin_keyword_stats')
-                    ->where('plugin_slug', $slug)
-                    ->where('keyword_slug', $keyword)
+                    ->where('plugin_id', $pluginId)  // Use plugin_id
+                    ->where('keyword_id', $keywordId)  // Use keyword_id
                     ->where('stat_date', '<', $latestDate)
                     ->orderBy('stat_date', 'desc')
                     ->first()
