@@ -296,13 +296,13 @@ class PluginController extends Controller {
             $connection = DB::connection();
             $currentDatabase = $connection->getDatabaseName();
             $currentHost = $connection->getConfig('host');
-            
+            /*
            dd("Database Connection Info:", [
                 'database' => $currentDatabase,
                 'host' => $currentHost,
                 'driver' => $connection->getConfig('driver')
             ]);
-            
+            */
             $slug = $request->input('slug');
             $keywords = $request->input('keywords');
             $trend = $request->input('trend', '7');
@@ -316,12 +316,31 @@ class PluginController extends Controller {
                 default => 7,
             };
 
-            // Fetch raw data
+            // Step 1: Get plugin_id from slug
+            $pluginId = DB::table('plugins')
+                ->where('slug', $slug)
+                ->value('id');
+            
+            if (!$pluginId) {
+                return response()->json(['error' => 'Plugin not found'], 404);
+            }
+            
+            // Step 2: Get keyword_ids from slugs
+            $keywordIds = DB::table('keywords')
+                ->whereIn('slug', $keywords)
+                ->pluck('id')
+                ->toArray();
+            
+            if (empty($keywordIds)) {
+                return response()->json(['error' => 'No matching keywords found'], 404);
+            }
+            
+            // Step 3: Execute the main query with IDs instead of slugs
             $rawData = DB::table('plugin_keyword_stats')
-                ->select('keyword_slug', 'rank_order', 'stat_date')
-                ->where('plugin_slug', $slug)
-                ->whereIn('keyword_slug', $keywords)
-                ->where('stat_date', '>=', Carbon::now()->subDays($days))
+                ->select('keyword_id', 'rank_order', 'stat_date')
+                ->where('plugin_id', $pluginId)
+                ->whereIn('keyword_id', $keywordIds)
+                ->where('stat_date', '>=', DB::raw("now() - interval '{$days} days'"))  // TimescaleDB optimized
                 ->orderBy('stat_date', 'asc')
                 ->get();
 
