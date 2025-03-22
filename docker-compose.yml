@@ -51,11 +51,11 @@ services:
 
   db:
     image: postgres:13
-    container_name: laravel-db
+    container_name: laravel-db-timescale-new
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: laravel
+      POSTGRES_DB: laravel-db-mod
       POSTGRES_USER: laravel
       POSTGRES_PASSWORD: secret
     volumes:
