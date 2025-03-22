@@ -12,11 +12,11 @@ load_dotenv()
 
 # Database connection parameters
 DB_CONNECTION = {
-    'dbname': 'laravel',
-    'user': os.getenv('DB_USERNAME'),
-    'password': os.getenv('DB_PASSWORD'),
-    'host': 'laravel-db',
-    'port': os.getenv('DB_PORT')
+    'dbname': 'new_database',
+    'user': 'laravel',
+    'password': 'laravel',
+    'host': '66.55.77.80',
+    'port': 5432
 }
 print(DB_CONNECTION)
 #exit()

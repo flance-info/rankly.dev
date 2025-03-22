@@ -67,11 +67,11 @@ proxies = [
 
 
 DB_CONFIG = {
-    'dbname': 'laravel-db-mod',
+    'dbname': 'new_database',
     'user': 'laravel',
     'password': 'laravel',
-    'host': 'laravel-db-timescale-new',
-    'port': '5432'
+    'host': '66.55.77.80',
+    'port': 5432
 }
 print(DB_CONFIG)
 def connect_db():
@@ -193,7 +193,7 @@ async def search_plugins_by_tag_page(session: aiohttp.ClientSession, tag_label: 
             print(f"Error fetching page {page} for tag '{tag_label}': {e}")
         return page, []
 
-async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, tag_slug: str, sem: Semaphore) -> List[Dict]:
+async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, tag_slug: str, request_sem: Semaphore, retries=3) -> List[Dict]:
     """Search for plugins using the WordPress API by tag label asynchronously."""
     params = {
         "action": "query_plugins",
@@ -203,37 +203,48 @@ async def search_plugins_by_tag(session: aiohttp.ClientSession, tag_label: str, 
     }
 
     try:
-        async with sem:
-            timeout = aiohttp.ClientTimeout(total=30)
-            async with session.get(PLUGIN_API_BASE_URL, params=params, timeout=timeout) as response:
-                if response.status != 200:
-                    print(f"Failed to fetch initial data for tag '{tag_label}'")
+        async with request_sem:
+            timeout = aiohttp.ClientTimeout(total=60)
+            for attempt in range(retries):
+                try:
+                    async with session.get(PLUGIN_API_BASE_URL, params=params, timeout=timeout) as response:
+                        if response.status != 200:
+                            print(f"Failed to fetch initial data for tag '{tag_label}'")
+                            return []
+
+                        data = await response.json()
+                        total_pages = data.get('info', {}).get('pages', 1)
+                        all_plugins = data.get('plugins', [])  # First page plugins
+
+                        await asyncio.sleep(0.5)  # Small delay between pages
+
+                        if total_pages <= 1:
+                            return all_plugins
+
+                        # Create tasks for remaining pages
+                        tasks = [
+                            search_plugins_by_tag_page(session, tag_label, page, request_sem)
+                            for page in range(2, total_pages + 1)
+                        ]
+
+                        # Gather results
+                        results = await asyncio.gather(*tasks)
+
+                        # Sort results by page number and combine plugins
+                        sorted_results = sorted(results, key=lambda x: x[0])
+                        for _, plugins in sorted_results:
+                            all_plugins.extend(plugins)
+
+                        return all_plugins
+
+                except asyncio.TimeoutError:
+                    print(f"Timeout error for tag: {tag_label}, attempt {attempt+1}/{retries}")
+                    if attempt == retries - 1:
+                        return []  # Return empty after all retries fail
+                    await asyncio.sleep(2)  # Wait before retry
+                except Exception as e:
+                    print(f"Error for tag '{tag_label}': {str(e)}")
                     return []
-
-                data = await response.json()
-                total_pages = data.get('info', {}).get('pages', 1)
-                all_plugins = data.get('plugins', [])  # First page plugins
-
-                await asyncio.sleep(0.5)  # Small delay between pages
-
-                if total_pages <= 1:
-                    return all_plugins
-
-                # Create tasks for remaining pages
-                tasks = [
-                    search_plugins_by_tag_page(session, tag_label, page, sem)
-                    for page in range(2, total_pages + 1)
-                ]
-
-                # Gather results
-                results = await asyncio.gather(*tasks)
-
-                # Sort results by page number and combine plugins
-                sorted_results = sorted(results, key=lambda x: x[0])
-                for _, plugins in sorted_results:
-                    all_plugins.extend(plugins)
-
-                return all_plugins
 
     except aiohttp.ClientProxyConnectionError as e:
         print(f"Proxy connection error for {proxy}: {e}")
@@ -463,7 +474,7 @@ def main():
     try:
         # Load tags from the database
         tags = load_tags_from_db(conn)
-        test_tags = tags[:1];
+        test_tags = tags;
 
         # Process the tags
         asyncio.run(process_tags(test_tags))

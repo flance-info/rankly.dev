@@ -5,11 +5,11 @@ from tqdm import tqdm
 
 # Database configuration
 DB_CONFIG = {
-    'dbname': 'laravel',
+    'dbname': 'new_database',
     'user': 'laravel',
-    'password': 'secret',
-    'host': 'laravel-db',
-    'port': '5432'
+    'password': 'laravel',
+    'host': '66.55.77.80',
+    'port': 5432
 }
 
 def connect_db():
